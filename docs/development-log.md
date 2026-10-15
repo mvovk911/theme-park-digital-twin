@@ -107,3 +107,16 @@ passed 73 CPU/API checks. This is not new GPU evidence: native resource destruct
 rendered replay, revision 2 visuals and actual picking remain pending worker access.
 Concurrent source-acceptance follow-up work and frontend changes were excluded
 from that candidate so the checkpoint's evidence is identifiable.
+
+## Immutable release artifact checkpoint — 17 local boundary checks passed
+
+Release packaging now reads exact committed Git blobs, records commit/tree and
+per-file SHA256/size/mode in a manifest, and rejects dirty working bytes from the
+artifact boundary. New source stages into a fresh release directory with declared
+shared runtime/database/environment links. Removed files cannot survive through
+an overlay, because staging never overlays an old source tree.
+
+17 local boundary checks passed, including tampering, manifest/path/link rejection,
+deleted files, retained shared data and explicit activation/rollback. Activation
+only promotes a source pointer; it does not claim dependency compatibility,
+process restart or GPU acceptance. The legacy worker deployment remains untouched.
