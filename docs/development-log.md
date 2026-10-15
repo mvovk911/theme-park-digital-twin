@@ -67,3 +67,24 @@ configurations) pass. Source and generated outputs are committed together.
 The Blender file and checked-in GPU images remain revision 1. Worker connectivity
 is unavailable, so revision 2 GPU/native-pick evidence and Blender re-import are
 still pending. This checkpoint does not claim those gates passed.
+
+## Ten-domain connector checkpoint — 51 local checks passed
+
+The accepted-event boundary is implemented for all ten synthetic domains with 137
+mapped fields. Modular adapters, catalog, validation, bounded event storage,
+runtime and read-model projection now own separate responsibilities. Ingestion
+validates source/asset identity, units, types, ranges and timestamps; duplicates,
+conflicts, late events and expired cursors have explicit behavior. Freshness and
+source status derive from accepted events. Synthetic producers can be paused or
+offlined independently and resumed through the demo API.
+
+Existing application APIs consume the accepted projection. A faulted ride is
+excluded from open-ride and active-queue KPIs. Scenario comparison remains an
+explicit synthetic-model calculation rather than a prediction from injected
+measurements. The event journal is bounded in memory and its restart limitation
+is documented; durable full-state recording is a separate workstream.
+
+51 backend/connector checks passed locally. The restricted execution environment
+requires a test-only event-loop heartbeat; no production scheduling workaround
+was added. Remote deployment, GPU checks and publication remain pending network
+access.

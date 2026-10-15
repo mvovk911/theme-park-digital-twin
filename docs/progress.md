@@ -33,6 +33,15 @@ bounds and articulated-motion checks pass; [revision 2 evidence](../assets/scene
 The Blender handoff and the images below still show revision 1 and are labeled
 accordingly. New GPU captures and Blender regeneration await worker connectivity.
 
+## Connector checkpoint — locally tested
+
+All ten synthetic domains now pass through typed mappings, accepted-event
+validation and a canonical read model. Source pause/offline controls expose actual
+freshness behavior; duplicate, conflict and out-of-order semantics are tested.
+[Connector contracts and limits](connectors.md). Backend/connector suite: 51 local
+checks passed. Deployment and publication of this checkpoint are pending network
+access; existing GPU screenshots do not validate these new paths.
+
 ## Delivery checklist
 
 | Requested outcome | Status | Review evidence |

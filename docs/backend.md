@@ -18,7 +18,7 @@ All values and workflows are simulated. FastAPI runs at port 8000 with a persist
 
 Asset schema: `{id,name,type,scene_path,status,description,capacity,occupancy,queue_minutes,throughput_per_hour,power_kw,water_lpm,temperature_c,staff:{on_duty,required,qualifications},reservations:{booked,next_window_minutes},erp:{stock_units,stock_capacity,reorder_point,operating_cost_eur_per_hour},dependencies:[asset_id],maintenance:{inspection_status,health_pct,open_work_orders},metadata:{...},synthetic:true}`. Scene paths are `/World/Park/{id}`. Status values: `operational`, `warning`, `closed`, `fault`. IDs: `RIDE_COASTER`, `RIDE_WHEEL`, `SHOW_ARENA`, `FOOD_COURT`, `POWER_HUB`, `WATER_PLANT`, `ENTRY_GATE`, `PARKING`, `HOTEL`, `FIRST_AID`, `RESTROOMS`, `WEATHER_STATION`.
 
-Alerts: `{id,severity,asset_id,title,message,recommended_action}`. Systems: `{id,name,protocol,status,last_sync,asset_ids,synthetic:true}`. Every source label explicitly identifies simulation. No external systems or physical controls are connected. Scene author can add spatial metadata later.
+Alerts: `{id,severity,asset_id,title,message,recommended_action}`. Systems retain `{id,name,protocol,status,last_sync,asset_ids,synthetic:true}` and add `source_timestamp` and full connector `health`. `last_sync` is the last accepted ingestion timestamp. Every source label explicitly identifies simulation. No external systems or physical controls are connected. Scene author can add spatial metadata later.
 
 Actions are audited, validated for applicable assets, and affect subsequent telemetry. Duplicate dispatch does not create duplicate open work orders. Reset restores normal scenario, closes simulation work orders and clears mitigation state while preserving audit history. `dispatch_maintenance` records a work order; it deliberately does not claim a closed ride has been physically repaired. `repair_leak` is a simulated repair which resolves the water leak. History retains 3600 samples per asset. Browser static files and `/render/*` are reserved for the application integration.
 
@@ -62,3 +62,18 @@ Missing/unknown scenario returns HTTP 422. `deltas` includes wait, open rides, p
 - Comparisons hold time and attendance fixed; they do not predict pedestrian motion or a future time horizon.
 - Ride maintenance dispatch creates an idempotent work order but never reopens a ride. Synthetic repair is implemented only for the water-leak demonstration.
 - Frontend should display the returned assumptions or a visible synthetic-estimate label alongside comparisons.
+
+
+## Connector observations and read model
+
+All ten domain feeds now pass through the [connector acceptance boundary](connectors.md). `GET /api/state`, asset/detail APIs, system records and action responses use `app.state.read_model.snapshot()`, which projects accepted authoritative observations onto the existing asset shape. They add per-field `data_quality`, `connector_health`, and `read_model` metadata. Existing source records remain available. New discovery, observation, event-poll, paused demo-ingest and source-failure endpoints are documented in the connector guide.
+
+The queue KPI is the unweighted mean of every positive queue at an asset whose status is neither `closed` nor `fault`, including rides, entertainment, food, admission and restrooms. `kpis.queue_asset_count` gives its denominator; `excluded_closed_count` gives the number of closed assets omitted. Faulted assets are also excluded from the mean, while `excluded_closed_count` specifically counts closed assets. `open_rides` counts only rides with `operational` or `warning` status. It is not a ride-only or guest-weighted measure.
+
+`ParkSimulator.workflow_snapshot()` returns `{tick,work_orders}` under its lock, limited to 300 recent work orders. Replay can compare the workflow tick with the captured projected state tick without reading SQLite directly. Connector event retention is separate from existing simulator telemetry history.
+
+Run backend and connector verification with:
+
+```sh
+.venv/bin/python -m pytest -q tests/test_backend.py tests/test_connectors.py tests/test_connectors_http.py
+```

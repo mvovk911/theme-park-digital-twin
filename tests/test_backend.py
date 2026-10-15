@@ -148,6 +148,11 @@ def test_comparison_is_deterministic_and_isolated(client, scenario):
     sim = client.app.state.park
     client.post("/api/scenarios", json={"scenario": "food_rush"})
     client.post("/api/actions", json={"action": "add_staff", "asset_id": "FOOD_COURT"})
+    # Freshness ages are intentionally wall-clock derived. Freeze only that
+    # clock while asserting comparison leaves the complete read model unchanged.
+    from datetime import datetime, timezone
+    fixed_now = datetime.now(timezone.utc)
+    client.app.state.connectors.clock = lambda: fixed_now
     before = client.get("/api/state").json()
     original_dump = list(sim.db.iterdump())
     # A comparison must not read or write any database table.

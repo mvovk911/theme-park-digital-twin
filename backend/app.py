@@ -9,6 +9,8 @@ from fastapi import FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnec
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict
 from .simulator import ParkSimulator
+from .connectors import ConnectorRuntime, ParkReadModel
+from .connectors.api import install_connector_routes
 
 
 class ScenarioRequest(BaseModel):
@@ -26,10 +28,14 @@ def create_app(database_path: str | None = None, run_background: bool = True):
     @asynccontextmanager
     async def lifespan(app):
         app.state.park = ParkSimulator(database_path or os.environ.get("PARK_DB", str(Path(__file__).parent / "data" / "park.db")))
+        app.state.connectors = ConnectorRuntime(app.state.park.base)
+        app.state.read_model = ParkReadModel(app.state.park, app.state.connectors)
+        app.state.read_model.snapshot()
         async def simulate():
             while True:
                 await asyncio.sleep(1)
                 await asyncio.to_thread(app.state.park.advance)
+                await asyncio.to_thread(app.state.read_model.snapshot)
         task = asyncio.create_task(simulate()) if run_background else None
         try:
             yield
@@ -50,11 +56,11 @@ def create_app(database_path: str | None = None, run_background: bool = True):
 
     @app.get("/api/state")
     def state():
-        return app.state.park.snapshot()
+        return app.state.read_model.snapshot()
 
     @app.get("/api/assets")
     def assets():
-        return {"synthetic": True, "assets": app.state.park.snapshot()["assets"]}
+        return {"synthetic": True, "assets": app.state.read_model.snapshot()["assets"]}
 
     @app.get("/api/assets/{asset_id}/history")
     def history(asset_id: str, limit: int = Query(120, ge=1, le=3600)):
@@ -66,35 +72,22 @@ def create_app(database_path: str | None = None, run_background: bool = True):
     @app.get("/api/assets/{asset_id}")
     def asset(asset_id: str):
         try:
-            return app.state.park.asset(asset_id)
+            detail = app.state.park.asset(asset_id)
+            projected = next(a for a in app.state.read_model.snapshot()["assets"] if a["id"] == asset_id)
+            return {**detail, **projected}
         except KeyError:
             raise HTTPException(404, "Unknown asset")
 
     @app.get("/api/systems")
     def systems():
-        return {"synthetic": True, "systems": app.state.park.snapshot()["systems"]}
+        return {"synthetic": True, "systems": app.state.read_model.snapshot()["systems"]}
 
     @app.get("/api/systems/{system_id}/data")
     def system_data(system_id: str):
-        state = app.state.park.snapshot()
-        system = next((s for s in state["systems"] if s["id"] == system_id), None)
-        if system is None:
+        try:
+            return app.state.read_model.system_data(system_id)
+        except KeyError:
             raise HTTPException(404, "Unknown synthetic system")
-        fields = {
-            "ride_scada": ["status", "throughput_per_hour", "power_kw", "maintenance"],
-            "ticketing": ["occupancy", "capacity", "reservations", "queue_minutes"],
-            "vision": ["occupancy", "capacity", "queue_minutes"],
-            "cmms": ["maintenance", "dependencies"],
-            "erp": ["erp", "throughput_per_hour"],
-            "workforce": ["staff"],
-            "bms": ["power_kw", "temperature_c", "dependencies"],
-            "water": ["water_lpm", "status", "dependencies"],
-            "weather": ["temperature_c"],
-            "gis": ["scene_path", "metadata", "dependencies"],
-        }[system_id]
-        records = [{"asset_id": a["id"], **{k: a[k] for k in fields}, "synthetic": True}
-                   for a in state["assets"] if a["id"] in system["asset_ids"]]
-        return {"synthetic": True, "timestamp": state["timestamp"], "system": system, "records": records}
 
     @app.get("/api/audit")
     def audit(limit: int = Query(100, ge=1, le=1000)):
@@ -110,14 +103,17 @@ def create_app(database_path: str | None = None, run_background: bool = True):
     @app.post("/api/scenarios")
     def scenario(request: ScenarioRequest):
         try:
-            return app.state.park.set_scenario(request.scenario)
+            app.state.park.set_scenario(request.scenario)
+            return app.state.read_model.snapshot()
         except ValueError as exc:
             raise HTTPException(422, str(exc))
 
     @app.post("/api/actions")
     def action(request: ActionRequest):
         try:
-            return app.state.park.act(request.action, request.asset_id)
+            result = app.state.park.act(request.action, request.asset_id)
+            result["state"] = app.state.read_model.snapshot()
+            return result
         except KeyError:
             raise HTTPException(404, "Unknown asset")
         except ValueError as exc:
@@ -128,11 +124,12 @@ def create_app(database_path: str | None = None, run_background: bool = True):
         await websocket.accept()
         try:
             while True:
-                await websocket.send_json(app.state.park.snapshot())
+                await websocket.send_json(app.state.read_model.snapshot())
                 await asyncio.sleep(1)
         except WebSocketDisconnect:
             pass
 
+    install_connector_routes(app)
     return app
 
 

@@ -86,16 +86,16 @@ def registry():
 
 
 SYSTEM_DEFS = [
-    ("ride_scada", "Simulated Ride SCADA", "OPC UA emulator", ["RIDE_COASTER", "RIDE_WHEEL"]),
-    ("ticketing", "Simulated Ticketing & Reservations", "REST emulator", ["ENTRY_GATE", "RIDE_COASTER", "RIDE_WHEEL", "SHOW_ARENA"]),
-    ("vision", "Simulated People Counters", "MQTT emulator", ["ENTRY_GATE", "SHOW_ARENA", "FOOD_COURT", "PARKING"]),
-    ("cmms", "Simulated Maintenance CMMS", "REST / SQLite", ["RIDE_COASTER", "RIDE_WHEEL", "POWER_HUB", "WATER_PLANT"]),
-    ("erp", "Simulated ERP & POS", "REST / SQLite", ["FOOD_COURT", "HOTEL"]),
-    ("workforce", "Simulated Workforce", "REST emulator", ["ENTRY_GATE", "FOOD_COURT", "RIDE_COASTER", "FIRST_AID"]),
-    ("bms", "Simulated Building & Energy", "BACnet emulator", ["POWER_HUB", "HOTEL", "FOOD_COURT", "PARKING"]),
-    ("water", "Simulated Water Management", "MQTT emulator", ["WATER_PLANT", "RESTROOMS"]),
-    ("weather", "Simulated Local Weather", "REST emulator", ["WEATHER_STATION"]),
-    ("gis", "Park Asset Registry / OpenUSD", "USD paths / SQLite", [a["id"] for a in registry()]),
+    ("ride_scada", "Simulated Ride SCADA", "Synthetic HTTP · planned OPC UA", ["RIDE_COASTER", "RIDE_WHEEL"]),
+    ("ticketing", "Simulated Ticketing & Reservations", "Synthetic HTTP · planned REST", ["ENTRY_GATE", "RIDE_COASTER", "RIDE_WHEEL", "SHOW_ARENA"]),
+    ("vision", "Simulated People Counters", "Synthetic HTTP · planned MQTT", ["ENTRY_GATE", "SHOW_ARENA", "FOOD_COURT", "PARKING"]),
+    ("cmms", "Simulated Maintenance CMMS", "Synthetic HTTP · planned vendor REST", ["RIDE_COASTER", "RIDE_WHEEL", "POWER_HUB", "WATER_PLANT"]),
+    ("erp", "Simulated ERP & POS", "Synthetic HTTP · planned vendor REST", ["FOOD_COURT", "HOTEL"]),
+    ("workforce", "Simulated Workforce", "Synthetic HTTP · planned REST", ["ENTRY_GATE", "FOOD_COURT", "RIDE_COASTER", "FIRST_AID"]),
+    ("bms", "Simulated Building & Energy", "Synthetic HTTP · planned BACnet", ["POWER_HUB", "HOTEL", "FOOD_COURT", "PARKING"]),
+    ("water", "Simulated Water Management", "Synthetic HTTP · planned MQTT", ["WATER_PLANT", "RESTROOMS"]),
+    ("weather", "Simulated Local Weather", "Synthetic HTTP · planned REST", ["WEATHER_STATION"]),
+    ("gis", "Park Asset Registry / OpenUSD", "Synthetic HTTP · OpenUSD paths", [a["id"] for a in registry()]),
 ]
 
 
@@ -151,6 +151,12 @@ class ParkSimulator:
             else:
                 rows = self.db.execute("SELECT * FROM audit ORDER BY id DESC LIMIT ?", (limit,))
             return [dict(row) for row in rows]
+
+    def workflow_snapshot(self):
+        """Bounded workflow context for replay, read atomically with its tick."""
+        with self.lock:
+            rows = self.db.execute("SELECT * FROM work_orders ORDER BY id DESC LIMIT 300")
+            return {"tick": self.tick, "work_orders": [dict(row) for row in rows]}
 
     def history(self, asset_id, limit=120):
         with self.lock:
@@ -317,6 +323,8 @@ class ParkSimulator:
                       "recent_actions": recent_actions,
                       "kpis": {"attendance": 3420 + round(wave * 35), "total_capacity": 6200,
                                "average_wait_minutes": round(sum(a["queue_minutes"] for a in queue_assets) / max(1, len(queue_assets)), 1),
+                               "queue_asset_count": len(queue_assets),
+                               "excluded_closed_count": sum(a["status"] == "closed" for a in assets.values()),
                                "power_kw": round(sum(a["power_kw"] for a in assets.values()), 1),
                                "power_capacity_kw": assets["POWER_HUB"]["capacity"],
                                "water_lpm": round(sum(a["water_lpm"] for a in assets.values()), 1),
@@ -359,6 +367,7 @@ class ParkSimulator:
             summary_keys = ("scenario", "kpis", "weather", "alerts")
             return {
                 "synthetic": True, "method": "heuristic_same_tick_comparison",
+                "baseline_source": "synthetic_simulator",
                 "mutates_live_state": False, "baseline_tick": before["tick"],
                 "timestamp": before["timestamp"],
                 "before": {key: before[key] for key in summary_keys},
@@ -367,6 +376,7 @@ class ParkSimulator:
                 "assumptions": [
                     "Illustrative synthetic rules, not a calibrated forecast or a claim of real-world savings.",
                     "Both cases use the same simulation tick, attendance and base assets; no future time horizon is modeled.",
+                    "The baseline is the synthetic simulator; injected connector observations are not inputs to this scenario model.",
                     "Before retains current mitigations. After applies the selected scenario with mitigations cleared, matching scenario activation.",
                     "Mean queue wait is unweighted across active queues; a closed ride is excluded and can make this average misleading.",
                     "Total monitored water flow sums synthetic asset readings, including circulation; it is not net utility consumption.",
