@@ -155,12 +155,22 @@ def install_replay(
             request.url.path in {"/api/actions", "/api/scenarios"}
             or request.url.path.startswith("/api/connectors/")
         )
+        # External synthetic producers are acquisition, not operator commands.
+        # Keep their writes/capture serialized with view changes, but viewing a
+        # historical record must not suspend collection of new source events.
+        parts = request.url.path.strip("/").split("/")
+        source_ingestion = (
+            request.method == "POST"
+            and len(parts) == 4
+            and parts[:2] == ["api", "connectors"]
+            and parts[3] == "ingest"
+        )
         comparing = (
             request.method == "GET" and request.url.path == "/api/scenarios/compare"
         )
 
         async def dispatch():
-            if store and store.is_replay and (mutating or comparing):
+            if store and store.is_replay and ((mutating and not source_ingestion) or comparing):
                 return JSONResponse(
                     {
                         "detail": "Recorded view is read-only. Return to live before changing the park or comparing scenarios."

@@ -120,7 +120,6 @@ def test_replay_api_locks_writes_while_live_simulation_keeps_advancing(client):
         ("/api/scenarios", {"scenario": "ride_closure"}),
         ("/api/actions", {"action": "reset"}),
         ("/api/connectors/bms/simulation", {"mode": "offline"}),
-        ("/api/connectors/bms/ingest", {}),
     ]:
         assert client.post(route, json=payload).status_code == 409
     assert client.get("/api/scenarios/compare?scenario=ride_closure").status_code == 409

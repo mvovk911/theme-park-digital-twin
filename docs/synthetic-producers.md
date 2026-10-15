@@ -22,11 +22,11 @@ The source choices come directly from the catalog: `ride_scada`, `ticketing`, `v
 Start the gateway normally, then pause the in-process adapter for each selected source in the Sources dialog or API. Paused means the gateway stops generating samples for that source; external synthetic HTTP ingestion remains enabled.
 
 ```bash
-curl -X POST http://127.0.0.1:8000/api/connectors/weather/simulation \
+curl -X POST http://127.0.0.1:8100/api/connectors/weather/simulation \
   -H 'Content-Type: application/json' -d '{"mode":"paused"}'
 
 .venv/bin/python -m simulators.producer --source weather --profile heatwave \
-  --api-url http://127.0.0.1:8000 --rate 1 --count 60
+  --api-url http://127.0.0.1:8100 --rate 1 --count 60
 ```
 
 The CLI checks that each source is synthetic, permits demo ingestion and is paused. It never changes source mode. A source that is live or offline rejects publishing. If someone changes its mode while a producer runs, the next batch fails and the producer stops.
@@ -35,10 +35,10 @@ For independent processes, pause `water` and `weather`, then run one command in 
 
 ```bash
 .venv/bin/python -m simulators.producer --source water --profile water_leak \
-  --api-url http://127.0.0.1:8000 --rate 1 --count 120
+  --api-url http://127.0.0.1:8100 --rate 1 --count 120
 
 .venv/bin/python -m simulators.producer --source weather --profile heatwave \
-  --api-url http://127.0.0.1:8000 --rate 1 --count 120
+  --api-url http://127.0.0.1:8100 --rate 1 --count 120
 ```
 
 `--rate` is the requested sample frequency per selected source (0.1–20 Hz, default 1). `--count` is a finite sample limit per source (1–100000, default 1). HTTP delivery is sequential, so slow responses reduce the achieved frequency. Missed intervals do not trigger a catch-up burst. Each sample advances the synthetic model by one tick; this is a demonstration waveform, not a calibrated time or capacity model.
@@ -83,3 +83,8 @@ A producer profile does **not** change the gateway's scenario, actions, work ord
 ```
 
 In the restricted development sandbox, the test runner uses a temporary asyncio heartbeat plugin because cross-thread event-loop wakeups are unavailable. This is a local test-environment workaround; it changes no production module and is not required on a normal host.
+
+Historical inspection does not stop acquisition. A producer whose source was paused
+before entering replay can continue publishing; new events update live state and
+new recordings while the selected historical snapshot remains unchanged. Operator
+actions and source-mode changes remain locked until returning Live.

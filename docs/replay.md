@@ -38,10 +38,14 @@ not evaluate scenario rules or own connector ingestion.
   same selected view, with history clipped at that record.
 
 The prototype has one shared view/camera. While replay is selected, scenario
-changes, actions, connector ingestion/fault injection and live-model scenario
+changes, actions, connector simulation-mode changes and live-model scenario
 comparison return HTTP 409. These requests are serialized with view changes so a
-second viewer cannot race a cursor change into an accepted write. Normal live
-source production continues; camera controls and native picks remain available.
+second viewer cannot race a cursor change into an accepted operator write.
+Validated source events at `POST /api/connectors/{source}/ingest` remain permitted:
+acquisition updates only live state and new recordings, never the selected historical
+payload. The source must already be paused for an independent synthetic producer
+to own it; that mode cannot be changed while replay is selected. Both in-process
+and HTTP source production continue. Camera controls and native picks remain available.
 
 ## Rendered pose and freshness
 
