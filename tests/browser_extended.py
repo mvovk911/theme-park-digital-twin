@@ -52,12 +52,13 @@ const elements=new Map(), groups=new Map();
 const byId=id=>{if(!elements.has(id))elements.set(id,new Element());return elements.get(id);};
 for(const selector of ['.scenario-chip','[data-action]','[data-connector-mode]','.actions-section > .action-note'])groups.set(selector,[new Element(),new Element()]);
 const document={getElementById:byId,querySelectorAll:s=>groups.get(s)||[],createElement:()=>new Element(),body:new Element()};
-const context=vm.createContext({document,Date,Map,Set,Number,String,Math,Array,JSON,Promise,setTimeout:()=>0,clearTimeout:()=>{},console});
+let mockFetch=()=>Promise.reject(new Error('Unexpected test fetch'));
+const context=vm.createContext({document,Date,Map,Set,Number,String,Math,Array,JSON,Promise,AbortController,fetch:(...args)=>mockFetch(...args),setTimeout:()=>0,clearTimeout:()=>{},console});
 let source=fs.readFileSync(process.argv[1],'utf8');
 const marker='\n  bindEvents();\n';
 assert.equal(source.split(marker).length,2,'Test entry point must be unique');
-source=source.replace(marker,`\n  globalThis.testHooks={pickViewUnchanged,fieldNumber,fieldUnknown,fieldModeled,alertProvenance,assetStatus,observationValue,frameMatchesView,metadataFromHeaders,parseFrameContext,imageRect,renderLabels,updateFrameContext,updateWriteControls,renderView,dependencyEdges,renderDependencyLines,
- setSnapshot(value){snapshot=value;},setRenderer(value){renderer=value;},setSelected(value){selectedId=value;},setLayer(value){currentLayer=value;},
+source=source.replace(marker,`\n  globalThis.testHooks={rememberAnnotationState,annotationState,ensureAnnotationState,pickViewUnchanged,fieldNumber,fieldUnknown,fieldModeled,alertProvenance,assetStatus,observationValue,frameMatchesView,metadataFromHeaders,parseFrameContext,imageRect,renderLabels,updateFrameContext,updateWriteControls,renderView,dependencyEdges,renderDependencyLines,
+ setSnapshot(value){snapshot=value;},getSnapshot(){return snapshot;},clearAnnotationCache(){annotationStates.clear();annotationFailures.clear();annotationDemand=null;},annotationCacheSize(){return annotationStates.size;},setRenderer(value){renderer=value;},setSelected(value){selectedId=value;},setLayer(value){currentLayer=value;},
  setFrame(value){frameMetadata=value;lastFrameReceived=Date.now();lastUniqueFrameAt=Date.now();},setPending(value){viewPending=value;},setViewVersion(value){viewRequestVersion=value;}};return;\n`);
 vm.runInContext(source,context,{filename:process.argv[1]});
 const t=context.testHooks, checks=[];
@@ -89,7 +90,23 @@ check('new camera status cannot move annotations on an older JPEG',()=>{t.setSna
 check('malformed image context fails closed even with matching status',()=>{t.setRenderer({ready:true,frame:21,...frameContext,accepted_state_revision:'revision-a',view_mode:'live'});for(const value of ['not-json',JSON.stringify({...frameContext,width:0}),JSON.stringify({...frameContext,projected_assets:[{id:'POWER_HUB',visible:true,x:'oops',y:0}]})]){const metadata=t.metadataFromHeaders(new Headers({'X-Frame-Number':'21','X-Frame-Context':value,'X-Source-Revision':'revision-a','X-View-Mode':'live'}));assert.equal(metadata.context,null);t.setFrame(metadata);assert.equal(t.frameMatchesView(),false);t.renderDependencyLines();assert.ok(byId('dependency-lines').hasAttribute('hidden'));t.renderLabels();assert.equal(byId('scene-labels').children.length,0);}});
 check('status context fallback requires the exact image frame ID',()=>{t.setRenderer({ready:true,frame:22,...frameContext,accepted_state_revision:'revision-a',view_mode:'live',camera_token:'camera-a'});const matched=t.metadataFromHeaders(new Headers({'X-Frame-Number':'22'}));assert.equal(matched.context.width,1280);assert.equal(matched.sourceRevision,'revision-a');assert.equal(matched.cameraToken,'camera-a');assert.equal(t.metadataFromHeaders(new Headers({'X-Frame-Number':'21'})).context,null);});
 check('successful native asset picks survive telemetry updates but not view changes',()=>{t.setSnapshot({...live,accepted_state_revision:'newer-live-revision'});t.setViewVersion(3);assert.ok(t.pickViewUnchanged('live',3));assert.equal(t.pickViewUnchanged('live',2),false);t.setSnapshot(replay);assert.equal(t.pickViewUnchanged('live',3),false);assert.equal(t.pickViewUnchanged('replay:18',3),false);assert.ok(t.pickViewUnchanged('replay:17',3));});
-console.log(JSON.stringify({kind:'javascript_logic_checks_not_browser_or_gpu',passed:checks.length,checks},null,2));
+check('annotations and dependency lines use immutable frame data while inspector stays latest',()=>{t.clearAnnotationCache();const older=JSON.parse(JSON.stringify(graph));older.accepted_state_revision='older-state';older.assets.forEach(asset=>asset.power_kw=11);t.rememberAnnotationState(older);older.assets[0].power_kw=500;const latest=JSON.parse(JSON.stringify(graph));latest.accepted_state_revision='latest-state';latest.assets.forEach(asset=>{asset.power_kw=999;asset.status='operational';});t.setSnapshot(latest);t.setFrame({...frameBase,frame:25,viewMode:'live',sourceRevision:'older-state'});assert.ok(t.frameMatchesView());assert.equal(t.annotationState().assets[0].power_kw,11);assert.equal(t.getSnapshot().assets[0].power_kw,999);t.setRenderer({ready:true});t.setSelected('POWER_HUB');t.setLayer('energy');t.renderLabels();assert.equal(byId('scene-labels').children.find(item=>item.dataset.labelAsset==='POWER_HUB').lastElementChild.textContent,'11 kW');t.setLayer('dependencies');t.renderDependencyLines();assert.match(byId('dependency-lines').innerHTML,/dependency-edge fault/);});
+check('retained live snapshots cannot substitute for another replay record',()=>{t.setSnapshot({...replay,accepted_state_revision:'recorded-state'});t.setFrame({...frameBase,frame:26,viewMode:'replay',snapshotId:17,sourceRevision:'older-state'});assert.equal(t.annotationState(),null);assert.equal(t.frameMatchesView(),false);});
+check('annotation cache is bounded and evicted data remains unavailable',()=>{t.clearAnnotationCache();for(let i=0;i<33;i++)t.rememberAnnotationState({...graph,accepted_state_revision:'cached-'+i});assert.equal(t.annotationCacheSize(),32);t.setSnapshot(live);t.setFrame({...frameBase,viewMode:'live',sourceRevision:'cached-0'});assert.equal(t.annotationState(),null);t.setFrame({...frameBase,viewMode:'live',sourceRevision:'cached-32'});assert.ok(t.annotationState());});
+(async()=>{
+ t.clearAnnotationCache();t.setLayer('none');t.setSnapshot(live);t.setFrame({...frameBase,viewMode:'live',sourceRevision:'lookup-a'});
+ const calls=[],pending=[];mockFetch=(url)=>{calls.push(url);return new Promise(resolve=>pending.push(resolve));};
+ const first=t.ensureAnnotationState();t.setFrame({...frameBase,viewMode:'live',sourceRevision:'lookup-b'});await t.ensureAnnotationState();assert.equal(calls.length,1);
+ pending.shift()({ok:true,json:async()=>({revision:'lookup-a',state:{...graph,accepted_state_revision:'lookup-a'}})});await first;
+ assert.equal(calls.length,2);assert.equal(t.annotationState(),null);assert.equal(t.getSnapshot().accepted_state_revision,'revision-a');
+ pending.shift()({ok:true,json:async()=>({revision:'lookup-b',state:{...graph,accepted_state_revision:'lookup-b'}})});await new Promise(setImmediate);
+ assert.equal(t.annotationState().accepted_state_revision,'lookup-b');assert.equal(t.getSnapshot().accepted_state_revision,'revision-a');checks.push('one in-flight revision lookup and late results never replace current frame or dashboard');
+ t.setSnapshot(replay);t.setFrame({...frameBase,viewMode:'replay',snapshotId:17,sourceRevision:'lookup-a'});await t.ensureAnnotationState();assert.equal(calls.length,2);assert.equal(t.annotationState(),null);checks.push('replay never requests the live revision endpoint');
+ t.setSnapshot(live);t.setFrame({...frameBase,viewMode:'live',sourceRevision:'expired'});let failures=0;mockFetch=async()=>{failures++;return {ok:false,status:404,statusText:'Not Found',json:async()=>({detail:'expired'})};};await t.ensureAnnotationState();await t.ensureAnnotationState();assert.equal(failures,1,'Failed lookup must be throttled');assert.equal(t.annotationState(),null);assert.match(byId('frame-context').textContent,/ANNOTATION SNAPSHOT UNAVAILABLE/);checks.push('expired exact snapshots fail closed without substituting latest values');
+ t.setFrame({...frameBase,viewMode:'live',sourceRevision:'requested'});mockFetch=async()=>({ok:true,json:async()=>({revision:'wrong',state:{...graph,accepted_state_revision:'wrong'}})});await t.ensureAnnotationState();assert.equal(t.annotationState(),null);checks.push('mismatched revision responses are rejected');
+ t.setSnapshot(live);t.setFrame({...frameBase,viewMode:'live',sourceRevision:'inflight-before-replay'});let finishLive;let liveRequests=0;mockFetch=()=>{liveRequests++;return new Promise(resolve=>finishLive=resolve);};const beforeReplay=t.ensureAnnotationState();t.setSnapshot(replay);t.setFrame({...frameBase,viewMode:'replay',snapshotId:17,sourceRevision:'revision-a'});await t.ensureAnnotationState();finishLive({ok:true,json:async()=>({revision:'inflight-before-replay',state:{...graph,accepted_state_revision:'inflight-before-replay'}})});await beforeReplay;assert.equal(liveRequests,1);assert.equal(t.annotationState().accepted_state_revision,'revision-a');assert.equal(t.getSnapshot().view.mode,'replay');checks.push('in-flight live lookup cannot replace a replay view or trigger a replay lookup');
+ console.log(JSON.stringify({kind:'javascript_logic_checks_not_browser_or_gpu',passed:checks.length,checks},null,2));
+})().catch(error=>{console.error(error);process.exitCode=1;});
 """
 
 
@@ -179,6 +196,15 @@ async def browser_checks(mock_renderer: bool):
             await page.wait_for_function("document.querySelector('#kpi-attendance').textContent !== '—'")
             if mock_renderer:
                 await page.evaluate("document.querySelector('h1').textContent='OFFLINE UI TEST · MOCK RENDER FRAME'")
+            await page.wait_for_selector("#viewport.frame-ready", timeout=120000)
+            await page.wait_for_timeout(1500)
+            cadence = []
+            for _ in range(100):
+                sample = await page.evaluate("""({at:Date.now(),labels:document.querySelectorAll('.scene-label').length,context:document.querySelector('#frame-context').textContent,annotation_revision:document.querySelector('#annotation-provenance').dataset.revision,image_revision:document.querySelector('#render-frame').dataset.sourceRevision,image_frame:document.querySelector('#render-frame').dataset.frame})""")
+                assert not sample["labels"] or sample["annotation_revision"] == sample["image_revision"], "Annotation revision differs from the displayed JPEG"
+                cadence.append(sample)
+                await page.wait_for_timeout(100)
+            (output / "annotation-cadence.json").write_text(json.dumps({"sample_interval_ms": 100, "samples": cadence, "visible_fraction": sum(sample["labels"] > 0 for sample in cadence) / len(cadence)}, indent=2) + "\n")
             await page.locator("#asset-select").select_option("WATER_PLANT")
             await page.locator('.system-card[data-system="water"]').click()
             await page.wait_for_selector(".observation-table")
@@ -226,7 +252,7 @@ async def browser_checks(mock_renderer: bool):
             await page.wait_for_function("document.querySelector('#source-health-status').textContent.toLowerCase()==='offline'")
             assert all([await button.is_disabled() for button in await page.locator("[data-connector-mode]").all()])
             await page.wait_for_timeout(2500)
-            assert not any("/api/connectors/" in url or "/api/observations" in url or "/api/systems/" in url for url in browser_requests[boundary:]), "Replay fetched a live source payload"
+            assert not any("/api/connectors/" in url or "/api/observations" in url or "/api/systems/" in url or "/api/state/revisions/" in url for url in browser_requests[boundary:]), "Replay fetched a live source payload"
             await page.locator(".close-system").click()
             snapshot_before = await get("/api/view/state")
             newest_before = max(record["id"] for record in (await get("/api/timeline"))["snapshots"])
@@ -261,6 +287,8 @@ async def browser_checks(mock_renderer: bool):
             report = {"renderer": {key: render_provenance.get(key) for key in ("source_identity", "frame", "rendered_at", "source_timestamp", "source_tick", "accepted_state_revision", "scene_revision", "camera_token", "view_mode", "snapshot_id", "pose_source")},
                       "verified_at": datetime.now(timezone.utc).isoformat(),
                       "evidence_kind": "cpu_browser_fixture_not_gpu_validation" if mock_renderer else "browser_against_running_application",
+                      "annotation_visible_fraction": sum(sample["labels"] > 0 for sample in cadence) / len(cadence),
+                      "annotation_revision_mismatches": 0,
                       "page_errors": errors, "connector_pause_stale_offline_resume": True,
                       "replay_read_only": True, "replay_source_calls": 0, "recording_continues": True,
                       "frame_metadata_failure_cases": mock_renderer, "mobile_overflow": False,

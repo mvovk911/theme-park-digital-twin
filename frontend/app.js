@@ -17,6 +17,8 @@
   let timeline = [], timelinePending = false, timelineDragging = false, viewPending = false, viewRequestVersion = 0;
   let frameMetadata = null, lastUniqueFrameAt = 0, displayedFrameIdentity = null;
   let openSourceId = null, sourceSequence = 0, sourcePending = false, connectorPending = false;
+  const annotationStates = new Map(), annotationFailures = new Map();
+  let annotationRequestPending = false, annotationDemand = null;
   const scenarioAssets = {normal:'RIDE_COASTER', ride_closure:'RIDE_COASTER', show_surge:'SHOW_ARENA', heatwave:'FIRST_AID', power_fault:'POWER_HUB', water_leak:'WATER_PLANT', food_rush:'FOOD_COURT'};
   const actionLabels = {dispatch_maintenance:'Dispatch maintenance', reroute_guests:'Reroute guests', add_staff:'Add qualified staff', shed_load:'Shed flexible load', repair_leak:'Simulate leak repair', replenish_stock:'Replenish stock', reset:'Reset simulation'};
   const systemIcons = {ride_scada:'⌁',ticketing:'⌑',vision:'◎',cmms:'⚒',erp:'▥',workforce:'♧',bms:'ϟ',water:'◈',weather:'☀',gis:'⌘'};
@@ -49,7 +51,7 @@
   function setText(id, value) { $(id).textContent = value; }
   function assetById(id) { return snapshot?.assets?.find(asset => asset.id === id); }
   const fieldUnknown = (asset, metric) => asset?.data_quality?.fields?.[metric]?.status === 'unknown';
-  const fieldModeled = (asset, metric) => snapshot?.read_model?.unmapped_fields_origin === 'synthetic_model' && !asset?.data_quality?.fields?.[metric];
+  const fieldModeled = (asset, metric, state = snapshot) => state?.read_model?.unmapped_fields_origin === 'synthetic_model' && !asset?.data_quality?.fields?.[metric];
   const assetStatus = asset => fieldUnknown(asset, 'status') ? 'unknown' : asset.status;
   const fieldNumber = (asset, metric, digits = 0) => fieldUnknown(asset, metric) ? '—' : number(metric.split('.').reduce((value,key) => value?.[key], asset), digits);
   const observationValue = observation => observation.quality?.status === 'unknown' || observation.value === null || observation.value === undefined ? '—' : typeof observation.value === 'number' ? number(observation.value, Number.isInteger(observation.value) ? 0 : 1) : typeof observation.value === 'object' ? JSON.stringify(observation.value) : String(observation.value);
@@ -78,10 +80,11 @@
       if (openSourceId) setTimeout(() => showSystem(openSourceId), 0);
     }
     snapshot = data;
+    if (!replaying()) rememberAnnotationState(data);
     lastStateReceived = Date.now();
-    setConnection(true, replaying() ? `Recorded state · tick ${data.tick ?? '—'}` : `Synthetic services live · tick ${data.tick ?? '—'}`);
+    setConnection(true, replaying() ? `Recorded state · tick ${data.tick ?? '—'}` : `Latest data ${time(data.timestamp)} UTC · tick ${data.tick ?? '—'}`);
     $('data-connection').classList.toggle('degraded', !replaying() && data.read_model?.quality_status === 'degraded');
-    if (!replaying() && data.read_model?.quality_status === 'degraded') setConnection(true, `Live model · source quality degraded · tick ${data.tick ?? '—'}`);
+    if (!replaying() && data.read_model?.quality_status === 'degraded') setConnection(true, `Latest ${time(data.timestamp)} UTC · source quality degraded`);
     const k = data.kpis;
     setText('kpi-attendance', number(k.attendance));
     setText('kpi-wait', data.assets.some(asset => fieldUnknown(asset,'queue_minutes')) ? '—' : number(k.average_wait_minutes, 1));
@@ -107,7 +110,7 @@
     if (!assetById(selectedId)) selectedId = data.assets[0]?.id;
     $('asset-select').value = selectedId ?? '';
     renderAsset(); renderBrief(); renderSystems(); renderActivity(); renderLabels(); renderView(); renderTimeline(); renderSourceHealth();
-    updateWriteControls(); updateFrameContext();
+    updateWriteControls(); updateFrameContext(); ensureAnnotationState();
     if (Date.now() - lastDetailFetch > 5000) refreshDetails();
   }
 
@@ -495,22 +498,62 @@
     return {x:(width - imageWidth) / 2, y:(height - imageHeight) / 2, width:imageWidth, height:imageHeight};
   }
 
-  function frameMatchesView() {
-    if (!frameMetadata || !snapshot || !frameMetadata.context) return false;
-    if (!frameMetadata.sourceRevision || !snapshot.accepted_state_revision || frameMetadata.sourceRevision !== snapshot.accepted_state_revision) return false;
-    if (replaying()) return frameMetadata.viewMode === 'replay' && String(frameMetadata.snapshotId) === String(snapshot.view.snapshot_id);
-    return frameMetadata.viewMode === 'live';
+  function rememberAnnotationState(data) {
+    const revision = data?.accepted_state_revision;
+    if (typeof revision !== 'string' || !revision || !Array.isArray(data.assets) || data.view?.mode === 'replay') return false;
+    if (!annotationStates.has(revision)) annotationStates.set(revision, JSON.parse(JSON.stringify(data)));
+    while (annotationStates.size > 32) annotationStates.delete(annotationStates.keys().next().value);
+    annotationFailures.delete(revision);
+    return true;
+  }
+
+  function frameViewMatches() {
+    if (!frameMetadata || !snapshot || !frameMetadata.context || !frameMetadata.sourceRevision) return false;
+    return replaying() ? frameMetadata.viewMode === 'replay' && String(frameMetadata.snapshotId) === String(snapshot.view.snapshot_id) : frameMetadata.viewMode === 'live';
+  }
+
+  function annotationState() {
+    if (!frameViewMatches()) return null;
+    const revision = frameMetadata.sourceRevision;
+    // A recorded view never substitutes live revision history for its selected record.
+    if (replaying()) return snapshot.accepted_state_revision === revision ? snapshot : null;
+    if (annotationStates.has(revision)) return annotationStates.get(revision);
+    return snapshot.accepted_state_revision === revision ? snapshot : null;
+  }
+
+  function frameMatchesView() { return !!annotationState(); }
+
+  async function ensureAnnotationState() {
+    annotationDemand = frameViewMatches() && !replaying() ? frameMetadata.sourceRevision : null;
+    if (!annotationDemand || annotationState() || annotationRequestPending || document.hidden) return;
+    const revision = annotationDemand;
+    if ((annotationFailures.get(revision) || 0) > Date.now()) return;
+    annotationRequestPending = true;
+    try {
+      const result = await request(`/api/state/revisions/${encodeURIComponent(revision)}`);
+      if (result.revision !== revision || result.state?.accepted_state_revision !== revision || !rememberAnnotationState(result.state)) throw new Error('Annotation revision does not match the displayed frame');
+    } catch (_) {
+      annotationFailures.set(revision, Date.now() + 5000);
+      while (annotationFailures.size > 32) annotationFailures.delete(annotationFailures.keys().next().value);
+    } finally {
+      annotationRequestPending = false;
+      // A late result only populates the cache. Rendering always resolves the
+      // current JPEG demand, so it cannot overwrite another frame or replay view.
+      renderLabels(); updateFrameContext();
+      if (annotationDemand !== revision) ensureAnnotationState();
+    }
   }
 
   function pickViewUnchanged(requestedView, requestedVersion) {
     return viewKey(snapshot) === requestedView && viewRequestVersion === requestedVersion;
   }
 
-  function dependencyEdges() {
-    if (!snapshot) return [];
-    const all = snapshot.assets.flatMap(asset => (fieldUnknown(asset,'dependencies') ? [] : asset.dependencies || []).filter(id => assetById(id)).map(id => ({from:id,to:asset.id})));
+  function dependencyEdges(state = snapshot) {
+    if (!state) return [];
+    const lookup = id => state.assets.find(asset => asset.id === id);
+    const all = state.assets.flatMap(asset => (fieldUnknown(asset,'dependencies') ? [] : asset.dependencies || []).filter(id => lookup(id)).map(id => ({from:id,to:asset.id})));
     const upstream = new Set([selectedId]), downstream = new Set([selectedId]);
-    for (let iteration = 0; iteration < snapshot.assets.length; iteration++) {
+    for (let iteration = 0; iteration < state.assets.length; iteration++) {
       for (const edge of all) {
         if (upstream.has(edge.to)) upstream.add(edge.from);
         if (downstream.has(edge.from)) downstream.add(edge.to);
@@ -523,7 +566,7 @@
     const card = $('dependency-card'), selected = assetById(selectedId);
     card.hidden = currentLayer !== 'dependencies' || !selected;
     if (card.hidden) return;
-    setText('dependency-title', `${selected.name} · required services and downstream assets`);
+    setText('dependency-title', `${selected.name} · ${replaying() ? 'recorded' : 'latest'} context ${time(snapshot.timestamp)} UTC`);
     const edges = dependencyEdges();
     $('dependency-context').innerHTML = edges.length ? edges.map(edge => `<div class="dependency-relation"><button data-asset="${esc(edge.from)}" class="dependency-node ${esc(assetStatus(assetById(edge.from)))}">${esc(assetById(edge.from).name)}<small>${esc(title(assetStatus(assetById(edge.from))))}</small></button><span>supplies →</span><button data-asset="${esc(edge.to)}" class="dependency-node ${esc(assetStatus(assetById(edge.to)))}">${esc(assetById(edge.to).name)}<small>${esc(title(assetStatus(assetById(edge.to))))}</small></button></div>`).join('') : '<div class="empty-activity">No accepted logical service dependencies are available for this asset.</div>';
   }
@@ -533,11 +576,12 @@
     const hidden = currentLayer !== 'dependencies' || !renderer?.ready || !frameMatchesView();
     svg.toggleAttribute('hidden', hidden);
     if (hidden) { svg.replaceChildren(); return; }
+    const state = annotationState(), lookup = id => state.assets.find(asset => asset.id === id);
     const bounds = imageRect();
     svg.setAttribute('viewBox', `0 0 ${$('viewport').clientWidth} ${$('viewport').clientHeight}`);
     const points = new Map((frameMetadata.context.projected_assets || []).filter(point => point.visible).map(point => [point.id,{x:bounds.x + point.x * bounds.width,y:bounds.y + point.y * bounds.height}]));
-    svg.innerHTML = '<defs><marker id="dependency-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#536d59"/></marker></defs>' + dependencyEdges().filter(edge => points.has(edge.from) && points.has(edge.to)).map(edge => {
-      const from = points.get(edge.from), to = points.get(edge.to), source = assetById(edge.from), target = assetById(edge.to);
+    svg.innerHTML = '<defs><marker id="dependency-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#536d59"/></marker></defs>' + dependencyEdges(state).filter(edge => points.has(edge.from) && points.has(edge.to)).map(edge => {
+      const from = points.get(edge.from), to = points.get(edge.to), source = lookup(edge.from), target = lookup(edge.to);
       const status = ['fault','closed'].includes(source.status) ? 'fault' : source.status === 'warning' || target.status === 'warning' ? 'warning' : 'operational';
       return `<g><line class="dependency-edge ${status}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}" marker-end="url(#dependency-arrow)"/><circle class="dependency-anchor ${status}" cx="${from.x}" cy="${from.y}" r="4"/><title>${esc(source.name)} supplies ${esc(target.name)} · logical relationship</title></g>`;
     }).join('');
@@ -547,18 +591,19 @@
     const container = $('scene-labels');
     renderDependencyLines();
     if (!renderer?.ready || !snapshot || currentLayer === 'none' || !lastFrameReceived || !frameMatchesView()) { container.replaceChildren(); return; }
+    const state = annotationState(), lookup = id => state.assets.find(asset => asset.id === id);
     const bounds = imageRect();
-    let projected = (frameMetadata.context.projected_assets || []).filter(point => point.visible && assetById(point.id));
+    let projected = (frameMetadata.context.projected_assets || []).filter(point => point.visible && lookup(point.id));
     if (currentLayer === 'dependencies') {
-      const relevant = new Set([selectedId, ...dependencyEdges().flatMap(edge => [edge.from,edge.to])]);
+      const relevant = new Set([selectedId, ...dependencyEdges(state).flatMap(edge => [edge.from,edge.to])]);
       projected = projected.filter(point => relevant.has(point.id));
     }
     // Keep the overview legible; selected and alerting assets have priority.
-    projected = projected.sort((a, b) => (a.id === selectedId ? -10 : assetById(a.id)?.status === 'operational' ? 1 : 0) - (b.id === selectedId ? -10 : assetById(b.id)?.status === 'operational' ? 1 : 0));
+    projected = projected.sort((a, b) => (a.id === selectedId ? -10 : lookup(a.id)?.status === 'operational' ? 1 : 0) - (b.id === selectedId ? -10 : lookup(b.id)?.status === 'operational' ? 1 : 0));
     const placed = [];
     const labels = [];
     for (const point of projected) {
-      const asset = assetById(point.id);
+      const asset = lookup(point.id);
       if (currentLayer === 'crowds' && ['utility','sensor'].includes(asset.type) && asset.id !== selectedId) continue;
       const x = bounds.x + point.x * bounds.width, y = bounds.y + point.y * bounds.height;
       if (x < 65 || x > bounds.width + bounds.x - 50 || y < 75 || y > bounds.height + bounds.y - 15) continue;
@@ -566,7 +611,7 @@
       let metric = currentLayer === 'dependencies' ? title(assetStatus(asset)) : currentLayer === 'energy' ? `${fieldNumber(asset,'power_kw')} kW` : currentLayer === 'crowds' ? `${fieldNumber(asset,'occupancy')} guests` : ['closed','fault','unknown'].includes(assetStatus(asset)) ? title(assetStatus(asset)) : fieldUnknown(asset,'queue_minutes') ? 'Wait unknown' : asset.queue_minutes > 0 ? `${number(asset.queue_minutes)} min` : title(assetStatus(asset));
       const metricField = currentLayer === 'energy' ? 'power_kw' : currentLayer === 'crowds' ? 'occupancy' : currentLayer === 'dependencies' || ['closed','fault','unknown'].includes(assetStatus(asset)) || !asset.queue_minutes ? 'status' : 'queue_minutes';
       const quality = asset.data_quality?.fields?.[metricField]?.status;
-      if (fieldModeled(asset,metricField)) metric += ' · modeled';
+      if (fieldModeled(asset,metricField,state)) metric += ' · modeled';
       else if (['stale','uncertain'].includes(quality)) metric += ` · ${quality}`;
       const shortName = asset.name.replace('Garden ', '').replace(' & Lake', '').replace('Arrival & EV ', '');
       labels.push({id:asset.id,status:assetStatus(asset),name:asset.name,shortName,metric,x,y});
@@ -585,7 +630,7 @@
       button.className = `scene-label ${label.status}${label.id === selectedId ? ' selected' : ''}`;
       button.style.left = `${label.x.toFixed(1)}px`; button.style.top = `${label.y.toFixed(1)}px`;
       button.style.zIndex = label.id === selectedId ? '2' : '1';
-      button.title = `${label.name} · synthetic ${currentLayer} telemetry`;
+      button.title = `${label.name} · synthetic ${currentLayer} · frame source ${time(frameMetadata.sourceTimestamp)} UTC; inspect for latest data`;
       button.firstElementChild.textContent = label.shortName;
       button.lastElementChild.textContent = label.metric;
       existing.delete(label.id);
@@ -639,6 +684,9 @@
 
   function updateFrameContext() {
     const context = $('frame-context');
+    const annotation = annotationState();
+    setText('annotation-provenance', annotation ? `Annotations: captured observations ${time(frameMetadata.sourceTimestamp || annotation.timestamp)} UTC · ${replaying() ? 'recorded view' : `dashboard / inspector: latest ${time(snapshot.timestamp)} UTC`}` : 'Annotations awaiting the exact frame snapshot · dashboard and inspector remain available');
+    $('annotation-provenance').dataset.revision = annotation?.accepted_state_revision || '';
     if (!frameMetadata || !lastFrameReceived) { context.hidden = true; return; }
     const renderedAge = sourceAge(frameMetadata.renderedAt);
     const frameStale = renderedAge === null ? Date.now() - lastUniqueFrameAt > 5000 : renderedAge > 5;
@@ -653,7 +701,8 @@
     $('frame-freshness').title = `Source tick ${frameMetadata.sourceTick ?? 'unknown'} · source ${time(frameMetadata.sourceTimestamp)} UTC · ${ageLabel(observedAge)}`;
     let message = '';
     if (!frameMetadata.viewMode || !frameMetadata.sourceRevision || !frameMetadata.context) message = 'FRAME PROVENANCE UNAVAILABLE · image cannot be associated with the displayed data';
-    else if (!frameMatchesView()) message = `VIEW SWITCH IN PROGRESS · image does not yet match ${replaying() ? `record #${snapshot.view.snapshot_id}` : 'live state'}`;
+    else if (!frameViewMatches()) message = `VIEW SWITCH IN PROGRESS · image does not yet match ${replaying() ? `record #${snapshot.view.snapshot_id}` : 'live state'}`;
+    else if (!annotation) message = annotationFailures.has(frameMetadata.sourceRevision) ? 'ANNOTATION SNAPSHOT UNAVAILABLE · no values substituted; latest data remains in the inspector' : 'SYNCHRONIZING ANNOTATIONS · resolving the exact frame snapshot';
     else if (frameStale) message = `LAST GPU IMAGE · ${ageLabel(renderedAge)} · renderer reconnecting`;
     else if (stalePose) message = 'SOURCE QUALITY DEGRADED · affected ride poses frozen until fresh accepted status';
     else if (sourceStale) message = `SOURCE DATA STALE · last source ${time(frameMetadata.sourceTimestamp)} UTC · ${ageLabel(observedAge)}`;
@@ -724,8 +773,12 @@
         const identity = `${metadata.frame}:${metadata.renderedAt}`;
         if (identity !== displayedFrameIdentity) { displayedFrameIdentity = identity; lastUniqueFrameAt = Date.now(); }
         frameMetadata = metadata;
+        $('render-frame').dataset.frame = String(metadata.frame ?? '');
+        $('render-frame').dataset.sourceRevision = metadata.sourceRevision || '';
+        $('render-frame').dataset.viewMode = metadata.viewMode || '';
+        $('render-frame').dataset.snapshotId = String(metadata.snapshotId ?? '');
         $('viewport').classList.add('frame-ready'); $('viewport-wait').hidden = true;
-        updateFrameContext(); renderLabels();
+        updateFrameContext(); renderLabels(); ensureAnnotationState();
         await sleep(Math.max(40, 125 - (performance.now() - started)));
       } catch (_) {
         if (nextUrl) URL.revokeObjectURL(nextUrl);
@@ -759,7 +812,7 @@
       if (viewport.hasPointerCapture(event.pointerId)) viewport.releasePointerCapture(event.pointerId);
       if (gesture.moved) return;
       if (!renderer?.ready) { toast('The GPU renderer is warming up. You can inspect assets using the registry selector.'); return; }
-      if (!frameMatchesView()) { toast('The GPU image is synchronizing with the selected record. The asset selector remains available.'); return; }
+      if (!frameMatchesView()) { toast('The image and its annotation snapshot are synchronizing. The asset selector remains available.'); return; }
       if (!frameMetadata.cameraToken) { toast('Image camera identity is unavailable. Select an asset from the registry or its projected label.'); return; }
       const pickContext = {expected_camera_token:frameMetadata.cameraToken,expected_source_revision:frameMetadata.sourceRevision,expected_view_mode:frameMetadata.viewMode,expected_snapshot_id:frameMetadata.snapshotId};
       const requestedView = viewKey(snapshot), requestedVersion = viewRequestVersion;

@@ -22,3 +22,5 @@
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 .modeled-fields{font-size:8px;line-height:1.7;color:#9ca88e;margin:10px 0 0}.modeled-fields strong{font-weight:600;color:#82936f}.alert-provenance{display:block;font-size:8px;line-height:1.7;color:#9ca88d;margin:7px 0 3px}
+
+.annotation-provenance{padding:7px 16px;background:#f7faf3;border-top:1px solid #e8eedf;color:#8c9d7b;font-size:8px;line-height:1.5}.annotation-provenance:empty{display:none}@media(max-width:650px){.annotation-provenance{font-size:7px;padding:6px 11px}}

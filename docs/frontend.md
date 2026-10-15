@@ -71,20 +71,34 @@ not refresh its age. A fresh image with stale source data or frozen affected rid
 poses produces a separate source warning. Missing frame metadata is disclosed.
 Deploy the frontend, gateway and renderer together to preserve this contract.
 
-A frame must match the selected live/replay mode, snapshot and accepted-state
-revision before native picking or projected annotations are enabled. Its
+A frame must match the selected live/replay mode and snapshot. Annotation values
+and dependency edges must also match its exact accepted-state revision. Its
 `X-Frame-Context` supplies the exact camera, image dimensions and projected asset
 coordinates used for that JPEG. Newer renderer status cannot move annotations
 on an older image. Missing or malformed context, or an absent/mismatched data
-revision, suppresses annotations; same-frame status is the only metadata fallback. This avoids overlaying recorded
-values on an image still showing another state during a view change.
+revision, suppresses annotations; same-frame status is the only metadata fallback.
+
+The live dashboard and inspector continue showing the latest API state. Image
+annotations use a separate immutable snapshot for the frame's revision, from a
+32-entry browser cache or `GET /api/state/revisions/{revision}`. The visible
+caption distinguishes captured annotation time from latest dashboard/inspector
+time. Snapshot quality ages belong to capture time, not current connector health.
+The dependency panel below the viewport is separately labeled as latest context.
+
+Only one revision lookup is in flight, failed lookups are throttled for five
+seconds, and late responses populate the cache without replacing a newer image
+or recorded view. Missing/expired/oversized snapshots suppress annotations; they
+never substitute latest values. Replay uses only its selected captured snapshot
+and does not request the live revision endpoint. This keeps accurate association
+without hiding labels merely because the latest dashboard tick advanced.
 
 The image retains its actual aspect ratio. Native picks and projected labels
 use the same letterbox-aware image rectangle, including fullscreen. Picks submit
 normalized `{x,y}` plus the image camera token, accepted-state revision and view
 identity to `/render/pick`. The renderer validates that context at the native
 render owner and rejects changed state with HTTP 409. The browser also discards
-a response after its displayed state changes. This selects an asset in current
+a response after its displayed view/cursor changes. Ordinary live telemetry
+updates do not invalidate a successful stable asset-ID selection. This selects an asset in current
 geometry: it does not certify a historical pixel hit on animated geometry. Direct
 legacy API requests without version fields remain unversioned; browser requests
 require the camera token. Dragging submits accumulated orbit fractions
@@ -101,7 +115,8 @@ Controls use native buttons, selects and a timeline range input. Focus states,
 ARIA labels, live status messages, keyboard-accessible dialogs and reduced-motion
 preferences are present. With viewport focus, arrows orbit, `+`/`-` zoom and
 `Home` resets the camera. The desktop inspector stacks below the viewport on
-mobile. New timeline/source UI awaits a fresh browser layout check as noted below.
+mobile. Desktop and mobile source/replay layout were checked against the actual
+GPU release `154e746`; subsequent annotation-cache validation is tracked below.
 
 ## Evidence and validation boundaries
 
@@ -125,21 +140,33 @@ The original evidence remains in
 [`mobile-live.png`](images/mobile-live.png). These predate timeline and connector
 quality additions; they do not validate the new features.
 
-**Replay and source-quality milestone:** JavaScript syntax, Python test syntax,
-57 referenced DOM identifiers and 19 JavaScript behavior checks pass. These checks
-cover unknown-value masking, replay write locks, view/frame mismatch, actual image
-timestamps, cached-frame staleness, frozen source presentation and dependency SVG
-visibility. Additional checks cover stale accepted revisions, newer camera status
-against an old image, malformed frame context, and exact-frame fallback. These
-are logic checks; the latest native pick validation still needs GPU acceptance.
-In-process HTTP checks against the actual application also verified
-view/detail/history contracts, ten source services, health/observations, timeline,
-replay selection, connector mutation rejection and return to live.
+**Replay and source-quality milestone:** On real GPU release `154e746`, the
+extended browser acceptance passed connector pause → stale → offline → resumed
+health, recorded state selection, read-only HTTP enforcement, recorded source
+inspection without live requests, continued recording, return to live, and mobile
+layout. No JavaScript page errors or horizontal overflow were reported. See
+[`revision2/extended/extended-browser-validation.json`](images/revision2/extended/extended-browser-validation.json)
+and its screenshots. The release manifest and actual frame/source metadata are in
+[`initial-release-provenance.json`](images/revision2/initial-release-provenance.json).
 
-The current execution sandbox blocks Chromium startup and local TCP binding;
-network restrictions prevent a fresh GPU connection. Therefore new browser layout,
-interactive replay and latest GPU integration remain unverified. No new GPU
-screenshots were fabricated or substituted for the original evidence.
+That release's smoke test found a real selection bug: a correct native pick was
+discarded when live telemetry advanced during the response. The browser now
+rejects changed views/cursors while preserving successful stable asset selection
+across later telemetry updates. An actual 10-second cadence sample also found
+annotations visible for only 63% of samples because each latest dashboard tick
+hid labels on the previous matching image. The revision-cache design above fixes
+that association path without relaxing exact matching; fresh GPU acceptance of
+these subsequent fixes is pending.
+
+**Current local checks:** JavaScript syntax, Python test syntax, 58 referenced
+DOM identifiers and 28 JavaScript behavior checks pass. They cover missing-field
+truthfulness, read-only replay, frame provenance, immutable/bounded annotation
+caches, exact older-frame values versus latest inspector values, single-flight
+lookup, bounded retries, failed/mismatched responses, and late responses during
+replay. In-process HTTP checks also verified the operational view/source/replay
+contracts. Earlier sandbox/network restrictions prevented browser tests; the
+actual GPU evidence above was captured once access became available. The original
+GPU milestone screenshots remain unchanged.
 
 ## Repeat validation
 
@@ -161,7 +188,8 @@ PARK_URL=http://127.0.0.1:8100 python tests/browser_smoke.py
 The extended test exercises connector pause → stale → offline → resumed health,
 recorded selection, disabled mutations and server rejections, captured source
 inspection without live requests, continued recording, dependency overlays and
-mobile layout. To test frame metadata failures without a GPU, use its explicitly
+mobile layout. It also samples annotation visibility 100 times and rejects any
+visible annotation whose revision differs from the displayed image. To test frame metadata failures without a GPU, use its explicitly
 labeled CPU image fixture with the real backend:
 
 ```bash
