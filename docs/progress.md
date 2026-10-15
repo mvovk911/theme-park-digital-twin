@@ -1,9 +1,9 @@
 # Project progress and review gallery
 
-**Snapshot: 15 October 2026. Working GPU proof of concept.**
+**Snapshot: 15 October 2026. Original GPU proof of concept; newer local checkpoints await deployment.**
 
 This page is the review entry point. It tracks the [original project request](project-prompt.md),
-links editable deliverables, and shows actual renders from the running application.
+links editable deliverables, and shows actual renders from the last verified GPU application.
 The concept deck is a design proposal; the captures below are implementation evidence.
 
 ## Active development and independent reviews
@@ -17,10 +17,19 @@ freshness and release boundaries. It finds no demonstrated payoff from a full
 restart. [Recurring review protocol](reviews/README.md). Reviews will be repeated
 after integrated milestones. [Development log](development-log.md).
 
-Current work in progress: ten-domain connector ingestion and provenance,
-improved park landscaping and articulated coaster cars, then coherent historical
-replay and operator source-health views. These are not marked delivered by this
-checkpoint; the gallery below remains evidence of the last verified application.
+Completed local checkpoints include ten-domain connector ingestion and provenance,
+revision 2 landscaping and articulated coaster cars, durable recorded inspection,
+operator source-health/dependency views, and immutable release packaging. These
+have CPU/API/scene checks; the gallery below remains evidence of revision 1 only.
+
+The [integrated checkpoint review](reviews/2026-10-15-integrated-checkpoint-review.md)
+independently assessed `29c4091`: keep the project, use targeted refactors, and do
+not restart without evidence. It found accepted-state/frame coherence and release
+cache defects; follow-up fixes and tests are recorded in the development log.
+
+**Publication:** the external environment currently cannot resolve GitHub or Horde.
+New commits are local; `origin/main` remains `930acd3` until a push is verified.
+No new GPU renders, Blender export or browser acceptance are claimed here.
 
 ## Revision 2 asset checkpoint — locally validated
 

@@ -1,6 +1,8 @@
 """Canonical asset projection. The UI and replay consume this stable interface."""
 from __future__ import annotations
 import copy
+import hashlib
+import json
 from .catalog import LEGACY_FIELDS, set_path
 from .alerts import project_alerts
 
@@ -66,6 +68,19 @@ class ParkReadModel:
         state["read_model"] = {"schema_version": "1.0", "source": "accepted_connector_observations",
                                "unmapped_fields_origin": "synthetic_model",
                                "quality_status": "good" if all(h["status"] == "healthy" for h in state["connector_health"]) else "degraded"}
+        # Identity includes accepted values, their provenance and quality transitions.
+        # Continuously increasing age is presentation data, not a new observation.
+        def stable(value):
+            if isinstance(value, dict):
+                return {k: stable(v) for k, v in value.items() if k not in {"age_seconds", "max_age_seconds"}}
+            if isinstance(value, list):
+                return [stable(v) for v in value]
+            return value
+        content = {"tick": state["tick"], "timestamp": state["timestamp"],
+                   "scenario": state["scenario"], "assets": state["assets"],
+                   "sources": [{"source_id": h["source_id"], "status": h["status"], "mode": h["mode"]}
+                               for h in state["connector_health"]]}
+        state["accepted_state_revision"] = hashlib.sha256(json.dumps(stable(content), sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
         return state
 
     def system_data(self, source_id):

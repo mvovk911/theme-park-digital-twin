@@ -490,13 +490,14 @@
   // Both annotations and picking use the same letterbox-aware image rectangle.
   function imageRect() {
     const viewport = $('viewport'), width = viewport.clientWidth, height = viewport.clientHeight;
-    const ratio = (renderer?.width || 1280) / (renderer?.height || 720);
+    const ratio = frameMetadata?.context ? frameMetadata.context.width / frameMetadata.context.height : ($('render-frame').naturalWidth || 1280) / ($('render-frame').naturalHeight || 720);
     const imageWidth = Math.min(width, height * ratio), imageHeight = imageWidth / ratio;
     return {x:(width - imageWidth) / 2, y:(height - imageHeight) / 2, width:imageWidth, height:imageHeight};
   }
 
   function frameMatchesView() {
-    if (!frameMetadata || !snapshot) return false;
+    if (!frameMetadata || !snapshot || !frameMetadata.context) return false;
+    if (!frameMetadata.sourceRevision || !snapshot.accepted_state_revision || frameMetadata.sourceRevision !== snapshot.accepted_state_revision) return false;
     if (replaying()) return frameMetadata.viewMode === 'replay' && String(frameMetadata.snapshotId) === String(snapshot.view.snapshot_id);
     return frameMetadata.viewMode === 'live';
   }
@@ -530,7 +531,7 @@
     if (hidden) { svg.replaceChildren(); return; }
     const bounds = imageRect();
     svg.setAttribute('viewBox', `0 0 ${$('viewport').clientWidth} ${$('viewport').clientHeight}`);
-    const points = new Map((renderer.projected_assets || []).filter(point => point.visible).map(point => [point.id,{x:bounds.x + point.x * bounds.width,y:bounds.y + point.y * bounds.height}]));
+    const points = new Map((frameMetadata.context.projected_assets || []).filter(point => point.visible).map(point => [point.id,{x:bounds.x + point.x * bounds.width,y:bounds.y + point.y * bounds.height}]));
     svg.innerHTML = '<defs><marker id="dependency-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#536d59"/></marker></defs>' + dependencyEdges().filter(edge => points.has(edge.from) && points.has(edge.to)).map(edge => {
       const from = points.get(edge.from), to = points.get(edge.to), source = assetById(edge.from), target = assetById(edge.to);
       const status = ['fault','closed'].includes(source.status) ? 'fault' : source.status === 'warning' || target.status === 'warning' ? 'warning' : 'operational';
@@ -543,7 +544,7 @@
     renderDependencyLines();
     if (!renderer?.ready || !snapshot || currentLayer === 'none' || !lastFrameReceived || !frameMatchesView()) { container.replaceChildren(); return; }
     const bounds = imageRect();
-    let projected = (renderer.projected_assets || []).filter(point => point.visible && assetById(point.id));
+    let projected = (frameMetadata.context.projected_assets || []).filter(point => point.visible && assetById(point.id));
     if (currentLayer === 'dependencies') {
       const relevant = new Set([selectedId, ...dependencyEdges().flatMap(edge => [edge.from,edge.to])]);
       projected = projected.filter(point => relevant.has(point.id));
@@ -647,7 +648,7 @@
     setText('frame-freshness', `${frameLabel} · ${frameMetadata.renderedAt ? `rendered ${time(frameMetadata.renderedAt)} UTC` : 'render time unavailable'}`);
     $('frame-freshness').title = `Source tick ${frameMetadata.sourceTick ?? 'unknown'} · source ${time(frameMetadata.sourceTimestamp)} UTC · ${ageLabel(observedAge)}`;
     let message = '';
-    if (!frameMetadata.viewMode) message = 'FRAME PROVENANCE UNAVAILABLE · image cannot be associated with the displayed data';
+    if (!frameMetadata.viewMode || !frameMetadata.sourceRevision || !frameMetadata.context) message = 'FRAME PROVENANCE UNAVAILABLE · image cannot be associated with the displayed data';
     else if (!frameMatchesView()) message = `VIEW SWITCH IN PROGRESS · image does not yet match ${replaying() ? `record #${snapshot.view.snapshot_id}` : 'live state'}`;
     else if (frameStale) message = `LAST GPU IMAGE · ${ageLabel(renderedAge)} · renderer reconnecting`;
     else if (stalePose) message = 'SOURCE QUALITY DEGRADED · affected ride poses frozen until fresh accepted status';
@@ -661,14 +662,31 @@
     if (frameStale || sourceStale) $('renderer-badge').querySelector('span').textContent = frameStale ? 'LAST FRAME' : 'STALE SOURCE';
   }
 
+  function parseFrameContext(value) {
+    try {
+      const context = typeof value === 'string' ? JSON.parse(value) : value;
+      if (!context || !Number.isInteger(context.width) || !Number.isInteger(context.height) || context.width <= 0 || context.height <= 0 || context.width > 32768 || context.height > 32768) return null;
+      if (!context.camera || typeof context.camera !== 'object' || Array.isArray(context.camera)) return null;
+      if (!Array.isArray(context.projected_assets) || context.projected_assets.length > 10000) return null;
+      if (!context.projected_assets.every(point => point && typeof point.id === 'string' && typeof point.visible === 'boolean' && Number.isFinite(point.x) && Number.isFinite(point.y))) return null;
+      // Copy immutable per-image coordinates; later status responses cannot move them.
+      return {width:context.width,height:context.height,camera:JSON.parse(JSON.stringify(context.camera)),projected_assets:context.projected_assets.map(point => ({id:point.id,x:point.x,y:point.y,visible:point.visible}))};
+    } catch (_) { return null; }
+  }
+
   function metadataFromHeaders(headers) {
     const header = name => headers.get(name), frameId = header('X-Frame-Number');
     const knownId = frameId !== null && Number.isFinite(Number(frameId)) ? Number(frameId) : null;
     // A newer /status response cannot identify an older image. Its metadata is
     // a valid fallback only when the image itself names that exact frame.
     const matchingStatus = knownId !== null && knownId === renderer?.frame ? renderer : null;
+    const rawContext = header('X-Frame-Context');
+    const context = parseFrameContext(rawContext !== null ? rawContext : matchingStatus);
     return {
       frame:knownId,
+      context,
+      sourceRevision:header('X-Source-Revision') || matchingStatus?.accepted_state_revision || null,
+      cameraToken:header('X-Frame-Camera-Token') || matchingStatus?.camera_token || null,
       renderedAt:header('X-Frame-Rendered-At') || matchingStatus?.rendered_at || null,
       sourceTimestamp:header('X-Source-Timestamp') || matchingStatus?.source_timestamp || null,
       sourceTick:header('X-Source-Tick') || matchingStatus?.source_tick || null,
@@ -703,7 +721,7 @@
         if (identity !== displayedFrameIdentity) { displayedFrameIdentity = identity; lastUniqueFrameAt = Date.now(); }
         frameMetadata = metadata;
         $('viewport').classList.add('frame-ready'); $('viewport-wait').hidden = true;
-        updateFrameContext();
+        updateFrameContext(); renderLabels();
         await sleep(Math.max(40, 125 - (performance.now() - started)));
       } catch (_) {
         if (nextUrl) URL.revokeObjectURL(nextUrl);
@@ -738,12 +756,16 @@
       if (gesture.moved) return;
       if (!renderer?.ready) { toast('The GPU renderer is warming up. You can inspect assets using the registry selector.'); return; }
       if (!frameMatchesView()) { toast('The GPU image is synchronizing with the selected record. The asset selector remains available.'); return; }
+      if (!frameMetadata.cameraToken) { toast('Image camera identity is unavailable. Select an asset from the registry or its projected label.'); return; }
+      const pickContext = {expected_camera_token:frameMetadata.cameraToken,expected_source_revision:frameMetadata.sourceRevision,expected_view_mode:frameMetadata.viewMode,expected_snapshot_id:frameMetadata.snapshotId};
+      const requestedView = viewKey(snapshot), requestedRevision = snapshot.accepted_state_revision;
       const view = viewport.getBoundingClientRect(), bounds = imageRect();
       const x = (event.clientX - view.left - bounds.x) / bounds.width, y = (event.clientY - view.top - bounds.y) / bounds.height;
       if (x < 0 || x > 1 || y < 0 || y > 1) return;
       viewport.classList.add('picking');
       try {
-        const picked = await post('/render/pick', {x,y}, 19000);
+        const picked = await post('/render/pick', {x,y,...pickContext}, 19000);
+        if (viewKey(snapshot) !== requestedView || snapshot.accepted_state_revision !== requestedRevision) { toast('The displayed state changed during selection. Select the asset again.'); return; }
         if (picked.asset_id) await selectAsset(picked.asset_id, false, false);
         else toast('No connected asset here. Click a ride, facility or utility building.');
       } catch (error) { toast(`Object selection failed: ${error.message}`, true); }

@@ -216,6 +216,7 @@ def test_reactivation_after_real_python_import_ignores_only_transient_dirs(repo,
     env = dict(os.environ)
     env.pop('PYTHONDONTWRITEBYTECODE', None)
     env.pop('PYTHONPYCACHEPREFIX', None)
+    env.pop('PYTHONPATH', None)  # Import the staged fixture, never the test runner's tree.
     subprocess.run([sys.executable, '-c', 'import backend.simulator; assert backend.simulator.VALUE == 42'],
                    cwd=staged, env=env, check=True)
     assert list((staged / 'backend/__pycache__').glob('simulator.*.pyc'))

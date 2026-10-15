@@ -69,3 +69,25 @@ invented pose. Separate command/frame tests cover expiry, failure and provenance
 Actual GPU replay, scene-revision rendering and native resource destruction still
 require validation on the Horde worker after connectivity is restored. CPU tests
 are not presented as proof of native SDK behavior.
+
+## Accepted-state and frame association
+
+Simulator tick alone is not an accepted-state identity: external synthetic events
+can change an asset within the same tick. Canonical snapshots therefore carry
+`accepted_state_revision`, a SHA256 content identity over asset values,
+provenance, quality status/reasons and source modes. Increasing age counters alone
+do not change it; a stale-quality transition does. This identifies a particular
+accepted projection, not a durable event-stream offset or physical observation.
+
+Recorded motion is attached only when the renderer reports the same scene, tick
+and nonempty accepted-state revision. JPEG responses carry that revision plus an
+immutable camera/projection context. Overlay coordinates never borrow a newer
+camera from `/status`. The UI suppresses annotations for missing context or
+mismatched revisions. These are CPU/API-tested contracts; actual GPU execution of
+this checkpoint remains pending.
+
+Versioned UI picks carry the displayed camera token, accepted-state revision and
+view identity. The render owner checks these before issuing the native pick and
+returns conflict if they changed. This selects an asset in the current geometry;
+it does not reconstruct the historical pixel coverage of an animated ride. Direct
+legacy pick requests without a token remain unversioned for compatibility.

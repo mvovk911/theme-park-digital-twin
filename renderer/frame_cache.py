@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import copy
+import json
+import hashlib
 from datetime import datetime, timezone
 import threading
 import time
@@ -59,9 +61,20 @@ class FrameCache:
 def response_headers(metadata: dict, ready: bool) -> dict[str, str]:
     fields = {
         "X-Frame-Number": metadata.get("frame"),
+        "X-Frame-Camera-Token": metadata.get("camera_token"),
         "X-Frame-Rendered-At": metadata.get("rendered_at"),
         "X-Frame-Age-Seconds": metadata.get("frame_age_seconds"),
         "X-Source-Tick": metadata.get("source_tick"),
+        "X-Source-Revision": metadata.get("accepted_state_revision"),
+        "X-Frame-Context": json.dumps(
+            {
+                k: metadata[k]
+                for k in ("camera", "projected_assets", "width", "height")
+                if k in metadata
+            },
+            separators=(",", ":"),
+            ensure_ascii=True,
+        ),
         "X-Source-Timestamp": metadata.get("source_timestamp"),
         "X-Source-Age-Seconds": metadata.get("source_age_seconds"),
         "X-View-Mode": metadata.get("view_mode", "live"),
@@ -74,3 +87,24 @@ def response_headers(metadata: dict, ready: bool) -> dict[str, str]:
         "Cache-Control": "no-store",
         **{key: str(value) for key, value in fields.items() if value is not None},
     }
+
+
+def camera_token(camera: dict) -> str:
+    return hashlib.sha256(
+        json.dumps(
+            camera, sort_keys=True, separators=(",", ":"), allow_nan=False
+        ).encode()
+    ).hexdigest()
+
+
+def pick_context_matches(request: dict, current: dict) -> bool:
+    """Versioned picks use the displayed camera and accepted state, at execution."""
+    return bool(request.get("expected_camera_token")) and all(
+        request.get(expected) == current.get(actual)
+        for expected, actual in (
+            ("expected_camera_token", "camera_token"),
+            ("expected_source_revision", "accepted_state_revision"),
+            ("expected_view_mode", "view_mode"),
+            ("expected_snapshot_id", "snapshot_id"),
+        )
+    )

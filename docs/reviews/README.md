@@ -3,6 +3,7 @@
 | Review | Baseline | Purpose |
 |---|---|---|
 | [Digital-twin benchmark](2026-10-15-digital-twin-benchmark.md) | `930acd3` | Compare capability and evidence against recent public digital-twin implementations |
+| [Integrated checkpoint review](2026-10-15-integrated-checkpoint-review.md) | `29c4091` | Recheck complexity, prior fixes, frame/data consistency and immutable release behavior |
 | [Architecture review](2026-10-15-architecture-review.md) | `930acd3` plus identified WIP | Assess complexity, uncontrolled coupling, targeted refactoring and the value of rebuilding |
 
 ## Completed follow-up

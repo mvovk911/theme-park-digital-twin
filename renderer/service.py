@@ -29,8 +29,15 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from modeling.animate import wheel_transforms, CoasterRoute, train_transforms
 from renderer.commands import CommandMailbox, MailboxClosed
-from renderer.frame_cache import FrameCache, response_headers, timestamp_age
+from renderer.frame_cache import (
+    FrameCache,
+    response_headers,
+    timestamp_age,
+    camera_token,
+    pick_context_matches,
+)
 from renderer.source_state import ride_motion_policy
+from project_revision import source_identity
 
 RUNTIME = ROOT / "runtime"
 RUNTIME.mkdir(exist_ok=True)
@@ -44,6 +51,7 @@ frames_cache = FrameCache()
 stop_event = threading.Event()
 lock = threading.Lock()
 state = dict(
+    source_identity=source_identity(ROOT),
     ready=False,
     fps=0,
     frame=0,
@@ -76,6 +84,10 @@ class Control(BaseModel):
 
 
 class Pick(BaseModel):
+    expected_camera_token: str | None = None
+    expected_source_revision: str | None = None
+    expected_view_mode: str | None = None
+    expected_snapshot_id: int | None = None
     x: float = Field(ge=0, le=1)
     y: float = Field(ge=0, le=1)
 
@@ -130,7 +142,8 @@ def pick(data: Pick):
         raise HTTPException(504, "Renderer pick timed out")
     if "error" in completion.result:
         raise HTTPException(
-            503 if completion.cancelled else 500, completion.result["error"]
+            completion.result.get("status_code", 503 if completion.cancelled else 500),
+            completion.result["error"],
         )
     return completion.result
 
@@ -272,6 +285,7 @@ def render_loop():
         view = {}
         source_timestamp = None
         source_tick = None
+        accepted_state_revision = None
         client = httpx.Client(timeout=0.25, trust_env=False)
         with lock:
             state["phase"] = "rendering first frame"
@@ -292,6 +306,7 @@ def render_loop():
                     last_receipt = begin
                     source_timestamp = snapshot.get("timestamp")
                     source_tick = snapshot.get("tick")
+                    accepted_state_revision = snapshot.get("accepted_state_revision")
                     view = snapshot.get("view", {})
                     with lock:
                         state["api_connected"] = True
@@ -337,6 +352,31 @@ def render_loop():
                     with lock:
                         state["layer"] = data["layer"]
                 commands.finish(command)
+            current_camera = {
+                "target": target.tolist(),
+                "radius": radius,
+                "yaw": float(yaw),
+                "pitch": float(pitch),
+            }
+            current_context = {
+                "camera_token": camera_token(current_camera),
+                "accepted_state_revision": accepted_state_revision,
+                "view_mode": view.get("mode", "live"),
+                "snapshot_id": view.get("snapshot_id"),
+            }
+            if (
+                pending
+                and pending.payload.get("expected_camera_token") is not None
+                and not pick_context_matches(pending.payload, current_context)
+            ):
+                commands.finish(
+                    pending,
+                    {
+                        "error": "Displayed camera or data view changed; retry on the current image",
+                        "status_code": 409,
+                    },
+                )
+                pending = None
             mat = camera_matrix(target, radius, yaw, pitch)
             ordinal += 1
             write_transform("/World/Camera", mat, ordinal)
@@ -479,6 +519,12 @@ def render_loop():
                             "frame": step_count,
                             "source_timestamp": source_timestamp,
                             "source_tick": source_tick,
+                            "accepted_state_revision": accepted_state_revision,
+                            "camera": current_camera,
+                            "camera_token": current_context["camera_token"],
+                            "projected_assets": project_assets(mat),
+                            "width": WIDTH,
+                            "height": HEIGHT,
                             "view_mode": view.get("mode", "live"),
                             "snapshot_id": view.get("snapshot_id"),
                             "scene_revision": SCENE_REVISION,

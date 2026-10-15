@@ -152,3 +152,35 @@ release suite passes 98 CPU/API checks. Chromium and loopback listener startup a
 blocked in this sandbox, so fresh visual layout, interactive browser and native
 GPU acceptance remain unverified. Existing real GPU images were preserved and are
 not relabeled as evidence for these changes.
+
+
+## Recurring independent review and source provenance checkpoint
+
+Review `699d33b` preserves the independent inspection of exact `29c4091`.
+The reviewer ran all 98 CPU/API checks and found three additional boundary defects
+rather than recommending a rewrite. The previous canonical-alert, atomic-cursor
+and late-event fixes were confirmed at CPU scope. Native cleanup remains
+unverified on the actual SDK.
+
+Commit `55f4b33` adds once-at-startup source identity (Git/release manifest,
+dirty disposition, actual scene SHA), exposed by backend health. It also fixes
+release reactivation after ordinary Python imports: real cache directories are
+explicitly transient, cache-name symlinks remain invalid, and both child services
+start with bytecode writes disabled. A real subprocess import between activation
+and reactivation is part of the 34 passing release/provenance checks.
+
+The push retried at 20:47 UTC failed because github.com could not resolve.
+These commits are preserved locally and are not represented as published.
+
+## Accepted-state/image coherence checkpoint
+
+Canonical snapshots now carry an accepted-state content identity; same-tick sensor
+updates cannot borrow earlier recorded ride poses. Replay capture requires a
+matching revision as well as scene/tick. Each JPEG carries its own immutable camera,
+projection coordinates, dimensions and revision. Operator annotations fail closed
+on missing/mismatched evidence instead of using newer status projections.
+Versioned UI picking checks camera/state/view at the render owner; the documented
+scope is current-geometry asset selection, not reconstruction of historical pixels.
+Five focused CPU regressions include stale-pose rejection, matching-pose acceptance,
+quality transitions, immutable frame context and changed pick context. 19 UI logic
+checks and 57 DOM references pass. Native GPU and Chromium evidence remain pending.

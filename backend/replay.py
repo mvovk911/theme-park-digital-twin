@@ -84,6 +84,8 @@ def install_replay(
                     and render.get("view_mode", "live") == "live"
                     and render.get("scene_revision") == app.state.replay.scene_revision
                     and render.get("source_tick") == snapshot["tick"]
+                    and bool(snapshot.get("accepted_state_revision"))
+                    and render.get("accepted_state_revision") == snapshot["accepted_state_revision"]
                     and all(
                         isinstance(candidate.get(k), (int, float))
                         and math.isfinite(candidate[k])

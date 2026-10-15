@@ -71,13 +71,23 @@ not refresh its age. A fresh image with stale source data or frozen affected rid
 poses produces a separate source warning. Missing frame metadata is disclosed.
 Deploy the frontend, gateway and renderer together to preserve this contract.
 
-A frame must match the selected live/replay mode and snapshot before native
-picking or projected annotations are enabled. This avoids overlaying recorded
+A frame must match the selected live/replay mode, snapshot and accepted-state
+revision before native picking or projected annotations are enabled. Its
+`X-Frame-Context` supplies the exact camera, image dimensions and projected asset
+coordinates used for that JPEG. Newer renderer status cannot move annotations
+on an older image. Missing or malformed context, or an absent/mismatched data
+revision, suppresses annotations; same-frame status is the only metadata fallback. This avoids overlaying recorded
 values on an image still showing another state during a view change.
 
 The image retains its actual aspect ratio. Native picks and projected labels
 use the same letterbox-aware image rectangle, including fullscreen. Picks submit
-normalized `{x,y}` to `/render/pick`; dragging submits accumulated orbit fractions
+normalized `{x,y}` plus the image camera token, accepted-state revision and view
+identity to `/render/pick`. The renderer validates that context at the native
+render owner and rejects changed state with HTTP 409. The browser also discards
+a response after its displayed state changes. This selects an asset in current
+geometry: it does not certify a historical pixel hit on animated geometry. Direct
+legacy API requests without version fields remain unversioned; browser requests
+require the camera token. Dragging submits accumulated orbit fractions
 of image width and height. Camera changes are coalesced while a request is in
 flight. Registry selection calls `select`; Locate calls `focus`.
 
@@ -116,10 +126,13 @@ The original evidence remains in
 quality additions; they do not validate the new features.
 
 **Replay and source-quality milestone:** JavaScript syntax, Python test syntax,
-57 referenced DOM identifiers and 15 JavaScript behavior checks pass. These checks
+57 referenced DOM identifiers and 19 JavaScript behavior checks pass. These checks
 cover unknown-value masking, replay write locks, view/frame mismatch, actual image
 timestamps, cached-frame staleness, frozen source presentation and dependency SVG
-visibility. In-process HTTP checks against the actual application also verified
+visibility. Additional checks cover stale accepted revisions, newer camera status
+against an old image, malformed frame context, and exact-frame fallback. These
+are logic checks; the latest native pick validation still needs GPU acceptance.
+In-process HTTP checks against the actual application also verified
 view/detail/history contracts, ten source services, health/observations, timeline,
 replay selection, connector mutation rejection and return to live.
 
