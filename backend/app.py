@@ -7,9 +7,9 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from fastapi import FastAPI, HTTPException, Path as PathParam, Query, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from project_revision import source_identity
-from .simulator import ParkSimulator
+from .simulator import ActionRequestConflict, ParkSimulator
 from .connectors import ConnectorRuntime, ParkReadModel
 from .connectors.api import install_connector_routes
 
@@ -23,6 +23,7 @@ class ActionRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     action: str
     asset_id: str | None = None
+    request_id: str | None = Field(default=None, min_length=1, max_length=128, pattern=r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
 
 
 def create_app(database_path: str | None = None, run_background: bool = True):
@@ -120,9 +121,11 @@ def create_app(database_path: str | None = None, run_background: bool = True):
     @app.post("/api/actions")
     def action(request: ActionRequest):
         try:
-            result = app.state.park.act(request.action, request.asset_id)
+            result = app.state.park.act(request.action, request.asset_id, request.request_id)
             result["state"] = app.state.read_model.snapshot()
             return result
+        except ActionRequestConflict as exc:
+            raise HTTPException(409, {"code": "request_id_conflict", "message": str(exc)})
         except KeyError:
             raise HTTPException(404, "Unknown asset")
         except ValueError as exc:
