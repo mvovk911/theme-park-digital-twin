@@ -5,7 +5,7 @@ import contextlib
 import os
 from contextlib import asynccontextmanager
 from pathlib import Path
-from fastapi import FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, HTTPException, Path as PathParam, Query, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict
 from project_revision import source_identity
@@ -59,6 +59,13 @@ def create_app(database_path: str | None = None, run_background: bool = True):
     @app.get("/api/state")
     def state():
         return app.state.read_model.snapshot()
+
+    @app.get("/api/state/revisions/{revision}")
+    def state_revision(revision: str = PathParam(min_length=64, max_length=64, pattern=r"^[0-9a-fA-F]{64}$")):
+        try:
+            return app.state.read_model.revision_snapshot(revision)
+        except KeyError:
+            raise HTTPException(404, "Canonical state revision is unavailable or no longer retained")
 
     @app.get("/api/assets")
     def assets():

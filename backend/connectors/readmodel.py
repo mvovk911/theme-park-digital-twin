@@ -1,6 +1,7 @@
 """Canonical asset projection. The UI and replay consume this stable interface."""
 from __future__ import annotations
 import copy
+from collections import OrderedDict
 import hashlib
 import json
 from .catalog import LEGACY_FIELDS, set_path
@@ -8,9 +9,44 @@ from .alerts import project_alerts
 
 
 class ParkReadModel:
-    def __init__(self, park, connectors):
+    def __init__(self, park, connectors, revision_capacity=64, revision_max_bytes=4 * 1024 * 1024):
+        if (type(revision_capacity) is not int or type(revision_max_bytes) is not int or
+                not 1 <= revision_capacity <= 64 or not 1 <= revision_max_bytes <= 4 * 1024 * 1024):
+            raise ValueError("Revision retention must fit 1–64 entries and 1 byte–4 MiB")
         self.park = park
         self.connectors = connectors
+        self._revision_capacity = revision_capacity
+        self._revision_max_bytes = revision_max_bytes
+        self._revisions = OrderedDict()
+        self._revision_bytes = 0
+
+    def _retain_revision(self, state):
+        """Freeze the first capture; duplicate reads neither refresh nor reorder it."""
+        revision = state["accepted_state_revision"]
+        with self.connectors.lock:
+            if revision in self._revisions:
+                return
+            envelope = {"revision": revision,
+                        "captured_at": self.connectors.clock().isoformat(timespec="microseconds"),
+                        "state": state, "scope": "retained canonical state; not durable replay"}
+            payload = json.dumps(envelope, sort_keys=True, separators=(",", ":"), allow_nan=False).encode("utf-8")
+            # An oversized single snapshot is unavailable; it must not flush the
+            # useful bounded window or silently exceed its byte limit.
+            if len(payload) > self._revision_max_bytes:
+                return
+            while self._revisions and (len(self._revisions) >= self._revision_capacity or
+                                       self._revision_bytes + len(payload) > self._revision_max_bytes):
+                _, oldest = self._revisions.popitem(last=False)
+                self._revision_bytes -= len(oldest)
+            self._revisions[revision] = payload
+            self._revision_bytes += len(payload)
+
+    def revision_snapshot(self, revision):
+        """Read a retained capture without polling sources or changing the cache."""
+        with self.connectors.lock:
+            payload = self._revisions[revision.lower()]
+        # Every caller receives a new object; the cache stores immutable bytes.
+        return json.loads(payload)
 
     def snapshot(self):
         with self.connectors.lock:
@@ -81,6 +117,7 @@ class ParkReadModel:
                    "sources": [{"source_id": h["source_id"], "status": h["status"], "mode": h["mode"]}
                                for h in state["connector_health"]]}
         state["accepted_state_revision"] = hashlib.sha256(json.dumps(stable(content), sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
+        self._retain_revision(state)
         return state
 
     def system_data(self, source_id):

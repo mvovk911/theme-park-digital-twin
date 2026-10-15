@@ -80,3 +80,11 @@ Run backend and connector verification with:
 
 
 Operational alerts now project from the same canonical fields as assets/KPIs, with `origin` and `evidence`. `model_alerts` retains simulator-only alerts separately and `source_conflicts` identifies source/model status disagreements. `active_alerts` counts the projected operational list. Source snapshots and accepted-event cursors are atomic. The connector decision journal retains valid late events without applying them; its independent cursor is documented in [connectors](connectors.md).
+
+## Retained canonical revisions for rendered frames
+
+`GET /api/state/revisions/{revision}` returns `{revision, captured_at, state, scope:"retained canonical state; not durable replay"}`. The 64-character hexadecimal revision is matched case-insensitively; both returned revision fields (`revision` and `state.accepted_state_revision`) use the canonical lowercase key. Invalid revision syntax returns 422; an unknown, evicted or oversized capture returns 404.
+
+Every canonical `read_model.snapshot()` can retain its result in an in-memory FIFO window of at most **64 revisions and 4 MiB of serialized UTF-8 JSON envelopes**, whichever limit is reached first. A single envelope larger than the byte budget is not retained. The first capture for a retained key is immutable: later reads with the same accepted-state revision do not update its ages, counters, capture time or eviction order. Returned objects are independent copies. `captured_at` is UTC capture time and is not part of the existing accepted-state revision hash. Continuous ages/counters can differ in newer live snapshots without changing that revision; quality transitions and accepted-field changes still change it.
+
+This endpoint lets scene annotations retrieve the state associated with an image's exact accepted-state revision. Its source ages describe that capture, not present freshness. Lookup does not poll connectors, advance the simulator, write SQLite or change replay selection. `/api/state` remains the latest canonical state. A missing retained revision requires hiding unmatched annotations or waiting for a matching frame, not relaxing revision equality. Restart clears this small cache; durable replay retains its separate API and storage contract.
