@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-10-15T21:03:33.888665+00:00",
+  "evidence_kind": "browser_against_running_application",
+  "page_errors": [],
+  "connector_pause_stale_offline_resume": true,
+  "replay_read_only": true,
+  "replay_source_calls": 0,
+  "recording_continues": true,
+  "frame_metadata_failure_cases": false,
+  "mobile_overflow": false,
+  "record_id": 124,
+  "recorded_source_timestamp": "2026-10-15T21:03:19.090+00:00"
+}

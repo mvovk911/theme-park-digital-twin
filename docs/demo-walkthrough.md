@@ -24,7 +24,14 @@ rendered by OVRTX on the GPU, with scene state held by OVStage.
 6. **Inspect the backbone:** open a source-system card to see the exact synthetic
    payload and intended API boundary. The architecture dialog explains how these
    independent feeds join asset context and the spatial stage.
-7. **Reset:** apply Normal and reset the demo actions, then return Home. The audit
+7. **Check source trust:** pause the weather source in Source health. Its accepted
+   observations become stale while other feeds continue. Resume it and verify that
+   a new receipt restores freshness. The image annotation caption identifies its
+   captured observation time; the inspector continues to show the latest state.
+8. **Inspect history:** select a recorded snapshot. The REPLAY banner identifies
+   the historical cursor and actions are disabled. Return Live to operate again.
+   Live recording continues during this read-only inspection.
+9. **Reset:** apply Normal and reset the demo actions, then return Home. The audit
    trail preserves operator actions for review.
 
 The scenario lab is a heuristic comparison, not a calibrated forecast. Queue
@@ -32,5 +39,6 @@ averages exclude closed attractions, so a lower average alone can conceal reduce
 capacity. Assess open rides, throughput, alerts and individual queues together.
 
 The current console shares one camera and one simulator across all viewers. A
-production service needs session isolation, access control, source quality rules,
-replay, durable workflow acknowledgements and operational monitoring.
+production service needs session isolation, access control, external-source governance, durable workflow acknowledgements and operational
+monitoring. The implemented source-quality and recorded-view boundaries remain
+synthetic demonstration capabilities.

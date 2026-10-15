@@ -70,9 +70,10 @@ CPU checks cover durable exact values across restart/config changes, bounded
 retention, immutable selected snapshots, historical history/work orders,
 read-only API guards, live advancement during replay, cursor validation and no
 invented pose. Separate command/frame tests cover expiry, failure and provenance.
-Actual GPU replay, scene-revision rendering and native resource destruction still
-require validation on the Horde worker after connectivity is restored. CPU tests
-are not presented as proof of native SDK behavior.
+Actual GPU/browser replay passed on `2e2b16b`; native lifecycle and actual HTTP
+producer/replay/restart checks also passed on final `19cee1e`. See the
+[revision-bound evidence](validation.md). CPU fixtures remain separate from real
+SDK evidence; neither run establishes exhaustive GPU resource leak coverage.
 
 ## Accepted-state and frame association
 
@@ -87,8 +88,9 @@ Recorded motion is attached only when the renderer reports the same scene, tick
 and nonempty accepted-state revision. JPEG responses carry that revision plus an
 immutable camera/projection context. Overlay coordinates never borrow a newer
 camera from `/status`. The UI suppresses annotations for missing context or
-mismatched revisions. These are CPU/API-tested contracts; actual GPU execution of
-this checkpoint remains pending.
+mismatched revisions. These contracts have CPU/API checks and actual GPU/browser
+evidence. A small immutable revision cache keeps annotations tied to the displayed
+image while the inspector remains latest; [frontend semantics](frontend.md).
 
 Versioned UI picks carry the displayed camera token, accepted-state revision and
 view identity. The render owner checks these before issuing the native pick and

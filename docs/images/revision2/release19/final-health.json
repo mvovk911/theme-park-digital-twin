@@ -1,0 +1,318 @@
+{
+  "backend": {
+    "status": "ok",
+    "synthetic": true,
+    "database": "connected",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "19cee1e9a3dfaa3156fa4ba976d1ca21832d3242",
+      "tree": "4235add5a54fd8918a38582a713e010418e4274f",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:27:30.331832+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "tick": 7779
+  },
+  "renderer": {
+    "ready": true,
+    "phase": "rendering",
+    "frame": 2591,
+    "error": null,
+    "cleanup_errors": null,
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "19cee1e9a3dfaa3156fa4ba976d1ca21832d3242",
+      "tree": "4235add5a54fd8918a38582a713e010418e4274f",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:25:20.852499+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "view_mode": "live"
+  },
+  "view": {
+    "mode": "live",
+    "snapshot_id": null,
+    "captured_at": null,
+    "source_timestamp": "2026-10-15T21:28:51.440+00:00",
+    "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "config_revision": "d00224701b0b185e1f9a22ec47289c40d75958cabff7dfbf2c64012d36b8f2d6",
+    "scene_matches_current": true,
+    "recorded_motion": null,
+    "live_tick": 7779,
+    "shared_session": true,
+    "read_only": false,
+    "work_orders_recorded": false
+  },
+  "scenario": "normal",
+  "connector_health": {
+    "health": [
+      {
+        "source_id": "ride_scada",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.289+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 984,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "d0a834ecb598:984"
+      },
+      {
+        "source_id": "ticketing",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.290+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 1640,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "b79dc945152e:1640"
+      },
+      {
+        "source_id": "vision",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.292+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 984,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "9110b07732dd:984"
+      },
+      {
+        "source_id": "cmms",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.293+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 1312,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "c7bf5663fa44:1312"
+      },
+      {
+        "source_id": "erp",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.294+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 820,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "70c6f746395f:820"
+      },
+      {
+        "source_id": "workforce",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.295+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 984,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "e39037dfd1a9:984"
+      },
+      {
+        "source_id": "bms",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.296+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 1066,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "ab24bde8b473:1066"
+      },
+      {
+        "source_id": "water",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.297+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 492,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "541be90e5a0e:492"
+      },
+      {
+        "source_id": "weather",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.297+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 82,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "5a825cb425ff:82"
+      },
+      {
+        "source_id": "gis",
+        "status": "healthy",
+        "mode": "live",
+        "synthetic": true,
+        "last_source_timestamp": "2026-10-15T21:28:52.282000+00:00",
+        "last_ingested_at": "2026-10-15T21:28:52.297+00:00",
+        "last_poll_attempt_at": "2026-10-15T21:28:52.536+00:00",
+        "last_error": null,
+        "freshness": {
+          "max_age_seconds": 0.259,
+          "stale_after_seconds": 5.0,
+          "stale_metrics": 0,
+          "missing_metrics": 0,
+          "uncertain_metrics": 0
+        },
+        "counters": {
+          "accepted": 2952,
+          "rejected": 0,
+          "duplicates": 0,
+          "poll_failures": 0
+        },
+        "latest_cursor": "86d4b5708a38:2952"
+      }
+    ]
+  },
+  "cleanup_acknowledgement": {
+    "id": 40,
+    "timestamp": "2026-10-15T21:28:51.440+00:00",
+    "action": "reset",
+    "asset_id": null,
+    "message": "Synthetic park restored to normal operations; audit retained.",
+    "synthetic": true,
+    "acknowledgement": "accepted",
+    "target": {
+      "scope": "park",
+      "asset_id": null
+    },
+    "lifecycle": "simulation_applied",
+    "physical_effect": false,
+    "request_id": "acceptance-cleanup-19cee1e"
+  }
+}

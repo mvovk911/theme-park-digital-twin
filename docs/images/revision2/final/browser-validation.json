@@ -1,0 +1,104 @@
+{
+  "verified_at": "2026-10-15T21:20:44.801204+00:00",
+  "comparison_read_only": true,
+  "source_payload": true,
+  "desktop_overflow": false,
+  "page_errors": [],
+  "renderer": {
+    "engine": "NVIDIA OVRTX + OVStage",
+    "fps": 12.5,
+    "frame": 360,
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "2e2b16bc70fd64f0c980a0e699a8ff4e72460da8",
+      "tree": "e6038dbff841e328d2e0d9b0799b9135f9d05d8a",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:19:48.838029+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "accepted_state_revision": "6d0a6c5ac90bccac72f1cc54b21541b44b61fe6b7da83f0e14217a5215873293",
+    "camera_token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+    "rendered_at": "2026-10-15T21:20:22.049+00:00",
+    "source_timestamp": "2026-10-15T21:20:21.773+00:00",
+    "source_tick": 7268
+  },
+  "native_picks": [
+    {
+      "target": "FOOD_COURT",
+      "status": 409,
+      "result": {
+        "detail": "Displayed camera or data view changed; retry on the current image"
+      }
+    },
+    {
+      "target": "FOOD_COURT",
+      "status": 200,
+      "result": {
+        "asset_id": "FOOD_COURT",
+        "prim_path": "/World/Park/FOOD_COURT/Roof_0001",
+        "engine": "ovrtx_pick_hit"
+      }
+    },
+    {
+      "target": "HOTEL",
+      "status": 409,
+      "result": {
+        "detail": "Displayed camera or data view changed; retry on the current image"
+      }
+    },
+    {
+      "target": "HOTEL",
+      "status": 200,
+      "result": {
+        "asset_id": "HOTEL",
+        "prim_path": "/World/Park/HOTEL/Roof",
+        "engine": "ovrtx_pick_hit"
+      }
+    },
+    {
+      "target": "POWER_HUB",
+      "status": 409,
+      "result": {
+        "detail": "Displayed camera or data view changed; retry on the current image"
+      }
+    },
+    {
+      "target": "POWER_HUB",
+      "status": 200,
+      "result": {
+        "asset_id": "POWER_HUB",
+        "prim_path": "/World/Park/POWER_HUB/Roof",
+        "engine": "ovrtx_pick_hit"
+      }
+    }
+  ],
+  "camera_orbit": true,
+  "camera_zoom": true,
+  "camera_focus": true,
+  "overlay": true,
+  "closure_dispatch": true,
+  "motion_closure": {
+    "before": {
+      "coaster_phase": 0.8102958910167218,
+      "wheel_angle": 5.816725658178331
+    },
+    "after": {
+      "coaster_phase": 0.8102958910167218,
+      "wheel_angle": 6.063058985471728
+    },
+    "resumed": {
+      "coaster_phase": 0.9914034675984164,
+      "wheel_angle": 7.830973871946335
+    }
+  },
+  "leak_repair": true,
+  "mobile_overflow": false
+}

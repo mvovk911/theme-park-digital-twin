@@ -1,47 +1,77 @@
 # Validation evidence — 15 October 2026
 
-## Current development versus GPU baseline
+## Revision 2: actual application and asset evidence
 
-The GPU/browser evidence below belongs to the original revision 1 application
-(`930acd3`). New revision 2 assets, accepted-event connectors, replay and renderer
-lifecycle changes have **not** yet passed a new GPU/browser deployment check.
-Network/process restrictions currently prevent Horde access and Chromium here.
+Release `2e2b16b` ran from a verified immutable manifest on NVIDIA L40 (48 GB),
+driver 570.158.01, Linux/Python 3.10, OVRTX 0.6.0.1791947691 and
+OVStage 0.3.0.1791986420. [Browser evidence](images/revision2/final/browser-validation.json)
+and [extended evidence](images/revision2/final/extended/extended-browser-validation.json)
+include the exact commit, source identity, scene SHA, frame and timestamps.
 
-A clean candidate built from committed connector baseline `cf4d621` plus the
-recorded-view/renderer/gateway changes passed **73 CPU/API tests**: 51 existing
-backend/connector checks, 10 replay checks, 10 renderer-boundary checks and two
-gateway checks. These include actual background recording during replay and
-historical values reopened after an application restart. Native cleanup tests
-use an explicit fake SDK at failure boundaries; they do not certify actual SDK
-resource destruction. New asset checks are in `assets/scene_quality_validation.json`.
+| Actual runtime check | Result |
+|---|---|
+| Native geometry selection | Food court, hotel and power hub resolved to correct records; stale context returned 409 before each successful retry |
+| Camera and scene | Orbit, zoom, focus and 1280×720 OVRTX image delivery passed; observed 12.5 fps at the configured render cap |
+| Ride state | Closed coaster froze, wheel continued, reset resumed coaster |
+| Incident workflows | Maintenance dispatch and simulated leak repair passed |
+| Source quality | Pause → stale → offline → recovery passed |
+| Historical view | Actions rejected with 409, live recording continued, no live-source fetches for historical inspection |
+| Image annotations | 92/100 live samples visible versus 63/100 earlier; zero image/state revision mismatches |
+| Browser layout | No page errors or desktop/mobile horizontal overflow observed |
+| Native lifecycle | Real SDK probes at `154e746` and final `19cee1e`: 20 frames each, final stopped, no cleanup errors or outstanding commands |
 
-The independent [connector acceptance review](reviews/2026-10-15-connector-acceptance-review.md)
-identified additional projection/snapshot issues at `cf4d621`. Its findings are
-retained as that commit's review; follow-up fixes have their own checkpoint and
-are not retroactively claimed by the 73-test candidate.
+[Exact JPEG capture manifests](images/revision2/final/gallery/render-captures.json)
+record camera/source headers from the image response itself. Four viewpoints and
+operator captures are displayed in the [progress gallery](progress.md).
 
-After the reviewed connector fixes and release work, the combined stable local
-suite passed **98 CPU/API checks**. The operator UI separately passed **15 JavaScript
-behavior checks** and **57 DOM identifier checks**. These newer local gates do not
-replace the pending Chromium/native-GPU acceptance described above.
+Revision 2 USD has 12 canonical asset roots, 3,067 prims, 46 polygon meshes and 138
+static connector declarations. Checks cover names/types, material bindings, finite
+bounds, self-contained assets and deterministic inventory. Motion checks cover 25
+wheel angles, 401 coaster frames and 101 articulated-car poses. See [scene checks](../assets/scene_validation.json)
+and [quality fingerprints](../assets/scene_quality_validation.json).
 
-## Latest integrated local acceptance
+Blender 4.5.3 LTS imported the current USD, saved `assets/park.blend` and reopened
+it: **2,997 objects, 2,954 meshes, 33 materials, zero unbound meshes**. All 12 asset
+IDs, material bindings/parameters and articulated-car transforms were checked.
+The [handoff report](../assets/blender_validation.json) records USD and Blender
+SHA256 values; ordinary USD validation only checks that evidence's fingerprints,
+not a fresh Blender reopen.
 
-Committed `7b27281` passed **149 CPU/API checks in 28.54 seconds**, plus **19
-JavaScript logic checks** and **57 DOM references**. This includes the recurring
-review fixes, external synthetic source ingestion, source ownership/staleness,
-recorded-state restart/retention, same-tick accepted revision changes, concurrent
-status publication, stale/missing/future pose rejection, and actual staged Python
-import followed by release reactivation. The restricted sandbox test run uses a
-temporary test-process heartbeat plugin; no production event-loop workaround is
-installed. Native failure-boundary tests use explicit fixtures.
+## CPU/API acceptance and later API changes
 
-Current revision 2 USD validation independently checks 12 stable roots, 3,067
-prims, 46 polygon meshes, 138 static connector declarations, canonical names/types,
-material bindings, finite bounds, self-contained assets and deterministic inventory.
-Motion checks cover 25 wheel angles, 401 coaster positions and 101 articulated-car
-poses. See [current scene results](../assets/scene_validation.json) and
-[exact USD/catalog fingerprints](../assets/scene_quality_validation.json).
+At `19cee1e`, **184 CPU/API checks pass**, including receipt concurrency, restart,
+lost-response and transaction rollback; all ten independent sources publishing
+across replay; immutable retained revisions; pose/frame races and release integrity.
+The reviewer independently reran the same suite in a clean archive. Tests use the
+normal environment; no heartbeat workaround is needed for this run. The UI has
+**28 JavaScript behavior checks and 58 DOM references**.
+
+`2c763d2` fixes independent source ingestion during replay. `19cee1e` adds durable
+action request IDs. Their CPU evidence is separate from the earlier `2e2b16b`
+GPU/browser run. [Action contract](action-contract.md), [replay contract](replay.md),
+and [independent maintainability review](reviews/2026-10-15-revision2-maintainability-review.md).
+
+## Final deployed API/restart acceptance: `19cee1e`
+
+The final committed application was staged and started on the same L40 with a
+verified source manifest and unchanged revision 2 scene. A new [actual browser smoke
+run](images/revision2/release19/browser/browser-validation.json) passed existing
+camera, picks, motion and operator actions after the backend transaction change.
+A separate [native lifecycle probe](images/revision2/release19/native-lifecycle-validation.json)
+rendered 20 frames and completed actual SDK cleanup without reported errors.
+
+The [actual HTTP workflow check](images/revision2/release19/workflow-initial.json)
+used ten independent producer instances with unique sessions and concurrent HTTP
+threads. It accepted **276 events in 20 batches**, recorded **22 new snapshots**
+(including background recording), and preserved the selected historical assets,
+KPIs and revision. Six concurrent action retries returned the same acknowledgement;
+a conflicting payload returned 409, with one new audit row and work order overall.
+
+The backend was then stopped and restarted while retaining the database. The
+[restart check](images/revision2/release19/workflow-restart.json) returned the exact
+original receipt without additional audit/work-order effects. Its changed startup
+identity timestamp and matching release are recorded. These are real HTTP/persistence
+checks, not physical equipment acknowledgements or multi-process source isolation.
 
 ## Original revision 1 GPU/browser acceptance
 
@@ -68,11 +98,11 @@ This is application evidence, not a performance benchmark.
 
 [Machine-readable browser results](images/browser-validation.json),
 [revision 1 scene results](evidence/revision1-scene-validation.json), and
-[Blender results](../assets/blender_validation.json).
+Blender revision 1 counts above are historical; the current handoff report describes revision 2.
 
 ## Actual application captures
 
-These screenshots show the running GPU application, not conceptual renders.
+These historical screenshots show the original revision 1 GPU application. Current revision 2 captures are linked above.
 
 - [Live operations console](images/operations-live.png)
 - [OVRTX viewport](images/ovrtx-viewport.png)
@@ -86,7 +116,7 @@ These screenshots show the running GPU application, not conceptual renders.
 The tests cover a single demonstration session and synthetic services. They do not
 establish calibrated forecasts, ride dynamics, large-scale streaming performance,
 production availability or real ERP/SCADA compatibility. The rides use presentation
-animation. The GPU-verified revision 1 cars share a rigid transform; revision 2 has independently posed cars with local transform checks and pending GPU acceptance. Telemetry overlays are DOM
+animation. Revision 2 cars have independently computed presentation poses and actual GPU evidence; none of this establishes engineering dynamics. Telemetry overlays are DOM
 annotations, not physically simulated heatmaps. All viewers share camera, selection
 and scenario state. JPEG frame delivery is deliberately simple; an expanded service
 would need session management and a suitable low-latency streaming transport.

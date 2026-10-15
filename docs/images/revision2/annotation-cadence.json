@@ -1,0 +1,507 @@
+{
+  "release": "154e746",
+  "sample_interval_ms": 100,
+  "samples": [
+    {
+      "at": 1792098163794,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098163908,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164010,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164112,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164216,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164318,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164421,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164526,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164630,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098164733,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098164835,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098164937,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098165039,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098165149,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098165261,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098165366,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098165480,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098165585,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098165700,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098165823,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098165946,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098166064,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098166174,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098166281,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098166388,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098166503,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098166607,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098166712,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098166822,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098166928,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167034,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167139,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167244,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167347,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167452,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167557,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167666,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167774,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167880,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098167987,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168094,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168206,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168318,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168421,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168524,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168625,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168727,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168829,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098168931,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169033,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169135,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169238,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169341,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169444,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169545,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169647,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169750,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098169853,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098169955,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098170058,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098170169,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170273,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170375,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170478,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170580,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170683,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170786,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170888,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098170991,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098171094,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171198,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171300,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171403,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171504,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171606,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171708,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171811,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098171913,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098172016,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098172118,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098172220,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098172323,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098172426,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098172527,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098172628,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098172729,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098172833,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098172937,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098173040,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098173143,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098173246,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098173349,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098173453,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098173560,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098173667,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098173779,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098173884,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098173988,
+      "labels": 0,
+      "context": "VIEW SWITCH IN PROGRESS \u00b7 image does not yet match live state"
+    },
+    {
+      "at": 1792098174108,
+      "labels": 7,
+      "context": ""
+    },
+    {
+      "at": 1792098174224,
+      "labels": 7,
+      "context": ""
+    }
+  ],
+  "visible_fraction": 0.63
+}

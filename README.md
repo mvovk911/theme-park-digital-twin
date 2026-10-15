@@ -6,18 +6,21 @@ An interactive theme park combining procedural OpenUSD geometry, **NVIDIA OVStag
 
 [Illustrated project deck (PDF)](docs/project-concept.pdf) · [Five-minute walkthrough](docs/demo-walkthrough.md) · [Integration roadmap](docs/integration-roadmap.md) · [Editable Blender scene](assets/park.blend)
 
-![Revision 1 OVRTX park viewport](docs/images/ovrtx-viewport.png)
+![Revision 2 OVRTX park viewport](docs/images/revision2/release19/browser/ovrtx-viewport.png)
 
 [Validation and application screenshots](docs/validation.md)
 
 ## Ongoing development
 
 See the [development log](docs/development-log.md) and [independent reviews](docs/reviews/).
-The new [connector ingestion layer](docs/connectors.md), [recorded-view APIs](docs/replay.md)
-and renderer lifecycle/freshness work have local CPU/API validation. The existing
-GPU images show revision 1; new native GPU/browser acceptance remains pending.
-[Deployment artifacts](docs/deployment.md) identify exact committed source separately
-from a staged, activated or actually running application.
+The [connector ingestion layer](docs/connectors.md), [recorded-view APIs](docs/replay.md)
+and revision 2 assets are implemented. Real GPU/browser acceptance on `2e2b16b`
+verifies native picks, ride motion, source health, replay and image-matched annotations.
+Later API checkpoints add uninterrupted producer ingestion during replay and
+[durable action acknowledgements](docs/action-contract.md). At `19cee1e`, 184 CPU/API
+checks pass; the final deployed release also passes browser, actual HTTP/restart
+and native lifecycle acceptance. [Validation](docs/validation.md) identifies each evidence scope and
+[deployment artifacts](docs/deployment.md) record exact committed source identity.
 
 ## What you can explore
 

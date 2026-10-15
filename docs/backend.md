@@ -1,6 +1,6 @@
 # Synthetic park services
 
-All values and workflows are simulated. FastAPI runs at port 8000 with a persistent SQLite registry, bounded telemetry, and action audit in `backend/data/park.db` (`PARK_DB` overrides). A 1 Hz simulator publishes state. Start: `python -m uvicorn backend.app:app --host 0.0.0.0 --port 8000`.
+All values and workflows are simulated. The standalone backend example runs at port 8000; the complete application gateway uses port 8100. FastAPI uses a persistent SQLite registry, bounded telemetry, and action audit in `backend/data/park.db` (`PARK_DB` overrides). A 1 Hz simulator publishes state. Start: `python -m uvicorn backend.app:app --host 0.0.0.0 --port 8000`.
 
 ## Contract
 
@@ -11,7 +11,7 @@ All values and workflows are simulated. FastAPI runs at port 8000 with a persist
 - `GET /api/systems/{system_id}/data`: `{synthetic:true,timestamp,system,records:[{asset_id,...domain_fields,synthetic:true}]}` domain feeds for `ride_scada`, `ticketing`, `vision`, `cmms`, `erp`, `workforce`, `bms`, `water`, `weather`, `gis`. Protocol labels describe the intended integration; this POC serves synthetic domain data through HTTP and does not run OPC UA/MQTT/BACnet servers.
 - `GET /api/systems`: `{synthetic:true,systems:[...]}`.
 - `POST /api/scenarios` body `{scenario:"normal"|"ride_closure"|"show_surge"|"heatwave"|"power_fault"|"water_leak"|"food_rush"}`: resulting complete state. Sets scenario and resets mitigations.
-- `POST /api/actions` body `{action:"dispatch_maintenance"|"reroute_guests"|"add_staff"|"shed_load"|"repair_leak"|"replenish_stock"|"reset",asset_id?:string}`: `{synthetic:true,result:{id,action,asset_id,timestamp,message},state:{...}}`.
+- `POST /api/actions` body `{request_id?:string,action:"dispatch_maintenance"|"reroute_guests"|"add_staff"|"shed_load"|"repair_leak"|"replenish_stock"|"reset",asset_id?:string}`: `{synthetic:true,result:{id,action,asset_id,timestamp,message},state:{...}}`.
 - `GET /api/audit?limit=100`: `{synthetic:true,events:[...]}`.
 - `GET /api/health`: healthy, synthetic, DB and simulator tick.
 - `WS /ws/state`: full state once per second. Polling `/api/state` once per second is equally supported.
@@ -88,3 +88,6 @@ Operational alerts now project from the same canonical fields as assets/KPIs, wi
 Every canonical `read_model.snapshot()` can retain its result in an in-memory FIFO window of at most **64 revisions and 4 MiB of serialized UTF-8 JSON envelopes**, whichever limit is reached first. A single envelope larger than the byte budget is not retained. The first capture for a retained key is immutable: later reads with the same accepted-state revision do not update its ages, counters, capture time or eviction order. Returned objects are independent copies. `captured_at` is UTC capture time and is not part of the existing accepted-state revision hash. Continuous ages/counters can differ in newer live snapshots without changing that revision; quality transitions and accepted-field changes still change it.
 
 This endpoint lets scene annotations retrieve the state associated with an image's exact accepted-state revision. Its source ages describe that capture, not present freshness. Lookup does not poll connectors, advance the simulator, write SQLite or change replay selection. `/api/state` remains the latest canonical state. A missing retained revision requires hiding unmatched annotations or waiting for a matching frame, not relaxing revision equality. Restart clears this small cache; durable replay retains its separate API and storage contract.
+
+[Durable action acknowledgements](action-contract.md) add optional request-ID retry
+identity. The stored result is immutable; the accompanying state remains current.

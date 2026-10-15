@@ -2,6 +2,7 @@
 
 | Review | Baseline | Purpose |
 |---|---|---|
+| [Revision 2 maintainability review](2026-10-15-revision2-maintainability-review.md) | `2e2b16b`, `2c763d2`, `19cee1e` | Independent CPU rerun, actual GPU evidence review, source/replay and durable action boundaries |
 | [Digital-twin benchmark](2026-10-15-digital-twin-benchmark.md) | `930acd3` | Compare capability and evidence against recent public digital-twin implementations |
 | [Integrated checkpoint review](2026-10-15-integrated-checkpoint-review.md) | `29c4091` | Recheck complexity, prior fixes, frame/data consistency and immutable release behavior |
 | [Architecture review](2026-10-15-architecture-review.md) | `930acd3` plus identified WIP | Assess complexity, uncontrolled coupling, targeted refactoring and the value of rebuilding |
@@ -16,8 +17,8 @@ projection/acceptance defects. Its report remains unchanged; subsequent fixes an
 [Coherence closure audit](2026-10-15-coherence-fix-review.md) inspected `cb11424`,
 confirmed the original fixes and reproduced a remaining status/pose race. That
 specific race was subsequently fixed in `e477a12`; integrated `7b27281` passes
-149 CPU/API checks including the deterministic regression. GPU/browser scope is
-still pending and is not closed by these tests.
+149 CPU/API checks including the deterministic regression. GPU/browser scope was pending at that checkpoint. The revision 2 review above
+records subsequent real native/browser evidence separately.
 
 ## Recurring milestone review
 

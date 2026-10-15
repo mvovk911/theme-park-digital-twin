@@ -238,3 +238,67 @@ checks. Status/pose publication fix `e477a12` is included. The historical closur
 report remains an exact snapshot of its reviewed earlier baseline, not a false
 claim that it independently approved later code. Public origin remains `930acd3`;
 GitHub/Horde access, new native/browser checks and the Blender refresh are pending.
+
+## Published revision 2 and actual native acceptance
+
+External access was restored. All checkpoints through `19cee1e` were published to
+public `main`, preserving their exact commit/tree identities through GitHub's API
+when ordinary Git transport returned HTTP 503. No branch was force-updated.
+
+Revision 2 USD was imported, saved and reopened in Blender 4.5.3 LTS. The editable
+handoff has 2,997 objects, 2,954 meshes, 33 materials, all 12 asset identities and
+zero unbound meshes. Material and articulated-car transforms match the USD;
+`73bb9bd` records the verified handoff and derived evidence checks.
+
+An immutable `154e746` deployment rendered on the L40. Real browser checks exposed
+successful native picks discarded on a later telemetry tick and intermittent
+annotations while image/API revisions differed. `3336f6d` fixes result handling;
+`89b0e27` and `2e2b16b` retain bounded immutable state for exact-image annotations.
+The dashboard/inspector remains current and annotation capture time is explicit.
+
+Actual browser suites on verified release `2e2b16b` pass native picks, orbit/zoom/
+focus, source failures/recovery, replay isolation, continued recording, incident
+workflows and ride freeze/resume. Across 100 cadence samples, annotations were
+visible 92% of the time versus 63% before the fix, with zero revision mismatches.
+Native picks correctly rejected a changed context before succeeding on retry.
+Desktop/mobile checks observed no page errors or horizontal overflow. Four new
+OVRTX viewpoints include exact JPEG headers and release/scene provenance.
+
+A separate real SDK lifecycle probe on `154e746` rendered 20 frames and returned
+phase `stopped`, zero outstanding commands and no cleanup errors. It exercises
+actual native calls, not exhaustive leak or failure certification.
+
+## Independent review follow-ups: acquisition and durable actions
+
+The recurring reviewer found a replay guard also stopped independent HTTP source
+producers. `2c763d2` distinguishes acquisition from operator commands: all ten
+sources continue ingesting into live state/new recordings while the selected
+historical payload stays immutable; actions/source-mode changes remain locked.
+20 replay/producer checks pass independently. `35b4f90` bounds explicit Horde
+busy-rejection retries and documents recovery without retrying ambiguous appends.
+
+`19cee1e` adds optional durable action request IDs with one SQLite transaction for
+receipt, effects, work orders, audit, telemetry and settings. Exact retries return
+the original acknowledgement; conflicts return 409; failures restore database and
+memory. Concurrent/restart/lost-response cases pass. The reviewer independently
+approved the bounded change. Full integrated CPU/API suite: **184 passed**, plus
+**28 JavaScript logic checks / 58 DOM references**. Browser/GPU proof is bound to
+`2e2b16b`; final HTTP/restart acceptance on `19cee1e` is recorded separately.
+
+## Final deployed integration: `19cee1e`
+
+Fresh actual GPU browser smoke passed on the final backend release. A second real
+native lifecycle probe rendered 20 frames and stopped without reported cleanup
+errors; the serving renderer was then restarted. Ten independently identified
+producer instances submitted 20 HTTP batches / 276 accepted events during replay.
+22 newer recordings appeared while selected historical assets, KPIs and revision
+remained unchanged. Six concurrent action retries and a conflicting reuse produced
+no extra effects. After an actual backend stop/restart, the same request returned
+the exact original receipt. Final health reports both services on verified
+`19cee1e`, renderer ready, live view and normal scenario. The synthetic cleanup
+reset is audited and preserves prior receipts. [Evidence](images/revision2/release19/).
+
+The main progress/validation pages now show current evidence; historical review
+and log entries remain dated snapshots. The application stays on its authenticated
+GPU deployment for review; source changes after `19cee1e` are acceptance tooling,
+documents and captured media, not a silently changed running release.

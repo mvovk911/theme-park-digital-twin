@@ -1,8 +1,8 @@
 # Implemented data flow and ownership
 
-This diagram describes the local code checkpoint. New native GPU/browser acceptance
-and publication remain pending; screenshots in the gallery show the earlier GPU
-revision. Planned vendor protocols are listed separately in the connector catalog.
+This diagram describes the implemented revision 2 application. [Validation](validation.md)
+links exact deployed-source, native GPU/browser and HTTP/restart evidence. Planned
+vendor protocols are listed separately in the connector catalog.
 
 ```mermaid
 flowchart TB
@@ -30,7 +30,7 @@ flowchart TB
   Sources -.->|Shared typed mappings and ownership| INGEST
   INGEST --> EVENTS[Bounded accepted-event and decision journals]
   EVENTS --> READ[Canonical asset projection / quality / alerts]
-  SQL[SQLite simulator settings / workflows / raw history] --> READ
+  SQL[SQLite settings / workflows / action receipts / raw history] --> READ
   RULE --> SQL
   READ -->|Accepted-state content identity| VIEW[Live or recorded inspection API]
   READ --> CAPTURE[Recorded snapshot capture]

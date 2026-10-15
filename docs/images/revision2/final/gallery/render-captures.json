@@ -1,0 +1,205 @@
+[
+  {
+    "file": "render-overview.jpg",
+    "captured_at": "2026-10-15T21:21:47.953220+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "2e2b16bc70fd64f0c980a0e699a8ff4e72460da8",
+      "tree": "e6038dbff841e328d2e0d9b0799b9135f9d05d8a",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:19:48.838029+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "sha256": "63ebde370b482beac148219e6b657995e3cf345d363c660a7ef3c0efb648167c",
+    "camera": {
+      "target": [
+        0.0,
+        0.0,
+        3.0
+      ],
+      "radius": 285.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 1430,
+    "frame_headers": {
+      "x-frame-number": "1430",
+      "x-frame-camera-token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+      "x-frame-rendered-at": "2026-10-15T21:21:47.769+00:00",
+      "x-frame-age-seconds": "0.042",
+      "x-source-tick": "7358",
+      "x-source-revision": "d6704d152e321e38ccfd181aab48d7c6eb95fd2e48df968f66e8299c0c021bc2",
+      "x-frame-context": "{\"camera\":{\"target\":[0.0,0.0,3.0],\"radius\":285.0,\"yaw\":-0.9424777960769379,\"pitch\":0.6981317007977318},\"projected_assets\":[{\"id\":\"RIDE_COASTER\",\"x\":0.4487180575868541,\"y\":0.356342868478316,\"visible\":true},{\"id\":\"RIDE_WHEEL\",\"x\":0.6399573795827305,\"y\":0.4215226676980445,\"visible\":true},{\"id\":\"SHOW_ARENA\",\"x\":0.5634555108098915,\"y\":0.3649501438407152,\"visible\":true},{\"id\":\"FOOD_COURT\",\"x\":0.3825456752660431,\"y\":0.5203956479846145,\"visible\":true},{\"id\":\"POWER_HUB\",\"x\":0.7282444678855249,\"y\":0.47558171902408863,\"visible\":true},{\"id\":\"WATER_PLANT\",\"x\":0.44489208174713185,\"y\":0.2703738480703259,\"visible\":true},{\"id\":\"HOTEL\",\"x\":0.30474504722258755,\"y\":0.4504515692328166,\"visible\":true},{\"id\":\"PARKING\",\"x\":0.5778831027685586,\"y\":0.7490013395095128,\"visible\":true},{\"id\":\"FIRST_AID\",\"x\":0.47896026101169253,\"y\":0.6460616671919789,\"visible\":true},{\"id\":\"RESTROOMS\",\"x\":0.6190476190849854,\"y\":0.6695282553083006,\"visible\":true},{\"id\":\"WEATHER_STATION\",\"x\":0.6122996720038251,\"y\":0.40276588084719833,\"visible\":true},{\"id\":\"ENTRY_GATE\",\"x\":0.3896184004396046,\"y\":0.6639615431994512,\"visible\":true}],\"width\":1280,\"height\":720}",
+      "x-source-timestamp": "2026-10-15T21:21:46.340+00:00",
+      "x-source-age-seconds": "1.471097",
+      "x-view-mode": "live",
+      "x-scene-revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "x-pose-source": "live",
+      "x-renderer-ready": "true"
+    },
+    "control": {
+      "action": "home"
+    }
+  },
+  {
+    "file": "render-wheel.jpg",
+    "captured_at": "2026-10-15T21:21:50.058740+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "2e2b16bc70fd64f0c980a0e699a8ff4e72460da8",
+      "tree": "e6038dbff841e328d2e0d9b0799b9135f9d05d8a",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:19:48.838029+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "sha256": "6741a82bbc14d508d1e44fcb331ed51f40c5022dcd253cf477497cf3d0d99b49",
+    "camera": {
+      "target": [
+        35.0,
+        25.0,
+        18.0
+      ],
+      "radius": 83.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 1457,
+    "frame_headers": {
+      "x-frame-number": "1457",
+      "x-frame-camera-token": "849c85d9f350270ca812dfca68524e80c0013a23745fc6220f5f61711c643e3f",
+      "x-frame-rendered-at": "2026-10-15T21:21:49.934+00:00",
+      "x-frame-age-seconds": "0.002",
+      "x-source-tick": "7360",
+      "x-source-revision": "bc69f36fb080422fa9602a6248c4260e1d775dab8c1e5bffc50f9fba5337d47b",
+      "x-frame-context": "{\"camera\":{\"target\":[35.0,25.0,18.0],\"radius\":83.0,\"yaw\":-0.9424777960769379,\"pitch\":0.6981317007977318},\"projected_assets\":[{\"id\":\"RIDE_COASTER\",\"x\":0.031783097195699495,\"y\":0.27145196582220105,\"visible\":true},{\"id\":\"RIDE_WHEEL\",\"x\":0.5,\"y\":0.4552048259114974,\"visible\":true},{\"id\":\"SHOW_ARENA\",\"x\":0.3495790917826096,\"y\":0.2981272629768792,\"visible\":true},{\"id\":\"FOOD_COURT\",\"x\":-0.3282716029449503,\"y\":0.7743932429938992,\"visible\":false},{\"id\":\"POWER_HUB\",\"x\":0.787272900531865,\"y\":0.6135114071506532,\"visible\":true},{\"id\":\"WATER_PLANT\",\"x\":0.11689985675048026,\"y\":0.09364360239649544,\"visible\":true},{\"id\":\"HOTEL\",\"x\":-0.45934344341662814,\"y\":0.5340622073080662,\"visible\":false},{\"id\":\"PARKING\",\"x\":0.07787224816491795,\"y\":2.159328696278224,\"visible\":false},{\"id\":\"FIRST_AID\",\"x\":-0.2047766372983405,\"y\":1.3878645436353778,\"visible\":false},{\"id\":\"RESTROOMS\",\"x\":0.3534413361289759,\"y\":1.5403609306073487,\"visible\":false},{\"id\":\"WEATHER_STATION\",\"x\":0.46143197034549754,\"y\":0.39486571905095963,\"visible\":true},{\"id\":\"ENTRY_GATE\",\"x\":-0.6215944949812711,\"y\":1.5027655805500053,\"visible\":false}],\"width\":1280,\"height\":720}",
+      "x-source-timestamp": "2026-10-15T21:21:48.428+00:00",
+      "x-source-age-seconds": "1.508336",
+      "x-view-mode": "live",
+      "x-scene-revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "x-pose-source": "live",
+      "x-renderer-ready": "true"
+    },
+    "control": {
+      "action": "focus",
+      "asset_id": "RIDE_WHEEL"
+    }
+  },
+  {
+    "file": "render-coaster.jpg",
+    "captured_at": "2026-10-15T21:21:52.199644+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "2e2b16bc70fd64f0c980a0e699a8ff4e72460da8",
+      "tree": "e6038dbff841e328d2e0d9b0799b9135f9d05d8a",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:19:48.838029+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "sha256": "2ce5f4ac34ad1e5c7f25f9d42afb35fde6c40d4ecbab58d4c1843d900986c03c",
+    "camera": {
+      "target": [
+        -35.0,
+        18.0,
+        7.0
+      ],
+      "radius": 83.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 1483,
+    "frame_headers": {
+      "x-frame-number": "1483",
+      "x-frame-camera-token": "2d919c2c88524e374b8469cee232c6c36beac2d2522e1e3e56af98731ab07873",
+      "x-frame-rendered-at": "2026-10-15T21:21:52.016+00:00",
+      "x-frame-age-seconds": "0.068",
+      "x-source-tick": "7363",
+      "x-source-revision": "d56abf9047a115f1bdc9315b614836887e94faf5b4b47eddf76f8ee26b8fbfd7",
+      "x-frame-context": "{\"camera\":{\"target\":[-35.0,18.0,7.0],\"radius\":83.0,\"yaw\":-0.9424777960769379,\"pitch\":0.6981317007977318},\"projected_assets\":[{\"id\":\"RIDE_COASTER\",\"x\":0.5,\"y\":0.4552048259114974,\"visible\":true},{\"id\":\"RIDE_WHEEL\",\"x\":1.653263972275138,\"y\":0.9078060713476821,\"visible\":false},{\"id\":\"SHOW_ARENA\",\"x\":0.9077295128071862,\"y\":0.4788004547663893,\"visible\":true},{\"id\":\"FOOD_COURT\",\"x\":0.17152176461292679,\"y\":1.4008923715101562,\"visible\":false},{\"id\":\"POWER_HUB\",\"x\":1.836626296066629,\"y\":1.050987779311098,\"visible\":false},{\"id\":\"WATER_PLANT\",\"x\":0.47361773740657853,\"y\":0.17050340694017735,\"visible\":true},{\"id\":\"HOTEL\",\"x\":-0.13350681744107795,\"y\":0.902360391326162,\"visible\":false},{\"id\":\"PARKING\",\"x\":3.2952551315171763,\"y\":8.633479563794953,\"visible\":false},{\"id\":\"FIRST_AID\",\"x\":0.8779694708645616,\"y\":3.3148254378103017,\"visible\":false},{\"id\":\"RESTROOMS\",\"x\":2.4295378511396466,\"y\":4.014185484892911,\"visible\":false},{\"id\":\"WEATHER_STATION\",\"x\":1.1529555823949633,\"y\":0.6459301235975432,\"visible\":false},{\"id\":\"ENTRY_GATE\",\"x\":0.013693750790155446,\"y\":3.8298892688831248,\"visible\":false}],\"width\":1280,\"height\":720}",
+      "x-source-timestamp": "2026-10-15T21:21:51.517+00:00",
+      "x-source-age-seconds": "0.566993",
+      "x-view-mode": "live",
+      "x-scene-revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "x-pose-source": "live",
+      "x-renderer-ready": "true"
+    },
+    "control": {
+      "action": "focus",
+      "asset_id": "RIDE_COASTER"
+    }
+  },
+  {
+    "file": "render-utilities.jpg",
+    "captured_at": "2026-10-15T21:21:54.293555+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "2e2b16bc70fd64f0c980a0e699a8ff4e72460da8",
+      "tree": "e6038dbff841e328d2e0d9b0799b9135f9d05d8a",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:19:48.838029+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "sha256": "7201fd0c0a4ed95e52fcb663fda1fd9b6fbed77a4ff141358bcf491cfa64856a",
+    "camera": {
+      "target": [
+        57.0,
+        47.0,
+        2.0
+      ],
+      "radius": 83.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 1510,
+    "frame_headers": {
+      "x-frame-number": "1510",
+      "x-frame-camera-token": "a1dda37536c97dab0b93d62ed6ba97cbd6941c0370ae0f1767596dd41594bd66",
+      "x-frame-rendered-at": "2026-10-15T21:21:54.177+00:00",
+      "x-frame-age-seconds": "0.007",
+      "x-source-tick": "7365",
+      "x-source-revision": "f25ee0a3afe152a2f4811e3e65e248777e0073040249850e09ad6bf585f8a07a",
+      "x-frame-context": "{\"camera\":{\"target\":[57.0,47.0,2.0],\"radius\":83.0,\"yaw\":-0.9424777960769379,\"pitch\":0.6981317007977318},\"projected_assets\":[{\"id\":\"RIDE_COASTER\",\"x\":-0.30260036410753477,\"y\":0.09745665296686934,\"visible\":false},{\"id\":\"RIDE_WHEEL\",\"x\":0.09266618958209966,\"y\":0.23073665355347311,\"visible\":true},{\"id\":\"SHOW_ARENA\",\"x\":0.07650806127522414,\"y\":0.13799883758283116,\"visible\":true},{\"id\":\"FOOD_COURT\",\"x\":-0.8725336787483438,\"y\":0.626451881410102,\"visible\":false},{\"id\":\"POWER_HUB\",\"x\":0.5,\"y\":0.4552048259114974,\"visible\":true},{\"id\":\"WATER_PLANT\",\"x\":-0.12551860753506505,\"y\":-0.0555821232267969,\"visible\":false},{\"id\":\"HOTEL\",\"x\":-0.9382393450034465,\"y\":0.3701849139718606,\"visible\":false},{\"id\":\"PARKING\",\"x\":-0.9437534215785985,\"y\":2.4307142812910585,\"visible\":false},{\"id\":\"FIRST_AID\",\"x\":-0.9826218218961056,\"y\":1.3463875015531257,\"visible\":false},{\"id\":\"RESTROOMS\",\"x\":-0.31664089567953113,\"y\":1.543869640230811,\"visible\":false},{\"id\":\"WEATHER_STATION\",\"x\":0.1725052101776735,\"y\":0.22996679400660325,\"visible\":true},{\"id\":\"ENTRY_GATE\",\"x\":-1.5829341058917068,\"y\":1.494431828686444,\"visible\":false}],\"width\":1280,\"height\":720}",
+      "x-source-timestamp": "2026-10-15T21:21:53.593+00:00",
+      "x-source-age-seconds": "0.592138",
+      "x-view-mode": "live",
+      "x-scene-revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "x-pose-source": "live",
+      "x-renderer-ready": "true"
+    },
+    "control": {
+      "action": "focus",
+      "asset_id": "POWER_HUB"
+    }
+  }
+]

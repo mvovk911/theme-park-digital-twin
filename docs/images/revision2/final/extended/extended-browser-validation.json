@@ -1,0 +1,40 @@
+{
+  "renderer": {
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "2e2b16bc70fd64f0c980a0e699a8ff4e72460da8",
+      "tree": "e6038dbff841e328d2e0d9b0799b9135f9d05d8a",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-15T21:19:48.838029+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "frame": 1254,
+    "rendered_at": "2026-10-15T21:21:33.677+00:00",
+    "source_timestamp": "2026-10-15T21:21:31.958+00:00",
+    "source_tick": 7343,
+    "accepted_state_revision": "4f5d7b37473fb764fe92693edfdf761956b7c9119959f5cd078ee4fd00d2ff39",
+    "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "camera_token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+    "view_mode": "live",
+    "snapshot_id": null,
+    "pose_source": "live"
+  },
+  "verified_at": "2026-10-15T21:21:33.855500+00:00",
+  "evidence_kind": "browser_against_running_application",
+  "annotation_visible_fraction": 0.92,
+  "annotation_revision_mismatches": 0,
+  "page_errors": [],
+  "connector_pause_stale_offline_resume": true,
+  "replay_read_only": true,
+  "replay_source_calls": 0,
+  "recording_continues": true,
+  "frame_metadata_failure_cases": false,
+  "mobile_overflow": false,
+  "record_id": 658,
+  "recorded_source_timestamp": "2026-10-15T21:21:17.424+00:00"
+}

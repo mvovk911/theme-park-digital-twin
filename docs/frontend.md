@@ -115,8 +115,8 @@ Controls use native buttons, selects and a timeline range input. Focus states,
 ARIA labels, live status messages, keyboard-accessible dialogs and reduced-motion
 preferences are present. With viewport focus, arrows orbit, `+`/`-` zoom and
 `Home` resets the camera. The desktop inspector stacks below the viewport on
-mobile. Desktop and mobile source/replay layout were checked against the actual
-GPU release `154e746`; subsequent annotation-cache validation is tracked below.
+mobile. Desktop and mobile source/replay layout were checked against actual
+GPU releases `154e746` and `2e2b16b`; acceptance evidence is tracked below.
 
 ## Evidence and validation boundaries
 
@@ -155,8 +155,33 @@ rejects changed views/cursors while preserving successful stable asset selection
 across later telemetry updates. An actual 10-second cadence sample also found
 annotations visible for only 63% of samples because each latest dashboard tick
 hid labels on the previous matching image. The revision-cache design above fixes
-that association path without relaxing exact matching; fresh GPU acceptance of
-these subsequent fixes is pending.
+that association path without relaxing exact matching.
+
+**Final GPU acceptance (`2e2b16b`):** Both durable browser suites passed on the
+verified release manifest, with scene SHA-256
+`7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c`.
+Native picks selected food-court, hotel and power-center roof geometry and updated
+the inspector. Each initial request was correctly rejected with HTTP 409 after
+its context changed; the retry succeeded. Coaster closure froze its pose while
+the wheel continued, and normal operation resumed it. Camera controls, dispatch,
+leak repair, comparison and source inspection passed. No page errors or desktop /
+mobile overflow were observed.
+
+The extended suite passed source condition changes, replay write rejection,
+recorded source isolation (including no live revision lookups), and ongoing
+recording. In comparable 100-sample / ten-second measurements, annotation
+visibility improved from 63% to 92%; all visible labels matched the displayed
+JPEG revision. This is a short acceptance sample, not a sustained benchmark;
+brief gaps remain while resolving a new exact snapshot.
+
+See [`final/browser-validation.json`](images/revision2/final/browser-validation.json),
+[`final/extended/extended-browser-validation.json`](images/revision2/final/extended/extended-browser-validation.json),
+and [`final/extended/annotation-cadence.json`](images/revision2/final/extended/annotation-cadence.json).
+Screenshots include [`live operations`](images/revision2/final/operations-live.png),
+[`recorded view`](images/revision2/final/extended/recorded-view.png), and
+[`source quality`](images/revision2/final/extended/source-stale.png).
+Four actual JPEG gallery views and per-image provenance are in
+[`final/gallery/render-captures.json`](images/revision2/final/gallery/render-captures.json).
 
 **Current local checks:** JavaScript syntax, Python test syntax, 58 referenced
 DOM identifiers and 28 JavaScript behavior checks pass. They cover missing-field
@@ -206,3 +231,8 @@ prefix Playwright commands with `env -u NODE_OPTIONS`.
 Tests change shared synthetic state. Cleanup returns to live, restores normal
 operations and the home camera; the extended test resumes the water connector.
 The audit trail is intentionally preserved.
+
+Final backend release `19cee1e` also passed the actual GPU browser smoke suite after
+the durable action change: [report](images/revision2/release19/browser/browser-validation.json).
+Native context-change rejections and successful retries remain explicit in the report.
+The earlier full extended/cadence run remains bound to `2e2b16b`.

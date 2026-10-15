@@ -1,0 +1,775 @@
+{
+  "schema_version": "1.0",
+  "scope": "Actual HTTP synthetic workflow acceptance; not physical systems or GPU rendering validation",
+  "synthetic": true,
+  "phase": "restart",
+  "url": "http://127.0.0.1:18765",
+  "started_at": "2026-10-15T21:27:49.730065+00:00",
+  "passed": true,
+  "source_identity": {
+    "source": "release_manifest",
+    "commit": "19cee1e9a3dfaa3156fa4ba976d1ca21832d3242",
+    "tree": "4235add5a54fd8918a38582a713e010418e4274f",
+    "disposition": "verified_manifest",
+    "verified": true,
+    "dirty": false,
+    "scene_path": "assets/park.usdc",
+    "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "mismatches": [],
+    "checked_at": "2026-10-15T21:27:30.331832+00:00",
+    "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+  },
+  "baseline": {
+    "scenario": "normal",
+    "source_modes": {
+      "ride_scada": "live",
+      "ticketing": "live",
+      "vision": "live",
+      "cmms": "live",
+      "erp": "live",
+      "workforce": "live",
+      "bms": "live",
+      "water": "live",
+      "weather": "live",
+      "gis": "live"
+    },
+    "initial_view": {
+      "mode": "live",
+      "snapshot_id": null,
+      "captured_at": null,
+      "source_timestamp": "2026-10-15T21:27:49.852+00:00",
+      "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "config_revision": "d00224701b0b185e1f9a22ec47289c40d75958cabff7dfbf2c64012d36b8f2d6",
+      "scene_matches_current": true,
+      "recorded_motion": null,
+      "live_tick": 7718,
+      "shared_session": true,
+      "read_only": false,
+      "work_orders_recorded": false
+    }
+  },
+  "initial_evidence": {
+    "path": "docs/images/revision2/release19/workflow-initial.json",
+    "sha256": "56ea10326ea110260fdf60f436b74d5f8370bfd37b5ffab8e66e00a13c51932d"
+  },
+  "restart_verification": {
+    "request": {
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER",
+      "request_id": "http-acceptance:2a87278aefb94d939b6988fa6d3f4972"
+    },
+    "acknowledgement": {
+      "acknowledgement": "accepted",
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER",
+      "id": 39,
+      "lifecycle": "work_order_open",
+      "message": "Synthetic work order #5 created and qualified maintenance assigned.",
+      "physical_effect": false,
+      "request_id": "http-acceptance:2a87278aefb94d939b6988fa6d3f4972",
+      "synthetic": true,
+      "target": {
+        "asset_id": "RIDE_COASTER",
+        "scope": "asset"
+      },
+      "timestamp": "2026-10-15T21:27:12.706+00:00",
+      "work_order_id": 5
+    },
+    "idempotency": {
+      "request_id": "http-acceptance:2a87278aefb94d939b6988fa6d3f4972",
+      "replayed": true
+    },
+    "audit_before": [
+      {
+        "id": 39,
+        "timestamp": "2026-10-15T21:27:12.706+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #5 created and qualified maintenance assigned."
+      },
+      {
+        "id": 38,
+        "timestamp": "2026-10-15T21:26:46.939+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 37,
+        "timestamp": "2026-10-15T21:26:37.454+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 36,
+        "timestamp": "2026-10-15T21:26:36.833+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 35,
+        "timestamp": "2026-10-15T21:26:36.044+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 34,
+        "timestamp": "2026-10-15T21:26:33.478+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #4 created and qualified maintenance assigned."
+      },
+      {
+        "id": 33,
+        "timestamp": "2026-10-15T21:26:29.408+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 32,
+        "timestamp": "2026-10-15T21:26:18.646+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 31,
+        "timestamp": "2026-10-15T21:21:34.366+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 30,
+        "timestamp": "2026-10-15T21:20:53.986+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 29,
+        "timestamp": "2026-10-15T21:20:45.102+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 28,
+        "timestamp": "2026-10-15T21:20:35.330+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 27,
+        "timestamp": "2026-10-15T21:20:34.776+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 26,
+        "timestamp": "2026-10-15T21:20:34.092+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 25,
+        "timestamp": "2026-10-15T21:20:31.276+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #3 created and qualified maintenance assigned."
+      },
+      {
+        "id": 24,
+        "timestamp": "2026-10-15T21:20:27.074+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 23,
+        "timestamp": "2026-10-15T21:20:15.638+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 22,
+        "timestamp": "2026-10-15T21:03:34.415+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 21,
+        "timestamp": "2026-10-15T21:03:10.185+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 20,
+        "timestamp": "2026-10-15T21:02:11.881+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 19,
+        "timestamp": "2026-10-15T21:01:48.019+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 18,
+        "timestamp": "2026-10-15T21:01:00.240+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 17,
+        "timestamp": "2026-10-15T21:00:22.976+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 16,
+        "timestamp": "2026-10-15T19:46:01.800+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to show_surge"
+      },
+      {
+        "id": 15,
+        "timestamp": "2026-10-15T19:31:59.541+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 14,
+        "timestamp": "2026-10-15T19:31:49.773+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 13,
+        "timestamp": "2026-10-15T19:31:49.541+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 12,
+        "timestamp": "2026-10-15T19:31:49.311+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 11,
+        "timestamp": "2026-10-15T19:31:46.952+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #2 created and qualified maintenance assigned."
+      },
+      {
+        "id": 10,
+        "timestamp": "2026-10-15T19:31:43.203+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 9,
+        "timestamp": "2026-10-15T19:31:33.866+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 8,
+        "timestamp": "2026-10-15T19:28:29.812+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 7,
+        "timestamp": "2026-10-15T19:28:29.584+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 6,
+        "timestamp": "2026-10-15T19:28:29.176+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 5,
+        "timestamp": "2026-10-15T19:28:26.759+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #1 created and qualified maintenance assigned."
+      },
+      {
+        "id": 4,
+        "timestamp": "2026-10-15T19:28:22.928+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 3,
+        "timestamp": "2026-10-15T19:28:13.709+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-15T19:26:36.478+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 1,
+        "timestamp": "2026-10-15T19:22:54.673+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      }
+    ],
+    "audit_after": [
+      {
+        "id": 39,
+        "timestamp": "2026-10-15T21:27:12.706+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #5 created and qualified maintenance assigned."
+      },
+      {
+        "id": 38,
+        "timestamp": "2026-10-15T21:26:46.939+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 37,
+        "timestamp": "2026-10-15T21:26:37.454+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 36,
+        "timestamp": "2026-10-15T21:26:36.833+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 35,
+        "timestamp": "2026-10-15T21:26:36.044+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 34,
+        "timestamp": "2026-10-15T21:26:33.478+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #4 created and qualified maintenance assigned."
+      },
+      {
+        "id": 33,
+        "timestamp": "2026-10-15T21:26:29.408+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 32,
+        "timestamp": "2026-10-15T21:26:18.646+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 31,
+        "timestamp": "2026-10-15T21:21:34.366+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 30,
+        "timestamp": "2026-10-15T21:20:53.986+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 29,
+        "timestamp": "2026-10-15T21:20:45.102+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 28,
+        "timestamp": "2026-10-15T21:20:35.330+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 27,
+        "timestamp": "2026-10-15T21:20:34.776+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 26,
+        "timestamp": "2026-10-15T21:20:34.092+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 25,
+        "timestamp": "2026-10-15T21:20:31.276+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #3 created and qualified maintenance assigned."
+      },
+      {
+        "id": 24,
+        "timestamp": "2026-10-15T21:20:27.074+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 23,
+        "timestamp": "2026-10-15T21:20:15.638+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 22,
+        "timestamp": "2026-10-15T21:03:34.415+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 21,
+        "timestamp": "2026-10-15T21:03:10.185+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 20,
+        "timestamp": "2026-10-15T21:02:11.881+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 19,
+        "timestamp": "2026-10-15T21:01:48.019+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 18,
+        "timestamp": "2026-10-15T21:01:00.240+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 17,
+        "timestamp": "2026-10-15T21:00:22.976+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 16,
+        "timestamp": "2026-10-15T19:46:01.800+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to show_surge"
+      },
+      {
+        "id": 15,
+        "timestamp": "2026-10-15T19:31:59.541+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 14,
+        "timestamp": "2026-10-15T19:31:49.773+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 13,
+        "timestamp": "2026-10-15T19:31:49.541+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 12,
+        "timestamp": "2026-10-15T19:31:49.311+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 11,
+        "timestamp": "2026-10-15T19:31:46.952+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #2 created and qualified maintenance assigned."
+      },
+      {
+        "id": 10,
+        "timestamp": "2026-10-15T19:31:43.203+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 9,
+        "timestamp": "2026-10-15T19:31:33.866+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 8,
+        "timestamp": "2026-10-15T19:28:29.812+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 7,
+        "timestamp": "2026-10-15T19:28:29.584+00:00",
+        "action": "repair_leak",
+        "asset_id": "WATER_PLANT",
+        "message": "Synthetic leak isolated and repaired; plant flow restored."
+      },
+      {
+        "id": 6,
+        "timestamp": "2026-10-15T19:28:29.176+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to water_leak"
+      },
+      {
+        "id": 5,
+        "timestamp": "2026-10-15T19:28:26.759+00:00",
+        "action": "dispatch_maintenance",
+        "asset_id": "RIDE_COASTER",
+        "message": "Synthetic work order #1 created and qualified maintenance assigned."
+      },
+      {
+        "id": 4,
+        "timestamp": "2026-10-15T19:28:22.928+00:00",
+        "action": "scenario",
+        "asset_id": null,
+        "message": "Synthetic scenario set to ride_closure"
+      },
+      {
+        "id": 3,
+        "timestamp": "2026-10-15T19:28:13.709+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 2,
+        "timestamp": "2026-10-15T19:26:36.478+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      },
+      {
+        "id": 1,
+        "timestamp": "2026-10-15T19:22:54.673+00:00",
+        "action": "reset",
+        "asset_id": null,
+        "message": "Synthetic park restored to normal operations; audit retained."
+      }
+    ],
+    "work_orders_before": [
+      {
+        "id": 5,
+        "asset_id": "RIDE_COASTER",
+        "status": "open",
+        "created_at": "2026-10-15T21:27:12.706+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 4,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T21:26:33.477+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 3,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T21:20:31.276+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 2,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T19:31:46.952+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 1,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T19:28:26.759+00:00",
+        "title": "Inspect synthetic operational fault"
+      }
+    ],
+    "work_orders_after": [
+      {
+        "id": 5,
+        "asset_id": "RIDE_COASTER",
+        "status": "open",
+        "created_at": "2026-10-15T21:27:12.706+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 4,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T21:26:33.477+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 3,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T21:20:31.276+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 2,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T19:31:46.952+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      {
+        "id": 1,
+        "asset_id": "RIDE_COASTER",
+        "status": "closed_by_reset",
+        "created_at": "2026-10-15T19:28:26.759+00:00",
+        "title": "Inspect synthetic operational fault"
+      }
+    ],
+    "startup_before": "2026-10-15T21:24:24.850634+00:00",
+    "startup_after": "2026-10-15T21:27:30.331832+00:00",
+    "passed": true,
+    "scope": "Source startup timestamp changed and durable HTTP receipt survived; no OS process attestation"
+  },
+  "cleanup": [
+    {
+      "operation": "view_live",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "scenario",
+      "ok": true,
+      "mode": null
+    },
+    {
+      "operation": "source:ride_scada",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:ticketing",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:vision",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:cmms",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:erp",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:workforce",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:bms",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:water",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:weather",
+      "ok": true,
+      "mode": "live"
+    },
+    {
+      "operation": "source:gis",
+      "ok": true,
+      "mode": "live"
+    }
+  ],
+  "finished_at": "2026-10-15T21:27:55.222271+00:00",
+  "elapsed_seconds": 5.465
+}

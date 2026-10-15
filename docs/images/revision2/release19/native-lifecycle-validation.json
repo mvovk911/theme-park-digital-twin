@@ -1,0 +1,28 @@
+{
+  "kind": "actual_ovstage_ovrtx_startup_and_cleanup",
+  "checked_at": "2026-10-15T21:25:19.218230+00:00",
+  "passed": true,
+  "source_identity": {
+    "source": "release_manifest",
+    "commit": "19cee1e9a3dfaa3156fa4ba976d1ca21832d3242",
+    "tree": "4235add5a54fd8918a38582a713e010418e4274f",
+    "disposition": "verified_manifest",
+    "verified": true,
+    "dirty": false,
+    "scene_path": "assets/park.usdc",
+    "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "mismatches": [],
+    "checked_at": "2026-10-15T21:25:13.783755+00:00",
+    "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+  },
+  "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+  "ovstage_version": "0.3.0.1791986420",
+  "ovrtx_version": "0.6.0.1791947691",
+  "rendered_frames": 20,
+  "ready_before_stop": true,
+  "final_phase": "stopped",
+  "cleanup_errors": [],
+  "error": null,
+  "outstanding_commands": 0,
+  "scope": "Real render loop and native cleanup calls; no claim of exhaustive leak or concurrency certification"
+}
