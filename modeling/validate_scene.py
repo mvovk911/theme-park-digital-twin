@@ -93,5 +93,46 @@ assert inventory==build_inventory(stage,registry['assets'],contract), 'inventory
 print(f'PASS: canonical names/types, explicit authored aliases, {binding_count} static metric bindings and inventory match the sole operational catalog')
 
 import hashlib
-validation={'scene_revision':2,'usd_sha256':hashlib.sha256((base/'park.usdc').read_bytes()).hexdigest(),'asset_roots':12,'all_operational_roots_identity':True,'materials_bound':True,'self_contained_usd':True,'articulated_car_count':3,'authored_car_poses_match_route':True,'tree_structure_intersections':0,'gpu_visual_review':'pending revision 2 deployment','blender_handoff_revision':1,'canonical_identity_matches_domain':True,'catalog_sha256':contract['catalog_sha256'],'static_metric_bindings':binding_count,'inventory_matches_usd':True}
+
+def inspect_blender_handoff(asset_dir, current_usd_hash, current_scene_revision, expected_asset_ids):
+    """Validate stored worker evidence against local files; never runs Blender."""
+    result={'status':'pending','scene_revision':None,
+            'verification_mode':'stored_worker_report_and_local_file_hashes',
+            'blender_run_in_this_check':False,'evidence_file':'blender_validation.json'}
+    report_path=asset_dir/'blender_validation.json';blend_path=asset_dir/'park.blend'
+    if not report_path.is_file() or not blend_path.is_file():
+        result['reasons']=['missing_blender_artifact_or_report'];return result
+    try:
+        report=json.loads(report_path.read_text())
+    except (OSError,ValueError):
+        result['reasons']=['unreadable_blender_report'];return result
+    actual_blend_hash=hashlib.sha256(blend_path.read_bytes()).hexdigest()
+    checks={
+        'blend_hash_matches_report':actual_blend_hash==report.get('blend_sha256'),
+        'usd_hash_matches_report':current_usd_hash==report.get('source_usd_sha256'),
+        'byte_count_matches_report':blend_path.stat().st_size==report.get('bytes'),
+        'scene_revision_matches':report.get('scene_revision')==current_scene_revision,
+        'worker_reopen_verification_recorded':report.get('save_reopen_verified') is True,
+        'asset_ids_match':sorted(report.get('asset_ids_verified',[]))==sorted(expected_asset_ids),
+        'no_unbound_meshes_reported':report.get('unbound_meshes')==0,
+    }
+    result.update(checks=checks,blend_sha256=actual_blend_hash,
+                  reported_scene_revision=report.get('scene_revision'),
+                  reported_source_commit=report.get('source_git_commit'))
+    if all(checks.values()):
+        result.update(status='verified_matching_artifact',scene_revision=report['scene_revision'])
+    else:
+        result['reasons']=[key for key,passed in checks.items() if not passed]
+    return result
+
+usd_hash=hashlib.sha256((base/'park.usdc').read_bytes()).hexdigest()
+blender_evidence=inspect_blender_handoff(base,usd_hash,inventory['scene_revision'],contract['assets'])
+validation={'scene_revision':inventory['scene_revision'],'usd_sha256':usd_hash,'asset_roots':12,
+            'all_operational_roots_identity':True,'materials_bound':True,'self_contained_usd':True,
+            'articulated_car_count':3,'authored_car_poses_match_route':True,'tree_structure_intersections':0,
+            'gpu_visual_review':'Not performed by this validator; see separate runtime/browser acceptance evidence.',
+            'blender_handoff_revision':blender_evidence['scene_revision'],'blender_handoff':blender_evidence,
+            'canonical_identity_matches_domain':True,'catalog_sha256':contract['catalog_sha256'],
+            'static_metric_bindings':binding_count,'inventory_matches_usd':True}
 (base/'scene_quality_validation.json').write_text(json.dumps(validation,indent=2)+'\n')
+print(f"Blender handoff: {blender_evidence['status']} (stored report and local hashes; Blender was not rerun)")

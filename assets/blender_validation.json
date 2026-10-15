@@ -1,14 +1,49 @@
 {
   "blender_version": "4.5.3 LTS",
   "worker": "park-twin-rtx",
-  "objects": 2239,
-  "meshes": 2200,
-  "materials": 28,
+  "source_git_commit": "154e74688d46583dde9e869bf8dc105a5881669d",
+  "source_usd_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+  "blend_sha256": "030aac4f23b837972270d5ac290e38337fbed1b29a3860317810d4523e4e7565",
+  "objects": 2997,
+  "meshes": 2954,
+  "materials": 33,
   "unbound_meshes": 0,
   "camera": "Camera",
-  "bytes": 15190908,
-  "scene_revision": 1,
+  "bytes": 20242246,
+  "scene_revision": 2,
   "current_usd_revision": 2,
-  "matches_current_usd": false,
-  "note": "Verified revision 1 handoff; regenerate from revision 2 USD after worker access is restored."
+  "matches_current_usd": true,
+  "asset_ids_verified": [
+    "ENTRY_GATE",
+    "FIRST_AID",
+    "FOOD_COURT",
+    "HOTEL",
+    "PARKING",
+    "POWER_HUB",
+    "RESTROOMS",
+    "RIDE_COASTER",
+    "RIDE_WHEEL",
+    "SHOW_ARENA",
+    "WATER_PLANT",
+    "WEATHER_STATION"
+  ],
+  "material_bindings_verified": 2954,
+  "material_parameters_verified": true,
+  "articulated_car_checks": [
+    {
+      "prim_path": "/World/Park/RIDE_COASTER/Train/Car_00",
+      "maximum_matrix_error": 2.181175062787588e-07
+    },
+    {
+      "prim_path": "/World/Park/RIDE_COASTER/Train/Car_01",
+      "maximum_matrix_error": 1.7881393421514957e-07
+    },
+    {
+      "prim_path": "/World/Park/RIDE_COASTER/Train/Car_02",
+      "maximum_matrix_error": 4.768371573149466e-07
+    }
+  ],
+  "save_reopen_verified": true,
+  "output_path": "/home/horde/park-twin-artifacts/154e746/park.blend",
+  "note": "Editable Blender handoff regenerated from the immutable source release, saved, reopened and verified; not an OVRTX rendering claim."
 }

@@ -4,7 +4,7 @@ The procedural source is `modeling/generate_park.py`, with the landscaping and g
 
 **Current USD revision: 2.** It contains 3,067 prims, 46 polygon meshes, and 12 operational asset roots. The remaining geometry uses standard USD analytic gprims. Physical dimensions are meters, Z is up, and the site covers 160 × 120 m with the entrance on the south edge. The ground plinth extends to 165 × 125 m.
 
-**Current Blender handoff: revision 1.** Its earlier import/save/reopen verification remains recorded, but it does not yet include the revision 2 landscaping or articulated cars. Regenerate the Blender handoff with the command below when access to the modeling worker is available. Existing screenshots also show revision 1; revision 2 has local structural and animation validation, with GPU visual inspection still pending.
+**Current Blender handoff: revision 2.** It was regenerated from immutable source release `154e74688d46583dde9e869bf8dc105a5881669d`, saved, reopened, verified on Horde, and downloaded. Its USD and Blender SHA-256 hashes match the local files. This confirms the editable modeling handoff; native OVRTX rendering and browser/picking acceptance are separate evidence.
 
 ## Rebuild and validate
 
@@ -100,7 +100,9 @@ On Horde worker `park-twin-rtx`, the installed official standalone binary is `/h
 
 Blender imports analytic USD primitives as meshes but omits their material bindings. `import_blender.py` restores them using the generated `assets/blender_materials.json`, which contains full prim paths and PreviewSurface parameters. The script rejects a missing camera, unexpectedly small imports, and unbound meshes after repair. The OVRTX USD stage needs no repair.
 
-The existing revision 1 `park.blend` was imported, saved, reopened, and validated: 2,239 objects, 2,200 meshes, 28 retained materials, zero unbound meshes, valid camera, and 15,190,908 bytes. Its evidence is in `blender_validation.json`, now explicitly marked as preceding the current USD. It will be replaced after a verified revision 2 import.
+The revision 2 `park.blend` was imported, saved, reopened, and validated on Blender 4.5.3 LTS: **2,997 objects, 2,954 meshes, 33 materials, zero unbound meshes**, a valid camera, all 12 stable asset IDs, and all three articulated-car world matrices. Every mesh material binding and its color, roughness, and metallic parameters were checked. The file is 20,242,246 bytes.
+
+`blender_validation.json` records source commit, source USD hash, Blender file hash, and the worker verification. The maximum articulated-car matrix discrepancy was below `4.8e-7`. Artifacts were written to `/home/horde/park-twin-artifacts/154e746/`, leaving the immutable release unchanged. The local scene validator checks that this stored report matches the actual local USD and Blender bytes; it does not claim to rerun Blender. If either file changes or evidence is missing, the handoff becomes pending in `scene_quality_validation.json`.
 
 ## GPU evidence plan
 
@@ -113,4 +115,4 @@ Capture images from the OVRTX service with its `/status` response alongside them
 5. **Utilities:** focus the transformer/batteries and water tanks/valves, with synthetic measurements in the inspector.
 6. **Incident response:** stop a ride, record scenario/API state, then resume and verify motion continues from its stopped pose.
 
-Keep both a browser screenshot and direct `/frame.jpg` export. A Blender import log is separate modeling evidence, not an OVRTX rendering claim. Revision 2 GPU imagery and refreshed Blender validation are pending worker access.
+Keep both a browser screenshot and direct `/frame.jpg` export, recording their source-release and frame provenance. A Blender import/reopen report is separate modeling evidence, not an OVRTX rendering or browser-picking claim. The revision 2 Blender handoff is verified; native rendering and interactive acceptance must be assessed using their separate runtime/browser evidence.
