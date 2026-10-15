@@ -90,3 +90,15 @@ not claim to implement every eventual park system, a calibrated optimizer,
 commercial ERP/MES replacements, or physical ride control. The
 [progress page](progress.md) maps current deliverables and remaining work; the
 [integration roadmap](integration-roadmap.md) describes a real-world pilot.
+
+## Extended development requests
+
+### Holistic development goal — 22:04 CEST
+
+> make it a goal for next few hours to work on this project holistcly. working on the assets, designing api connectors for all the synthetic data. spin up another agent that will review results of project state against most modern digital twin examples you could see in the media.
+
+### Recurring architecture review and published checkpoints — 22:09 CEST
+
+> deploy another subagent that reviews the project. if it backame to much of a blob. uncontrollable. can stuff, code project, be completly refactored - is there value to do stuff one more time. interested in this review from time to time.
+>
+> don-t forget commiting things to the repo as well, interested in progress when some steps are finished

@@ -6,6 +6,20 @@ This page is the review entry point. It tracks the [original project request](pr
 links editable deliverables, and shows actual renders from the running application.
 The concept deck is a design proposal; the captures below are implementation evidence.
 
+## Active development and independent reviews
+
+A further development goal began at 20:04 UTC (22:04 CEST) on 15 October.
+The [independent digital-twin benchmark](reviews/2026-10-15-digital-twin-benchmark.md)
+is complete and evaluates the published baseline against current examples.
+A separate architecture review is examining whether focused refactors, component
+rewrites or a restart would improve maintainability. It will be repeated after
+integrated milestones. [Development log](development-log.md).
+
+Current work in progress: ten-domain connector ingestion and provenance,
+improved park landscaping and articulated coaster cars, then coherent historical
+replay and operator source-health views. These are not marked delivered by this
+checkpoint; the gallery below remains evidence of the last verified application.
+
 ## Delivery checklist
 
 | Requested outcome | Status | Review evidence |

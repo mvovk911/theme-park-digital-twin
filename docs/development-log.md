@@ -1,0 +1,40 @@
+# Development log
+
+## 15 October 2026, 20:04 UTC — extended development goal
+
+The owner requested continued holistic development over the next few hours,
+covering assets, API connectors for every synthetic domain, and an independent
+review against current digital-twin examples in public media.
+
+Active workstreams:
+
+- **Connector architecture:** explicit event contracts, stable mappings, units,
+  validation, deduplication, freshness and accepted-event provenance for all ten
+  sources. Demonstrate source failure and recovery without claiming real PLC or
+  commercial ERP connectivity.
+- **Assets:** more useful guest-scale landscape and queue detail; articulated
+  coaster cars while preserving stable scene identities.
+- **Operations experience:** coherent historical replay, visible source health and
+  logical dependency context for incidents. Preserve live data while inspecting
+  history.
+- **Independent review:** [current-practice benchmark](reviews/2026-10-15-digital-twin-benchmark.md),
+  followed by acceptance review of the implemented changes.
+
+Baseline: public commit `930acd3`, validated OVStage/OVRTX application on one L40.
+New work is only marked complete after integration checks and actual GPU/browser
+captures. The current published gallery remains the last verified checkpoint
+until the next release is recorded here.
+
+## 15 October 2026, 20:09 UTC — architecture and milestone review
+
+The owner requested an additional independent architecture review: assess whether
+this is becoming an uncontrolled blob, whether targeted refactoring or component
+rewrites are worthwhile, and whether a full restart has value. Repeat the review
+at completed milestones and publish finished steps rather than leaving all
+progress uncommitted.
+
+The [external digital-twin benchmark](reviews/2026-10-15-digital-twin-benchmark.md)
+is complete against baseline `930acd3`. Its priorities are accepted-event ingestion,
+source trust, a visible incident/acknowledgement loop and coherent replay. The
+separate architecture review is in progress. Connector and asset changes remain
+work in progress until their implementation and checks are finished.
