@@ -63,7 +63,7 @@ class ConnectorRuntime:
                     self.counters[source_id]["poll_failures"] += 1
                     self.errors[source_id] = {"code": "adapter_poll_failed", "message": "Source adapter poll failed"}
 
-    def _ingest(self, source_id, events):
+    def _ingest(self, source_id, events, transport=None):
         adapter = self.adapters[source_id]
         result = {"source_id": source_id, "accepted": 0, "rejected": 0, "duplicates": 0, "errors": []}
         now = self.clock()
@@ -71,7 +71,7 @@ class ConnectorRuntime:
             try:
                 mapping, timestamp = validate_event(event, self.mapping_indexes[source_id], self.known_assets, now)
                 provenance = {"adapter": adapter.adapter_id, "synthetic": adapter.synthetic,
-                              "transport": adapter.transport, "source_field": mapping.metric,
+                              "transport": transport or adapter.transport, "source_field": mapping.metric,
                               "planned_protocol": self.specs[source_id].planned_protocol}
                 accepted = self.stores[source_id].accept(source_id, event, mapping, timestamp, now, provenance)
                 result["duplicates" if accepted is None else "accepted"] += 1
@@ -97,7 +97,7 @@ class ConnectorRuntime:
                 raise EventError("source_not_paused", "Pause this synthetic connector before injecting demo events")
             if not isinstance(events, list) or not 1 <= len(events) <= 500:
                 raise EventError("invalid_batch_size", "Provide between 1 and 500 events")
-            return self._ingest(source_id, events)
+            return self._ingest(source_id, events, transport="synthetic_http_ingest")
 
     def set_simulation_mode(self, source_id, mode):
         with self.lock:

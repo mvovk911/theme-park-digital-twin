@@ -2,7 +2,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
-from backend.simulator import SYSTEM_DEFS, registry
+from backend.domain import SYSTEM_DEFS, registry
 
 
 @dataclass(frozen=True)

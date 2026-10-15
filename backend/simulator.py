@@ -2,101 +2,18 @@
 from __future__ import annotations
 import copy
 import json
-import math
 import sqlite3
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
 
-SCENARIOS = [
-    {"id": "normal", "label": "Normal operations", "description": "A typical synthetic operating day."},
-    {"id": "ride_closure", "label": "Ride closure", "description": "Coaster fault displaces guests into nearby queues."},
-    {"id": "show_surge", "label": "Show departure surge", "description": "An audience leaves the arena and increases food and ride demand."},
-    {"id": "heatwave", "label": "Heatwave", "description": "High temperature raises cooling, water and first-aid demand."},
-    {"id": "power_fault", "label": "Power feeder fault", "description": "A feeder fault closes the coaster and reduces usable power capacity."},
-    {"id": "water_leak", "label": "Water leak", "description": "A leak increases plant flow and affects nearby facilities."},
-    {"id": "food_rush", "label": "Lunch rush", "description": "Food queues grow while inventory and staffing become constrained."},
-]
-ACTIONS = [
-    {"id": "dispatch_maintenance", "label": "Dispatch maintenance"},
-    {"id": "reroute_guests", "label": "Reroute guests"},
-    {"id": "add_staff", "label": "Add qualified staff"},
-    {"id": "shed_load", "label": "Shed flexible load"},
-    {"id": "repair_leak", "label": "Simulate leak repair"},
-    {"id": "replenish_stock", "label": "Replenish food stock"},
-    {"id": "reset", "label": "Reset simulation"},
-]
+# Compatibility exports retained for existing callers.
+from .domain import ACTIONS, SCENARIOS, SYSTEM_DEFS, registry
+from .model_rules import evaluate
 
 
 def utc_now():
     return datetime.now(timezone.utc).isoformat(timespec="milliseconds")
-
-
-def registry():
-    # id, name, type, cap, occupancy, wait, throughput, kW, lpm, staff, qualification
-    rows = [
-        ("RIDE_COASTER", "Skyline Coaster", "ride", 48, 35, 24, 840, 220, 2, 6, "ride_operator_coaster"),
-        ("RIDE_WHEEL", "Panorama Wheel", "ride", 96, 68, 12, 320, 42, 0, 3, "ride_operator_wheel"),
-        ("SHOW_ARENA", "Lakeside Arena", "entertainment", 600, 310, 4, 600, 65, 4, 5, "crowd_steward"),
-        ("FOOD_COURT", "Garden Food Court", "food", 240, 145, 8, 290, 85, 38, 12, "food_hygiene"),
-        ("POWER_HUB", "Energy Center", "utility", 900, 0, 0, 0, 15, 0, 2, "electrical_authorized"),
-        ("WATER_PLANT", "Water & Lake Plant", "utility", 650, 0, 0, 0, 28, 180, 2, "water_treatment"),
-        ("ENTRY_GATE", "Welcome Plaza", "admission", 350, 85, 3, 1800, 12, 2, 8, "guest_services"),
-        ("PARKING", "Arrival & EV Parking", "transport", 600, 355, 0, 300, 55, 0, 4, "traffic_steward"),
-        ("HOTEL", "Parkside Lodge", "hospitality", 180, 125, 0, 25, 130, 62, 18, "hospitality"),
-        ("FIRST_AID", "Guest Care", "care", 18, 3, 0, 24, 8, 5, 3, "first_aid_certified"),
-        ("RESTROOMS", "Central Restrooms", "facility", 36, 12, 2, 200, 7, 28, 3, "facilities_service"),
-        ("WEATHER_STATION", "Weather Mast", "sensor", 1, 0, 0, 0, 0.3, 0, 0, "instrumentation"),
-    ]
-    descriptions = {
-        "RIDE_COASTER": "Coaster telemetry, ride availability, queue demand and certified staffing.",
-        "RIDE_WHEEL": "Wheel operations and reserve attraction capacity for diverted guests.",
-        "SHOW_ARENA": "Show schedule, audience capacity and predicted departure surge.",
-        "FOOD_COURT": "Restaurant demand, kitchen staffing, ERP inventory and service cost.",
-        "POWER_HUB": "Electrical feeder dependencies, flexible demand and consumption.",
-        "WATER_PLANT": "Water supply, lake circulation, leak detection and treatment.",
-        "ENTRY_GATE": "Ticket admission, reservations and occupancy estimation.",
-        "PARKING": "Arrival demand, car occupancy, EV charging and transport connections.",
-        "HOTEL": "Resort occupancy, cooling demand and hospitality services.",
-        "FIRST_AID": "Guest care readiness, occupancy and certified responders.",
-        "RESTROOMS": "Water use, facility occupancy, cleaning and service readiness.",
-        "WEATHER_STATION": "Synthetic local weather driving operational forecasts.",
-    }
-    out = []
-    for ident, name, kind, cap, occ, wait, throughput, power, water, staff, qual in rows:
-        dependencies = [] if ident in {"POWER_HUB", "WEATHER_STATION"} else ["POWER_HUB"]
-        if ident in {"FOOD_COURT", "HOTEL", "RESTROOMS", "FIRST_AID"}:
-            dependencies.append("WATER_PLANT")
-        out.append({"id": ident, "name": name, "type": kind, "scene_path": f"/World/Park/{ident}",
-                    "description": descriptions[ident], "capacity": cap, "occupancy": occ,
-                    "queue_minutes": wait, "throughput_per_hour": throughput, "power_kw": power,
-                    "water_lpm": water, "temperature_c": 24.0,
-                    "staff": {"on_duty": staff, "required": staff, "qualifications": [qual]},
-                    "reservations": {"booked": int(cap * .35), "next_window_minutes": 15},
-                    "erp": {"stock_units": 420 if ident == "FOOD_COURT" else 80,
-                            "stock_capacity": 600 if ident == "FOOD_COURT" else 100,
-                            "reorder_point": 120 if ident == "FOOD_COURT" else 20,
-                            "operating_cost_eur_per_hour": round(staff * 28 + power * .22, 2)},
-                    "dependencies": dependencies,
-                    "maintenance": {"inspection_status": "passed", "health_pct": 98, "open_work_orders": 0},
-                    "metadata": {"source": "Synthetic park simulator", "baseline_power_kw": power,
-                                 "accessibility": "Accessible guest route; attraction-specific boarding requirements apply"},
-                    "synthetic": True})
-    return out
-
-
-SYSTEM_DEFS = [
-    ("ride_scada", "Simulated Ride SCADA", "Synthetic HTTP · planned OPC UA", ["RIDE_COASTER", "RIDE_WHEEL"]),
-    ("ticketing", "Simulated Ticketing & Reservations", "Synthetic HTTP · planned REST", ["ENTRY_GATE", "RIDE_COASTER", "RIDE_WHEEL", "SHOW_ARENA"]),
-    ("vision", "Simulated People Counters", "Synthetic HTTP · planned MQTT", ["ENTRY_GATE", "SHOW_ARENA", "FOOD_COURT", "PARKING"]),
-    ("cmms", "Simulated Maintenance CMMS", "Synthetic HTTP · planned vendor REST", ["RIDE_COASTER", "RIDE_WHEEL", "POWER_HUB", "WATER_PLANT"]),
-    ("erp", "Simulated ERP & POS", "Synthetic HTTP · planned vendor REST", ["FOOD_COURT", "HOTEL"]),
-    ("workforce", "Simulated Workforce", "Synthetic HTTP · planned REST", ["ENTRY_GATE", "FOOD_COURT", "RIDE_COASTER", "FIRST_AID"]),
-    ("bms", "Simulated Building & Energy", "Synthetic HTTP · planned BACnet", ["POWER_HUB", "HOTEL", "FOOD_COURT", "PARKING"]),
-    ("water", "Simulated Water Management", "Synthetic HTTP · planned MQTT", ["WATER_PLANT", "RESTROOMS"]),
-    ("weather", "Simulated Local Weather", "Synthetic HTTP · planned REST", ["WEATHER_STATION"]),
-    ("gis", "Park Asset Registry / OpenUSD", "Synthetic HTTP · OpenUSD paths", [a["id"] for a in registry()]),
-]
 
 
 class ParkSimulator:
@@ -238,99 +155,8 @@ class ParkSimulator:
             return {"synthetic": True, "result": result, "state": self.snapshot()}
 
     def _evaluate(self, scenario, mitigations, tick, now, work_order_counts, recent_actions):
-        """Evaluate demo rules without changing simulator state or touching storage."""
-        assets = copy.deepcopy(self.base)
-        wave = math.sin(tick / 25)
-        temp = (38 if scenario == "heatwave" else 24) + wave * .5
-        for i, a in enumerate(assets.values()):
-            variation = math.sin(tick / 20 + i) * .035
-            a["status"] = "operational"
-            a["occupancy"] = max(0, min(a["capacity"], round(a["occupancy"] * (1 + variation))))
-            a["queue_minutes"] = max(0, round(a["queue_minutes"] * (1 + variation), 1))
-            a["power_kw"] *= 1 + variation
-            a["water_lpm"] *= 1 + variation
-            a["temperature_c"] = round(temp, 1)
-            extra_staff = mitigations.get(f"staff:{a['id']}", 0)
-            a["staff"]["on_duty"] += extra_staff
-            a["erp"]["operating_cost_eur_per_hour"] += extra_staff * 28
-            a["maintenance"]["open_work_orders"] = work_order_counts.get(a["id"], 0)
-            a["timestamp"] = now
-        coaster, wheel, food = assets["RIDE_COASTER"], assets["RIDE_WHEEL"], assets["FOOD_COURT"]
-        alerts = []
-        def alert(ident, severity, target, title, message, action):
-            alerts.append({"id": ident, "severity": severity, "asset_id": target, "title": title, "message": message, "recommended_action": action})
-        if scenario in {"ride_closure", "power_fault"}:
-            coaster.update(status="closed", occupancy=0, throughput_per_hour=0, queue_minutes=0, power_kw=18)
-            coaster["maintenance"].update(health_pct=42, inspection_status="review_required")
-            wheel.update(status="warning", queue_minutes=32 + wave)
-            food["queue_minutes"] += 10
-            alert("ride_unavailable", "critical", "RIDE_COASTER", "Coaster unavailable", "Synthetic fault: dispatch maintenance; displaced guests increase nearby queues.", "dispatch_maintenance")
-        if scenario == "power_fault":
-            assets["POWER_HUB"].update(status="fault", capacity=540)
-            assets["HOTEL"]["status"] = "warning"
-            alert("feeder_fault", "critical", "POWER_HUB", "Feeder capacity reduced", "Synthetic power capacity is limited to 540 kW. Flexible load shedding reduces demand; feeder repair is still required.", "shed_load")
-        if scenario == "show_surge":
-            assets["SHOW_ARENA"].update(status="warning", occupancy=560)
-            food.update(queue_minutes=29, occupancy=228, status="warning")
-            wheel["queue_minutes"] += 18
-            coaster["queue_minutes"] += 15
-            alert("crowd_surge", "warning", "SHOW_ARENA", "Show departure demand", "560 synthetic guests are entering the plaza and nearby queues.", "reroute_guests")
-        if scenario == "heatwave":
-            for ident in ("HOTEL", "FOOD_COURT", "FIRST_AID"):
-                assets[ident]["power_kw"] *= 1.3
-                assets[ident]["water_lpm"] *= 1.4
-            assets["FIRST_AID"].update(occupancy=13, status="warning")
-            assets["WATER_PLANT"]["water_lpm"] *= 1.4
-            alert("heat", "warning", "FIRST_AID", "Heat response needed", "Synthetic 38°C conditions increase cooling, hydration and guest-care demand.", "add_staff")
-        if scenario == "water_leak" and not mitigations.get("repair_leak"):
-            assets["WATER_PLANT"].update(water_lpm=560 + wave * 6, status="fault")
-            assets["WATER_PLANT"]["maintenance"]["health_pct"] = 55
-            assets["RESTROOMS"].update(status="warning", queue_minutes=9)
-            alert("water_leak", "critical", "WATER_PLANT", "Abnormal water flow", "Synthetic leak adds approximately 380 L/min; dependent facilities need attention.", "repair_leak")
-        if scenario == "food_rush":
-            food.update(status="warning", queue_minutes=34, occupancy=235)
-            food["staff"]["required"] = 14
-            food["erp"]["stock_units"] = 60
-            alert("food_demand", "warning", "FOOD_COURT", "Kitchen capacity constrained", "Synthetic lunch demand raises waits; add qualified staff and replenish stock.", "add_staff")
-        if mitigations.get("reroute_guests"):
-            for ident in ("RIDE_COASTER", "RIDE_WHEEL", "FOOD_COURT"):
-                assets[ident]["queue_minutes"] *= .65
-            assets["SHOW_ARENA"]["occupancy"] = round(assets["SHOW_ARENA"]["occupancy"] * .8)
-        if mitigations.get("shed_load"):
-            assets["HOTEL"]["power_kw"] *= .75
-            assets["PARKING"]["power_kw"] *= .35
-            assets["FOOD_COURT"]["power_kw"] *= .92
-        if mitigations.get("replenish_stock"):
-            food["erp"]["stock_units"] = 600
-        if scenario == "food_rush" and mitigations.get("staff:FOOD_COURT") and mitigations.get("replenish_stock"):
-            food["status"] = "operational"
-            alerts = [a for a in alerts if a["id"] != "food_demand"]
-        for a in assets.values():
-            if mitigations.get(f"staff:{a['id']}"):
-                a["queue_minutes"] *= .7
-                if a["status"] != "closed":
-                    a["throughput_per_hour"] = round(a["throughput_per_hour"] * 1.15)
-            for metric in ("queue_minutes", "power_kw", "water_lpm"):
-                a[metric] = round(a[metric], 1)
-        if food["erp"]["stock_units"] < food["erp"]["reorder_point"]:
-            alert("food_stock", "warning", "FOOD_COURT", "Stock below reorder point", "Synthetic ERP food stock is below 120 units.", "replenish_stock")
-        systems = [{"id": ident, "name": name, "protocol": protocol, "status": "connected", "last_sync": now,
-                    "asset_ids": ids, "synthetic": True} for ident, name, protocol, ids in SYSTEM_DEFS]
-        queue_assets = [a for a in assets.values() if a["queue_minutes"] > 0]
-        return {"synthetic": True, "timestamp": now, "tick": tick, "scenario": scenario,
-                      "assets": list(assets.values()), "weather": {"temperature_c": round(temp, 1), "wind_kph": round(9 + wave * 2, 1), "condition": "heat advisory" if scenario == "heatwave" else "partly cloudy"},
-                      "systems": systems, "alerts": alerts, "scenarios": SCENARIOS, "actions": ACTIONS,
-                      "recent_actions": recent_actions,
-                      "kpis": {"attendance": 3420 + round(wave * 35), "total_capacity": 6200,
-                               "average_wait_minutes": round(sum(a["queue_minutes"] for a in queue_assets) / max(1, len(queue_assets)), 1),
-                               "queue_asset_count": len(queue_assets),
-                               "excluded_closed_count": sum(a["status"] == "closed" for a in assets.values()),
-                               "power_kw": round(sum(a["power_kw"] for a in assets.values()), 1),
-                               "power_capacity_kw": assets["POWER_HUB"]["capacity"],
-                               "water_lpm": round(sum(a["water_lpm"] for a in assets.values()), 1),
-                               "open_rides": sum(a["type"] == "ride" and a["status"] != "closed" for a in assets.values()),
-                               "active_alerts": len(alerts),
-                               "estimated_operating_cost_eur_per_hour": round(sum(a["erp"]["operating_cost_eur_per_hour"] for a in assets.values()), 2)}}
+        """Compatibility wrapper around the storage-independent scenario model."""
+        return evaluate(self.base, scenario, mitigations, tick, now, work_order_counts, recent_actions)
 
     def compare(self, scenario):
         """Same-tick hypothetical comparison; no database reads or writes."""

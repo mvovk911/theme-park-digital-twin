@@ -184,3 +184,18 @@ scope is current-geometry asset selection, not reconstruction of historical pixe
 Five focused CPU regressions include stale-pose rejection, matching-pose acceptance,
 quality transitions, immutable frame context and changed pick context. 19 UI logic
 checks and 57 DOM references pass. Native GPU and Chromium evidence remain pending.
+
+## Pure model and standalone synthetic producers checkpoint
+
+Definitions and scenario evaluation are now separate from SQLite persistence and
+workflow orchestration. Existing simulator imports and API behavior remain
+compatible; a pre/post extraction comparison matched 42 scenario combinations.
+The standalone CLI can emit any of the ten source feeds without a database or
+application server. Networking requires an explicit URL and a pre-paused synthetic
+source. Bounded retries reuse event IDs; natural staleness and source ownership
+remain enforced by the gateway. HTTP observations have distinct transport provenance.
+
+25 producer checks plus the existing 59 backend/connector checks pass. Tests send
+all ten source batches across all seven scenario profiles through real ASGI routes;
+they do not claim a network listener, GPU execution, vendor connector or physical
+control. [Usage and limits](synthetic-producers.md).
