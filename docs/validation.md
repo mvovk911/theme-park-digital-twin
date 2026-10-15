@@ -1,5 +1,25 @@
 # Validation evidence — 15 October 2026
 
+## Current development versus GPU baseline
+
+The GPU/browser evidence below belongs to the original revision 1 application
+(`930acd3`). New revision 2 assets, accepted-event connectors, replay and renderer
+lifecycle changes have **not** yet passed a new GPU/browser deployment check.
+Network/process restrictions currently prevent Horde access and Chromium here.
+
+A clean candidate built from committed connector baseline `cf4d621` plus the
+recorded-view/renderer/gateway changes passed **73 CPU/API tests**: 51 existing
+backend/connector checks, 10 replay checks, 10 renderer-boundary checks and two
+gateway checks. These include actual background recording during replay and
+historical values reopened after an application restart. Native cleanup tests
+use an explicit fake SDK at failure boundaries; they do not certify actual SDK
+resource destruction. New asset checks are in `assets/scene_quality_validation.json`.
+
+The independent [connector acceptance review](reviews/2026-10-15-connector-acceptance-review.md)
+identified additional projection/snapshot issues at `cf4d621`. Its findings are
+retained as that commit's review; follow-up fixes have their own checkpoint and
+are not retroactively claimed by the 73-test candidate.
+
 The actual application was run on an NVIDIA L40 (48 GB), driver 570.158.01,
 Linux/Python 3.10, OVRTX 0.6.0.1791947691 and OVStage 0.3.0.1791986420.
 This is application evidence, not a performance benchmark.

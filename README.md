@@ -10,6 +10,15 @@ An interactive theme park combining procedural OpenUSD geometry, **NVIDIA OVStag
 
 [Validation and application screenshots](docs/validation.md)
 
+## Ongoing development
+
+See the [development log](docs/development-log.md) and [independent reviews](docs/reviews/).
+The new [connector ingestion layer](docs/connectors.md), [recorded-view APIs](docs/replay.md)
+and renderer lifecycle/freshness work have local CPU/API validation. The existing
+GPU images show revision 1; new native GPU/browser acceptance remains pending.
+[Deployment artifacts](docs/deployment.md) identify exact committed source separately
+from a staged, activated or actually running application.
+
 ## What you can explore
 
 - A fenced park with an animated roller coaster and Ferris wheel, trees, lake, paths, food court, show venue, utilities, hotel and parking.

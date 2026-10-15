@@ -88,3 +88,22 @@ is documented; durable full-state recording is a separate workstream.
 requires a test-only event-loop heartbeat; no production scheduling workaround
 was added. Remote deployment, GPU checks and publication remain pending network
 access.
+
+## Recorded-view and renderer-boundary checkpoint — 73 local checks passed
+
+Full accepted operational snapshots now persist with scene/configuration hashes,
+source timestamps, optional matching recorded presentation pose and bounded
+retention. Replay keeps live production running, serves historical detail/history,
+serializes view changes with write guards and resumes current state on return.
+Recorded values survive restart without rerunning today's model rules.
+
+The render process now has cancellable/deadlined commands, reachable native
+cleanup on failure/stop, source-quality motion policy and atomic image/provenance
+publication. JPEG timestamps/frame IDs survive cached delivery and the gateway.
+Articulated car transforms are integrated into the native-owner code.
+
+An isolated candidate consisting of committed `cf4d621` plus these exact changes
+passed 73 CPU/API checks. This is not new GPU evidence: native resource destruction,
+rendered replay, revision 2 visuals and actual picking remain pending worker access.
+Concurrent source-acceptance follow-up work and frontend changes were excluded
+from that candidate so the checkpoint's evidence is identifiable.
