@@ -110,3 +110,18 @@ A manifest on a staged directory proves a source package is present. Atomic `cur
 Normal Python imports can create `__pycache__` within an already activated release. Those generated caches do not change committed source identity and must not make later activation/rollback fail. Activation therefore permits the same real interpreter/test cache directories ignored by startup inspection while continuing to verify all declared source hashes and reject unexpected ordinary source files and cache symlinks. `scripts/start.py` additionally launches both Python services with `-B` and `PYTHONDONTWRITEBYTECODE=1` to avoid creating new bytecode inside releases. This prevents bytecode writes; it does not claim to disable reads of existing caches or attest executed code. Operational state remains in the declared shared paths.
 
 The release regression suite performs an actual `backend.simulator` import between activation and reactivation, confirms Python produced bytecode, and verifies reactivation succeeds. It then adds an unexpected ordinary source module and verifies activation still fails.
+
+## Transfer recovery
+
+The audited Horde helper retries only an explicit HTTP 409 `operation_in_progress`
+rejection, checking worker status first and allowing at most three retries. It does
+not retry an ambiguous transport error while appending a chunk: that could append
+bytes twice. Restart a failed upload from its beginning, or transfer the complete
+committed archive and committed verifier over the owner's authenticated SSH/SCP
+connection, then run the same digest/commit-checked `stage` and `activate` commands.
+Neither path permits overlaying an existing immutable release.
+
+Managed `shared/.venv`, `shared/data` and `shared/runtime` must be actual directories.
+The per-release links point into them. A preexisting environment elsewhere must be
+migrated deliberately or recreated here; nesting another symlink in the managed
+shared path is rejected. Source activation and process restart are separate steps.

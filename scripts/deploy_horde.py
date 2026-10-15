@@ -8,6 +8,7 @@ from pathlib import Path
 import shlex
 import subprocess
 import tempfile
+import time
 
 from release_artifact import build, git, safe_path
 
@@ -15,7 +16,27 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def remote(worker: str, command: str):
-    subprocess.run(['hgx', 'exec', worker, '--timeout', '120', '--', command], check=True)
+    for attempt in range(4):
+        result = subprocess.run(
+            ['hgx', 'exec', worker, '--timeout', '120', '--', command],
+            capture_output=True, text=True,
+        )
+        if result.returncode == 0:
+            if result.stdout.strip():
+                print(result.stdout.strip(), flush=True)
+            return
+        # A definite rejected operation has not executed. Never retry ambiguous
+        # transport failures: upload chunks are append operations.
+        busy = 'HTTP 409' in result.stderr and 'operation_in_progress' in result.stderr
+        if busy and attempt < 3:
+            if attempt == 0:
+                subprocess.run(['hgx', '--json', 'status', worker], check=True,
+                               stdout=subprocess.DEVNULL)
+            time.sleep(2)
+            continue
+        # Avoid dumping the entire base64 payload through CalledProcessError.
+        raise RuntimeError(f'Horde command failed (exit {result.returncode}): '
+                           + (result.stderr.strip()[:1000] or 'no stderr'))
 
 
 def upload(worker: str, path: str, data: bytes):
