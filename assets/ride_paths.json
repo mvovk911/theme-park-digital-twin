@@ -1208,7 +1208,18 @@
     "transform_ops": [
       "xformOp:translate",
       "xformOp:rotateXYZ"
-    ]
+    ],
+    "cars": [
+      "/World/Park/RIDE_COASTER/Train/Car_00",
+      "/World/Park/RIDE_COASTER/Train/Car_01",
+      "/World/Park/RIDE_COASTER/Train/Car_02"
+    ],
+    "car_offsets_m": [
+      0,
+      -2.3,
+      -4.6
+    ],
+    "motion_contract": "Train world pose; Car_NN local poses from modeling.animate.train_transforms"
   },
   "wheel": {
     "prim_path": "/World/Park/RIDE_WHEEL/Rotor",

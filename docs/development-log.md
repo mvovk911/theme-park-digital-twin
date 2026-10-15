@@ -55,3 +55,15 @@ Documentation checkpoint `dd4affe` is committed locally. Network access to GitHu
 and Horde is currently unavailable in this execution environment; publication
 and new GPU verification remain pending. Locally cached Python dependencies have
 been recovered so backend and pure runtime tests can continue offline.
+
+## Revision 2 asset checkpoint — local checks passed
+
+Procedural scene and articulation are ready: all 12 operational roots preserved,
+3,067 prims, bound materials and finite bounds, no detected tree/structure
+intersections, and three independently positioned coaster cars. Static scene
+validation and motion checks (25 wheel angles, 401 train poses, 101 articulated
+configurations) pass. Source and generated outputs are committed together.
+
+The Blender file and checked-in GPU images remain revision 1. Worker connectivity
+is unavailable, so revision 2 GPU/native-pick evidence and Blender re-import are
+still pending. This checkpoint does not claim those gates passed.

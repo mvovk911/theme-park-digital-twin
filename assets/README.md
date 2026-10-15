@@ -1,11 +1,13 @@
 # Editable project assets
 
+**USD revision 2 is current.** The Blender handoff and existing GPU screenshots still show revision 1; see the explicit version fields in `blender_validation.json`.
+
 All park geometry is procedural and created for this project. No third-party
 texture downloads are required. Lengths are meters and the USD stage is Z-up.
 
 | File | Purpose |
 |---|---|
-| [park.blend](park.blend) | Editable Blender 4.5.3 LTS scene; validated after saving and reopening |
+| [park.blend](park.blend) | Editable revision 1 Blender handoff; revision 2 refresh pending worker access |
 | [park.usdc](park.usdc) | Compact binary OpenUSD scene loaded by the GPU application |
 | [park.usda](park.usda) | Human-readable OpenUSD source for inspection and diffs |
 | [asset_registry.json](asset_registry.json) | Twelve stable asset IDs, USD paths, bounds and source-system associations |

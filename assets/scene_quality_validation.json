@@ -1,0 +1,13 @@
+{
+  "scene_revision": 2,
+  "usd_sha256": "38877f33d51541efe437dc5b592527d7d38309e976a1cff9e17979d28ea0d3a4",
+  "asset_roots": 12,
+  "all_operational_roots_identity": true,
+  "materials_bound": true,
+  "self_contained_usd": true,
+  "articulated_car_count": 3,
+  "authored_car_poses_match_route": true,
+  "tree_structure_intersections": 0,
+  "gpu_visual_review": "pending revision 2 deployment",
+  "blender_handoff_revision": 1
+}

@@ -22,6 +22,17 @@ improved park landscaping and articulated coaster cars, then coherent historical
 replay and operator source-health views. These are not marked delivered by this
 checkpoint; the gallery below remains evidence of the last verified application.
 
+## Revision 2 asset checkpoint — locally validated
+
+The new procedural scene retains all 12 asset identities and adds landscaping,
+shaded queues, accessible deck details, utility hardware and independently posed
+coaster cars. It has 3,067 prims and a 433 KiB binary USD. Static scene, material,
+bounds and articulated-motion checks pass; [revision 2 evidence](../assets/scene_quality_validation.json).
+
+**Deployment status:** revision 2 has not yet been rendered on the Horde GPU.
+The Blender handoff and the images below still show revision 1 and are labeled
+accordingly. New GPU captures and Blender regeneration await worker connectivity.
+
 ## Delivery checklist
 
 | Requested outcome | Status | Review evidence |

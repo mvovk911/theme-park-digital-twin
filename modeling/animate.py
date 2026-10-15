@@ -76,6 +76,21 @@ class CoasterRoute:
         return result
 
 
+def train_transforms(route: CoasterRoute,phase: float,car_offsets=(0.,-2.3,-4.6)) -> dict[str,np.ndarray]:
+    """Train root world pose plus car-local poses for an articulated train.
+
+    All returned matrices must be written at the same ordinal. Each car is
+    modeled around its own +X-forward local origin and follows an independent
+    arc-length position, preserving constant inter-car distance along the rail.
+    """
+    lead=route.transform(phase)
+    inverse=np.linalg.inv(lead)
+    result={TRAIN_ROOT:lead}
+    for index,offset in enumerate(car_offsets):
+        result[f'{TRAIN_ROOT}/Car_{index:02d}']=route.transform(phase,offset_m=offset)@inverse
+    return result
+
+
 def advance_phase(phase: float,dt: float,period_seconds: float,running: bool=True) -> float:
     if period_seconds<=0:
         raise ValueError('Period must be positive')
@@ -103,5 +118,11 @@ if __name__=='__main__':
         # Forward direction must agree with the increasing-phase path.
         delta=route.transform(phase+1e-5)[3,:3]-mat[3,:3]
         assert np.dot(delta,mat[0,:3])>0
+    for phase in np.linspace(0,1,101):
+        poses=train_transforms(route,phase)
+        for i in range(3):
+            world=poses[f'{TRAIN_ROOT}/Car_{i:02d}']@poses[TRAIN_ROOT]
+            assert np.allclose(world,route.transform(phase,offset_m=-2.3*i),atol=1e-10)
+    assert np.allclose(train_transforms(route,0)[TRAIN_ROOT],train_transforms(route,1)[TRAIN_ROOT])
     assert advance_phase(.3,.1,100,False)==.3
-    print(f'PASS: upright cabins at 25 angles; right-handed coaster frames at 401 phases; track length {route.total_length:.2f} m')
+    print(f'PASS: upright cabins at 25 angles; right-handed coaster frames at 401 phases; 3 articulated cars at 101 phases; track length {route.total_length:.2f} m')

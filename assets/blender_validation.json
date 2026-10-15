@@ -6,5 +6,9 @@
   "materials": 28,
   "unbound_meshes": 0,
   "camera": "Camera",
-  "bytes": 15190908
+  "bytes": 15190908,
+  "scene_revision": 1,
+  "current_usd_revision": 2,
+  "matches_current_usd": false,
+  "note": "Verified revision 1 handoff; regenerate from revision 2 USD after worker access is restored."
 }

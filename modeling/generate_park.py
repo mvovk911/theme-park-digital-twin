@@ -3,6 +3,7 @@
 from pathlib import Path
 import json, math, random
 from pxr import Usd, UsdGeom, UsdShade, UsdLux, Gf, Sdf
+from animate import CoasterRoute, train_transforms, TRAIN_ROOT
 
 OUT = Path(__file__).resolve().parents[1] / 'assets'
 OUT.mkdir(exist_ok=True)
@@ -34,7 +35,9 @@ for args in [
  ('leaf3',(.36,.59,.23),.9),('bark',(.27,.15,.07),.95),('water',(.055,.46,.64),.10,.6),
  ('water_light',(.23,.68,.76),.15,.25),('pink',(.83,.13,.34),.5),('purple',(.38,.19,.59),.5),
  ('solar',(.025,.09,.20),.16,.6),('red',(.85,.08,.08),.5),('stone',(.50,.52,.46),.9),
- ('skin',(.67,.41,.25),.8),('sand',(.81,.72,.49),.9)]: material(*args)
+ ('skin',(.67,.41,.25),.8),('sand',(.81,.72,.49),.9),
+ ('soil',(.17,.105,.055),1),('gravel',(.59,.57,.49),.95),('flower_lilac',(.67,.32,.71),.8),
+ ('path_joint',(.51,.49,.43),.95),('timber',(.48,.30,.14),.85)]: material(*args)
 
 def uniq(parent,name):
     k=parent+'/'+name; n=counts.get(k,0); counts[k]=n+1
@@ -158,6 +161,13 @@ def building(p,pos,size,mat='cream',roof='teal'):
         box(p,'Awning',(wx,y-d/2-.6,h*.81),(w*.25,1.3,.17),roof,rot=(12,0,0))
     box(p,'Door',(x,y-d/2-.04,1.55),(1.45,.08,2.5),'glass')
     for xx in [-.45,.45]: box(p,'DoorFrame',(x+xx,y-d/2-.09,1.55),(.05,.06,2.5),'steel')
+    for yy in [y-d*.24,y+d*.24]:
+        box(p,'SideWindow',(x+w/2+.035,yy,h*.56),(.08,d*.23,h*.35),'glass')
+        box(p,'WindowSill',(x+w/2+.12,yy,h*.38),(.25,d*.26,.12),'cream')
+    for xx in [x-w/2,x+w/2]:
+        box(p,'CornerTrim',(xx,y-d/2-.05,h/2+.3),(.22,.15,h),roof)
+    box(p,'Fascia',(x,y-d/2-.12,h+.22),(w,.2,.35),roof)
+
 
 def tree(p,x,y,size=1):
     cyl(p,'Trunk',(x,y,1.7*size),.22*size,3.4*size,'bark')
@@ -205,7 +215,7 @@ for j in range(4):
 box(p,'Boardwalk',(15,15,.65),(17,3,.32),'bark',rot=(0,0,20))
 # perimeter full fence leaving entry opening
 for a,b in [((-77,-57),(-8,-57)),((8,-57),(77,-57)),((77,-57),(77,57)),((77,57),(-77,57)),((-77,57),(-77,-57))]: fence(p,a,b,1.8,3)
-for x,y in [(-70,-48),(-69,-36),(-69,-20),(-72,3),(-73,17),(-71,36),(-68,49),(70,-44),(70,-29),(71,-16),(71,4),(71,20),(71,39),(69,49),(-57,-48),(-33,-48),(-20,-43),(17,-47),(27,-46),(-15,3),(-12,13),(-15,29),(23,36),(18,42),(29,45),(-51,43),(-38,44),(-26,43),(-47,-14),(-33,-13),(-22,-18),(51,-12),(48,-39),(53,-45),(19,-31),(20,-15),(52,44)]: tree(p,x,y,random.uniform(.8,1.25))
+for x,y in [(-70,-48),(-69,-36),(-69,-20),(-72,3),(-73,17),(-71,36),(-73,45),(70,-44),(70,-29),(71,-16),(71,4),(71,20),(71,39),(69,49),(-57,-48),(-33,-48),(-20,-43),(17,-47),(27,-46),(-15,3),(-12,13),(-15,29),(23,36),(18,42),(29,45),(-51,43),(-38,44),(-26,43),(-47,-14),(-33,-13),(-22,-18),(44,-16),(28,-39),(28,-26),(10,-29),(20,-15),(43,35)]: tree(p,x,y,random.uniform(.8,1.25))
 for x,y in [(-11,-20),(11,-20),(-16,-7),(16,-7),(-54,-7),(54,-7),(-62,32),(62,32),(0,-42),(0,40)]: lamp(p,x,y)
 for x,y,r in [(-13,-4,90),(13,-4,-90),(-9,-20,90),(9,-20,-90),(24,13,0),(27,39,0),(-54,-12,0),(52,-12,0)]: bench(p,x,y,r)
 # Coaster: closed, bank-free tubular double-rail course with tall lift, camelbacks, and sweeping turns.
@@ -239,16 +249,25 @@ for x in [-27,-19]:
     for y in [-2.3,1.7]: cyl(p,'CanopyPost',(x,y,1.6),.07,3.2,'steel')
 for y in [-1.6,-.3,1]: fence(p,(-27,y),(-19,y),.95,3,'steel')
 for a,b in [((-60,0),(-47,0)),((-60,0),(-60,38)),((-60,38),(-14,38))]: fence(p,a,b,1.15,4)
-train=UsdGeom.Xform.Define(stage,p+'/Train'); train_pos=track[185]
-xf(train,train_pos,rot=(0,0,0)); q=str(train.GetPath())
+route=CoasterRoute(track); initial_phase=.77
+poses=train_transforms(route,initial_phase)
+lead=poses[TRAIN_ROOT]; forward=lead[0,:3]
+train=UsdGeom.Xform.Define(stage,p+'/Train')
+xf(train,lead[3,:3],rot=(0,-math.degrees(math.asin(forward[2])),math.degrees(math.atan2(forward[1],forward[0]))))
 for i in range(3):
-    xx=-i*2.3
-    box(q,'Car',(xx,0,.55),(2,1.5,.65),'yellow'); box(q,'Nose',(xx+.72,0,.8),(.4,1.5,.7),'orange')
+    car=UsdGeom.Xform.Define(stage,p+f'/Train/Car_{i:02d}')
+    UsdGeom.Xformable(car).AddTransformOp().Set(Gf.Matrix4d(poses[f'{TRAIN_ROOT}/Car_{i:02d}'].tolist()))
+    car.GetPrim().SetCustomDataByKey('carIndex',i)
+    q=str(car.GetPath()); xx=0
+    box(q,'CarBody',(xx,0,.55),(2,1.5,.65),'yellow'); box(q,'Nose',(xx+.72,0,.8),(.4,1.5,.7),'orange')
     for yy in [-.4,.4]:
         box(q,'Seat',(xx-.2,yy,1.05),(.75,.55,.18),'dark'); box(q,'SeatBack',(xx-.55,yy,1.35),(.15,.55,.6),'dark')
         beam(q,'Restraint',(xx+.1,yy-.22,1.2),(xx+.1,yy+.22,1.2),.055,'steel')
+        sphere(q,'RiderHead',(-.2,yy,1.68),.17,'skin')
+        box(q,'RiderBody',(-.2,yy,1.35),(.34,.3,.4),['teal','blue','pink'][i])
     for yy in [-.75,.75]:
         for wx in [-.55,.55]: cyl(q,'Wheel',(xx+wx,yy,.2),.22,.12,'dark',rot=(90,0,0))
+    beam(q,'Coupler',(-1,0,.45),(-1.26,0,.45),.06,'steel')
 # Ferris wheel structure and 12 colorful gondolas.
 p=asset('RIDE_WHEEL','Aster Observation Wheel','ride',[35,25,18],[[19,16,0],[51,31,35]],['ride_scada','queues','maintenance','energy','workforce'])
 box(p,'WheelPlaza',(35,23,.23),(29,19,.35),'paver')
@@ -366,6 +385,10 @@ for j in range(70):
     hh=random.uniform(.88,1.1); col=random.choice(['teal','orange','pink','yellow','blue','purple','cream'])
     cyl(root,'GuestBody',(x,y,1.05*hh),.19*hh,.7*hh,col); sphere(root,'GuestHead',(x,y,1.65*hh),.18*hh,'skin')
     for dx in [-.1,.1]: beam(root,'GuestLeg',(x+dx,y,.25),(x+dx,y,.8*hh),.07,'dark')
+    for dx in [-.24,.24]: beam(root,'GuestArm',(x+dx,y,1.31*hh),(x+dx*1.2,y+.10,.87*hh),.07,col)
+
+# Scoped procedural detail pass; shares deterministic modeling helpers and stage.
+exec(compile((Path(__file__).parent/'detail_pass.py').read_text(), 'detail_pass.py', 'exec'), globals())
 # Camera, warm sun, sky illumination.
 cam=UsdGeom.Camera.Define(stage,'/World/Camera'); camera_pos=Gf.Vec3d(142,-180,155); target=Gf.Vec3d(0,0,2)
 view=Gf.Matrix4d().SetLookAt(camera_pos,target,Gf.Vec3d(0,0,1)); UsdGeom.Xformable(cam).AddTransformOp().Set(view.GetInverse())
@@ -381,7 +404,7 @@ for item in registry:
 stage.GetRootLayer().Save()
 stage.Export(str(OUT/'park.usdc'))
 (OUT/'asset_registry.json').write_text(json.dumps({'park':'Aster Park','units':'meters','up_axis':'Z','assets':registry},indent=2))
-(OUT/'ride_paths.json').write_text(json.dumps({'coaster':{'prim_path':'/World/Park/RIDE_COASTER/Train','points':track,'loop':True,'period_seconds':65,'transform_ops':['xformOp:translate','xformOp:rotateXYZ']},'wheel':{'prim_path':'/World/Park/RIDE_WHEEL/Rotor','center':[35,25,19],'axis':'Y','period_seconds':100,'transform_op':'xformOp:rotateY','gondolas':[f'/World/Park/RIDE_WHEEL/Rotor/Gondola_{i:02d}' for i in range(12)]}},indent=2))
+(OUT/'ride_paths.json').write_text(json.dumps({'coaster':{'prim_path':'/World/Park/RIDE_COASTER/Train','points':track,'loop':True,'period_seconds':65,'transform_ops':['xformOp:translate','xformOp:rotateXYZ'],'cars':[f'/World/Park/RIDE_COASTER/Train/Car_{i:02d}' for i in range(3)],'car_offsets_m':[0,-2.3,-4.6],'motion_contract':'Train world pose; Car_NN local poses from modeling.animate.train_transforms'},'wheel':{'prim_path':'/World/Park/RIDE_WHEEL/Rotor','center':[35,25,19],'axis':'Y','period_seconds':100,'transform_op':'xformOp:rotateY','gondolas':[f'/World/Park/RIDE_WHEEL/Rotor/Gondola_{i:02d}' for i in range(12)]}},indent=2))
 # Blender's USD importer omits bindings on analytic gprims; handoff manifest repairs these.
 material_manifest={'materials':{},'bindings':{}}
 for name,mat in materials.items():
@@ -392,5 +415,5 @@ for prim in stage.Traverse():
         mat=UsdShade.MaterialBindingAPI(prim).ComputeBoundMaterial()[0]
         if mat:material_manifest['bindings'][str(prim.GetPath())]=mat.GetPrim().GetName()
 (OUT/'blender_materials.json').write_text(json.dumps(material_manifest,indent=2))
-summary={'prim_count':len(list(stage.Traverse())),'mesh_count':sum(1 for p in stage.Traverse() if p.IsA(UsdGeom.Mesh)),'asset_count':len(registry),'bounds':[-80,-60,80,60],'camera':[142,-180,155],'target':[0,0,2],'files':['park.usda','park.usdc','asset_registry.json','ride_paths.json']}
+summary={'scene_revision':2,'prim_count':len(list(stage.Traverse())),'mesh_count':sum(1 for p in stage.Traverse() if p.IsA(UsdGeom.Mesh)),'asset_count':len(registry),'bounds':[-80,-60,80,60],'camera':[142,-180,155],'target':[0,0,2],'files':['park.usda','park.usdc','asset_registry.json','ride_paths.json']}
 (OUT/'scene_validation.json').write_text(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))
