@@ -4,6 +4,8 @@ import hashlib
 import importlib.util
 import io
 import json
+import os
+import sys
 from pathlib import Path
 import subprocess
 import tarfile
@@ -201,3 +203,36 @@ def test_activation_inventory_and_shared_link_integrity(repo, tmp_path, change):
     with pytest.raises(release.ReleaseError, match='Staged|staged'):
         release.activate(root, manifest['commit'])
     assert not (root / 'current').exists()
+
+
+def test_reactivation_after_real_python_import_ignores_only_transient_dirs(repo, tmp_path):
+    (repo / 'backend/simulator.py').write_text('VALUE = 42\n')
+    git(repo, 'add', 'backend/simulator.py')
+    git(repo, 'commit', '-qm', 'importable backend module')
+    archive, manifest, digest = artifact(repo, tmp_path)
+    root = tmp_path / 'deployment'
+    staged = release.stage(archive, root, digest, manifest['commit'])
+    release.activate(root, manifest['commit'])
+    env = dict(os.environ)
+    env.pop('PYTHONDONTWRITEBYTECODE', None)
+    env.pop('PYTHONPYCACHEPREFIX', None)
+    subprocess.run([sys.executable, '-c', 'import backend.simulator; assert backend.simulator.VALUE == 42'],
+                   cwd=staged, env=env, check=True)
+    assert list((staged / 'backend/__pycache__').glob('simulator.*.pyc'))
+    cache = staged / '.pytest_cache'
+    cache.mkdir()
+    (cache / 'README.md').write_text('non-authoritative test output')
+    assert release.activate(root, manifest['commit']) == staged
+    (staged / 'backend/unknown_source.py').write_text('unexpected = True')
+    with pytest.raises(release.ReleaseError, match='layout set mismatch'):
+        release.activate(root, manifest['commit'])
+
+
+@pytest.mark.parametrize('name', ['__pycache__', '.pytest_cache'])
+def test_transient_directory_exemption_never_allows_symlink(repo, tmp_path, name):
+    archive, manifest, digest = artifact(repo, tmp_path)
+    root = tmp_path / 'deployment'
+    staged = release.stage(archive, root, digest, manifest['commit'])
+    (staged / name).symlink_to(tmp_path, target_is_directory=True)
+    with pytest.raises(release.ReleaseError, match='Unexpected staged symlink'):
+        release.activate(root, manifest['commit'])

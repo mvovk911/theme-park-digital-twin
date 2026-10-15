@@ -8,6 +8,7 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Query, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict
+from project_revision import source_identity
 from .simulator import ParkSimulator
 from .connectors import ConnectorRuntime, ParkReadModel
 from .connectors.api import install_connector_routes
@@ -27,6 +28,7 @@ class ActionRequest(BaseModel):
 def create_app(database_path: str | None = None, run_background: bool = True):
     @asynccontextmanager
     async def lifespan(app):
+        app.state.source_identity = source_identity(Path(__file__).resolve().parents[1])
         app.state.park = ParkSimulator(database_path or os.environ.get("PARK_DB", str(Path(__file__).parent / "data" / "park.db")))
         app.state.connectors = ConnectorRuntime(app.state.park.base)
         app.state.read_model = ParkReadModel(app.state.park, app.state.connectors)
@@ -52,7 +54,7 @@ def create_app(database_path: str | None = None, run_background: bool = True):
 
     @app.get("/api/health")
     def health():
-        return {"status": "ok", "synthetic": True, "database": "connected", "tick": app.state.park.snapshot()["tick"]}
+        return {"status": "ok", "synthetic": True, "database": "connected", "source_identity": app.state.source_identity, "tick": app.state.park.snapshot()["tick"]}
 
     @app.get("/api/state")
     def state():

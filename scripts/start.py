@@ -6,11 +6,13 @@ import subprocess
 root = Path(__file__).resolve().parents[1]
 runtime = root / 'runtime'
 runtime.mkdir(exist_ok=True)
-env = dict(os.environ, PARK_API_URL=os.environ.get('PARK_API_URL', 'http://127.0.0.1:8100'))
+# Runtime caches are not release source; keep child imports from writing into it.
+env = dict(os.environ, PARK_API_URL=os.environ.get('PARK_API_URL', 'http://127.0.0.1:8100'),
+           PYTHONDONTWRITEBYTECODE='1')
 python = str(root / '.venv/bin/python')
 for role, command in {
-    'backend': [python, '-m', 'uvicorn', 'main:app', '--host', '127.0.0.1', '--port', '8100'],
-    'renderer': [python, 'renderer/service.py'],
+    'backend': [python, '-B', '-m', 'uvicorn', 'main:app', '--host', '127.0.0.1', '--port', '8100'],
+    'renderer': [python, '-B', 'renderer/service.py'],
 }.items():
     pidfile = runtime / f'{role}.pid'
     if pidfile.exists():

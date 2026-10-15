@@ -18,6 +18,8 @@ MANIFEST = 'release-manifest.json'
 SCHEMA = 1
 MAX_BYTES = 512 * 1024 * 1024
 MAX_FILES = 20000
+# Non-authoritative interpreter/test outputs; matches project_revision inspection.
+TRANSIENT_DIRS = {'__pycache__', '.pytest_cache'}
 SHARED_LINKS = {'runtime': 'runtime', 'backend/data': 'data', '.venv': '.venv'}
 EXCLUDED_PARTS = {'.git', '.venv', 'runtime', '__pycache__', '.pytest_cache', 'data', 'reference', 'tools'}
 EXCLUDED_SUFFIXES = {'.pyc', '.db', '.log', '.zip', '.gz', '.blend', '.pem', '.key', '.p12', '.pfx'}
@@ -229,6 +231,9 @@ def activate(root: Path, commit: str) -> Path:
                 _directory(root / 'shared' / SHARED_LINKS[relative])
                 found_links.add(relative)
             elif path.is_dir():
+                if name in TRANSIENT_DIRS:
+                    dirs.remove(name)
+                    continue
                 found_dirs.add(relative)
             elif path.is_file():
                 found_files.add(relative)

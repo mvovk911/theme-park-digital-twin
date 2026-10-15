@@ -59,7 +59,7 @@ For a local dry run of the exact same staging boundary:
 python3 scripts/release_artifact.py stage runtime/release.tar.gz --root /tmp/park-release-review --commit <COMMIT> --sha256 <SHA256>
 ```
 
-All managed root/shared/release parent paths must be real directories. Existing redirecting symlinks are rejected. Staged source should be treated as immutable; activation checks its exact regular-file and shared-link inventory, modes and hashes again.
+All managed root/shared/release parent paths must be real directories. Existing redirecting symlinks are rejected. Staged source should be treated as immutable; activation checks its regular-file and shared-link inventory, modes and hashes again. Real `__pycache__` and `.pytest_cache` directories are explicitly non-authoritative transient outputs, matching startup source inspection, and are excluded from that inventory. A symlink with either cache name is still rejected; unexpected source files elsewhere remain an activation failure.
 
 ## 3. Prepare runtime compatibility and activate deliberately
 
@@ -92,3 +92,21 @@ Source rollback preserves `shared/runtime`, `shared/data` and `shared/.venv`; it
 ```
 
 Tests use temporary local Git repositories and filesystems. They cover dirty worktree/index isolation, exclusion of runtime secrets, deleted files across fresh staging, persistence of shared state, explicit activation/rollback, archive/manifest corruption, unsafe paths/links and changed staged source. They do not contact Horde, restart native services or replace GPU acceptance evidence.
+
+## Startup source inspection
+
+`project_revision.source_identity(root)` provides a small, local inspection helper for services to call **once at startup** and retain in health/status responses. Resolve the service's own source root, rather than an operator's moving `current` symlink. Its JSON values distinguish `verified_manifest`, `modified_manifest`, `invalid_manifest`, `clean_git`, `dirty_git` and `unknown`. Manifest-backed results include the declared commit/tree plus checks of each included regular file's actual SHA256, size and executable mode; unexpected files and symlinks make the result unverified. Declared shared runtime/data/environment paths and transient Python/test caches are excluded from source inspection. The actual `assets/park.usdc` SHA256 is reported separately, including when source is modified.
+
+An absent manifest falls back to local Git only when the specified root itself contains `.git` and Git identifies that exact root. Staged, unstaged and untracked changes mark the checkout dirty. An invalid manifest never silently falls back to Git, and an ordinary exported directory with no provenance is `unknown`. This helper performs no network access and must not run in the render-frame loop.
+
+A manifest on a staged directory proves a source package is present. Atomic `current` promotion identifies the **selected source pointer**. A service response retaining a startup inspection describes the source bytes inspected at that service's startup. These are distinct observations: none independently attests which Python bytes are executing, guarantees files stayed unchanged afterward, proves dependency/database compatibility or proves native GPU acceptance. Record actual runtime checks and capture evidence alongside startup identity; do not replace them with the `verified` flag.
+
+```bash
+.venv/bin/python -m pytest -q tests/test_project_revision.py
+```
+
+### Python cache policy
+
+Normal Python imports can create `__pycache__` within an already activated release. Those generated caches do not change committed source identity and must not make later activation/rollback fail. Activation therefore permits the same real interpreter/test cache directories ignored by startup inspection while continuing to verify all declared source hashes and reject unexpected ordinary source files and cache symlinks. `scripts/start.py` additionally launches both Python services with `-B` and `PYTHONDONTWRITEBYTECODE=1` to avoid creating new bytecode inside releases. This prevents bytecode writes; it does not claim to disable reads of existing caches or attest executed code. Operational state remains in the declared shared paths.
+
+The release regression suite performs an actual `backend.simulator` import between activation and reactivation, confirms Python produced bytecode, and verifies reactivation succeeds. It then adds an unexpected ordinary source module and verifies activation still fails.
