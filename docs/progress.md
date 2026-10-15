@@ -31,6 +31,30 @@ cache defects; follow-up fixes and tests are recorded in the development log.
 New commits are local; `origin/main` remains `930acd3` until a push is verified.
 No new GPU renders, Blender export or browser acceptance are claimed here.
 
+## Latest completed local checkpoints
+
+| Commit | Completed step | Evidence |
+|---|---|---|
+| `7b27281` | Canonical USD identity, 138 static source bindings, scene inventory | Scene/material/bounds/catalog checks; articulated motion checks |
+| `e477a12` | Atomic frame/pose publication and original render-time provenance | Deterministic publication-race regression; stale/missing/future pose rejection |
+| `310cb83` | Pure model extraction and standalone ten-source producers | 25 producer checks; all ten feeds across seven profiles |
+| `cb11424` | Accepted-state revision, image-bound annotations, versioned UI picks | Same-tick ingestion and exact-frame context regressions |
+| `55f4b33` | Startup source identity and reliable release reactivation | Real Python import followed by checked reactivation |
+| `699d33b` | Independent integrated architecture review | Exact baseline and reproduced findings preserved |
+
+At integrated `7b27281`: **149 CPU/API checks**, **19 JavaScript logic checks**,
+and **57 DOM identifiers** pass. Scene checks cover 12 roots, 3,067 prims,
+46 meshes, 138 declarations, 25 wheel angles, 401 coaster frames and 101
+articulated-car poses. These do not certify GPU, native cleanup or browser layout.
+
+The [closure audit](reviews/2026-10-15-coherence-fix-review.md) preserves its exact
+`cb11424` findings. Its remaining status/pose race was fixed subsequently in
+`e477a12`; the integrated run includes that deterministic regression.
+
+**Next acceptance:** publish the commits; stage the exact release on Horde;
+refresh the revision 2 Blender handoff; run actual GPU/browser workflows; capture
+new images with source/scene identity. Existing screenshots remain revision 1.
+
 ## Revision 2 asset checkpoint — locally validated
 
 The new procedural scene retains all 12 asset identities and adds landscaping,

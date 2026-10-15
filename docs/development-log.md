@@ -228,3 +228,13 @@ cover 25 wheel angles, 401 coaster frames and 101 articulated-car poses. Repeate
 generation is byte-identical. Geometry remains 3,067 prims/46 meshes; added metadata
 brings the binary USD to 459 KiB. Blender and actual GPU captures remain revision 1.
 [Authoring contract](scene-authoring.md).
+
+
+## Integrated local checkpoint `7b27281`
+
+149 CPU/API checks passed in 28.54 seconds, plus 19 JavaScript behavior checks,
+57 DOM identifiers, current USD/catalog/inventory validation and articulated motion
+checks. Status/pose publication fix `e477a12` is included. The historical closure
+report remains an exact snapshot of its reviewed earlier baseline, not a false
+claim that it independently approved later code. Public origin remains `930acd3`;
+GitHub/Horde access, new native/browser checks and the Blender refresh are pending.

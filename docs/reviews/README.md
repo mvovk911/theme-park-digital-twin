@@ -13,6 +13,12 @@ committed `cf4d621` in isolation, verified 51 checks and found three actionable
 projection/acceptance defects. Its report remains unchanged; subsequent fixes and
 59-check evidence are recorded in the development log and later commits.
 
+[Coherence closure audit](2026-10-15-coherence-fix-review.md) inspected `cb11424`,
+confirmed the original fixes and reproduced a remaining status/pose race. That
+specific race was subsequently fixed in `e477a12`; integrated `7b27281` passes
+149 CPU/API checks including the deterministic regression. GPU/browser scope is
+still pending and is not closed by these tests.
+
 ## Recurring milestone review
 
 Request another independent review after a meaningful integrated milestone,

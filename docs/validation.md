@@ -25,6 +25,24 @@ suite passed **98 CPU/API checks**. The operator UI separately passed **15 JavaS
 behavior checks** and **57 DOM identifier checks**. These newer local gates do not
 replace the pending Chromium/native-GPU acceptance described above.
 
+## Latest integrated local acceptance
+
+Committed `7b27281` passed **149 CPU/API checks in 28.54 seconds**, plus **19
+JavaScript logic checks** and **57 DOM references**. This includes the recurring
+review fixes, external synthetic source ingestion, source ownership/staleness,
+recorded-state restart/retention, same-tick accepted revision changes, concurrent
+status publication, stale/missing/future pose rejection, and actual staged Python
+import followed by release reactivation. The restricted sandbox test run uses a
+temporary test-process heartbeat plugin; no production event-loop workaround is
+installed. Native failure-boundary tests use explicit fixtures.
+
+Current revision 2 USD validation independently checks 12 stable roots, 3,067
+prims, 46 polygon meshes, 138 static connector declarations, canonical names/types,
+material bindings, finite bounds, self-contained assets and deterministic inventory.
+Motion checks cover 25 wheel angles, 401 coaster positions and 101 articulated-car
+poses. See [current scene results](../assets/scene_validation.json) and
+[exact USD/catalog fingerprints](../assets/scene_quality_validation.json).
+
 ## Original revision 1 GPU/browser acceptance
 
 The actual application was run on an NVIDIA L40 (48 GB), driver 570.158.01,
