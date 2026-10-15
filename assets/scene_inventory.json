@@ -1,0 +1,884 @@
+{
+  "schema_version": "1.0",
+  "scene_revision": 2,
+  "units": "meters",
+  "up_axis": "Z",
+  "measurement_time": "authored_default_pose",
+  "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+  "triangle_count_scope": "Fan triangulation of authored polygon meshes only; excludes analytic gprims whose tessellation is renderer-dependent.",
+  "bounds_scope": "USD world-aligned bounds at the authored default pose; decorative children assigned to an asset contribute to its bounds.",
+  "stage_prim_count": 3067,
+  "stage_prim_types": {
+    "": 1,
+    "Camera": 1,
+    "Cone": 5,
+    "Cube": 704,
+    "Cylinder": 1771,
+    "DistantLight": 1,
+    "DomeLight": 1,
+    "Material": 34,
+    "Mesh": 46,
+    "Shader": 34,
+    "Sphere": 428,
+    "Xform": 41
+  },
+  "operational_asset_count": 12,
+  "assets": [
+    {
+      "asset_id": "ENTRY_GATE",
+      "prim_path": "/World/Park/ENTRY_GATE",
+      "display_name": "Welcome Plaza",
+      "authored_name": "Aster Park Main Entrance",
+      "aliases": [
+        "Aster Park Main Entrance"
+      ],
+      "category": "admission",
+      "model_kind": "component",
+      "direct_children": 215,
+      "descendant_prims": 215,
+      "prim_types": {
+        "Cube": 55,
+        "Cylinder": 131,
+        "Mesh": 2,
+        "Sphere": 27,
+        "Xform": 1
+      },
+      "gprim_count": 215,
+      "mesh_count": 2,
+      "mesh_face_count": 354,
+      "authored_mesh_fan_triangle_count": 708,
+      "analytic_primitive_counts": {
+        "Cube": 55,
+        "Cylinder": 131,
+        "Sphere": 27
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 14,
+      "material_binding_counts": {
+        "/World/Materials/blue": 6,
+        "/World/Materials/cream": 20,
+        "/World/Materials/dark": 52,
+        "/World/Materials/glass": 12,
+        "/World/Materials/orange": 28,
+        "/World/Materials/paver": 1,
+        "/World/Materials/pink": 6,
+        "/World/Materials/purple": 18,
+        "/World/Materials/skin": 25,
+        "/World/Materials/steel": 14,
+        "/World/Materials/stone": 2,
+        "/World/Materials/teal": 15,
+        "/World/Materials/timber": 2,
+        "/World/Materials/yellow": 14
+      },
+      "world_bounds_m": [
+        [
+          -17.06,
+          -58.5,
+          0.0
+        ],
+        [
+          18.25,
+          -14.890228,
+          8.7
+        ]
+      ],
+      "world_dimensions_m": [
+        35.31,
+        43.609772,
+        8.7
+      ],
+      "connector_ids": [
+        "gis",
+        "ticketing",
+        "vision",
+        "workforce"
+      ],
+      "conceptual_tags": [
+        "ticketing",
+        "admission",
+        "crowds",
+        "guest_services"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "FIRST_AID",
+      "prim_path": "/World/Park/FIRST_AID",
+      "display_name": "Guest Care",
+      "authored_name": "First Aid and Guest Care",
+      "aliases": [
+        "First Aid and Guest Care"
+      ],
+      "category": "care",
+      "model_kind": "component",
+      "direct_children": 24,
+      "descendant_prims": 24,
+      "prim_types": {
+        "Cube": 22,
+        "Mesh": 2,
+        "Xform": 1
+      },
+      "gprim_count": 24,
+      "mesh_count": 2,
+      "mesh_face_count": 255,
+      "authored_mesh_fan_triangle_count": 510,
+      "analytic_primitive_counts": {
+        "Cube": 22
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 8,
+      "material_binding_counts": {
+        "/World/Materials/cream": 4,
+        "/World/Materials/dark": 2,
+        "/World/Materials/glass": 5,
+        "/World/Materials/red": 2,
+        "/World/Materials/steel": 2,
+        "/World/Materials/stone": 1,
+        "/World/Materials/teal": 7,
+        "/World/Materials/white": 1
+      },
+      "world_bounds_m": [
+        [
+          7.45,
+          -41.753468,
+          0.0
+        ],
+        [
+          24.35,
+          -29.15,
+          5.883333
+        ]
+      ],
+      "world_dimensions_m": [
+        16.9,
+        12.603468,
+        5.883333
+      ],
+      "connector_ids": [
+        "gis",
+        "workforce"
+      ],
+      "conceptual_tags": [
+        "incidents",
+        "workforce",
+        "guest_services"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "FOOD_COURT",
+      "prim_path": "/World/Park/FOOD_COURT",
+      "display_name": "Garden Food Court",
+      "authored_name": "Market Square Food Court",
+      "aliases": [
+        "Market Square Food Court"
+      ],
+      "category": "food",
+      "model_kind": "component",
+      "direct_children": 232,
+      "descendant_prims": 232,
+      "prim_types": {
+        "Cone": 5,
+        "Cube": 130,
+        "Cylinder": 80,
+        "Mesh": 4,
+        "Sphere": 13,
+        "Xform": 1
+      },
+      "gprim_count": 232,
+      "mesh_count": 4,
+      "mesh_face_count": 441,
+      "authored_mesh_fan_triangle_count": 882,
+      "analytic_primitive_counts": {
+        "Cone": 5,
+        "Cube": 130,
+        "Cylinder": 80,
+        "Sphere": 13
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 15,
+      "material_binding_counts": {
+        "/World/Materials/blue": 3,
+        "/World/Materials/cream": 33,
+        "/World/Materials/dark": 37,
+        "/World/Materials/glass": 18,
+        "/World/Materials/orange": 21,
+        "/World/Materials/paver": 1,
+        "/World/Materials/pink": 9,
+        "/World/Materials/purple": 6,
+        "/World/Materials/roof": 2,
+        "/World/Materials/skin": 13,
+        "/World/Materials/steel": 40,
+        "/World/Materials/stone": 3,
+        "/World/Materials/teal": 41,
+        "/World/Materials/timber": 3,
+        "/World/Materials/yellow": 2
+      },
+      "world_bounds_m": [
+        [
+          -40.78,
+          -38.753468,
+          -0.0
+        ],
+        [
+          -9.45,
+          -15.5,
+          6.075
+        ]
+      ],
+      "world_dimensions_m": [
+        31.33,
+        23.253468,
+        6.075
+      ],
+      "connector_ids": [
+        "bms",
+        "erp",
+        "gis",
+        "vision",
+        "workforce"
+      ],
+      "conceptual_tags": [
+        "pos",
+        "inventory",
+        "queues",
+        "workforce",
+        "energy"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "HOTEL",
+      "prim_path": "/World/Park/HOTEL",
+      "display_name": "Parkside Lodge",
+      "authored_name": "Aster Lodge",
+      "aliases": [
+        "Aster Lodge"
+      ],
+      "category": "hospitality",
+      "model_kind": "component",
+      "direct_children": 78,
+      "descendant_prims": 78,
+      "prim_types": {
+        "Cube": 73,
+        "Cylinder": 4,
+        "Mesh": 1,
+        "Xform": 1
+      },
+      "gprim_count": 78,
+      "mesh_count": 1,
+      "mesh_face_count": 223,
+      "authored_mesh_fan_triangle_count": 446,
+      "analytic_primitive_counts": {
+        "Cube": 73,
+        "Cylinder": 4
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 7,
+      "material_binding_counts": {
+        "/World/Materials/cream": 23,
+        "/World/Materials/dark": 3,
+        "/World/Materials/glass": 35,
+        "/World/Materials/roof": 6,
+        "/World/Materials/steel": 6,
+        "/World/Materials/stone": 1,
+        "/World/Materials/teal": 4
+      },
+      "world_bounds_m": [
+        [
+          -68.85,
+          -42.5,
+          -0.0
+        ],
+        [
+          -49.15,
+          -19.15,
+          12.140909
+        ]
+      ],
+      "world_dimensions_m": [
+        19.700001,
+        23.35,
+        12.140909
+      ],
+      "connector_ids": [
+        "bms",
+        "erp",
+        "gis"
+      ],
+      "conceptual_tags": [
+        "hotel",
+        "energy",
+        "workforce",
+        "erp"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "PARKING",
+      "prim_path": "/World/Park/PARKING",
+      "display_name": "Arrival & EV Parking",
+      "authored_name": "South Parking and EV Charging",
+      "aliases": [
+        "South Parking and EV Charging"
+      ],
+      "category": "transport",
+      "model_kind": "component",
+      "direct_children": 108,
+      "descendant_prims": 108,
+      "prim_types": {
+        "Cube": 56,
+        "Cylinder": 46,
+        "Mesh": 6,
+        "Xform": 1
+      },
+      "gprim_count": 108,
+      "mesh_count": 6,
+      "mesh_face_count": 596,
+      "authored_mesh_fan_triangle_count": 1192,
+      "analytic_primitive_counts": {
+        "Cube": 56,
+        "Cylinder": 46
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 10,
+      "material_binding_counts": {
+        "/World/Materials/blue": 3,
+        "/World/Materials/cream": 1,
+        "/World/Materials/dark": 51,
+        "/World/Materials/glass": 11,
+        "/World/Materials/orange": 3,
+        "/World/Materials/road": 1,
+        "/World/Materials/stripe": 22,
+        "/World/Materials/teal": 5,
+        "/World/Materials/white": 9,
+        "/World/Materials/yellow": 2
+      },
+      "world_bounds_m": [
+        [
+          30.5,
+          -54.0,
+          0.09
+        ],
+        [
+          73.5,
+          -19.89,
+          5.5
+        ]
+      ],
+      "world_dimensions_m": [
+        43.0,
+        34.11,
+        5.41
+      ],
+      "connector_ids": [
+        "bms",
+        "gis",
+        "vision"
+      ],
+      "conceptual_tags": [
+        "parking",
+        "ev_charging",
+        "transport",
+        "energy"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "POWER_HUB",
+      "prim_path": "/World/Park/POWER_HUB",
+      "display_name": "Energy Center",
+      "authored_name": "Energy Hub and Solar Canopy",
+      "aliases": [
+        "Energy Hub and Solar Canopy"
+      ],
+      "category": "utility",
+      "model_kind": "component",
+      "direct_children": 139,
+      "descendant_prims": 139,
+      "prim_types": {
+        "Cube": 75,
+        "Cylinder": 63,
+        "Mesh": 1,
+        "Xform": 1
+      },
+      "gprim_count": 139,
+      "mesh_count": 1,
+      "mesh_face_count": 135,
+      "authored_mesh_fan_triangle_count": 270,
+      "analytic_primitive_counts": {
+        "Cube": 75,
+        "Cylinder": 63
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 9,
+      "material_binding_counts": {
+        "/World/Materials/cream": 7,
+        "/World/Materials/dark": 10,
+        "/World/Materials/glass": 5,
+        "/World/Materials/roof": 6,
+        "/World/Materials/solar": 10,
+        "/World/Materials/steel": 93,
+        "/World/Materials/stone": 2,
+        "/World/Materials/teal": 3,
+        "/World/Materials/white": 3
+      },
+      "world_bounds_m": [
+        [
+          45.935,
+          39.935,
+          0.005
+        ],
+        [
+          69.065,
+          54.065,
+          6.05
+        ]
+      ],
+      "world_dimensions_m": [
+        23.13,
+        14.13,
+        6.045
+      ],
+      "connector_ids": [
+        "bms",
+        "cmms",
+        "gis"
+      ],
+      "conceptual_tags": [
+        "energy",
+        "maintenance",
+        "grid",
+        "weather"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "RESTROOMS",
+      "prim_path": "/World/Park/RESTROOMS",
+      "display_name": "Central Restrooms",
+      "authored_name": "Central Restrooms",
+      "aliases": [],
+      "category": "facility",
+      "model_kind": "component",
+      "direct_children": 19,
+      "descendant_prims": 19,
+      "prim_types": {
+        "Cube": 18,
+        "Mesh": 1,
+        "Xform": 1
+      },
+      "gprim_count": 19,
+      "mesh_count": 1,
+      "mesh_face_count": 195,
+      "authored_mesh_fan_triangle_count": 390,
+      "analytic_primitive_counts": {
+        "Cube": 18
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 6,
+      "material_binding_counts": {
+        "/World/Materials/cream": 4,
+        "/World/Materials/dark": 1,
+        "/World/Materials/glass": 5,
+        "/World/Materials/steel": 2,
+        "/World/Materials/stone": 1,
+        "/World/Materials/teal": 6
+      },
+      "world_bounds_m": [
+        [
+          46.65,
+          -21.253468,
+          0.005
+        ],
+        [
+          59.35,
+          -11.65,
+          5.183333
+        ]
+      ],
+      "world_dimensions_m": [
+        12.7,
+        9.603468,
+        5.178333
+      ],
+      "connector_ids": [
+        "gis",
+        "water"
+      ],
+      "conceptual_tags": [
+        "cleaning",
+        "water",
+        "maintenance"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "RIDE_COASTER",
+      "prim_path": "/World/Park/RIDE_COASTER",
+      "display_name": "Skyline Coaster",
+      "authored_name": "Comet Run Coaster",
+      "aliases": [
+        "Comet Run Coaster"
+      ],
+      "category": "ride",
+      "model_kind": "component",
+      "direct_children": 315,
+      "descendant_prims": 369,
+      "prim_types": {
+        "Cube": 53,
+        "Cylinder": 301,
+        "Mesh": 5,
+        "Sphere": 6,
+        "Xform": 5
+      },
+      "gprim_count": 365,
+      "mesh_count": 5,
+      "mesh_face_count": 7046,
+      "authored_mesh_fan_triangle_count": 14092,
+      "analytic_primitive_counts": {
+        "Cube": 53,
+        "Cylinder": 301,
+        "Sphere": 6
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 11,
+      "material_binding_counts": {
+        "/World/Materials/blue": 9,
+        "/World/Materials/cream": 10,
+        "/World/Materials/dark": 27,
+        "/World/Materials/glass": 6,
+        "/World/Materials/orange": 65,
+        "/World/Materials/pink": 2,
+        "/World/Materials/skin": 6,
+        "/World/Materials/steel": 93,
+        "/World/Materials/stone": 27,
+        "/World/Materials/teal": 116,
+        "/World/Materials/yellow": 4
+      },
+      "world_bounds_m": [
+        [
+          -60.065,
+          -5.23,
+          -0.0
+        ],
+        [
+          -12.12,
+          38.065,
+          22.099861
+        ]
+      ],
+      "world_dimensions_m": [
+        47.945,
+        43.295,
+        22.099861
+      ],
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing",
+        "workforce"
+      ],
+      "conceptual_tags": [
+        "ride_scada",
+        "queues",
+        "maintenance",
+        "energy",
+        "workforce"
+      ],
+      "dynamic_subassemblies": [
+        "/World/Park/RIDE_COASTER/Train",
+        "/World/Park/RIDE_COASTER/Train/Car_00",
+        "/World/Park/RIDE_COASTER/Train/Car_01",
+        "/World/Park/RIDE_COASTER/Train/Car_02"
+      ]
+    },
+    {
+      "asset_id": "RIDE_WHEEL",
+      "prim_path": "/World/Park/RIDE_WHEEL",
+      "display_name": "Panorama Wheel",
+      "authored_name": "Aster Observation Wheel",
+      "aliases": [
+        "Aster Observation Wheel"
+      ],
+      "category": "ride",
+      "model_kind": "component",
+      "direct_children": 144,
+      "descendant_prims": 269,
+      "prim_types": {
+        "Cube": 68,
+        "Cylinder": 167,
+        "Mesh": 8,
+        "Sphere": 13,
+        "Xform": 14
+      },
+      "gprim_count": 256,
+      "mesh_count": 8,
+      "mesh_face_count": 3402,
+      "authored_mesh_fan_triangle_count": 6800,
+      "analytic_primitive_counts": {
+        "Cube": 68,
+        "Cylinder": 167,
+        "Sphere": 13
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 12,
+      "material_binding_counts": {
+        "/World/Materials/blue": 12,
+        "/World/Materials/cream": 46,
+        "/World/Materials/dark": 50,
+        "/World/Materials/glass": 13,
+        "/World/Materials/orange": 6,
+        "/World/Materials/paver": 2,
+        "/World/Materials/pink": 9,
+        "/World/Materials/purple": 3,
+        "/World/Materials/skin": 12,
+        "/World/Materials/steel": 65,
+        "/World/Materials/teal": 25,
+        "/World/Materials/yellow": 13
+      },
+      "world_bounds_m": [
+        [
+          19.95,
+          -1.23,
+          -0.069676
+        ],
+        [
+          50.05,
+          32.5,
+          33.22
+        ]
+      ],
+      "world_dimensions_m": [
+        30.1,
+        33.73,
+        33.289677
+      ],
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing"
+      ],
+      "conceptual_tags": [
+        "ride_scada",
+        "queues",
+        "maintenance",
+        "energy",
+        "workforce"
+      ],
+      "dynamic_subassemblies": [
+        "/World/Park/RIDE_WHEEL/Rotor",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_00",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_01",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_02",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_03",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_04",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_05",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_06",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_07",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_08",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_09",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_10",
+        "/World/Park/RIDE_WHEEL/Rotor/Gondola_11"
+      ]
+    },
+    {
+      "asset_id": "SHOW_ARENA",
+      "prim_path": "/World/Park/SHOW_ARENA",
+      "display_name": "Lakeside Arena",
+      "authored_name": "Starlight Show Arena",
+      "aliases": [
+        "Starlight Show Arena"
+      ],
+      "category": "entertainment",
+      "model_kind": "component",
+      "direct_children": 17,
+      "descendant_prims": 17,
+      "prim_types": {
+        "Cube": 8,
+        "Cylinder": 3,
+        "Mesh": 1,
+        "Sphere": 5,
+        "Xform": 1
+      },
+      "gprim_count": 17,
+      "mesh_count": 1,
+      "mesh_face_count": 180,
+      "authored_mesh_fan_triangle_count": 360,
+      "analytic_primitive_counts": {
+        "Cube": 8,
+        "Cylinder": 3,
+        "Sphere": 5
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 6,
+      "material_binding_counts": {
+        "/World/Materials/cream": 4,
+        "/World/Materials/dark": 3,
+        "/World/Materials/purple": 1,
+        "/World/Materials/roof": 1,
+        "/World/Materials/steel": 3,
+        "/World/Materials/yellow": 5
+      },
+      "world_bounds_m": [
+        [
+          -15.5,
+          36.45,
+          -0.0
+        ],
+        [
+          5.5,
+          51.5,
+          7.12
+        ]
+      ],
+      "world_dimensions_m": [
+        21.0,
+        15.05,
+        7.12
+      ],
+      "connector_ids": [
+        "gis",
+        "ticketing",
+        "vision"
+      ],
+      "conceptual_tags": [
+        "shows",
+        "crowds",
+        "workforce",
+        "energy"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "WATER_PLANT",
+      "prim_path": "/World/Park/WATER_PLANT",
+      "display_name": "Water & Lake Plant",
+      "authored_name": "Water Treatment and Irrigation",
+      "aliases": [
+        "Water Treatment and Irrigation"
+      ],
+      "category": "utility",
+      "model_kind": "component",
+      "direct_children": 51,
+      "descendant_prims": 51,
+      "prim_types": {
+        "Cube": 18,
+        "Cylinder": 30,
+        "Mesh": 3,
+        "Xform": 1
+      },
+      "gprim_count": 51,
+      "mesh_count": 3,
+      "mesh_face_count": 395,
+      "authored_mesh_fan_triangle_count": 790,
+      "analytic_primitive_counts": {
+        "Cube": 18,
+        "Cylinder": 30
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 8,
+      "material_binding_counts": {
+        "/World/Materials/blue": 4,
+        "/World/Materials/cream": 4,
+        "/World/Materials/dark": 1,
+        "/World/Materials/glass": 5,
+        "/World/Materials/red": 2,
+        "/World/Materials/steel": 26,
+        "/World/Materials/stone": 1,
+        "/World/Materials/teal": 8
+      },
+      "world_bounds_m": [
+        [
+          -71.55,
+          42.665001,
+          0.005
+        ],
+        [
+          -50.65,
+          53.35,
+          5.35
+        ]
+      ],
+      "world_dimensions_m": [
+        20.9,
+        10.684999,
+        5.345
+      ],
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "water"
+      ],
+      "conceptual_tags": [
+        "water",
+        "maintenance",
+        "weather"
+      ],
+      "dynamic_subassemblies": []
+    },
+    {
+      "asset_id": "WEATHER_STATION",
+      "prim_path": "/World/Park/WEATHER_STATION",
+      "display_name": "Weather Mast",
+      "authored_name": "Weather and Environment Station",
+      "aliases": [
+        "Weather and Environment Station"
+      ],
+      "category": "sensor",
+      "model_kind": "component",
+      "direct_children": 6,
+      "descendant_prims": 6,
+      "prim_types": {
+        "Cube": 2,
+        "Cylinder": 2,
+        "Sphere": 2,
+        "Xform": 1
+      },
+      "gprim_count": 6,
+      "mesh_count": 0,
+      "mesh_face_count": 0,
+      "authored_mesh_fan_triangle_count": 0,
+      "analytic_primitive_counts": {
+        "Cube": 2,
+        "Cylinder": 2,
+        "Sphere": 2
+      },
+      "analytic_triangle_count": null,
+      "unique_bound_materials": 3,
+      "material_binding_counts": {
+        "/World/Materials/solar": 1,
+        "/World/Materials/steel": 2,
+        "/World/Materials/white": 3
+      },
+      "world_bounds_m": [
+        [
+          14.25,
+          42.57737,
+          0.0
+        ],
+        [
+          17.75,
+          43.42263,
+          9.25
+        ]
+      ],
+      "world_dimensions_m": [
+        3.5,
+        0.84526,
+        9.25
+      ],
+      "connector_ids": [
+        "gis",
+        "weather"
+      ],
+      "conceptual_tags": [
+        "weather",
+        "environment"
+      ],
+      "dynamic_subassemblies": []
+    }
+  ]
+}

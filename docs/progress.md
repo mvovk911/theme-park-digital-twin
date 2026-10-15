@@ -35,7 +35,7 @@ No new GPU renders, Blender export or browser acceptance are claimed here.
 
 The new procedural scene retains all 12 asset identities and adds landscaping,
 shaded queues, accessible deck details, utility hardware and independently posed
-coaster cars. It has 3,067 prims and a 433 KiB binary USD. Static scene, material,
+coaster cars. It has 3,067 prims and a 459 KiB binary USD. Static scene, material,
 bounds and articulated-motion checks pass; [revision 2 evidence](../assets/scene_quality_validation.json).
 
 **Deployment status:** revision 2 has not yet been rendered on the Horde GPU.

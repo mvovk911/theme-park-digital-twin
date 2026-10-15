@@ -1,0 +1,27 @@
+{
+  "prim_count": 2299,
+  "mesh_count": 26,
+  "asset_count": 12,
+  "bounds": [
+    -80,
+    -60,
+    80,
+    60
+  ],
+  "camera": [
+    142,
+    -180,
+    155
+  ],
+  "target": [
+    0,
+    0,
+    2
+  ],
+  "files": [
+    "park.usda",
+    "park.usdc",
+    "asset_registry.json",
+    "ride_paths.json"
+  ]
+}

@@ -14,9 +14,13 @@ texture downloads are required. Lengths are meters and the USD stage is Z-up.
 | [ride_paths.json](ride_paths.json) | Coaster route and Ferris wheel geometry parameters |
 | [blender_materials.json](blender_materials.json) | Material binding manifest used to repair analytic-primitive import in Blender |
 | [scene_validation.json](scene_validation.json) | USD scene validation results |
+| [scene_bindings.json](scene_bindings.json) | Static source/metric declarations exported from the sole operational catalog; contains no live telemetry |
+| [scene_inventory.json](scene_inventory.json) | Deterministic asset names, model kinds, geometry counts, materials and dimensions |
+| [scene_quality_validation.json](scene_quality_validation.json) | Exact USD hash, catalog fingerprint and semantic/geometry validation results |
 | [blender_validation.json](blender_validation.json) | Blender object/material verification results |
 
 Generation and editing instructions: [scene documentation](../docs/scene.md).
+Identity, source bindings and inventory: [authoring contract](../docs/scene-authoring.md).
 Animation transforms: [modeling/animate.py](../modeling/animate.py).
 Rendered progress gallery: [project progress](../docs/progress.md).
 

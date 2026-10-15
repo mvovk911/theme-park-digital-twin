@@ -23,6 +23,9 @@
     "park.usda",
     "park.usdc",
     "asset_registry.json",
-    "ride_paths.json"
+    "ride_paths.json",
+    "scene_bindings.json",
+    "scene_inventory.json",
+    "blender_materials.json"
   ]
 }

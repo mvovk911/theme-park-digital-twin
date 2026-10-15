@@ -6,7 +6,7 @@
     {
       "asset_id": "RIDE_COASTER",
       "prim_path": "/World/Park/RIDE_COASTER",
-      "name": "Comet Run Coaster",
+      "name": "Skyline Coaster",
       "category": "ride",
       "position": [
         -35,
@@ -26,12 +26,38 @@
         ]
       ],
       "systems": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing",
+        "workforce"
+      ],
+      "authored_name": "Comet Run Coaster",
+      "authored_category": "ride",
+      "conceptual_tags": [
         "ride_scada",
         "queues",
         "maintenance",
         "energy",
         "workforce"
       ],
+      "aliases": [
+        "Comet Run Coaster"
+      ],
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing",
+        "workforce"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/RIDE_COASTER",
+        "observations_path": "/api/observations?asset_id=RIDE_COASTER"
+      },
       "computed_bounds": [
         [
           -60.064999997615814,
@@ -48,7 +74,7 @@
     {
       "asset_id": "RIDE_WHEEL",
       "prim_path": "/World/Park/RIDE_WHEEL",
-      "name": "Aster Observation Wheel",
+      "name": "Panorama Wheel",
       "category": "ride",
       "position": [
         35,
@@ -68,12 +94,36 @@
         ]
       ],
       "systems": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing"
+      ],
+      "authored_name": "Aster Observation Wheel",
+      "authored_category": "ride",
+      "conceptual_tags": [
         "ride_scada",
         "queues",
         "maintenance",
         "energy",
         "workforce"
       ],
+      "aliases": [
+        "Aster Observation Wheel"
+      ],
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/RIDE_WHEEL",
+        "observations_path": "/api/observations?asset_id=RIDE_WHEEL"
+      },
       "computed_bounds": [
         [
           19.950000047683716,
@@ -90,7 +140,7 @@
     {
       "asset_id": "SHOW_ARENA",
       "prim_path": "/World/Park/SHOW_ARENA",
-      "name": "Starlight Show Arena",
+      "name": "Lakeside Arena",
       "category": "entertainment",
       "position": [
         -5,
@@ -110,11 +160,33 @@
         ]
       ],
       "systems": [
+        "gis",
+        "ticketing",
+        "vision"
+      ],
+      "authored_name": "Starlight Show Arena",
+      "authored_category": "entertainment",
+      "conceptual_tags": [
         "shows",
         "crowds",
         "workforce",
         "energy"
       ],
+      "aliases": [
+        "Starlight Show Arena"
+      ],
+      "connector_ids": [
+        "gis",
+        "ticketing",
+        "vision"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/SHOW_ARENA",
+        "observations_path": "/api/observations?asset_id=SHOW_ARENA"
+      },
       "computed_bounds": [
         [
           -15.5,
@@ -131,7 +203,7 @@
     {
       "asset_id": "FOOD_COURT",
       "prim_path": "/World/Park/FOOD_COURT",
-      "name": "Market Square Food Court",
+      "name": "Garden Food Court",
       "category": "food",
       "position": [
         -25,
@@ -151,12 +223,38 @@
         ]
       ],
       "systems": [
+        "bms",
+        "erp",
+        "gis",
+        "vision",
+        "workforce"
+      ],
+      "authored_name": "Market Square Food Court",
+      "authored_category": "food",
+      "conceptual_tags": [
         "pos",
         "inventory",
         "queues",
         "workforce",
         "energy"
       ],
+      "aliases": [
+        "Market Square Food Court"
+      ],
+      "connector_ids": [
+        "bms",
+        "erp",
+        "gis",
+        "vision",
+        "workforce"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/FOOD_COURT",
+        "observations_path": "/api/observations?asset_id=FOOD_COURT"
+      },
       "computed_bounds": [
         [
           -40.78000001430512,
@@ -173,7 +271,7 @@
     {
       "asset_id": "POWER_HUB",
       "prim_path": "/World/Park/POWER_HUB",
-      "name": "Energy Hub and Solar Canopy",
+      "name": "Energy Center",
       "category": "utility",
       "position": [
         57,
@@ -193,11 +291,33 @@
         ]
       ],
       "systems": [
+        "bms",
+        "cmms",
+        "gis"
+      ],
+      "authored_name": "Energy Hub and Solar Canopy",
+      "authored_category": "utility",
+      "conceptual_tags": [
         "energy",
         "maintenance",
         "grid",
         "weather"
       ],
+      "aliases": [
+        "Energy Hub and Solar Canopy"
+      ],
+      "connector_ids": [
+        "bms",
+        "cmms",
+        "gis"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/POWER_HUB",
+        "observations_path": "/api/observations?asset_id=POWER_HUB"
+      },
       "computed_bounds": [
         [
           45.935000002384186,
@@ -214,7 +334,7 @@
     {
       "asset_id": "WATER_PLANT",
       "prim_path": "/World/Park/WATER_PLANT",
-      "name": "Water Treatment and Irrigation",
+      "name": "Water & Lake Plant",
       "category": "utility",
       "position": [
         -61,
@@ -234,10 +354,32 @@
         ]
       ],
       "systems": [
+        "cmms",
+        "gis",
+        "water"
+      ],
+      "authored_name": "Water Treatment and Irrigation",
+      "authored_category": "utility",
+      "conceptual_tags": [
         "water",
         "maintenance",
         "weather"
       ],
+      "aliases": [
+        "Water Treatment and Irrigation"
+      ],
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "water"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/WATER_PLANT",
+        "observations_path": "/api/observations?asset_id=WATER_PLANT"
+      },
       "computed_bounds": [
         [
           -71.54999995231628,
@@ -254,7 +396,7 @@
     {
       "asset_id": "HOTEL",
       "prim_path": "/World/Park/HOTEL",
-      "name": "Aster Lodge",
+      "name": "Parkside Lodge",
       "category": "hospitality",
       "position": [
         -58,
@@ -274,11 +416,33 @@
         ]
       ],
       "systems": [
+        "bms",
+        "erp",
+        "gis"
+      ],
+      "authored_name": "Aster Lodge",
+      "authored_category": "hospitality",
+      "conceptual_tags": [
         "hotel",
         "energy",
         "workforce",
         "erp"
       ],
+      "aliases": [
+        "Aster Lodge"
+      ],
+      "connector_ids": [
+        "bms",
+        "erp",
+        "gis"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/HOTEL",
+        "observations_path": "/api/observations?asset_id=HOTEL"
+      },
       "computed_bounds": [
         [
           -68.85000038146973,
@@ -295,8 +459,8 @@
     {
       "asset_id": "PARKING",
       "prim_path": "/World/Park/PARKING",
-      "name": "South Parking and EV Charging",
-      "category": "mobility",
+      "name": "Arrival & EV Parking",
+      "category": "transport",
       "position": [
         52,
         -36,
@@ -315,11 +479,33 @@
         ]
       ],
       "systems": [
+        "bms",
+        "gis",
+        "vision"
+      ],
+      "authored_name": "South Parking and EV Charging",
+      "authored_category": "mobility",
+      "conceptual_tags": [
         "parking",
         "ev_charging",
         "transport",
         "energy"
       ],
+      "aliases": [
+        "South Parking and EV Charging"
+      ],
+      "connector_ids": [
+        "bms",
+        "gis",
+        "vision"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/PARKING",
+        "observations_path": "/api/observations?asset_id=PARKING"
+      },
       "computed_bounds": [
         [
           30.5,
@@ -336,8 +522,8 @@
     {
       "asset_id": "FIRST_AID",
       "prim_path": "/World/Park/FIRST_AID",
-      "name": "First Aid and Guest Care",
-      "category": "guest_service",
+      "name": "Guest Care",
+      "category": "care",
       "position": [
         18,
         -35,
@@ -356,10 +542,30 @@
         ]
       ],
       "systems": [
+        "gis",
+        "workforce"
+      ],
+      "authored_name": "First Aid and Guest Care",
+      "authored_category": "guest_service",
+      "conceptual_tags": [
         "incidents",
         "workforce",
         "guest_services"
       ],
+      "aliases": [
+        "First Aid and Guest Care"
+      ],
+      "connector_ids": [
+        "gis",
+        "workforce"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/FIRST_AID",
+        "observations_path": "/api/observations?asset_id=FIRST_AID"
+      },
       "computed_bounds": [
         [
           7.450000047683716,
@@ -377,7 +583,7 @@
       "asset_id": "RESTROOMS",
       "prim_path": "/World/Park/RESTROOMS",
       "name": "Central Restrooms",
-      "category": "guest_service",
+      "category": "facility",
       "position": [
         53,
         -16,
@@ -396,10 +602,28 @@
         ]
       ],
       "systems": [
+        "gis",
+        "water"
+      ],
+      "authored_name": "Central Restrooms",
+      "authored_category": "guest_service",
+      "conceptual_tags": [
         "cleaning",
         "water",
         "maintenance"
       ],
+      "aliases": [],
+      "connector_ids": [
+        "gis",
+        "water"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/RESTROOMS",
+        "observations_path": "/api/observations?asset_id=RESTROOMS"
+      },
       "computed_bounds": [
         [
           46.65000009536743,
@@ -416,7 +640,7 @@
     {
       "asset_id": "WEATHER_STATION",
       "prim_path": "/World/Park/WEATHER_STATION",
-      "name": "Weather and Environment Station",
+      "name": "Weather Mast",
       "category": "sensor",
       "position": [
         16,
@@ -436,9 +660,29 @@
         ]
       ],
       "systems": [
+        "gis",
+        "weather"
+      ],
+      "authored_name": "Weather and Environment Station",
+      "authored_category": "sensor",
+      "conceptual_tags": [
         "weather",
         "environment"
       ],
+      "aliases": [
+        "Weather and Environment Station"
+      ],
+      "connector_ids": [
+        "gis",
+        "weather"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/WEATHER_STATION",
+        "observations_path": "/api/observations?asset_id=WEATHER_STATION"
+      },
       "computed_bounds": [
         [
           14.25,
@@ -455,7 +699,7 @@
     {
       "asset_id": "ENTRY_GATE",
       "prim_path": "/World/Park/ENTRY_GATE",
-      "name": "Aster Park Main Entrance",
+      "name": "Welcome Plaza",
       "category": "admission",
       "position": [
         0,
@@ -475,11 +719,35 @@
         ]
       ],
       "systems": [
+        "gis",
+        "ticketing",
+        "vision",
+        "workforce"
+      ],
+      "authored_name": "Aster Park Main Entrance",
+      "authored_category": "admission",
+      "conceptual_tags": [
         "ticketing",
         "admission",
         "crowds",
         "guest_services"
       ],
+      "aliases": [
+        "Aster Park Main Entrance"
+      ],
+      "connector_ids": [
+        "gis",
+        "ticketing",
+        "vision",
+        "workforce"
+      ],
+      "semantic_binding": {
+        "mode": "declarative_catalog",
+        "manifest": "scene_bindings.json",
+        "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+        "asset_path": "/api/assets/ENTRY_GATE",
+        "observations_path": "/api/observations?asset_id=ENTRY_GATE"
+      },
       "computed_bounds": [
         [
           -17.059999998658895,

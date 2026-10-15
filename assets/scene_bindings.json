@@ -1,0 +1,2374 @@
+{
+  "schema_version": "1.0",
+  "binding_mode": "declarative_catalog",
+  "catalog_sources": [
+    "backend/domain.py:registry",
+    "backend/connectors/catalog.py:default_catalog"
+  ],
+  "catalog_sha256": "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906",
+  "contains_live_values": false,
+  "assets": {
+    "ENTRY_GATE": {
+      "asset_id": "ENTRY_GATE",
+      "name": "Welcome Plaza",
+      "category": "admission",
+      "prim_path": "/World/Park/ENTRY_GATE",
+      "asset_path": "/api/assets/ENTRY_GATE",
+      "observations_path": "/api/observations?asset_id=ENTRY_GATE",
+      "connector_ids": [
+        "gis",
+        "ticketing",
+        "vision",
+        "workforce"
+      ],
+      "bindings": [
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/ENTRY_GATE"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=ENTRY_GATE"
+        },
+        {
+          "source_id": "ticketing",
+          "source_name": "Simulated Ticketing & Reservations",
+          "planned_protocol": "vendor REST",
+          "source_asset_ids": [
+            "ticketing/ENTRY_GATE"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "ticketing/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "reservations.booked",
+              "destination": "reservations.booked",
+              "unit": "reservations",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "reservations.next_window_minutes",
+              "destination": "reservations.next_window_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/ticketing",
+          "observations_path": "/api/observations?source_id=ticketing&asset_id=ENTRY_GATE"
+        },
+        {
+          "source_id": "vision",
+          "source_name": "Simulated People Counters",
+          "planned_protocol": "MQTT / ONVIF metadata",
+          "source_asset_ids": [
+            "vision/ENTRY_GATE"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "vision/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/vision",
+          "observations_path": "/api/observations?source_id=vision&asset_id=ENTRY_GATE"
+        },
+        {
+          "source_id": "workforce",
+          "source_name": "Simulated Workforce",
+          "planned_protocol": "workforce REST",
+          "source_asset_ids": [
+            "workforce/ENTRY_GATE"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "workforce/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "staff.on_duty",
+              "destination": "staff.on_duty",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "staff.qualifications",
+              "destination": "staff.qualifications",
+              "unit": "qualification_id[]",
+              "value_type": "strings",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/ENTRY_GATE",
+              "asset_id": "ENTRY_GATE",
+              "metric": "staff.required",
+              "destination": "staff.required",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/workforce",
+          "observations_path": "/api/observations?source_id=workforce&asset_id=ENTRY_GATE"
+        }
+      ]
+    },
+    "FIRST_AID": {
+      "asset_id": "FIRST_AID",
+      "name": "Guest Care",
+      "category": "care",
+      "prim_path": "/World/Park/FIRST_AID",
+      "asset_path": "/api/assets/FIRST_AID",
+      "observations_path": "/api/observations?asset_id=FIRST_AID",
+      "connector_ids": [
+        "gis",
+        "workforce"
+      ],
+      "bindings": [
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/FIRST_AID"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/FIRST_AID",
+              "asset_id": "FIRST_AID",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/FIRST_AID",
+              "asset_id": "FIRST_AID",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/FIRST_AID",
+              "asset_id": "FIRST_AID",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=FIRST_AID"
+        },
+        {
+          "source_id": "workforce",
+          "source_name": "Simulated Workforce",
+          "planned_protocol": "workforce REST",
+          "source_asset_ids": [
+            "workforce/FIRST_AID"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "workforce/FIRST_AID",
+              "asset_id": "FIRST_AID",
+              "metric": "staff.on_duty",
+              "destination": "staff.on_duty",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/FIRST_AID",
+              "asset_id": "FIRST_AID",
+              "metric": "staff.qualifications",
+              "destination": "staff.qualifications",
+              "unit": "qualification_id[]",
+              "value_type": "strings",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/FIRST_AID",
+              "asset_id": "FIRST_AID",
+              "metric": "staff.required",
+              "destination": "staff.required",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/workforce",
+          "observations_path": "/api/observations?source_id=workforce&asset_id=FIRST_AID"
+        }
+      ]
+    },
+    "FOOD_COURT": {
+      "asset_id": "FOOD_COURT",
+      "name": "Garden Food Court",
+      "category": "food",
+      "prim_path": "/World/Park/FOOD_COURT",
+      "asset_path": "/api/assets/FOOD_COURT",
+      "observations_path": "/api/observations?asset_id=FOOD_COURT",
+      "connector_ids": [
+        "bms",
+        "erp",
+        "gis",
+        "vision",
+        "workforce"
+      ],
+      "bindings": [
+        {
+          "source_id": "bms",
+          "source_name": "Simulated Building & Energy",
+          "planned_protocol": "BACnet gateway",
+          "source_asset_ids": [
+            "bms/FOOD_COURT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "bms/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "power_kw",
+              "destination": "power_kw",
+              "unit": "kW",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "temperature_c",
+              "destination": "temperature_c",
+              "unit": "Cel",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": -60,
+              "maximum": 80,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/bms",
+          "observations_path": "/api/observations?source_id=bms&asset_id=FOOD_COURT"
+        },
+        {
+          "source_id": "erp",
+          "source_name": "Simulated ERP & POS",
+          "planned_protocol": "ERP / POS REST",
+          "source_asset_ids": [
+            "erp/FOOD_COURT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "erp/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "erp.operating_cost_eur_per_hour",
+              "destination": "erp.operating_cost_eur_per_hour",
+              "unit": "EUR/h",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "erp.reorder_point",
+              "destination": "erp.reorder_point",
+              "unit": "items",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "erp.stock_capacity",
+              "destination": "erp.stock_capacity",
+              "unit": "items",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "erp.stock_units",
+              "destination": "erp.stock_units",
+              "unit": "items",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "throughput_per_hour",
+              "destination": "throughput_per_hour",
+              "unit": "people/h",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/erp",
+          "observations_path": "/api/observations?source_id=erp&asset_id=FOOD_COURT"
+        },
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/FOOD_COURT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=FOOD_COURT"
+        },
+        {
+          "source_id": "vision",
+          "source_name": "Simulated People Counters",
+          "planned_protocol": "MQTT / ONVIF metadata",
+          "source_asset_ids": [
+            "vision/FOOD_COURT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "vision/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/vision",
+          "observations_path": "/api/observations?source_id=vision&asset_id=FOOD_COURT"
+        },
+        {
+          "source_id": "workforce",
+          "source_name": "Simulated Workforce",
+          "planned_protocol": "workforce REST",
+          "source_asset_ids": [
+            "workforce/FOOD_COURT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "workforce/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "staff.on_duty",
+              "destination": "staff.on_duty",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "staff.qualifications",
+              "destination": "staff.qualifications",
+              "unit": "qualification_id[]",
+              "value_type": "strings",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/FOOD_COURT",
+              "asset_id": "FOOD_COURT",
+              "metric": "staff.required",
+              "destination": "staff.required",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/workforce",
+          "observations_path": "/api/observations?source_id=workforce&asset_id=FOOD_COURT"
+        }
+      ]
+    },
+    "HOTEL": {
+      "asset_id": "HOTEL",
+      "name": "Parkside Lodge",
+      "category": "hospitality",
+      "prim_path": "/World/Park/HOTEL",
+      "asset_path": "/api/assets/HOTEL",
+      "observations_path": "/api/observations?asset_id=HOTEL",
+      "connector_ids": [
+        "bms",
+        "erp",
+        "gis"
+      ],
+      "bindings": [
+        {
+          "source_id": "bms",
+          "source_name": "Simulated Building & Energy",
+          "planned_protocol": "BACnet gateway",
+          "source_asset_ids": [
+            "bms/HOTEL"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "bms/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "power_kw",
+              "destination": "power_kw",
+              "unit": "kW",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "temperature_c",
+              "destination": "temperature_c",
+              "unit": "Cel",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": -60,
+              "maximum": 80,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/bms",
+          "observations_path": "/api/observations?source_id=bms&asset_id=HOTEL"
+        },
+        {
+          "source_id": "erp",
+          "source_name": "Simulated ERP & POS",
+          "planned_protocol": "ERP / POS REST",
+          "source_asset_ids": [
+            "erp/HOTEL"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "erp/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "erp.operating_cost_eur_per_hour",
+              "destination": "erp.operating_cost_eur_per_hour",
+              "unit": "EUR/h",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "erp.reorder_point",
+              "destination": "erp.reorder_point",
+              "unit": "items",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "erp.stock_capacity",
+              "destination": "erp.stock_capacity",
+              "unit": "items",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "erp.stock_units",
+              "destination": "erp.stock_units",
+              "unit": "items",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "erp/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "throughput_per_hour",
+              "destination": "throughput_per_hour",
+              "unit": "people/h",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/erp",
+          "observations_path": "/api/observations?source_id=erp&asset_id=HOTEL"
+        },
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/HOTEL"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/HOTEL",
+              "asset_id": "HOTEL",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=HOTEL"
+        }
+      ]
+    },
+    "PARKING": {
+      "asset_id": "PARKING",
+      "name": "Arrival & EV Parking",
+      "category": "transport",
+      "prim_path": "/World/Park/PARKING",
+      "asset_path": "/api/assets/PARKING",
+      "observations_path": "/api/observations?asset_id=PARKING",
+      "connector_ids": [
+        "bms",
+        "gis",
+        "vision"
+      ],
+      "bindings": [
+        {
+          "source_id": "bms",
+          "source_name": "Simulated Building & Energy",
+          "planned_protocol": "BACnet gateway",
+          "source_asset_ids": [
+            "bms/PARKING"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "bms/PARKING",
+              "asset_id": "PARKING",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/PARKING",
+              "asset_id": "PARKING",
+              "metric": "power_kw",
+              "destination": "power_kw",
+              "unit": "kW",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/PARKING",
+              "asset_id": "PARKING",
+              "metric": "temperature_c",
+              "destination": "temperature_c",
+              "unit": "Cel",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": -60,
+              "maximum": 80,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/bms",
+          "observations_path": "/api/observations?source_id=bms&asset_id=PARKING"
+        },
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/PARKING"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/PARKING",
+              "asset_id": "PARKING",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/PARKING",
+              "asset_id": "PARKING",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/PARKING",
+              "asset_id": "PARKING",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=PARKING"
+        },
+        {
+          "source_id": "vision",
+          "source_name": "Simulated People Counters",
+          "planned_protocol": "MQTT / ONVIF metadata",
+          "source_asset_ids": [
+            "vision/PARKING"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "vision/PARKING",
+              "asset_id": "PARKING",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "vehicles",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/PARKING",
+              "asset_id": "PARKING",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "vehicles",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/PARKING",
+              "asset_id": "PARKING",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/vision",
+          "observations_path": "/api/observations?source_id=vision&asset_id=PARKING"
+        }
+      ]
+    },
+    "POWER_HUB": {
+      "asset_id": "POWER_HUB",
+      "name": "Energy Center",
+      "category": "utility",
+      "prim_path": "/World/Park/POWER_HUB",
+      "asset_path": "/api/assets/POWER_HUB",
+      "observations_path": "/api/observations?asset_id=POWER_HUB",
+      "connector_ids": [
+        "bms",
+        "cmms",
+        "gis"
+      ],
+      "bindings": [
+        {
+          "source_id": "bms",
+          "source_name": "Simulated Building & Energy",
+          "planned_protocol": "BACnet gateway",
+          "source_asset_ids": [
+            "bms/POWER_HUB"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "bms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "power_kw",
+              "destination": "power_kw",
+              "unit": "kW",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "bms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "status",
+              "destination": "status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "operational",
+                "warning",
+                "closed",
+                "fault"
+              ]
+            },
+            {
+              "source_asset_id": "bms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "temperature_c",
+              "destination": "temperature_c",
+              "unit": "Cel",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": -60,
+              "maximum": 80,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/bms",
+          "observations_path": "/api/observations?source_id=bms&asset_id=POWER_HUB"
+        },
+        {
+          "source_id": "cmms",
+          "source_name": "Simulated Maintenance CMMS",
+          "planned_protocol": "CMMS REST",
+          "source_asset_ids": [
+            "cmms/POWER_HUB"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "cmms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "maintenance.health_pct",
+              "destination": "maintenance.health_pct",
+              "unit": "%",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": 100,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "maintenance.inspection_status",
+              "destination": "maintenance.inspection_status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "passed",
+                "review_required",
+                "pending",
+                "failed"
+              ]
+            },
+            {
+              "source_asset_id": "cmms/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "maintenance.open_work_orders",
+              "destination": "maintenance.open_work_orders",
+              "unit": "work_orders",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/cmms",
+          "observations_path": "/api/observations?source_id=cmms&asset_id=POWER_HUB"
+        },
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/POWER_HUB"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/POWER_HUB",
+              "asset_id": "POWER_HUB",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=POWER_HUB"
+        }
+      ]
+    },
+    "RESTROOMS": {
+      "asset_id": "RESTROOMS",
+      "name": "Central Restrooms",
+      "category": "facility",
+      "prim_path": "/World/Park/RESTROOMS",
+      "asset_path": "/api/assets/RESTROOMS",
+      "observations_path": "/api/observations?asset_id=RESTROOMS",
+      "connector_ids": [
+        "gis",
+        "water"
+      ],
+      "bindings": [
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/RESTROOMS"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/RESTROOMS",
+              "asset_id": "RESTROOMS",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/RESTROOMS",
+              "asset_id": "RESTROOMS",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/RESTROOMS",
+              "asset_id": "RESTROOMS",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=RESTROOMS"
+        },
+        {
+          "source_id": "water",
+          "source_name": "Simulated Water Management",
+          "planned_protocol": "MQTT / utility gateway",
+          "source_asset_ids": [
+            "water/RESTROOMS"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "water/RESTROOMS",
+              "asset_id": "RESTROOMS",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "water/RESTROOMS",
+              "asset_id": "RESTROOMS",
+              "metric": "status",
+              "destination": "status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "operational",
+                "warning",
+                "closed",
+                "fault"
+              ]
+            },
+            {
+              "source_asset_id": "water/RESTROOMS",
+              "asset_id": "RESTROOMS",
+              "metric": "water_lpm",
+              "destination": "water_lpm",
+              "unit": "L/min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/water",
+          "observations_path": "/api/observations?source_id=water&asset_id=RESTROOMS"
+        }
+      ]
+    },
+    "RIDE_COASTER": {
+      "asset_id": "RIDE_COASTER",
+      "name": "Skyline Coaster",
+      "category": "ride",
+      "prim_path": "/World/Park/RIDE_COASTER",
+      "asset_path": "/api/assets/RIDE_COASTER",
+      "observations_path": "/api/observations?asset_id=RIDE_COASTER",
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing",
+        "workforce"
+      ],
+      "bindings": [
+        {
+          "source_id": "cmms",
+          "source_name": "Simulated Maintenance CMMS",
+          "planned_protocol": "CMMS REST",
+          "source_asset_ids": [
+            "cmms/RIDE_COASTER"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "cmms/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "maintenance.health_pct",
+              "destination": "maintenance.health_pct",
+              "unit": "%",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": 100,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "maintenance.inspection_status",
+              "destination": "maintenance.inspection_status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "passed",
+                "review_required",
+                "pending",
+                "failed"
+              ]
+            },
+            {
+              "source_asset_id": "cmms/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "maintenance.open_work_orders",
+              "destination": "maintenance.open_work_orders",
+              "unit": "work_orders",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/cmms",
+          "observations_path": "/api/observations?source_id=cmms&asset_id=RIDE_COASTER"
+        },
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/RIDE_COASTER"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=RIDE_COASTER"
+        },
+        {
+          "source_id": "ride_scada",
+          "source_name": "Simulated Ride SCADA",
+          "planned_protocol": "OPC UA",
+          "source_asset_ids": [
+            "ride_scada/RIDE_COASTER"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "ride_scada/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "maintenance.health_pct",
+              "destination": "maintenance.health_pct",
+              "unit": "%",
+              "value_type": "number",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": 100,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "maintenance.inspection_status",
+              "destination": "maintenance.inspection_status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "passed",
+                "review_required",
+                "pending",
+                "failed"
+              ]
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "maintenance.open_work_orders",
+              "destination": "maintenance.open_work_orders",
+              "unit": "work_orders",
+              "value_type": "integer",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "power_kw",
+              "destination": "power_kw",
+              "unit": "kW",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "status",
+              "destination": "status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "operational",
+                "warning",
+                "closed",
+                "fault"
+              ]
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "throughput_per_hour",
+              "destination": "throughput_per_hour",
+              "unit": "people/h",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/ride_scada",
+          "observations_path": "/api/observations?source_id=ride_scada&asset_id=RIDE_COASTER"
+        },
+        {
+          "source_id": "ticketing",
+          "source_name": "Simulated Ticketing & Reservations",
+          "planned_protocol": "vendor REST",
+          "source_asset_ids": [
+            "ticketing/RIDE_COASTER"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "ticketing/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "reservations.booked",
+              "destination": "reservations.booked",
+              "unit": "reservations",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "reservations.next_window_minutes",
+              "destination": "reservations.next_window_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/ticketing",
+          "observations_path": "/api/observations?source_id=ticketing&asset_id=RIDE_COASTER"
+        },
+        {
+          "source_id": "workforce",
+          "source_name": "Simulated Workforce",
+          "planned_protocol": "workforce REST",
+          "source_asset_ids": [
+            "workforce/RIDE_COASTER"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "workforce/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "staff.on_duty",
+              "destination": "staff.on_duty",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "staff.qualifications",
+              "destination": "staff.qualifications",
+              "unit": "qualification_id[]",
+              "value_type": "strings",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "workforce/RIDE_COASTER",
+              "asset_id": "RIDE_COASTER",
+              "metric": "staff.required",
+              "destination": "staff.required",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/workforce",
+          "observations_path": "/api/observations?source_id=workforce&asset_id=RIDE_COASTER"
+        }
+      ]
+    },
+    "RIDE_WHEEL": {
+      "asset_id": "RIDE_WHEEL",
+      "name": "Panorama Wheel",
+      "category": "ride",
+      "prim_path": "/World/Park/RIDE_WHEEL",
+      "asset_path": "/api/assets/RIDE_WHEEL",
+      "observations_path": "/api/observations?asset_id=RIDE_WHEEL",
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "ride_scada",
+        "ticketing"
+      ],
+      "bindings": [
+        {
+          "source_id": "cmms",
+          "source_name": "Simulated Maintenance CMMS",
+          "planned_protocol": "CMMS REST",
+          "source_asset_ids": [
+            "cmms/RIDE_WHEEL"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "cmms/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "maintenance.health_pct",
+              "destination": "maintenance.health_pct",
+              "unit": "%",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": 100,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "maintenance.inspection_status",
+              "destination": "maintenance.inspection_status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "passed",
+                "review_required",
+                "pending",
+                "failed"
+              ]
+            },
+            {
+              "source_asset_id": "cmms/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "maintenance.open_work_orders",
+              "destination": "maintenance.open_work_orders",
+              "unit": "work_orders",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/cmms",
+          "observations_path": "/api/observations?source_id=cmms&asset_id=RIDE_WHEEL"
+        },
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/RIDE_WHEEL"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=RIDE_WHEEL"
+        },
+        {
+          "source_id": "ride_scada",
+          "source_name": "Simulated Ride SCADA",
+          "planned_protocol": "OPC UA",
+          "source_asset_ids": [
+            "ride_scada/RIDE_WHEEL"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "ride_scada/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "maintenance.health_pct",
+              "destination": "maintenance.health_pct",
+              "unit": "%",
+              "value_type": "number",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": 100,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "maintenance.inspection_status",
+              "destination": "maintenance.inspection_status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "passed",
+                "review_required",
+                "pending",
+                "failed"
+              ]
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "maintenance.open_work_orders",
+              "destination": "maintenance.open_work_orders",
+              "unit": "work_orders",
+              "value_type": "integer",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "power_kw",
+              "destination": "power_kw",
+              "unit": "kW",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "status",
+              "destination": "status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "operational",
+                "warning",
+                "closed",
+                "fault"
+              ]
+            },
+            {
+              "source_asset_id": "ride_scada/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "throughput_per_hour",
+              "destination": "throughput_per_hour",
+              "unit": "people/h",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/ride_scada",
+          "observations_path": "/api/observations?source_id=ride_scada&asset_id=RIDE_WHEEL"
+        },
+        {
+          "source_id": "ticketing",
+          "source_name": "Simulated Ticketing & Reservations",
+          "planned_protocol": "vendor REST",
+          "source_asset_ids": [
+            "ticketing/RIDE_WHEEL"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "ticketing/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "reservations.booked",
+              "destination": "reservations.booked",
+              "unit": "reservations",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/RIDE_WHEEL",
+              "asset_id": "RIDE_WHEEL",
+              "metric": "reservations.next_window_minutes",
+              "destination": "reservations.next_window_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/ticketing",
+          "observations_path": "/api/observations?source_id=ticketing&asset_id=RIDE_WHEEL"
+        }
+      ]
+    },
+    "SHOW_ARENA": {
+      "asset_id": "SHOW_ARENA",
+      "name": "Lakeside Arena",
+      "category": "entertainment",
+      "prim_path": "/World/Park/SHOW_ARENA",
+      "asset_path": "/api/assets/SHOW_ARENA",
+      "observations_path": "/api/observations?asset_id=SHOW_ARENA",
+      "connector_ids": [
+        "gis",
+        "ticketing",
+        "vision"
+      ],
+      "bindings": [
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/SHOW_ARENA"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=SHOW_ARENA"
+        },
+        {
+          "source_id": "ticketing",
+          "source_name": "Simulated Ticketing & Reservations",
+          "planned_protocol": "vendor REST",
+          "source_asset_ids": [
+            "ticketing/SHOW_ARENA"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "ticketing/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "reservations.booked",
+              "destination": "reservations.booked",
+              "unit": "reservations",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "ticketing/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "reservations.next_window_minutes",
+              "destination": "reservations.next_window_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/ticketing",
+          "observations_path": "/api/observations?source_id=ticketing&asset_id=SHOW_ARENA"
+        },
+        {
+          "source_id": "vision",
+          "source_name": "Simulated People Counters",
+          "planned_protocol": "MQTT / ONVIF metadata",
+          "source_asset_ids": [
+            "vision/SHOW_ARENA"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "vision/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "capacity",
+              "destination": "capacity",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "occupancy",
+              "destination": "occupancy",
+              "unit": "people",
+              "value_type": "integer",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "vision/SHOW_ARENA",
+              "asset_id": "SHOW_ARENA",
+              "metric": "queue_minutes",
+              "destination": "queue_minutes",
+              "unit": "min",
+              "value_type": "number",
+              "authoritative": false,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/vision",
+          "observations_path": "/api/observations?source_id=vision&asset_id=SHOW_ARENA"
+        }
+      ]
+    },
+    "WATER_PLANT": {
+      "asset_id": "WATER_PLANT",
+      "name": "Water & Lake Plant",
+      "category": "utility",
+      "prim_path": "/World/Park/WATER_PLANT",
+      "asset_path": "/api/assets/WATER_PLANT",
+      "observations_path": "/api/observations?asset_id=WATER_PLANT",
+      "connector_ids": [
+        "cmms",
+        "gis",
+        "water"
+      ],
+      "bindings": [
+        {
+          "source_id": "cmms",
+          "source_name": "Simulated Maintenance CMMS",
+          "planned_protocol": "CMMS REST",
+          "source_asset_ids": [
+            "cmms/WATER_PLANT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "cmms/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "maintenance.health_pct",
+              "destination": "maintenance.health_pct",
+              "unit": "%",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": 100,
+              "choices": []
+            },
+            {
+              "source_asset_id": "cmms/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "maintenance.inspection_status",
+              "destination": "maintenance.inspection_status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "passed",
+                "review_required",
+                "pending",
+                "failed"
+              ]
+            },
+            {
+              "source_asset_id": "cmms/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "maintenance.open_work_orders",
+              "destination": "maintenance.open_work_orders",
+              "unit": "work_orders",
+              "value_type": "integer",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/cmms",
+          "observations_path": "/api/observations?source_id=cmms&asset_id=WATER_PLANT"
+        },
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/WATER_PLANT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=WATER_PLANT"
+        },
+        {
+          "source_id": "water",
+          "source_name": "Simulated Water Management",
+          "planned_protocol": "MQTT / utility gateway",
+          "source_asset_ids": [
+            "water/WATER_PLANT"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "water/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": false,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "water/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "status",
+              "destination": "status",
+              "unit": "state",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": [
+                "operational",
+                "warning",
+                "closed",
+                "fault"
+              ]
+            },
+            {
+              "source_asset_id": "water/WATER_PLANT",
+              "asset_id": "WATER_PLANT",
+              "metric": "water_lpm",
+              "destination": "water_lpm",
+              "unit": "L/min",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": 0,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/water",
+          "observations_path": "/api/observations?source_id=water&asset_id=WATER_PLANT"
+        }
+      ]
+    },
+    "WEATHER_STATION": {
+      "asset_id": "WEATHER_STATION",
+      "name": "Weather Mast",
+      "category": "sensor",
+      "prim_path": "/World/Park/WEATHER_STATION",
+      "asset_path": "/api/assets/WEATHER_STATION",
+      "observations_path": "/api/observations?asset_id=WEATHER_STATION",
+      "connector_ids": [
+        "gis",
+        "weather"
+      ],
+      "bindings": [
+        {
+          "source_id": "gis",
+          "source_name": "Park Asset Registry / OpenUSD",
+          "planned_protocol": "OpenUSD / GIS",
+          "source_asset_ids": [
+            "gis/WEATHER_STATION"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "gis/WEATHER_STATION",
+              "asset_id": "WEATHER_STATION",
+              "metric": "dependencies",
+              "destination": "dependencies",
+              "unit": "asset_id[]",
+              "value_type": "assets",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/WEATHER_STATION",
+              "asset_id": "WEATHER_STATION",
+              "metric": "metadata.accessibility",
+              "destination": "metadata.accessibility",
+              "unit": "text",
+              "value_type": "string",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            },
+            {
+              "source_asset_id": "gis/WEATHER_STATION",
+              "asset_id": "WEATHER_STATION",
+              "metric": "scene_path",
+              "destination": "scene_path",
+              "unit": "USD prim path",
+              "value_type": "scene_path",
+              "authoritative": true,
+              "minimum": null,
+              "maximum": null,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/gis",
+          "observations_path": "/api/observations?source_id=gis&asset_id=WEATHER_STATION"
+        },
+        {
+          "source_id": "weather",
+          "source_name": "Simulated Local Weather",
+          "planned_protocol": "weather REST",
+          "source_asset_ids": [
+            "weather/WEATHER_STATION"
+          ],
+          "metrics": [
+            {
+              "source_asset_id": "weather/WEATHER_STATION",
+              "asset_id": "WEATHER_STATION",
+              "metric": "temperature_c",
+              "destination": "temperature_c",
+              "unit": "Cel",
+              "value_type": "number",
+              "authoritative": true,
+              "minimum": -60,
+              "maximum": 80,
+              "choices": []
+            }
+          ],
+          "catalog_path": "/api/connectors/weather",
+          "observations_path": "/api/observations?source_id=weather&asset_id=WEATHER_STATION"
+        }
+      ]
+    }
+  }
+}

@@ -213,3 +213,18 @@ render times and preserves the original frame/time/revision provenance.
 The new [implemented architecture](implemented-architecture.md) documents actual
 module ownership and the difference between model history, accepted observations,
 recorded state and GPU frame evidence.
+
+## Scene identity, source binding and inventory checkpoint
+
+The generated USD now derives canonical names/types from the shared domain and
+source IDs/138 metric declarations from the sole connector catalog. Physical signs
+remain as explicit authored aliases. Static declarations carry no current sensor
+values or claim of connection. USD assembly kinds and a deterministic inventory
+make the model easier to inspect and extend without duplicating operational truth.
+
+All 12 identity roots, bound materials, finite bounds, self-contained geometry,
+138 mapping declarations and recomputed inventory pass validation. Animation checks
+cover 25 wheel angles, 401 coaster frames and 101 articulated-car poses. Repeated
+generation is byte-identical. Geometry remains 3,067 prims/46 meshes; added metadata
+brings the binary USD to 459 KiB. Blender and actual GPU captures remain revision 1.
+[Authoring contract](scene-authoring.md).

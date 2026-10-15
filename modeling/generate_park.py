@@ -4,6 +4,7 @@ from pathlib import Path
 import json, math, random
 from pxr import Usd, UsdGeom, UsdShade, UsdLux, Gf, Sdf
 from animate import CoasterRoute, train_transforms, TRAIN_ROOT
+from scene_semantics import catalog_contract, apply_semantics, build_inventory
 
 OUT = Path(__file__).resolve().parents[1] / 'assets'
 OUT.mkdir(exist_ok=True)
@@ -395,6 +396,9 @@ view=Gf.Matrix4d().SetLookAt(camera_pos,target,Gf.Vec3d(0,0,1)); UsdGeom.Xformab
 cam.CreateFocalLengthAttr(42); cam.CreateHorizontalApertureAttr(36); cam.CreateVerticalApertureAttr(20.25); cam.CreateClippingRangeAttr((.1,1500))
 light=UsdLux.DistantLight.Define(stage,'/World/Sun'); light.CreateIntensityAttr(2800); light.CreateAngleAttr(1.2); light.CreateColorAttr((1,.91,.76)); xf(light,rot=(-35,-25,-35))
 dome=UsdLux.DomeLight.Define(stage,'/World/Sky'); dome.CreateIntensityAttr(650); dome.CreateColorAttr((.68,.82,1.0))
+# Canonical identity and static connector declarations are exported at build time.
+contract=catalog_contract()
+apply_semantics(stage,registry,contract)
 # Extents and asset metadata make object selection robust in USD viewers.
 cache=UsdGeom.BBoxCache(Usd.TimeCode.Default(),[UsdGeom.Tokens.default_,UsdGeom.Tokens.render],useExtentsHint=True)
 for item in registry:
@@ -404,6 +408,8 @@ for item in registry:
 stage.GetRootLayer().Save()
 stage.Export(str(OUT/'park.usdc'))
 (OUT/'asset_registry.json').write_text(json.dumps({'park':'Aster Park','units':'meters','up_axis':'Z','assets':registry},indent=2))
+(OUT/'scene_bindings.json').write_text(json.dumps(contract,indent=2)+'\n')
+(OUT/'scene_inventory.json').write_text(json.dumps(build_inventory(stage,registry,contract),indent=2)+'\n')
 (OUT/'ride_paths.json').write_text(json.dumps({'coaster':{'prim_path':'/World/Park/RIDE_COASTER/Train','points':track,'loop':True,'period_seconds':65,'transform_ops':['xformOp:translate','xformOp:rotateXYZ'],'cars':[f'/World/Park/RIDE_COASTER/Train/Car_{i:02d}' for i in range(3)],'car_offsets_m':[0,-2.3,-4.6],'motion_contract':'Train world pose; Car_NN local poses from modeling.animate.train_transforms'},'wheel':{'prim_path':'/World/Park/RIDE_WHEEL/Rotor','center':[35,25,19],'axis':'Y','period_seconds':100,'transform_op':'xformOp:rotateY','gondolas':[f'/World/Park/RIDE_WHEEL/Rotor/Gondola_{i:02d}' for i in range(12)]}},indent=2))
 # Blender's USD importer omits bindings on analytic gprims; handoff manifest repairs these.
 material_manifest={'materials':{},'bindings':{}}
@@ -415,5 +421,5 @@ for prim in stage.Traverse():
         mat=UsdShade.MaterialBindingAPI(prim).ComputeBoundMaterial()[0]
         if mat:material_manifest['bindings'][str(prim.GetPath())]=mat.GetPrim().GetName()
 (OUT/'blender_materials.json').write_text(json.dumps(material_manifest,indent=2))
-summary={'scene_revision':2,'prim_count':len(list(stage.Traverse())),'mesh_count':sum(1 for p in stage.Traverse() if p.IsA(UsdGeom.Mesh)),'asset_count':len(registry),'bounds':[-80,-60,80,60],'camera':[142,-180,155],'target':[0,0,2],'files':['park.usda','park.usdc','asset_registry.json','ride_paths.json']}
+summary={'scene_revision':2,'prim_count':len(list(stage.Traverse())),'mesh_count':sum(1 for p in stage.Traverse() if p.IsA(UsdGeom.Mesh)),'asset_count':len(registry),'bounds':[-80,-60,80,60],'camera':[142,-180,155],'target':[0,0,2],'files':['park.usda','park.usdc','asset_registry.json','ride_paths.json','scene_bindings.json','scene_inventory.json','blender_materials.json']}
 (OUT/'scene_validation.json').write_text(json.dumps(summary,indent=2)); print(json.dumps(summary,indent=2))

@@ -25,6 +25,8 @@ suite passed **98 CPU/API checks**. The operator UI separately passed **15 JavaS
 behavior checks** and **57 DOM identifier checks**. These newer local gates do not
 replace the pending Chromium/native-GPU acceptance described above.
 
+## Original revision 1 GPU/browser acceptance
+
 The actual application was run on an NVIDIA L40 (48 GB), driver 570.158.01,
 Linux/Python 3.10, OVRTX 0.6.0.1791947691 and OVStage 0.3.0.1791986420.
 This is application evidence, not a performance benchmark.
@@ -47,7 +49,7 @@ This is application evidence, not a performance benchmark.
 | Project deck | Ten pages; regenerated text and rendered pixels matched the original; repeat source builds deterministic |
 
 [Machine-readable browser results](images/browser-validation.json),
-[scene results](../assets/scene_validation.json), and
+[revision 1 scene results](evidence/revision1-scene-validation.json), and
 [Blender results](../assets/blender_validation.json).
 
 ## Actual application captures
@@ -66,7 +68,7 @@ These screenshots show the running GPU application, not conceptual renders.
 The tests cover a single demonstration session and synthetic services. They do not
 establish calibrated forecasts, ride dynamics, large-scale streaming performance,
 production availability or real ERP/SCADA compatibility. The rides use presentation
-animation; the coaster cars share a rigid transform. Telemetry overlays are DOM
+animation. The GPU-verified revision 1 cars share a rigid transform; revision 2 has independently posed cars with local transform checks and pending GPU acceptance. Telemetry overlays are DOM
 annotations, not physically simulated heatmaps. All viewers share camera, selection
 and scenario state. JPEG frame delivery is deliberately simple; an expanded service
 would need session management and a suitable low-latency streaming transport.

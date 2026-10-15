@@ -8,11 +8,17 @@
     upAxis = "Z"
 )
 
-def Xform "World"
+def Xform "World" (
+    kind = "group"
+)
 {
-    def Xform "Park"
+    def Xform "Park" (
+        kind = "assembly"
+    )
     {
-        def Xform "LANDSCAPE"
+        def Xform "LANDSCAPE" (
+            kind = "component"
+        )
         {
             def Cube "EarthPlinth" (
                 prepend apiSchemas = ["MaterialBindingAPI"]
@@ -16596,11 +16602,201 @@ def Xform "World"
         }
 
         def Xform "RIDE_COASTER" (
+            assetInfo = {
+                string name = "RIDE_COASTER"
+            }
             customData = {
                 string assetId = "RIDE_COASTER"
-                string assetName = "Comet Run Coaster"
-                string systems = "ride_scada, queues, maintenance, energy, workforce"
+                string assetName = "Skyline Coaster"
+                string authoredName = "Comet Run Coaster"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/RIDE_COASTER"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["ride_scada", "queues", "maintenance", "energy", "workforce"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=RIDE_COASTER"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["cmms", "gis", "ride_scada", "ticketing", "workforce"]
+                    dictionary sources = {
+                        dictionary cmms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "cmms/RIDE_COASTER"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "maintenance.health_pct" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.health_pct"
+                                    string sourceAssetId = "cmms/RIDE_COASTER"
+                                    string unit = "%"
+                                    string valueType = "number"
+                                }
+                                dictionary "maintenance.inspection_status" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.inspection_status"
+                                    string sourceAssetId = "cmms/RIDE_COASTER"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary "maintenance.open_work_orders" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.open_work_orders"
+                                    string sourceAssetId = "cmms/RIDE_COASTER"
+                                    string unit = "work_orders"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["cmms/RIDE_COASTER"]
+                        }
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/RIDE_COASTER"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/RIDE_COASTER"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/RIDE_COASTER"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/RIDE_COASTER"]
+                        }
+                        dictionary ride_scada = {
+                            dictionary metrics = {
+                                dictionary "maintenance.health_pct" = {
+                                    bool authoritative = 0
+                                    string destination = "maintenance.health_pct"
+                                    string sourceAssetId = "ride_scada/RIDE_COASTER"
+                                    string unit = "%"
+                                    string valueType = "number"
+                                }
+                                dictionary "maintenance.inspection_status" = {
+                                    bool authoritative = 0
+                                    string destination = "maintenance.inspection_status"
+                                    string sourceAssetId = "ride_scada/RIDE_COASTER"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary "maintenance.open_work_orders" = {
+                                    bool authoritative = 0
+                                    string destination = "maintenance.open_work_orders"
+                                    string sourceAssetId = "ride_scada/RIDE_COASTER"
+                                    string unit = "work_orders"
+                                    string valueType = "integer"
+                                }
+                                dictionary power_kw = {
+                                    bool authoritative = 1
+                                    string destination = "power_kw"
+                                    string sourceAssetId = "ride_scada/RIDE_COASTER"
+                                    string unit = "kW"
+                                    string valueType = "number"
+                                }
+                                dictionary status = {
+                                    bool authoritative = 1
+                                    string destination = "status"
+                                    string sourceAssetId = "ride_scada/RIDE_COASTER"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary throughput_per_hour = {
+                                    bool authoritative = 1
+                                    string destination = "throughput_per_hour"
+                                    string sourceAssetId = "ride_scada/RIDE_COASTER"
+                                    string unit = "people/h"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["ride_scada/RIDE_COASTER"]
+                        }
+                        dictionary ticketing = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 1
+                                    string destination = "capacity"
+                                    string sourceAssetId = "ticketing/RIDE_COASTER"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 1
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "ticketing/RIDE_COASTER"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 1
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "ticketing/RIDE_COASTER"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                                dictionary "reservations.booked" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.booked"
+                                    string sourceAssetId = "ticketing/RIDE_COASTER"
+                                    string unit = "reservations"
+                                    string valueType = "integer"
+                                }
+                                dictionary "reservations.next_window_minutes" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.next_window_minutes"
+                                    string sourceAssetId = "ticketing/RIDE_COASTER"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["ticketing/RIDE_COASTER"]
+                        }
+                        dictionary workforce = {
+                            dictionary metrics = {
+                                dictionary "staff.on_duty" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.on_duty"
+                                    string sourceAssetId = "workforce/RIDE_COASTER"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary "staff.qualifications" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.qualifications"
+                                    string sourceAssetId = "workforce/RIDE_COASTER"
+                                    string unit = "qualification_id[]"
+                                    string valueType = "strings"
+                                }
+                                dictionary "staff.required" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.required"
+                                    string sourceAssetId = "workforce/RIDE_COASTER"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["workforce/RIDE_COASTER"]
+                        }
+                    }
+                }
+                string systems = "cmms, gis, ride_scada, ticketing, workforce"
             }
+            displayName = "Skyline Coaster"
+            kind = "component"
         )
         {
             custom string park:assetId = "RIDE_COASTER"
@@ -20106,7 +20302,9 @@ def Xform "World"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
             }
 
-            def Xform "Train"
+            def Xform "Train" (
+                kind = "subcomponent"
+            )
             {
                 float3 xformOp:rotateXYZ = (0, -0.6002421, 1.9857503)
                 double3 xformOp:translate = (-34.92238223650969, 2.0196356323258073, 5.003731032645433)
@@ -20116,6 +20314,7 @@ def Xform "World"
                     customData = {
                         int carIndex = 0
                     }
+                    kind = "subcomponent"
                 )
                 {
                     matrix4d xformOp:transform = ( (1.0000000000000002, -1.0176977454612712e-17, -2.821644602879991e-17, 0), (5.994264888842367e-19, 0.9999999999999999, 3.9059915253627767e-19, 0), (-1.6041760865232945e-18, 8.970892902646533e-20, 0.9999999999999999, 0), (0, 0, 0, 1) )
@@ -20318,6 +20517,7 @@ def Xform "World"
                     customData = {
                         int carIndex = 1
                     }
+                    kind = "subcomponent"
                 )
                 {
                     matrix4d xformOp:transform = ( (0.9972115426546002, -0.07389175629511159, -0.010447370389564618, 0), (0.07388770149327087, 0.9972662675292009, -0.0007740907036423643, 0), (0.010476008995520026, 9.281978938203507e-20, 0.9999451251121361, 0), (-2.297832307511136, 0.08421539673279854, 0.020342195553950226, 1) )
@@ -20520,6 +20720,7 @@ def Xform "World"
                     customData = {
                         int carIndex = 2
                     }
+                    kind = "subcomponent"
                 )
                 {
                     matrix4d xformOp:transform = ( (0.9889458748253661, -0.14791453957999737, -0.010360774427087851, 0), (0.14790642278622454, 0.9890001460974802, -0.0015495540472082593, 0), (0.010476008995520026, 9.281978938203507e-20, 0.9999451251121361, 0), (-4.58294244027072, 0.3397355248679923, 0.04428234357343186, 1) )
@@ -20889,11 +21090,175 @@ def Xform "World"
         }
 
         def Xform "RIDE_WHEEL" (
+            assetInfo = {
+                string name = "RIDE_WHEEL"
+            }
             customData = {
                 string assetId = "RIDE_WHEEL"
-                string assetName = "Aster Observation Wheel"
-                string systems = "ride_scada, queues, maintenance, energy, workforce"
+                string assetName = "Panorama Wheel"
+                string authoredName = "Aster Observation Wheel"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/RIDE_WHEEL"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["ride_scada", "queues", "maintenance", "energy", "workforce"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=RIDE_WHEEL"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["cmms", "gis", "ride_scada", "ticketing"]
+                    dictionary sources = {
+                        dictionary cmms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "cmms/RIDE_WHEEL"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "maintenance.health_pct" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.health_pct"
+                                    string sourceAssetId = "cmms/RIDE_WHEEL"
+                                    string unit = "%"
+                                    string valueType = "number"
+                                }
+                                dictionary "maintenance.inspection_status" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.inspection_status"
+                                    string sourceAssetId = "cmms/RIDE_WHEEL"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary "maintenance.open_work_orders" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.open_work_orders"
+                                    string sourceAssetId = "cmms/RIDE_WHEEL"
+                                    string unit = "work_orders"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["cmms/RIDE_WHEEL"]
+                        }
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/RIDE_WHEEL"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/RIDE_WHEEL"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/RIDE_WHEEL"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/RIDE_WHEEL"]
+                        }
+                        dictionary ride_scada = {
+                            dictionary metrics = {
+                                dictionary "maintenance.health_pct" = {
+                                    bool authoritative = 0
+                                    string destination = "maintenance.health_pct"
+                                    string sourceAssetId = "ride_scada/RIDE_WHEEL"
+                                    string unit = "%"
+                                    string valueType = "number"
+                                }
+                                dictionary "maintenance.inspection_status" = {
+                                    bool authoritative = 0
+                                    string destination = "maintenance.inspection_status"
+                                    string sourceAssetId = "ride_scada/RIDE_WHEEL"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary "maintenance.open_work_orders" = {
+                                    bool authoritative = 0
+                                    string destination = "maintenance.open_work_orders"
+                                    string sourceAssetId = "ride_scada/RIDE_WHEEL"
+                                    string unit = "work_orders"
+                                    string valueType = "integer"
+                                }
+                                dictionary power_kw = {
+                                    bool authoritative = 1
+                                    string destination = "power_kw"
+                                    string sourceAssetId = "ride_scada/RIDE_WHEEL"
+                                    string unit = "kW"
+                                    string valueType = "number"
+                                }
+                                dictionary status = {
+                                    bool authoritative = 1
+                                    string destination = "status"
+                                    string sourceAssetId = "ride_scada/RIDE_WHEEL"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary throughput_per_hour = {
+                                    bool authoritative = 1
+                                    string destination = "throughput_per_hour"
+                                    string sourceAssetId = "ride_scada/RIDE_WHEEL"
+                                    string unit = "people/h"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["ride_scada/RIDE_WHEEL"]
+                        }
+                        dictionary ticketing = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 1
+                                    string destination = "capacity"
+                                    string sourceAssetId = "ticketing/RIDE_WHEEL"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 1
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "ticketing/RIDE_WHEEL"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 1
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "ticketing/RIDE_WHEEL"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                                dictionary "reservations.booked" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.booked"
+                                    string sourceAssetId = "ticketing/RIDE_WHEEL"
+                                    string unit = "reservations"
+                                    string valueType = "integer"
+                                }
+                                dictionary "reservations.next_window_minutes" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.next_window_minutes"
+                                    string sourceAssetId = "ticketing/RIDE_WHEEL"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["ticketing/RIDE_WHEEL"]
+                        }
+                    }
+                }
+                string systems = "cmms, gis, ride_scada, ticketing"
             }
+            displayName = "Panorama Wheel"
+            kind = "component"
         )
         {
             custom string park:assetId = "RIDE_WHEEL"
@@ -20993,7 +21358,9 @@ def Xform "World"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
             }
 
-            def Xform "Rotor"
+            def Xform "Rotor" (
+                kind = "subcomponent"
+            )
             {
                 float xformOp:rotateY = 0
                 double3 xformOp:translate = (35, 25, 19)
@@ -21083,7 +21450,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_00"
+                def Xform "Gondola_00" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (14, 0, 0)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21192,7 +21561,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_01"
+                def Xform "Gondola_01" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (12.124355652982143, 0, 6.999999999999999)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21301,7 +21672,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_02"
+                def Xform "Gondola_02" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (7.000000000000002, 0, 12.12435565298214)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21410,7 +21783,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_03"
+                def Xform "Gondola_03" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (8.572527594031472e-16, 0, 14)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21519,7 +21894,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_04"
+                def Xform "Gondola_04" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (-6.9999999999999964, 0, 12.124355652982143)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21628,7 +22005,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_05"
+                def Xform "Gondola_05" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (-12.124355652982143, 0, 6.999999999999999)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21737,7 +22116,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_06"
+                def Xform "Gondola_06" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (-14, 0, 1.7145055188062944e-15)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21846,7 +22227,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_07"
+                def Xform "Gondola_07" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (-12.124355652982143, 0, -6.9999999999999964)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -21955,7 +22338,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_08"
+                def Xform "Gondola_08" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (-7.000000000000006, 0, -12.124355652982137)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -22064,7 +22449,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_09"
+                def Xform "Gondola_09" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (-2.5717582782094417e-15, 0, -14)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -22173,7 +22560,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_10"
+                def Xform "Gondola_10" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (7.000000000000002, 0, -12.12435565298214)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -22282,7 +22671,9 @@ def Xform "World"
                     uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient"]
                 }
 
-                def Xform "Gondola_11"
+                def Xform "Gondola_11" (
+                    kind = "subcomponent"
+                )
                 {
                     double3 xformOp:translate = (12.124355652982137, 0, -7.000000000000006)
                     uniform token[] xformOpOrder = ["xformOp:translate"]
@@ -23935,11 +24326,121 @@ def Xform "World"
         }
 
         def Xform "SHOW_ARENA" (
+            assetInfo = {
+                string name = "SHOW_ARENA"
+            }
             customData = {
                 string assetId = "SHOW_ARENA"
-                string assetName = "Starlight Show Arena"
-                string systems = "shows, crowds, workforce, energy"
+                string assetName = "Lakeside Arena"
+                string authoredName = "Starlight Show Arena"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/SHOW_ARENA"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["shows", "crowds", "workforce", "energy"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=SHOW_ARENA"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["gis", "ticketing", "vision"]
+                    dictionary sources = {
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/SHOW_ARENA"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/SHOW_ARENA"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/SHOW_ARENA"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/SHOW_ARENA"]
+                        }
+                        dictionary ticketing = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 1
+                                    string destination = "capacity"
+                                    string sourceAssetId = "ticketing/SHOW_ARENA"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 1
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "ticketing/SHOW_ARENA"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 1
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "ticketing/SHOW_ARENA"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                                dictionary "reservations.booked" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.booked"
+                                    string sourceAssetId = "ticketing/SHOW_ARENA"
+                                    string unit = "reservations"
+                                    string valueType = "integer"
+                                }
+                                dictionary "reservations.next_window_minutes" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.next_window_minutes"
+                                    string sourceAssetId = "ticketing/SHOW_ARENA"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["ticketing/SHOW_ARENA"]
+                        }
+                        dictionary vision = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 0
+                                    string destination = "capacity"
+                                    string sourceAssetId = "vision/SHOW_ARENA"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 0
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "vision/SHOW_ARENA"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 0
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "vision/SHOW_ARENA"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["vision/SHOW_ARENA"]
+                        }
+                    }
+                }
+                string systems = "gis, ticketing, vision"
             }
+            displayName = "Lakeside Arena"
+            kind = "component"
         )
         {
             custom string park:assetId = "SHOW_ARENA"
@@ -24132,11 +24633,173 @@ def Xform "World"
         }
 
         def Xform "FOOD_COURT" (
+            assetInfo = {
+                string name = "FOOD_COURT"
+            }
             customData = {
                 string assetId = "FOOD_COURT"
-                string assetName = "Market Square Food Court"
-                string systems = "pos, inventory, queues, workforce, energy"
+                string assetName = "Garden Food Court"
+                string authoredName = "Market Square Food Court"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/FOOD_COURT"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["pos", "inventory", "queues", "workforce", "energy"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=FOOD_COURT"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["bms", "erp", "gis", "vision", "workforce"]
+                    dictionary sources = {
+                        dictionary bms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "bms/FOOD_COURT"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary power_kw = {
+                                    bool authoritative = 1
+                                    string destination = "power_kw"
+                                    string sourceAssetId = "bms/FOOD_COURT"
+                                    string unit = "kW"
+                                    string valueType = "number"
+                                }
+                                dictionary temperature_c = {
+                                    bool authoritative = 1
+                                    string destination = "temperature_c"
+                                    string sourceAssetId = "bms/FOOD_COURT"
+                                    string unit = "Cel"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["bms/FOOD_COURT"]
+                        }
+                        dictionary erp = {
+                            dictionary metrics = {
+                                dictionary "erp.operating_cost_eur_per_hour" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.operating_cost_eur_per_hour"
+                                    string sourceAssetId = "erp/FOOD_COURT"
+                                    string unit = "EUR/h"
+                                    string valueType = "number"
+                                }
+                                dictionary "erp.reorder_point" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.reorder_point"
+                                    string sourceAssetId = "erp/FOOD_COURT"
+                                    string unit = "items"
+                                    string valueType = "integer"
+                                }
+                                dictionary "erp.stock_capacity" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.stock_capacity"
+                                    string sourceAssetId = "erp/FOOD_COURT"
+                                    string unit = "items"
+                                    string valueType = "integer"
+                                }
+                                dictionary "erp.stock_units" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.stock_units"
+                                    string sourceAssetId = "erp/FOOD_COURT"
+                                    string unit = "items"
+                                    string valueType = "integer"
+                                }
+                                dictionary throughput_per_hour = {
+                                    bool authoritative = 1
+                                    string destination = "throughput_per_hour"
+                                    string sourceAssetId = "erp/FOOD_COURT"
+                                    string unit = "people/h"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["erp/FOOD_COURT"]
+                        }
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/FOOD_COURT"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/FOOD_COURT"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/FOOD_COURT"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/FOOD_COURT"]
+                        }
+                        dictionary vision = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 1
+                                    string destination = "capacity"
+                                    string sourceAssetId = "vision/FOOD_COURT"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 1
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "vision/FOOD_COURT"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 1
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "vision/FOOD_COURT"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["vision/FOOD_COURT"]
+                        }
+                        dictionary workforce = {
+                            dictionary metrics = {
+                                dictionary "staff.on_duty" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.on_duty"
+                                    string sourceAssetId = "workforce/FOOD_COURT"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary "staff.qualifications" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.qualifications"
+                                    string sourceAssetId = "workforce/FOOD_COURT"
+                                    string unit = "qualification_id[]"
+                                    string valueType = "strings"
+                                }
+                                dictionary "staff.required" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.required"
+                                    string sourceAssetId = "workforce/FOOD_COURT"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["workforce/FOOD_COURT"]
+                        }
+                    }
+                }
+                string systems = "bms, erp, gis, vision, workforce"
             }
+            displayName = "Garden Food Court"
+            kind = "component"
         )
         {
             custom string park:assetId = "FOOD_COURT"
@@ -26744,11 +27407,121 @@ def Xform "World"
         }
 
         def Xform "POWER_HUB" (
+            assetInfo = {
+                string name = "POWER_HUB"
+            }
             customData = {
                 string assetId = "POWER_HUB"
-                string assetName = "Energy Hub and Solar Canopy"
-                string systems = "energy, maintenance, grid, weather"
+                string assetName = "Energy Center"
+                string authoredName = "Energy Hub and Solar Canopy"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/POWER_HUB"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["energy", "maintenance", "grid", "weather"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=POWER_HUB"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["bms", "cmms", "gis"]
+                    dictionary sources = {
+                        dictionary bms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "bms/POWER_HUB"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary power_kw = {
+                                    bool authoritative = 1
+                                    string destination = "power_kw"
+                                    string sourceAssetId = "bms/POWER_HUB"
+                                    string unit = "kW"
+                                    string valueType = "number"
+                                }
+                                dictionary status = {
+                                    bool authoritative = 1
+                                    string destination = "status"
+                                    string sourceAssetId = "bms/POWER_HUB"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary temperature_c = {
+                                    bool authoritative = 1
+                                    string destination = "temperature_c"
+                                    string sourceAssetId = "bms/POWER_HUB"
+                                    string unit = "Cel"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["bms/POWER_HUB"]
+                        }
+                        dictionary cmms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "cmms/POWER_HUB"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "maintenance.health_pct" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.health_pct"
+                                    string sourceAssetId = "cmms/POWER_HUB"
+                                    string unit = "%"
+                                    string valueType = "number"
+                                }
+                                dictionary "maintenance.inspection_status" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.inspection_status"
+                                    string sourceAssetId = "cmms/POWER_HUB"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary "maintenance.open_work_orders" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.open_work_orders"
+                                    string sourceAssetId = "cmms/POWER_HUB"
+                                    string unit = "work_orders"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["cmms/POWER_HUB"]
+                        }
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/POWER_HUB"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/POWER_HUB"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/POWER_HUB"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/POWER_HUB"]
+                        }
+                    }
+                }
+                string systems = "bms, cmms, gis"
             }
+            displayName = "Energy Center"
+            kind = "component"
         )
         {
             custom string park:assetId = "POWER_HUB"
@@ -28372,11 +29145,114 @@ def Xform "World"
         }
 
         def Xform "WATER_PLANT" (
+            assetInfo = {
+                string name = "WATER_PLANT"
+            }
             customData = {
                 string assetId = "WATER_PLANT"
-                string assetName = "Water Treatment and Irrigation"
-                string systems = "water, maintenance, weather"
+                string assetName = "Water & Lake Plant"
+                string authoredName = "Water Treatment and Irrigation"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/WATER_PLANT"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["water", "maintenance", "weather"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=WATER_PLANT"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["cmms", "gis", "water"]
+                    dictionary sources = {
+                        dictionary cmms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "cmms/WATER_PLANT"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "maintenance.health_pct" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.health_pct"
+                                    string sourceAssetId = "cmms/WATER_PLANT"
+                                    string unit = "%"
+                                    string valueType = "number"
+                                }
+                                dictionary "maintenance.inspection_status" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.inspection_status"
+                                    string sourceAssetId = "cmms/WATER_PLANT"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary "maintenance.open_work_orders" = {
+                                    bool authoritative = 1
+                                    string destination = "maintenance.open_work_orders"
+                                    string sourceAssetId = "cmms/WATER_PLANT"
+                                    string unit = "work_orders"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["cmms/WATER_PLANT"]
+                        }
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/WATER_PLANT"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/WATER_PLANT"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/WATER_PLANT"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/WATER_PLANT"]
+                        }
+                        dictionary water = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "water/WATER_PLANT"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary status = {
+                                    bool authoritative = 1
+                                    string destination = "status"
+                                    string sourceAssetId = "water/WATER_PLANT"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary water_lpm = {
+                                    bool authoritative = 1
+                                    string destination = "water_lpm"
+                                    string sourceAssetId = "water/WATER_PLANT"
+                                    string unit = "L/min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["water/WATER_PLANT"]
+                        }
+                    }
+                }
+                string systems = "cmms, gis, water"
             }
+            displayName = "Water & Lake Plant"
+            kind = "component"
         )
         {
             custom string park:assetId = "WATER_PLANT"
@@ -28973,11 +29849,121 @@ def Xform "World"
         }
 
         def Xform "HOTEL" (
+            assetInfo = {
+                string name = "HOTEL"
+            }
             customData = {
                 string assetId = "HOTEL"
-                string assetName = "Aster Lodge"
-                string systems = "hotel, energy, workforce, erp"
+                string assetName = "Parkside Lodge"
+                string authoredName = "Aster Lodge"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/HOTEL"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["hotel", "energy", "workforce", "erp"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=HOTEL"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["bms", "erp", "gis"]
+                    dictionary sources = {
+                        dictionary bms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "bms/HOTEL"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary power_kw = {
+                                    bool authoritative = 1
+                                    string destination = "power_kw"
+                                    string sourceAssetId = "bms/HOTEL"
+                                    string unit = "kW"
+                                    string valueType = "number"
+                                }
+                                dictionary temperature_c = {
+                                    bool authoritative = 1
+                                    string destination = "temperature_c"
+                                    string sourceAssetId = "bms/HOTEL"
+                                    string unit = "Cel"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["bms/HOTEL"]
+                        }
+                        dictionary erp = {
+                            dictionary metrics = {
+                                dictionary "erp.operating_cost_eur_per_hour" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.operating_cost_eur_per_hour"
+                                    string sourceAssetId = "erp/HOTEL"
+                                    string unit = "EUR/h"
+                                    string valueType = "number"
+                                }
+                                dictionary "erp.reorder_point" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.reorder_point"
+                                    string sourceAssetId = "erp/HOTEL"
+                                    string unit = "items"
+                                    string valueType = "integer"
+                                }
+                                dictionary "erp.stock_capacity" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.stock_capacity"
+                                    string sourceAssetId = "erp/HOTEL"
+                                    string unit = "items"
+                                    string valueType = "integer"
+                                }
+                                dictionary "erp.stock_units" = {
+                                    bool authoritative = 1
+                                    string destination = "erp.stock_units"
+                                    string sourceAssetId = "erp/HOTEL"
+                                    string unit = "items"
+                                    string valueType = "integer"
+                                }
+                                dictionary throughput_per_hour = {
+                                    bool authoritative = 1
+                                    string destination = "throughput_per_hour"
+                                    string sourceAssetId = "erp/HOTEL"
+                                    string unit = "people/h"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["erp/HOTEL"]
+                        }
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/HOTEL"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/HOTEL"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/HOTEL"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/HOTEL"]
+                        }
+                    }
+                }
+                string systems = "bms, erp, gis"
             }
+            displayName = "Parkside Lodge"
+            kind = "component"
         )
         {
             custom string park:assetId = "HOTEL"
@@ -29845,11 +30831,107 @@ def Xform "World"
         }
 
         def Xform "PARKING" (
+            assetInfo = {
+                string name = "PARKING"
+            }
             customData = {
                 string assetId = "PARKING"
-                string assetName = "South Parking and EV Charging"
-                string systems = "parking, ev_charging, transport, energy"
+                string assetName = "Arrival & EV Parking"
+                string authoredName = "South Parking and EV Charging"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/PARKING"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["parking", "ev_charging", "transport", "energy"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=PARKING"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["bms", "gis", "vision"]
+                    dictionary sources = {
+                        dictionary bms = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "bms/PARKING"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary power_kw = {
+                                    bool authoritative = 1
+                                    string destination = "power_kw"
+                                    string sourceAssetId = "bms/PARKING"
+                                    string unit = "kW"
+                                    string valueType = "number"
+                                }
+                                dictionary temperature_c = {
+                                    bool authoritative = 1
+                                    string destination = "temperature_c"
+                                    string sourceAssetId = "bms/PARKING"
+                                    string unit = "Cel"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["bms/PARKING"]
+                        }
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/PARKING"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/PARKING"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/PARKING"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/PARKING"]
+                        }
+                        dictionary vision = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 1
+                                    string destination = "capacity"
+                                    string sourceAssetId = "vision/PARKING"
+                                    string unit = "vehicles"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 1
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "vision/PARKING"
+                                    string unit = "vehicles"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 1
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "vision/PARKING"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["vision/PARKING"]
+                        }
+                    }
+                }
+                string systems = "bms, gis, vision"
             }
+            displayName = "Arrival & EV Parking"
+            kind = "component"
         )
         {
             custom string park:assetId = "PARKING"
@@ -31094,11 +32176,81 @@ def Xform "World"
         }
 
         def Xform "FIRST_AID" (
+            assetInfo = {
+                string name = "FIRST_AID"
+            }
             customData = {
                 string assetId = "FIRST_AID"
-                string assetName = "First Aid and Guest Care"
-                string systems = "incidents, workforce, guest_services"
+                string assetName = "Guest Care"
+                string authoredName = "First Aid and Guest Care"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/FIRST_AID"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["incidents", "workforce", "guest_services"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=FIRST_AID"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["gis", "workforce"]
+                    dictionary sources = {
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/FIRST_AID"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/FIRST_AID"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/FIRST_AID"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/FIRST_AID"]
+                        }
+                        dictionary workforce = {
+                            dictionary metrics = {
+                                dictionary "staff.on_duty" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.on_duty"
+                                    string sourceAssetId = "workforce/FIRST_AID"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary "staff.qualifications" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.qualifications"
+                                    string sourceAssetId = "workforce/FIRST_AID"
+                                    string unit = "qualification_id[]"
+                                    string valueType = "strings"
+                                }
+                                dictionary "staff.required" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.required"
+                                    string sourceAssetId = "workforce/FIRST_AID"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["workforce/FIRST_AID"]
+                        }
+                    }
+                }
+                string systems = "gis, workforce"
             }
+            displayName = "Guest Care"
+            kind = "component"
         )
         {
             custom string park:assetId = "FIRST_AID"
@@ -31373,11 +32525,81 @@ def Xform "World"
         }
 
         def Xform "RESTROOMS" (
+            assetInfo = {
+                string name = "RESTROOMS"
+            }
             customData = {
                 string assetId = "RESTROOMS"
                 string assetName = "Central Restrooms"
-                string systems = "cleaning, water, maintenance"
+                string authoredName = "Central Restrooms"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/RESTROOMS"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["cleaning", "water", "maintenance"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=RESTROOMS"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["gis", "water"]
+                    dictionary sources = {
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/RESTROOMS"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/RESTROOMS"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/RESTROOMS"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/RESTROOMS"]
+                        }
+                        dictionary water = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 0
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "water/RESTROOMS"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary status = {
+                                    bool authoritative = 1
+                                    string destination = "status"
+                                    string sourceAssetId = "water/RESTROOMS"
+                                    string unit = "state"
+                                    string valueType = "string"
+                                }
+                                dictionary water_lpm = {
+                                    bool authoritative = 1
+                                    string destination = "water_lpm"
+                                    string sourceAssetId = "water/RESTROOMS"
+                                    string unit = "L/min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["water/RESTROOMS"]
+                        }
+                    }
+                }
+                string systems = "gis, water"
             }
+            displayName = "Central Restrooms"
+            kind = "component"
         )
         {
             custom string park:assetId = "RESTROOMS"
@@ -31596,11 +32818,67 @@ def Xform "World"
         }
 
         def Xform "WEATHER_STATION" (
+            assetInfo = {
+                string name = "WEATHER_STATION"
+            }
             customData = {
                 string assetId = "WEATHER_STATION"
-                string assetName = "Weather and Environment Station"
-                string systems = "weather, environment"
+                string assetName = "Weather Mast"
+                string authoredName = "Weather and Environment Station"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/WEATHER_STATION"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["weather", "environment"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=WEATHER_STATION"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["gis", "weather"]
+                    dictionary sources = {
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/WEATHER_STATION"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/WEATHER_STATION"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/WEATHER_STATION"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/WEATHER_STATION"]
+                        }
+                        dictionary weather = {
+                            dictionary metrics = {
+                                dictionary temperature_c = {
+                                    bool authoritative = 1
+                                    string destination = "temperature_c"
+                                    string sourceAssetId = "weather/WEATHER_STATION"
+                                    string unit = "Cel"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["weather/WEATHER_STATION"]
+                        }
+                    }
+                }
+                string systems = "gis, weather"
             }
+            displayName = "Weather Mast"
+            kind = "component"
         )
         {
             custom string park:assetId = "WEATHER_STATION"
@@ -31673,11 +32951,147 @@ def Xform "World"
         }
 
         def Xform "ENTRY_GATE" (
+            assetInfo = {
+                string name = "ENTRY_GATE"
+            }
             customData = {
                 string assetId = "ENTRY_GATE"
-                string assetName = "Aster Park Main Entrance"
-                string systems = "ticketing, admission, crowds, guest_services"
+                string assetName = "Welcome Plaza"
+                string authoredName = "Aster Park Main Entrance"
+                dictionary parkTwin = {
+                    string assetPath = "/api/assets/ENTRY_GATE"
+                    string bindingMode = "declarative_catalog"
+                    string catalogSha256 = "8cf70f8451121734a0dad841e11dc85c51c50ec7566005578c372a7fb0e4c906"
+                    string[] conceptualTags = ["ticketing", "admission", "crowds", "guest_services"]
+                    bool containsLiveValues = 0
+                    string observationsPath = "/api/observations?asset_id=ENTRY_GATE"
+                    string schemaVersion = "1.0"
+                    string[] sourceIds = ["gis", "ticketing", "vision", "workforce"]
+                    dictionary sources = {
+                        dictionary gis = {
+                            dictionary metrics = {
+                                dictionary dependencies = {
+                                    bool authoritative = 1
+                                    string destination = "dependencies"
+                                    string sourceAssetId = "gis/ENTRY_GATE"
+                                    string unit = "asset_id[]"
+                                    string valueType = "assets"
+                                }
+                                dictionary "metadata.accessibility" = {
+                                    bool authoritative = 1
+                                    string destination = "metadata.accessibility"
+                                    string sourceAssetId = "gis/ENTRY_GATE"
+                                    string unit = "text"
+                                    string valueType = "string"
+                                }
+                                dictionary scene_path = {
+                                    bool authoritative = 1
+                                    string destination = "scene_path"
+                                    string sourceAssetId = "gis/ENTRY_GATE"
+                                    string unit = "USD prim path"
+                                    string valueType = "scene_path"
+                                }
+                            }
+                            string[] sourceAssetIds = ["gis/ENTRY_GATE"]
+                        }
+                        dictionary ticketing = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 1
+                                    string destination = "capacity"
+                                    string sourceAssetId = "ticketing/ENTRY_GATE"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 1
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "ticketing/ENTRY_GATE"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 1
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "ticketing/ENTRY_GATE"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                                dictionary "reservations.booked" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.booked"
+                                    string sourceAssetId = "ticketing/ENTRY_GATE"
+                                    string unit = "reservations"
+                                    string valueType = "integer"
+                                }
+                                dictionary "reservations.next_window_minutes" = {
+                                    bool authoritative = 1
+                                    string destination = "reservations.next_window_minutes"
+                                    string sourceAssetId = "ticketing/ENTRY_GATE"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["ticketing/ENTRY_GATE"]
+                        }
+                        dictionary vision = {
+                            dictionary metrics = {
+                                dictionary capacity = {
+                                    bool authoritative = 0
+                                    string destination = "capacity"
+                                    string sourceAssetId = "vision/ENTRY_GATE"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary occupancy = {
+                                    bool authoritative = 0
+                                    string destination = "occupancy"
+                                    string sourceAssetId = "vision/ENTRY_GATE"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary queue_minutes = {
+                                    bool authoritative = 0
+                                    string destination = "queue_minutes"
+                                    string sourceAssetId = "vision/ENTRY_GATE"
+                                    string unit = "min"
+                                    string valueType = "number"
+                                }
+                            }
+                            string[] sourceAssetIds = ["vision/ENTRY_GATE"]
+                        }
+                        dictionary workforce = {
+                            dictionary metrics = {
+                                dictionary "staff.on_duty" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.on_duty"
+                                    string sourceAssetId = "workforce/ENTRY_GATE"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                                dictionary "staff.qualifications" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.qualifications"
+                                    string sourceAssetId = "workforce/ENTRY_GATE"
+                                    string unit = "qualification_id[]"
+                                    string valueType = "strings"
+                                }
+                                dictionary "staff.required" = {
+                                    bool authoritative = 1
+                                    string destination = "staff.required"
+                                    string sourceAssetId = "workforce/ENTRY_GATE"
+                                    string unit = "people"
+                                    string valueType = "integer"
+                                }
+                            }
+                            string[] sourceAssetIds = ["workforce/ENTRY_GATE"]
+                        }
+                    }
+                }
+                string systems = "gis, ticketing, vision, workforce"
             }
+            displayName = "Welcome Plaza"
+            kind = "component"
         )
         {
             custom string park:assetId = "ENTRY_GATE"
