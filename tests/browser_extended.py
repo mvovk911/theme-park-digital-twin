@@ -56,9 +56,9 @@ const context=vm.createContext({document,Date,Map,Set,Number,String,Math,Array,J
 let source=fs.readFileSync(process.argv[1],'utf8');
 const marker='\n  bindEvents();\n';
 assert.equal(source.split(marker).length,2,'Test entry point must be unique');
-source=source.replace(marker,`\n  globalThis.testHooks={fieldNumber,fieldUnknown,fieldModeled,alertProvenance,assetStatus,observationValue,frameMatchesView,metadataFromHeaders,parseFrameContext,imageRect,renderLabels,updateFrameContext,updateWriteControls,renderView,dependencyEdges,renderDependencyLines,
+source=source.replace(marker,`\n  globalThis.testHooks={pickViewUnchanged,fieldNumber,fieldUnknown,fieldModeled,alertProvenance,assetStatus,observationValue,frameMatchesView,metadataFromHeaders,parseFrameContext,imageRect,renderLabels,updateFrameContext,updateWriteControls,renderView,dependencyEdges,renderDependencyLines,
  setSnapshot(value){snapshot=value;},setRenderer(value){renderer=value;},setSelected(value){selectedId=value;},setLayer(value){currentLayer=value;},
- setFrame(value){frameMetadata=value;lastFrameReceived=Date.now();lastUniqueFrameAt=Date.now();},setPending(value){viewPending=value;}};return;\n`);
+ setFrame(value){frameMetadata=value;lastFrameReceived=Date.now();lastUniqueFrameAt=Date.now();},setPending(value){viewPending=value;},setViewVersion(value){viewRequestVersion=value;}};return;\n`);
 vm.runInContext(source,context,{filename:process.argv[1]});
 const t=context.testHooks, checks=[];
 const check=(name,fn)=>{fn();checks.push(name);};
@@ -88,6 +88,7 @@ check('accepted revision mismatch fails closed in live and replay',()=>{t.setSna
 check('new camera status cannot move annotations on an older JPEG',()=>{t.setSnapshot(graph);t.setSelected('POWER_HUB');t.setLayer('dependencies');t.setFrame({...frameBase,frame:20,viewMode:'live'});t.setRenderer({ready:true,frame:999,width:500,height:500,camera:{yaw:999},projected_assets:frameContext.projected_assets.map(point=>({...point,x:.99,y:.99}))});t.renderDependencyLines();assert.match(byId('dependency-lines').innerHTML,/x1="256"/);assert.equal(t.imageRect().width,1280);t.renderLabels();const label=byId('scene-labels').children.find(item=>item.dataset.labelAsset==='POWER_HUB');assert.equal(label.style.left,'256.0px');assert.equal(label.style.top,'216.0px');});
 check('malformed image context fails closed even with matching status',()=>{t.setRenderer({ready:true,frame:21,...frameContext,accepted_state_revision:'revision-a',view_mode:'live'});for(const value of ['not-json',JSON.stringify({...frameContext,width:0}),JSON.stringify({...frameContext,projected_assets:[{id:'POWER_HUB',visible:true,x:'oops',y:0}]})]){const metadata=t.metadataFromHeaders(new Headers({'X-Frame-Number':'21','X-Frame-Context':value,'X-Source-Revision':'revision-a','X-View-Mode':'live'}));assert.equal(metadata.context,null);t.setFrame(metadata);assert.equal(t.frameMatchesView(),false);t.renderDependencyLines();assert.ok(byId('dependency-lines').hasAttribute('hidden'));t.renderLabels();assert.equal(byId('scene-labels').children.length,0);}});
 check('status context fallback requires the exact image frame ID',()=>{t.setRenderer({ready:true,frame:22,...frameContext,accepted_state_revision:'revision-a',view_mode:'live',camera_token:'camera-a'});const matched=t.metadataFromHeaders(new Headers({'X-Frame-Number':'22'}));assert.equal(matched.context.width,1280);assert.equal(matched.sourceRevision,'revision-a');assert.equal(matched.cameraToken,'camera-a');assert.equal(t.metadataFromHeaders(new Headers({'X-Frame-Number':'21'})).context,null);});
+check('successful native asset picks survive telemetry updates but not view changes',()=>{t.setSnapshot({...live,accepted_state_revision:'newer-live-revision'});t.setViewVersion(3);assert.ok(t.pickViewUnchanged('live',3));assert.equal(t.pickViewUnchanged('live',2),false);t.setSnapshot(replay);assert.equal(t.pickViewUnchanged('live',3),false);assert.equal(t.pickViewUnchanged('replay:18',3),false);assert.ok(t.pickViewUnchanged('replay:17',3));});
 console.log(JSON.stringify({kind:'javascript_logic_checks_not_browser_or_gpu',passed:checks.length,checks},null,2));
 """
 
@@ -235,6 +236,7 @@ async def browser_checks(mock_renderer: bool):
             await page.screenshot(path=str(output / "recorded-view.png"), full_page=True)
             await page.locator("#return-live").click()
             await page.wait_for_selector("#replay-banner[hidden]", state="attached")
+            await page.wait_for_function("!document.querySelector('#compare-scenarios').disabled")
             assert await page.locator("#compare-scenarios").is_enabled()
 
             if mock_renderer:
@@ -255,7 +257,9 @@ async def browser_checks(mock_renderer: bool):
             assert not await page.evaluate("document.documentElement.scrollWidth > innerWidth")
             await page.screenshot(path=str(output / "mobile-extended.png"), full_page=True)
             assert not errors, errors
-            report = {"verified_at": datetime.now(timezone.utc).isoformat(),
+            render_provenance = await get("/render/status")
+            report = {"renderer": {key: render_provenance.get(key) for key in ("source_identity", "frame", "rendered_at", "source_timestamp", "source_tick", "accepted_state_revision", "scene_revision", "camera_token", "view_mode", "snapshot_id", "pose_source")},
+                      "verified_at": datetime.now(timezone.utc).isoformat(),
                       "evidence_kind": "cpu_browser_fixture_not_gpu_validation" if mock_renderer else "browser_against_running_application",
                       "page_errors": errors, "connector_pause_stale_offline_resume": True,
                       "replay_read_only": True, "replay_source_calls": 0, "recording_continues": True,

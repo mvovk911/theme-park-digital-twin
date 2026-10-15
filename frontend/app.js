@@ -502,6 +502,10 @@
     return frameMetadata.viewMode === 'live';
   }
 
+  function pickViewUnchanged(requestedView, requestedVersion) {
+    return viewKey(snapshot) === requestedView && viewRequestVersion === requestedVersion;
+  }
+
   function dependencyEdges() {
     if (!snapshot) return [];
     const all = snapshot.assets.flatMap(asset => (fieldUnknown(asset,'dependencies') ? [] : asset.dependencies || []).filter(id => assetById(id)).map(id => ({from:id,to:asset.id})));
@@ -758,14 +762,14 @@
       if (!frameMatchesView()) { toast('The GPU image is synchronizing with the selected record. The asset selector remains available.'); return; }
       if (!frameMetadata.cameraToken) { toast('Image camera identity is unavailable. Select an asset from the registry or its projected label.'); return; }
       const pickContext = {expected_camera_token:frameMetadata.cameraToken,expected_source_revision:frameMetadata.sourceRevision,expected_view_mode:frameMetadata.viewMode,expected_snapshot_id:frameMetadata.snapshotId};
-      const requestedView = viewKey(snapshot), requestedRevision = snapshot.accepted_state_revision;
+      const requestedView = viewKey(snapshot), requestedVersion = viewRequestVersion;
       const view = viewport.getBoundingClientRect(), bounds = imageRect();
       const x = (event.clientX - view.left - bounds.x) / bounds.width, y = (event.clientY - view.top - bounds.y) / bounds.height;
       if (x < 0 || x > 1 || y < 0 || y > 1) return;
       viewport.classList.add('picking');
       try {
         const picked = await post('/render/pick', {x,y,...pickContext}, 19000);
-        if (viewKey(snapshot) !== requestedView || snapshot.accepted_state_revision !== requestedRevision) { toast('The displayed state changed during selection. Select the asset again.'); return; }
+        if (!pickViewUnchanged(requestedView,requestedVersion)) { toast('The displayed view changed during selection. Select the asset again.'); return; }
         if (picked.asset_id) await selectAsset(picked.asset_id, false, false);
         else toast('No connected asset here. Click a ride, facility or utility building.');
       } catch (error) { toast(`Object selection failed: ${error.message}`, true); }

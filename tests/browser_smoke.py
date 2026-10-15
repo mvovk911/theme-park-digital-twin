@@ -77,6 +77,9 @@ async def main():
             for aid in ["FOOD_COURT", "HOTEL", "POWER_HUB"]:
                 point = next(x for x in status["projected_assets"] if x["id"] == aid)
                 for dx, dy in [(0, 0), (0, 0.015), (0.012, 0.012), (-0.012, 0.01)]:
+                    # Fail-closed association intentionally hides overlays/picks between
+                    # source revisions. Wait for an image/data pair before clicking.
+                    await page.wait_for_function("document.querySelector('#frame-context').hidden")
                     box = await page.locator("#viewport").bounding_box()
                     async with page.expect_response(
                         lambda r: "/render/pick" in r.url, timeout=22000
@@ -110,7 +113,7 @@ async def main():
             assert focused["camera"]["radius"] == 83
             await page.locator('[data-layer="energy"]').click()
             await page.wait_for_timeout(500)
-            assert await page.locator(".scene-label").count() > 0
+            await page.wait_for_function("document.querySelectorAll('.scene-label').length > 0")
             await page.locator('[data-scenario="ride_closure"]').click()
             await page.wait_for_function(
                 "document.querySelector('#asset-status').textContent==='closed'"
@@ -206,6 +209,13 @@ async def main():
                         "frame",
                         "ovrtx_version",
                         "ovstage_version",
+                        "source_identity",
+                        "scene_revision",
+                        "accepted_state_revision",
+                        "camera_token",
+                        "rendered_at",
+                        "source_timestamp",
+                        "source_tick",
                     ]
                 },
                 "native_picks": picked,
