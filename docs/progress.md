@@ -11,9 +11,11 @@ The concept deck is a design proposal; the captures below are implementation evi
 A further development goal began at 20:04 UTC (22:04 CEST) on 15 October.
 The [independent digital-twin benchmark](reviews/2026-10-15-digital-twin-benchmark.md)
 is complete and evaluates the published baseline against current examples.
-A separate architecture review is examining whether focused refactors, component
-rewrites or a restart would improve maintainability. It will be repeated after
-integrated milestones. [Development log](development-log.md).
+The [independent architecture review](reviews/2026-10-15-architecture-review.md)
+recommends keeping the project and refactoring state ownership, renderer lifecycle,
+freshness and release boundaries. It finds no demonstrated payoff from a full
+restart. [Recurring review protocol](reviews/README.md). Reviews will be repeated
+after integrated milestones. [Development log](development-log.md).
 
 Current work in progress: ten-domain connector ingestion and provenance,
 improved park landscaping and articulated coaster cars, then coherent historical

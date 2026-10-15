@@ -38,3 +38,20 @@ is complete against baseline `930acd3`. Its priorities are accepted-event ingest
 source trust, a visible incident/acknowledgement loop and coherent replay. The
 separate architecture review is in progress. Connector and asset changes remain
 work in progress until their implementation and checks are finished.
+
+## 15 October 2026 — architecture review completed
+
+The [architecture review](reviews/2026-10-15-architecture-review.md) recommends
+retaining the working application and making bounded refactors. A full restart
+has no demonstrated payoff. Highest priorities are explicit state ownership,
+source/frame freshness, bounded renderer lifecycle and identifiable releases.
+Duplicated asset/capability definitions should be consolidated as contracts settle.
+
+[The review protocol](reviews/README.md) defines repeat checks at meaningful
+integrated milestones. A new review must examine current evidence and previous
+findings, rather than endorse a rewrite by default.
+
+Documentation checkpoint `dd4affe` is committed locally. Network access to GitHub
+and Horde is currently unavailable in this execution environment; publication
+and new GPU verification remain pending. Locally cached Python dependencies have
+been recovered so backend and pure runtime tests can continue offline.
