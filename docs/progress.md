@@ -42,6 +42,24 @@ freshness behavior; duplicate, conflict and out-of-order semantics are tested.
 checks passed. Deployment and publication of this checkpoint are pending network
 access; existing GPU screenshots do not validate these new paths.
 
+## Current local integration checkpoint
+
+Completed code checkpoints now include durable recorded-view APIs, cancellable
+renderer commands and frame/source provenance, immutable committed releases, and
+the source-health/replay/dependency UI. The [acceptance review](reviews/2026-10-15-connector-acceptance-review.md)
+found three concrete ingestion/projection issues; subsequent fixes add canonical
+alert evidence, atomic snapshots/cursors and retained late-event decisions.
+
+Current local checks: **98 CPU/API tests**, **15 JavaScript logic checks** and
+**57 DOM identifier references** pass. These are not Chromium or native GPU checks.
+See [recorded-view semantics](replay.md), [frontend behavior](frontend.md) and
+[release staging](deployment.md).
+
+**External status:** new commits are local while this session's network access is
+restricted. GitHub publication, Horde staging/activation, revision 2 Blender
+regeneration and fresh GPU/browser renders are pending. The public `930acd3`
+application and gallery remain the last externally verified baseline.
+
 ## Delivery checklist
 
 | Requested outcome | Status | Review evidence |

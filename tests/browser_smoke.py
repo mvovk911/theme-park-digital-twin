@@ -27,6 +27,7 @@ async def main():
         errors = []
         page.on("pageerror", lambda e: errors.append(str(e)))
         try:
+            await page.request.post(BASE + "/api/view", data={"mode": "live"})
             await page.goto(BASE, wait_until="domcontentloaded")
             await page.wait_for_function(
                 "document.querySelector('#kpi-attendance').textContent !== '—'"
@@ -173,7 +174,8 @@ async def main():
             ] == "normal"
             await page.screenshot(path=str(OUT / "scenario-comparison.png"))
             await page.locator(".close-comparison").click()
-            await page.locator('[data-system="erp"]').click()
+            await page.locator('.system-card[data-system="erp"]').click()
+            await page.locator('[data-source-tab="raw"]').click()
             await page.wait_for_selector("#source-feed pre")
             assert "stock_units" in await page.locator("#source-feed").inner_text()
             await page.locator(".close-system").click()
@@ -226,6 +228,7 @@ async def main():
         finally:
             # Shared POC: restore normal state even after a failed check; preserve audit.
             for path, payload in [
+                ("/api/view", {"mode": "live"}),
                 ("/api/actions", {"action": "reset"}),
                 ("/render/control", {"action": "home"}),
                 ("/render/control", {"action": "layer", "layer": "operations"}),

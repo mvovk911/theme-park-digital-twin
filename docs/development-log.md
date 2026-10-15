@@ -135,3 +135,20 @@ contracts. Unmapped model fields remain explicitly labeled as model-derived.
 59 backend/connector checks pass. This fixes the reviewed boundary at code/API
 level; new end-to-end GPU/browser evidence and external publication are still
 pending the current environment restrictions.
+
+## Operator experience checkpoint — local logic/API validation
+
+The browser code now uses a consistent recorded-view API, exposes source health
+and provenance, supports synthetic connector pause/offline/recovery, and draws
+logical utility dependencies. Replay has a prominent read-only state, historical
+source inspection and disabled mutation/comparison controls. Image freshness uses
+original JPEG frame identity/time; stale source presentation and missing historical
+poses are disclosed. Unmapped model values are distinguished from accepted
+unknown values, and alerts display source/model evidence.
+
+15 JavaScript behavior checks and 57 DOM identifier checks pass, plus syntax and
+in-process API contract checks. The combined stable backend/replay/render/gateway/
+release suite passes 98 CPU/API checks. Chromium and loopback listener startup are
+blocked in this sandbox, so fresh visual layout, interactive browser and native
+GPU acceptance remain unverified. Existing real GPU images were preserved and are
+not relabeled as evidence for these changes.

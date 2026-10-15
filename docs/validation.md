@@ -20,6 +20,11 @@ identified additional projection/snapshot issues at `cf4d621`. Its findings are
 retained as that commit's review; follow-up fixes have their own checkpoint and
 are not retroactively claimed by the 73-test candidate.
 
+After the reviewed connector fixes and release work, the combined stable local
+suite passed **98 CPU/API checks**. The operator UI separately passed **15 JavaScript
+behavior checks** and **57 DOM identifier checks**. These newer local gates do not
+replace the pending Chromium/native-GPU acceptance described above.
+
 The actual application was run on an NVIDIA L40 (48 GB), driver 570.158.01,
 Linux/Python 3.10, OVRTX 0.6.0.1791947691 and OVStage 0.3.0.1791986420.
 This is application evidence, not a performance benchmark.

@@ -25,9 +25,11 @@
       <div class="heading-meta"><span class="connection-pill" id="data-connection"><i></i><span>Connecting to services</span></span><span id="weather-label">Weather simulator · awaiting data</span></div>
     </section>
 
+    <section class="replay-banner" id="replay-banner" aria-live="polite" hidden><span class="replay-symbol">↶</span><div><strong id="replay-title">Recorded state · read only</strong><p id="replay-description"></p><small id="replay-pose-note"></small></div><button id="return-live">Return to live ↗</button></section>
+
     <section class="kpi-grid" aria-label="Park key performance indicators">
       <article class="kpi"><div class="kpi-label">GUESTS IN PARK <span>↗</span></div><div class="kpi-value" id="kpi-attendance">—</div><div class="kpi-note">Live admission model</div></article>
-      <article class="kpi"><div class="kpi-label">AVERAGE WAIT <span>◷</span></div><div class="kpi-value"><span id="kpi-wait">—</span><small>min</small></div><div class="kpi-note" id="wait-note">Across attraction queues</div></article>
+      <article class="kpi"><div class="kpi-label">AVERAGE WAIT <span>◷</span></div><div class="kpi-value"><span id="kpi-wait">—</span><small>min</small></div><div class="kpi-note" id="wait-note" title="Unweighted mean across active ride, food, admission and facility queues. Closed rides are excluded.">Active park queues · closed rides excluded</div></article>
       <article class="kpi"><div class="kpi-label">ATTRACTIONS OPEN <span>⌁</span></div><div class="kpi-value" id="kpi-rides">—</div><div class="kpi-note">Connected ride controllers</div></article>
       <article class="kpi"><div class="kpi-label">POWER DEMAND <span>ϟ</span></div><div class="kpi-value"><span id="kpi-power">—</span><small>kW</small></div><div class="kpi-note" id="power-note">Park-wide energy meter</div></article>
       <article class="kpi"><div class="kpi-label">WATER FLOW <span>◈</span></div><div class="kpi-value"><span id="kpi-water">—</span><small>L/min</small></div><div class="kpi-note">Water network simulator</div></article>
@@ -38,6 +40,8 @@
       <button data-scenario="normal" class="scenario-chip active">Normal day</button><button data-scenario="ride_closure" class="scenario-chip">Ride closes</button><button data-scenario="show_surge" class="scenario-chip">Show ends</button><button data-scenario="heatwave" class="scenario-chip">Heatwave</button><button data-scenario="power_fault" class="scenario-chip">Power fault</button><button data-scenario="water_leak" class="scenario-chip">Water leak</button><button data-scenario="food_rush" class="scenario-chip">Food rush</button>
     </div><button class="compare-trigger" id="compare-scenarios" title="Compare a hypothetical scenario without changing live state">Compare <span>⇄</span></button></section>
 
+    <section class="timeline-bar" aria-label="Recorded park timeline"><div class="timeline-heading"><span class="recording-dot"></span><div><strong>Park timeline</strong><small id="timeline-recording">Loading recordings…</small></div></div><div class="timeline-track"><div class="timeline-labels"><span id="timeline-first">—</span><label for="timeline-range" id="timeline-selection">Choose a recorded moment</label><span id="timeline-last">—</span></div><input type="range" id="timeline-range" min="0" max="0" value="0" disabled aria-label="Recorded snapshot"><div class="timeline-detail" id="timeline-detail">The live simulation keeps recording while you inspect history.</div></div><div class="timeline-buttons"><button id="timeline-previous" title="Previous recorded moment" aria-label="Previous recorded moment" disabled>‹</button><button id="timeline-next" title="Next recorded moment" aria-label="Next recorded moment" disabled>›</button><button id="timeline-live" class="is-live">● Live</button></div></section>
+
     <section class="workbench" id="operations-view">
       <div class="scene-column">
         <section class="viewport-card">
@@ -45,14 +49,17 @@
           <div class="viewport" id="viewport" tabindex="0" aria-label="Interactive Omniverse RTX park view. Drag to orbit, scroll to zoom, click an object to inspect it.">
             <img id="render-frame" alt="Live Omniverse RTX rendering of the Aster Park digital twin" draggable="false">
             <div class="viewport-wait" id="viewport-wait"><div class="loader-orbit"><i></i><i></i><span>✳</span></div><h3>Preparing the live twin</h3><p id="render-wait-message">Connecting to the GPU rendering service.</p><small>Real OpenUSD scene · NVIDIA Omniverse RTX</small></div>
-            <div class="viewport-top"><div class="layer-switch" role="group" aria-label="Data overlay"><button class="active" data-layer="operations">Operations</button><button data-layer="energy">Energy</button><button data-layer="crowds">Guest flow</button><button data-layer="none" title="Hide data overlays">○</button></div><button class="icon-button" id="fullscreen" title="Expand viewport" aria-label="Expand viewport">⛶</button></div>
+            <div class="viewport-top"><div class="layer-switch" role="group" aria-label="Data overlay"><button class="active" data-layer="operations">Operations</button><button data-layer="energy">Energy</button><button data-layer="crowds">Guest flow</button><button data-layer="dependencies">Dependencies</button><button data-layer="none" title="Hide data overlays">○</button></div><button class="icon-button" id="fullscreen" title="Expand viewport" aria-label="Expand viewport">⛶</button></div>
+            <svg id="dependency-lines" class="dependency-lines" aria-label="Logical asset dependencies" hidden></svg>
             <div id="scene-labels" class="scene-labels"></div>
+            <div class="frame-context" id="frame-context" hidden></div>
             <div class="scene-tools"><button class="icon-button" id="camera-home" title="Reset camera" aria-label="Reset camera">⌂</button><button class="icon-button" id="camera-zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button class="icon-button" id="camera-zoom-out" title="Zoom out" aria-label="Zoom out">−</button></div>
             <div class="viewport-bottom"><span class="view-help"><span>↔</span> Drag to orbit <b>·</b> Scroll to zoom <b>·</b> Click to inspect</span><span class="render-stats" id="render-stats">GPU feed pending</span></div>
           </div>
           <div class="scene-footer"><div class="legend"><span><i class="green"></i>Operational</span><span><i class="amber"></i>Attention</span><span><i class="red"></i>Closed / fault</span></div><span id="frame-freshness">Frame awaiting renderer</span></div>
         </section>
         <section class="response-card" aria-live="polite"><div class="section-label"><span>OPERATIONS BRIEF</span><span class="tiny-badge" id="scenario-current">NORMAL DAY</span></div><div id="operations-brief"><h3>Connecting the dots across the park.</h3><p>Incoming telemetry will populate operational alerts and recommended actions.</p></div><div id="alert-actions" class="brief-actions"></div></section>
+        <section class="dependency-card" id="dependency-card" hidden><div class="section-label"><span>DEPENDENCY CONTEXT</span><span class="tiny-badge">LOGICAL RELATIONSHIPS</span></div><h3 id="dependency-title"></h3><div id="dependency-context"></div><p>Lines show required services and affected assets. They are not physical pipe or cable routes.</p></section>
       </div>
 
       <aside class="inspector" aria-label="Asset inspector">
@@ -66,11 +73,12 @@
           <div class="inspector-section"><div class="section-label">CONNECTED CONTEXT</div><dl class="context-list"><div><dt>Operating team</dt><dd id="asset-staff">—</dd></div><div><dt>Monitored water flow</dt><dd id="asset-water">—</dd></div><div><dt>Inspection</dt><dd id="asset-inspection">—</dd></div><div><dt>Open work orders</dt><dd id="asset-orders">—</dd></div><div><dt>Stock on hand</dt><dd id="asset-stock">—</dd></div></dl><div class="dependency-list" id="asset-dependencies"></div></div>
           <div class="inspector-section actions-section"><div class="section-label">SIMULATED OPERATOR ACTIONS</div><div class="asset-actions" id="asset-actions"></div><p class="action-note">Actions update synthetic services and the audit trail.</p></div>
           <div class="asset-provenance"><span>↳</span><div><code id="asset-scene-path"></code><small id="asset-updated">Synthetic source · awaiting telemetry</small></div></div>
+          <div class="asset-source-list" id="asset-sources"></div>
         </div>
       </aside>
     </section>
 
-    <section class="systems-section" id="systems-section"><div class="section-header"><div><div class="eyebrow">THE CONNECTED BACKBONE</div><h2>Many systems. A common language.</h2></div><button class="text-button" id="show-system-map">Explore architecture <span>↗</span></button></div><div class="system-cards" id="system-cards"></div></section>
+    <section class="systems-section" id="systems-section"><div class="section-header"><div><div class="eyebrow">THE CONNECTED BACKBONE</div><h2>Many systems. A common language.</h2></div><button class="text-button" id="show-system-map">Explore architecture <span>↗</span></button></div><div class="source-health-summary" id="source-health-summary"></div><div class="system-cards" id="system-cards"></div></section>
     <section class="activity-section" id="activity-section"><div class="section-header"><div><div class="eyebrow">TRACEABLE OPERATIONS</div><h2>Activity & decisions</h2></div><span class="tiny-badge">SIMULATION AUDIT</span></div><div class="activity-list" id="activity-list"><div class="empty-activity">Run a scenario or take an action to begin the audit trail.</div></div></section>
     <footer class="page-footer"><span><strong>ASTER PARK</strong> · Digital twin proof of concept</span><span>All park data, APIs and operational actions are synthetic. 3D images are rendered by the GPU service.</span></footer>
   </main>
