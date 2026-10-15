@@ -1,0 +1,89 @@
+[
+  {
+    "file": "render-overview.jpg",
+    "captured_at": "2026-10-15T19:34:19.289637+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "camera": {
+      "target": [
+        0.0,
+        0.0,
+        3.0
+      ],
+      "radius": 285.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 4647,
+    "control": {
+      "action": "home"
+    }
+  },
+  {
+    "file": "render-wheel.jpg",
+    "captured_at": "2026-10-15T19:34:21.555797+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "camera": {
+      "target": [
+        35.0,
+        25.0,
+        18.0
+      ],
+      "radius": 83.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 4676,
+    "control": {
+      "action": "focus",
+      "asset_id": "RIDE_WHEEL"
+    }
+  },
+  {
+    "file": "render-coaster.jpg",
+    "captured_at": "2026-10-15T19:34:23.705869+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "camera": {
+      "target": [
+        -35.0,
+        18.0,
+        7.0
+      ],
+      "radius": 83.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 4704,
+    "control": {
+      "action": "focus",
+      "asset_id": "RIDE_COASTER"
+    }
+  },
+  {
+    "file": "render-utilities.jpg",
+    "captured_at": "2026-10-15T19:34:25.848836+00:00",
+    "engine": "NVIDIA OVRTX + OVStage",
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "camera": {
+      "target": [
+        57.0,
+        47.0,
+        2.0
+      ],
+      "radius": 83.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "frame": 4731,
+    "control": {
+      "action": "focus",
+      "asset_id": "POWER_HUB"
+    }
+  }
+]

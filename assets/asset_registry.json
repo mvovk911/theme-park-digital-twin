@@ -1,0 +1,497 @@
+{
+  "park": "Aster Park",
+  "units": "meters",
+  "up_axis": "Z",
+  "assets": [
+    {
+      "asset_id": "RIDE_COASTER",
+      "prim_path": "/World/Park/RIDE_COASTER",
+      "name": "Comet Run Coaster",
+      "category": "ride",
+      "position": [
+        -35,
+        18,
+        7
+      ],
+      "bounds": [
+        [
+          -60,
+          -1,
+          0
+        ],
+        [
+          -12,
+          39,
+          26
+        ]
+      ],
+      "systems": [
+        "ride_scada",
+        "queues",
+        "maintenance",
+        "energy",
+        "workforce"
+      ],
+      "computed_bounds": [
+        [
+          -60.064999997615814,
+          -2.8,
+          -2.3841857821338408e-08
+        ],
+        [
+          -12.120000002372374,
+          38.064999997615814,
+          22.09986114501953
+        ]
+      ]
+    },
+    {
+      "asset_id": "RIDE_WHEEL",
+      "prim_path": "/World/Park/RIDE_WHEEL",
+      "name": "Aster Observation Wheel",
+      "category": "ride",
+      "position": [
+        35,
+        25,
+        18
+      ],
+      "bounds": [
+        [
+          19,
+          16,
+          0
+        ],
+        [
+          51,
+          31,
+          35
+        ]
+      ],
+      "systems": [
+        "ride_scada",
+        "queues",
+        "maintenance",
+        "energy",
+        "workforce"
+      ],
+      "computed_bounds": [
+        [
+          19.950000047683716,
+          8.862728288395054,
+          -0.06967629917060779
+        ],
+        [
+          50.049999952316284,
+          32.5,
+          33.22000026702881
+        ]
+      ]
+    },
+    {
+      "asset_id": "SHOW_ARENA",
+      "prim_path": "/World/Park/SHOW_ARENA",
+      "name": "Starlight Show Arena",
+      "category": "entertainment",
+      "position": [
+        -5,
+        45,
+        2
+      ],
+      "bounds": [
+        [
+          -17,
+          37,
+          0
+        ],
+        [
+          10,
+          52,
+          8
+        ]
+      ],
+      "systems": [
+        "shows",
+        "crowds",
+        "workforce",
+        "energy"
+      ],
+      "computed_bounds": [
+        [
+          -15.5,
+          36.44999998807907,
+          -1.1920928966180355e-08
+        ],
+        [
+          5.5,
+          51.5,
+          7.120000339603209
+        ]
+      ]
+    },
+    {
+      "asset_id": "FOOD_COURT",
+      "prim_path": "/World/Park/FOOD_COURT",
+      "name": "Market Square Food Court",
+      "category": "food",
+      "position": [
+        -25,
+        -28,
+        2
+      ],
+      "bounds": [
+        [
+          -41,
+          -38,
+          0
+        ],
+        [
+          -11,
+          -17,
+          7
+        ]
+      ],
+      "systems": [
+        "pos",
+        "inventory",
+        "queues",
+        "workforce",
+        "energy"
+      ],
+      "computed_bounds": [
+        [
+          -40.5,
+          -38.75346841106151,
+          -2.3841857821338408e-08
+        ],
+        [
+          -10.650000095367432,
+          -15.5,
+          6.074999976158142
+        ]
+      ]
+    },
+    {
+      "asset_id": "POWER_HUB",
+      "prim_path": "/World/Park/POWER_HUB",
+      "name": "Energy Hub and Solar Canopy",
+      "category": "utility",
+      "position": [
+        57,
+        47,
+        2
+      ],
+      "bounds": [
+        [
+          46,
+          40,
+          0
+        ],
+        [
+          69,
+          55,
+          7
+        ]
+      ],
+      "systems": [
+        "energy",
+        "maintenance",
+        "grid",
+        "weather"
+      ],
+      "computed_bounds": [
+        [
+          45.935000002384186,
+          39.935000002384186,
+          0.005000002980232232
+        ],
+        [
+          69.06499999761581,
+          54.064999997615814,
+          6.0499999761581424
+        ]
+      ]
+    },
+    {
+      "asset_id": "WATER_PLANT",
+      "prim_path": "/World/Park/WATER_PLANT",
+      "name": "Water Treatment and Irrigation",
+      "category": "utility",
+      "position": [
+        -61,
+        48,
+        2
+      ],
+      "bounds": [
+        [
+          -73,
+          41,
+          0
+        ],
+        [
+          -49,
+          55,
+          6
+        ]
+      ],
+      "systems": [
+        "water",
+        "maintenance",
+        "weather"
+      ],
+      "computed_bounds": [
+        [
+          -71.54999995231628,
+          42.769999995827675,
+          0.005000002980232232
+        ],
+        [
+          -50.65000009536743,
+          53.34999990463257,
+          5.349999952316284
+        ]
+      ]
+    },
+    {
+      "asset_id": "HOTEL",
+      "prim_path": "/World/Park/HOTEL",
+      "name": "Aster Lodge",
+      "category": "hospitality",
+      "position": [
+        -58,
+        -29,
+        3
+      ],
+      "bounds": [
+        [
+          -70,
+          -42,
+          0
+        ],
+        [
+          -47,
+          -17,
+          12
+        ]
+      ],
+      "systems": [
+        "hotel",
+        "energy",
+        "workforce",
+        "erp"
+      ],
+      "computed_bounds": [
+        [
+          -68.85000038146973,
+          -42.5,
+          -4.768371586472142e-08
+        ],
+        [
+          -49.14999961853027,
+          -19.149999618530273,
+          12.140909099578858
+        ]
+      ]
+    },
+    {
+      "asset_id": "PARKING",
+      "prim_path": "/World/Park/PARKING",
+      "name": "South Parking and EV Charging",
+      "category": "mobility",
+      "position": [
+        52,
+        -36,
+        1
+      ],
+      "bounds": [
+        [
+          30,
+          -54,
+          0
+        ],
+        [
+          74,
+          -19,
+          5
+        ]
+      ],
+      "systems": [
+        "parking",
+        "ev_charging",
+        "transport",
+        "energy"
+      ],
+      "computed_bounds": [
+        [
+          30.5,
+          -54.0,
+          0.08999999850988388
+        ],
+        [
+          73.5,
+          -19.890000000596046,
+          5.5
+        ]
+      ]
+    },
+    {
+      "asset_id": "FIRST_AID",
+      "prim_path": "/World/Park/FIRST_AID",
+      "name": "First Aid and Guest Care",
+      "category": "guest_service",
+      "position": [
+        18,
+        -35,
+        2
+      ],
+      "bounds": [
+        [
+          11,
+          -42,
+          0
+        ],
+        [
+          25,
+          -28,
+          6
+        ]
+      ],
+      "systems": [
+        "incidents",
+        "workforce",
+        "guest_services"
+      ],
+      "computed_bounds": [
+        [
+          11.650000095367432,
+          -41.75346841106151,
+          0.005000002980232232
+        ],
+        [
+          24.34999990463257,
+          -29.15000009536743,
+          5.883333349227906
+        ]
+      ]
+    },
+    {
+      "asset_id": "RESTROOMS",
+      "prim_path": "/World/Park/RESTROOMS",
+      "name": "Central Restrooms",
+      "category": "guest_service",
+      "position": [
+        53,
+        -16,
+        2
+      ],
+      "bounds": [
+        [
+          46,
+          -21,
+          0
+        ],
+        [
+          60,
+          -11,
+          5
+        ]
+      ],
+      "systems": [
+        "cleaning",
+        "water",
+        "maintenance"
+      ],
+      "computed_bounds": [
+        [
+          46.65000009536743,
+          -21.253468411061515,
+          0.005000002980232232
+        ],
+        [
+          59.34999990463257,
+          -11.650000095367432,
+          5.1833333492279055
+        ]
+      ]
+    },
+    {
+      "asset_id": "WEATHER_STATION",
+      "prim_path": "/World/Park/WEATHER_STATION",
+      "name": "Weather and Environment Station",
+      "category": "sensor",
+      "position": [
+        16,
+        43,
+        3
+      ],
+      "bounds": [
+        [
+          14,
+          41,
+          0
+        ],
+        [
+          18,
+          45,
+          10
+        ]
+      ],
+      "systems": [
+        "weather",
+        "environment"
+      ],
+      "computed_bounds": [
+        [
+          14.25,
+          42.57736986741364,
+          0.0
+        ],
+        [
+          17.75,
+          43.42263013258636,
+          9.25
+        ]
+      ]
+    },
+    {
+      "asset_id": "ENTRY_GATE",
+      "prim_path": "/World/Park/ENTRY_GATE",
+      "name": "Aster Park Main Entrance",
+      "category": "admission",
+      "position": [
+        0,
+        -53,
+        2
+      ],
+      "bounds": [
+        [
+          -13,
+          -58,
+          0
+        ],
+        [
+          13,
+          -47,
+          9
+        ]
+      ],
+      "systems": [
+        "ticketing",
+        "admission",
+        "crowds",
+        "guest_services"
+      ],
+      "computed_bounds": [
+        [
+          -15.349999904632568,
+          -58.5,
+          0.0
+        ],
+        [
+          15.349999904632568,
+          -14.912592843762017,
+          8.7
+        ]
+      ]
+    }
+  ]
+}

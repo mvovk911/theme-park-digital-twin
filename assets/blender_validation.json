@@ -1,0 +1,10 @@
+{
+  "blender_version": "4.5.3 LTS",
+  "worker": "park-twin-rtx",
+  "objects": 2239,
+  "meshes": 2200,
+  "materials": 28,
+  "unbound_meshes": 0,
+  "camera": "Camera",
+  "bytes": 15190908
+}

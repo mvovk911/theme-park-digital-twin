@@ -1,0 +1,64 @@
+{
+  "verified_at": "2026-10-15T19:31:59.373897+00:00",
+  "comparison_read_only": true,
+  "source_payload": true,
+  "desktop_overflow": false,
+  "page_errors": [],
+  "renderer": {
+    "engine": "NVIDIA OVRTX + OVStage",
+    "fps": 12.5,
+    "frame": 2667,
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420"
+  },
+  "native_picks": [
+    {
+      "target": "FOOD_COURT",
+      "status": 200,
+      "result": {
+        "asset_id": "FOOD_COURT",
+        "prim_path": "/World/Park/FOOD_COURT/DiningPlaza",
+        "engine": "ovrtx_pick_hit"
+      }
+    },
+    {
+      "target": "HOTEL",
+      "status": 200,
+      "result": {
+        "asset_id": "HOTEL",
+        "prim_path": "/World/Park/HOTEL/Roof",
+        "engine": "ovrtx_pick_hit"
+      }
+    },
+    {
+      "target": "POWER_HUB",
+      "status": 200,
+      "result": {
+        "asset_id": "POWER_HUB",
+        "prim_path": "/World/Park/POWER_HUB/SolarPanel_0002",
+        "engine": "ovrtx_pick_hit"
+      }
+    }
+  ],
+  "camera_orbit": true,
+  "camera_zoom": true,
+  "camera_focus": true,
+  "overlay": true,
+  "closure_dispatch": true,
+  "motion_closure": {
+    "before": {
+      "coaster_phase": 0.022088044189982038,
+      "wheel_angle": 35.02970435321336
+    },
+    "after": {
+      "coaster_phase": 0.022088044189982038,
+      "wheel_angle": 35.27312788903719
+    },
+    "resumed": {
+      "coaster_phase": 0.18224110968765855,
+      "wheel_angle": 36.823394612073976
+    }
+  },
+  "leak_repair": true,
+  "mobile_overflow": false
+}
