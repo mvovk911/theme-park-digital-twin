@@ -5,6 +5,13 @@
 | [Digital-twin benchmark](2026-10-15-digital-twin-benchmark.md) | `930acd3` | Compare capability and evidence against recent public digital-twin implementations |
 | [Architecture review](2026-10-15-architecture-review.md) | `930acd3` plus identified WIP | Assess complexity, uncontrolled coupling, targeted refactoring and the value of rebuilding |
 
+## Completed follow-up
+
+[Connector acceptance review](2026-10-15-connector-acceptance-review.md) inspected
+committed `cf4d621` in isolation, verified 51 checks and found three actionable
+projection/acceptance defects. Its report remains unchanged; subsequent fixes and
+59-check evidence are recorded in the development log and later commits.
+
 ## Recurring milestone review
 
 Request another independent review after a meaningful integrated milestone,

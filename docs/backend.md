@@ -77,3 +77,6 @@ Run backend and connector verification with:
 ```sh
 .venv/bin/python -m pytest -q tests/test_backend.py tests/test_connectors.py tests/test_connectors_http.py
 ```
+
+
+Operational alerts now project from the same canonical fields as assets/KPIs, with `origin` and `evidence`. `model_alerts` retains simulator-only alerts separately and `source_conflicts` identifies source/model status disagreements. `active_alerts` counts the projected operational list. Source snapshots and accepted-event cursors are atomic. The connector decision journal retains valid late events without applying them; its independent cursor is documented in [connectors](connectors.md).

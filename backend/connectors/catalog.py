@@ -112,7 +112,10 @@ def default_catalog():
     for source_id, name, _, asset_ids in SYSTEM_DEFS:
         mappings = []
         for asset_id in asset_ids:
-            for metric in DOMAIN_FIELDS[source_id]:
+            fields = DOMAIN_FIELDS[source_id]
+            if source_id == "bms" and asset_id == "POWER_HUB":
+                fields = (*fields, "status")
+            for metric in fields:
                 authoritative = True
                 if metric == "dependencies":
                     authoritative = source_id == "gis"

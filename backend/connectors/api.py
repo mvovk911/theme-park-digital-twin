@@ -51,15 +51,15 @@ def install_connector_routes(app):
 
     @app.get("/api/connectors/{source_id}/snapshot")
     def snapshot(source_id: str):
-        def operation():
-            connectors = runtime()
-            return {**connectors.observations(source_id=source_id), "health": connectors.health(source_id),
-                    "cursor": connectors.health(source_id)["latest_cursor"]}
-        return call(operation)
+        return call(lambda: runtime().source_snapshot(source_id))
 
     @app.get("/api/connectors/{source_id}/events")
     def events(source_id: str, after: str | None = None, limit: int = Query(100, ge=1, le=1000)):
         return call(lambda: runtime().events(source_id, after, limit))
+
+    @app.get("/api/connectors/{source_id}/decisions")
+    def decisions(source_id: str, after: str | None = None, limit: int = Query(100, ge=1, le=1000)):
+        return call(lambda: runtime().decisions(source_id, after, limit))
 
     @app.get("/api/observations")
     def observations(source_id: str | None = None, asset_id: str | None = None,

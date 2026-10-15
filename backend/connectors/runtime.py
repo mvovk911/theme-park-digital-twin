@@ -85,6 +85,7 @@ class ConnectorRuntime:
         elif result["accepted"]:
             self.errors[source_id] = None
         result["latest_cursor"] = self.stores[source_id].poll(limit=1)["latest_cursor"]
+        result["latest_decision_cursor"] = self.stores[source_id].poll_decisions(limit=1)["latest_decision_cursor"]
         return result
 
     def ingest_demo(self, source_id, events):
@@ -145,6 +146,14 @@ class ConnectorRuntime:
             result.sort(key=lambda o: (o["source_id"], o["asset_id"], o["metric"]))
             return {"schema_version": "1.0", "observations": result[:limit], "total": len(result), "truncated": len(result) > limit}
 
+    def source_snapshot(self, source_id):
+        """Copy source values and their accepted-event cursor atomically."""
+        with self.lock:
+            self.require_source(source_id)
+            observations = self.observations(source_id=source_id)
+            health = self.health(source_id)
+            return {**observations, "health": health, "cursor": health["latest_cursor"]}
+
     def health(self, source_id):
         with self.lock:
             self.require_source(source_id)
@@ -202,5 +211,14 @@ class ConnectorRuntime:
             self.require_source(source_id)
             result = self.stores[source_id].poll(after, limit)
             for observation in result["events"]:
+                observation["quality"] = self.quality(source_id, observation)
+            return {"schema_version": "1.0", "source_id": source_id, **result}
+
+    def decisions(self, source_id, after=None, limit=100):
+        with self.lock:
+            self.require_source(source_id)
+            result = self.stores[source_id].poll_decisions(after, limit)
+            for decision in result["decisions"]:
+                observation = decision["observation"]
                 observation["quality"] = self.quality(source_id, observation)
             return {"schema_version": "1.0", "source_id": source_id, **result}

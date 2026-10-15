@@ -120,3 +120,18 @@ an overlay, because staging never overlays an old source tree.
 deleted files, retained shared data and explicit activation/rollback. Activation
 only promotes a source pointer; it does not claim dependency compatibility,
 process restart or GPU acceptance. The legacy worker deployment remains untouched.
+
+## Connector acceptance fixes — 59 local checks passed
+
+The independent review of `cf4d621` is preserved in
+[its dated report](reviews/2026-10-15-connector-acceptance-review.md). Three concrete
+findings now have targeted fixes: canonical alerts follow accepted values with
+source/model conflict evidence; snapshot observations/health/cursor are returned
+under one acceptance lock; late valid observations remain in a bounded decision
+journal without replacing fresher projected values.
+
+The accepted-event cursor and decision-journal cursor are separate documented
+contracts. Unmapped model fields remain explicitly labeled as model-derived.
+59 backend/connector checks pass. This fixes the reviewed boundary at code/API
+level; new end-to-end GPU/browser evidence and external publication are still
+pending the current environment restrictions.

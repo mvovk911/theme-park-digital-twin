@@ -2,6 +2,7 @@
 from __future__ import annotations
 import copy
 from .catalog import LEGACY_FIELDS, set_path
+from .alerts import project_alerts
 
 
 class ParkReadModel:
@@ -12,6 +13,7 @@ class ParkReadModel:
     def snapshot(self):
         with self.connectors.lock:
             state = self.park.snapshot()
+            model_statuses = {asset["id"]: asset["status"] for asset in state["assets"]}
             self.connectors.refresh(state)
             records = self.connectors.observations()["observations"]
             assets = {asset["id"]: asset for asset in state["assets"]}
@@ -60,7 +62,9 @@ class ParkReadModel:
             open_rides=sum(a["type"] == "ride" and a["status"] in {"operational", "warning"} for a in assets.values()),
             estimated_operating_cost_eur_per_hour=round(sum(a["erp"]["operating_cost_eur_per_hour"] for a in assets.values()), 2))
         state["weather"]["temperature_c"] = assets["WEATHER_STATION"]["temperature_c"]
+        project_alerts(state, model_statuses)
         state["read_model"] = {"schema_version": "1.0", "source": "accepted_connector_observations",
+                               "unmapped_fields_origin": "synthetic_model",
                                "quality_status": "good" if all(h["status"] == "healthy" for h in state["connector_health"]) else "degraded"}
         return state
 

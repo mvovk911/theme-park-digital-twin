@@ -11,9 +11,10 @@ The useful increment is a real acceptance boundary: source events pass mapping, 
 | `backend/connectors/catalog.py` | Stable IDs, source-to-asset mappings, units, value constraints and one authoritative owner per asset/property |
 | `adapters.py` | Source `snapshot(context)` / `poll(after, context)` contract and one synthetic adapter instance per domain |
 | `validation.py` | Event shape, field/unit/type/range/reference validation and timestamp parsing |
-| `store.py` | Accepted events, latest values, deduplication and bounded cursor polling |
+| `store.py` | Accepted events, ingestion decisions, latest values, deduplication and independent bounded cursor polling |
 | `runtime.py` | Adapter polling, ingestion, source health, freshness and simulation modes |
 | `readmodel.py` | Existing asset/system view projected from accepted authoritative observations |
+| `alerts.py` | Canonical operational alerts, checked forecast alerts and explicit source/model conflicts |
 | `api.py` | HTTP route and request validation |
 
 `app.state.read_model.snapshot()` is the public full-view interface for browser APIs and replay capture. `app.state.park.snapshot()` remains the underlying synthetic scenario model. `app.state.park.workflow_snapshot()` supplies `{tick, work_orders}` with at most 300 recent orders for replay without fetching asset telemetry histories.
@@ -28,7 +29,7 @@ The useful increment is a real acceptance boundary: source events pass mapping, 
 | `cmms` | Maintenance | Inspection status, health and open work orders |
 | `erp` | ERP/POS | Inventory, reorder points, illustrative cost and service throughput |
 | `workforce` | Staffing | On-duty/required staffing and qualifications |
-| `bms` | Buildings/energy | Building power and temperature |
+| `bms` | Buildings/energy | Building power and temperature; `POWER_HUB.status` |
 | `water` | Water/facilities | Plant/restroom flow and operational status |
 | `weather` | Local weather | Weather-station temperature |
 | `gis` | Spatial asset registry | OpenUSD paths, accessibility text and dependencies |
@@ -41,9 +42,10 @@ Mappings are listed by the catalog endpoint. Source asset IDs are stable, e.g. `
 - `GET /api/connectors/{source_id}`: one catalog entry.
 - `GET /api/connectors/health`: `{health:[...]}` for all sources.
 - `GET /api/connectors/{source_id}/health`: source health.
-- `GET /api/connectors/{source_id}/snapshot`: current normalized observations, health and a cursor representing their accepted event position.
+- `GET /api/connectors/{source_id}/snapshot`: current normalized observations, health and a cursor representing their accepted event position, copied under one lock so concurrent ingestion cannot advance the returned cursor beyond the included values.
 - `GET /api/observations?source_id=water&asset_id=WATER_PLANT&limit=1000`: latest observations, total count and explicit `truncated` flag. Both filters are optional; limit is 1–2000.
 - `GET /api/connectors/{source_id}/events?after=<cursor>&limit=100`: accepted events after a returned cursor; limit is 1–1000. Without `after`, starts at the oldest retained event. Returns `events`, `next_cursor`, `latest_cursor`, `has_more`, and `retention_events`.
+- `GET /api/connectors/{source_id}/decisions?after=<decision_cursor>&limit=100`: normalized ingestion decisions with `applied`, `reason` and `observation`. Uses separate `next_decision_cursor` and `latest_decision_cursor`; accepted-event cursors are rejected here.
 - `POST /api/connectors/{source_id}/simulation` with `{mode:"live"|"paused"|"offline"}`: control a synthetic adapter for a failure demonstration.
 - `POST /api/connectors/{source_id}/ingest`: explicitly synthetic demo batch, accepted only while that connector is paused.
 
@@ -103,19 +105,19 @@ While paused, submit a demonstration reading with a **current timezone-qualified
 }
 ```
 
-The batch response reports `accepted`, `duplicates`, `rejected`, indexed errors, current health and `latest_cursor`. Domain validation errors are reported per event with HTTP 200 so valid events in the same batch can be accepted. Invalid HTTP request shape returns 422; unknown source/asset returns 404; ingesting into a running/offline or non-synthetic adapter returns 409. Demo controls are not physical controls, and the service remains behind the application's authenticated tunnel.
+The batch response reports `accepted`, `duplicates`, `rejected`, indexed errors, current health, accepted-event `latest_cursor` and independent `latest_decision_cursor`. Domain validation errors are reported per event with HTTP 200 so valid events in the same batch can be accepted. Invalid HTTP request shape returns 422; unknown source/asset returns 404; ingesting into a running/offline or non-synthetic adapter returns 409. Demo controls are not physical controls, and the service remains behind the application's authenticated tunnel.
 
 ## Ordering, freshness and retention
 
 - Duplicate event ID with identical content: count as duplicate, add no event, change no timestamp.
 - Reused event ID with different content: reject `duplicate_event_conflict`.
-- Older source timestamp for the same source asset/metric: reject `out_of_order`; microsecond precision is preserved. Equal timestamps with distinct event IDs are accepted in server ingestion order.
+- Older source timestamp for the same source asset/metric: reject `out_of_order` from the current projection, but retain the otherwise-valid normalized event in the decision journal with `applied:false` and `reason:"out_of_order"`; microsecond precision is preserved. Equal timestamps with distinct event IDs are accepted in server ingestion order.
 - Missing timezone, nonfinite numbers, booleans submitted as numbers, negative constrained values, undeclared mappings/dependencies, and wrong units are rejected.
 - Timestamps over five seconds in the future are rejected. Accepted timestamps slightly ahead of the clock are labeled uncertain with `source_clock_ahead`.
 - Freshness uses source event time. Every shipped domain currently uses a five-second demo threshold. Poll attempts and HTTP reads do not refresh accepted timestamps.
 - Source health includes `healthy`, `paused`, `stale`, `degraded`, `error`, `offline` or `unknown`, along with missing/stale metric counts. Observation quality is `good`, `uncertain` or `stale`; an asset field with no accepted observation is `unknown`.
 - Adapter errors retain last accepted values and mark them uncertain. Public error messages omit provider exception text, which could contain credentials.
-- Store retention is **2048 accepted events per source**, plus latest values per declared metric and up to 4096 deduplication IDs. Event storage is in memory. Restart resets the store/cursor epoch and requires a new snapshot. An expired cursor returns HTTP 409 `cursor_expired`; malformed/future cursors return 422. This is not a durable event broker.
+- Store retention is **2048 accepted events and 2048 ingestion decisions per source**, plus latest values per declared metric and up to 4096 deduplication IDs. The decision journal includes applied events, duplicates, conflicting duplicate IDs, and late valid events. Invalid shape/type/unit/mapping events are reported in response errors and counters without retaining an invalid raw payload. Both streams are in memory and have independent sequence numbers/cursors. Late events advance only the decision cursor, never the accepted-event cursor or latest projection. Retrying a late or conflicting receipt creates another non-applied decision; deduplication protects accepted event IDs, rather than suppressing the audit of rejected attempts. A cursor cannot be reused across streams. Restart resets the store/cursor epoch and requires a new snapshot. An expired cursor returns HTTP 409 `cursor_expired`; malformed/future cursors return 422. This is not a durable event broker.
 
 Per-asset `data_quality.fields[metric]` carries source ID, source/ingestion timestamps, unit, synthetic flag and quality. Full snapshots also contain `connector_health` and `read_model` metadata. A missing field retains its prior synthetic baseline for backwards compatibility but is explicitly marked unknown; it must not be presented as an observed value.
 
@@ -126,3 +128,14 @@ Implement `SourceAdapter.snapshot(context) -> SourceBatch(events, cursor)` and `
 A real connector still needs vendor authorization, credentials outside the repository, transport-specific reconnection, source timestamp semantics and conversion tests. No such connector ships in this milestone. Source selection is code composition, not an unauthenticated endpoint for arbitrary URLs. Source actions, automatic control and durable ingestion are separate future work.
 
 Scenario comparisons remain deliberately synthetic: `baseline_source:"synthetic_simulator"` identifies their baseline. Injected connector values are not inputs to that heuristic scenario model. Current asset telemetry history also remains the simulator's SQLite history; accepted source event history is exposed by the connector event endpoints.
+
+
+## Canonical alerts and model evidence
+
+Operational `state.alerts` are recomputed after accepted-field projection. Ride and power faults, food inventory/service constraints, high water flow, and heat conditions therefore follow the same canonical values used by asset panels and KPIs. Every alert includes `origin`, `evidence` and a synthetic flag. Evidence identifies the asset/property, value, source ID, source timestamp, and quality. A stale last-known value remains visibly stale in its alert evidence.
+
+Alert origins are `canonical_rule`, `synthetic_model`, or `model_source_conflict`. The show-departure forecast remains model-based and is shown only while canonical arena occupancy supports its illustrative threshold. The water rule uses an illustrative 400 L/min threshold; high flow alone is not a confirmed leak. These are demo rules, not calibrated safety or operational recommendations.
+
+If a paused source reports an operational coaster while the scenario model closes it, no operational “coaster unavailable” alert is asserted. Instead the UI receives an explicit source/model conflict warning with both pieces of evidence. Conversely, an injected accepted ride fault generates an unavailable alert even in the normal scenario. `source_conflicts` exposes the structured disagreements; `model_alerts` preserves original simulator alerts separately with `origin:"synthetic_model"`. `kpis.active_alerts` always counts the canonical displayed alert list.
+
+Properties without accepted-field metadata remain model values. `read_model.unmapped_fields_origin` explicitly identifies them as `synthetic_model`; for example the feeder capacity forecast is not an observed BMS capacity reading.

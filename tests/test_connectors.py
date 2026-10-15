@@ -308,3 +308,144 @@ def test_injected_ride_fault_is_not_open_or_in_active_queue_average(system):
     warning = event(connectors, "ride_scada", "warning", "status", "RIDE_COASTER", event_id="warning-2")
     assert connectors.ingest_demo("ride_scada", [warning])["accepted"] == 1
     assert read_model.snapshot()["kpis"]["open_rides"] == 2
+
+
+def test_canonical_ride_fault_alert_and_model_source_conflict(system):
+    _, connectors, read_model, moment = system
+    connectors.set_simulation_mode("ride_scada", "paused")
+    moment[0] += timedelta(seconds=1)
+    assert connectors.ingest_demo("ride_scada", [event(connectors, "ride_scada", "fault", "status", "RIDE_COASTER")])["accepted"] == 1
+    state = read_model.snapshot()
+    unavailable = next(a for a in state["alerts"] if a["id"] == "ride_unavailable")
+    assert unavailable["origin"] == "canonical_rule"
+    assert unavailable["evidence"][0]["origin"] == "accepted_observation"
+    assert unavailable["evidence"][0]["source_id"] == "ride_scada"
+    assert unavailable["evidence"][0]["value"] == "fault"
+    assert state["kpis"]["open_rides"] == 1
+    assert state["source_conflicts"][0]["model_value"] == "operational"
+    assert state["kpis"]["active_alerts"] == len(state["alerts"])
+
+
+def test_paused_operational_scada_does_not_claim_model_closure_is_observed(system):
+    park, connectors, read_model, moment = system
+    connectors.set_simulation_mode("ride_scada", "paused")
+    park.set_scenario("power_fault")
+    moment[0] = parse_timestamp(park.snapshot()["timestamp"])
+    state = read_model.snapshot()
+    coaster = next(a for a in state["assets"] if a["id"] == "RIDE_COASTER")
+    assert coaster["status"] == "operational"
+    assert state["kpis"]["open_rides"] == 2
+    assert not any(a["id"] == "ride_unavailable" for a in state["alerts"])
+    conflict = next(a for a in state["alerts"] if a["id"] == "source_conflict_RIDE_COASTER_status")
+    assert conflict["origin"] == "model_source_conflict"
+    assert {e["origin"] for e in conflict["evidence"]} == {"synthetic_model", "accepted_observation"}
+    assert any(a["id"] == "ride_unavailable" and a["origin"] == "synthetic_model" for a in state["model_alerts"])
+    feeder = next(a for a in state["alerts"] if a["id"] == "feeder_fault")
+    assert feeder["evidence"][0]["source_id"] == "bms"
+    assert state["kpis"]["active_alerts"] == len(state["alerts"])
+
+
+def test_stock_and_water_alerts_follow_injected_canonical_values(system):
+    _, connectors, read_model, moment = system
+    moment[0] += timedelta(seconds=1)
+    connectors.set_simulation_mode("erp", "paused")
+    assert connectors.ingest_demo("erp", [event(connectors, "erp", 5, "erp.stock_units", "FOOD_COURT")])["accepted"] == 1
+    connectors.set_simulation_mode("water", "paused")
+    assert connectors.ingest_demo("water", [event(connectors, value=500.0)])["accepted"] == 1
+    state = read_model.snapshot()
+    assert state["scenario"] == "normal"
+    stock = next(a for a in state["alerts"] if a["id"] == "food_stock")
+    water = next(a for a in state["alerts"] if a["id"] == "water_leak")
+    assert stock["evidence"][0]["source_id"] == "erp"
+    assert water["evidence"][0]["source_id"] == "water"
+    assert water["severity"] == "warning"  # High flow alone is not a confirmed leak.
+
+
+def test_model_crowd_alert_is_labeled_and_checked_against_canonical_occupancy(system):
+    park, connectors, read_model, moment = system
+    park.set_scenario("show_surge")
+    moment[0] = parse_timestamp(park.snapshot()["timestamp"])
+    state = read_model.snapshot()
+    crowd = next(a for a in state["alerts"] if a["id"] == "crowd_surge")
+    assert crowd["origin"] == "synthetic_model"
+    assert any(e["origin"] == "synthetic_model" for e in crowd["evidence"])
+    connectors.set_simulation_mode("ticketing", "paused")
+    moment[0] += timedelta(seconds=1)
+    assert connectors.ingest_demo("ticketing", [event(connectors, "ticketing", 10, "occupancy", "SHOW_ARENA")])["accepted"] == 1
+    assert not any(a["id"] == "crowd_surge" for a in read_model.snapshot()["alerts"])
+
+
+def test_source_snapshot_cursor_cannot_skip_concurrent_acceptance(system, monkeypatch):
+    import threading
+    _, connectors, _, moment = system
+    connectors.set_simulation_mode("weather", "paused")
+    moment[0] += timedelta(seconds=1)
+    old = connectors.source_snapshot("weather")
+    copied, attempted, finished = threading.Event(), threading.Event(), threading.Event()
+    original = connectors.observations
+    def intercepted(*args, **kwargs):
+        result = original(*args, **kwargs)
+        copied.set()
+        assert attempted.wait(2)
+        assert not finished.wait(.03), "Writer escaped the source snapshot lock"
+        return result
+    monkeypatch.setattr(connectors, "observations", intercepted)
+    def writer():
+        assert copied.wait(2)
+        attempted.set()
+        connectors.ingest_demo("weather", [event(connectors, "weather", 31.0, "temperature_c", "WEATHER_STATION")])
+        finished.set()
+    thread = threading.Thread(target=writer)
+    thread.start()
+    try:
+        snapshot = connectors.source_snapshot("weather")
+    finally:
+        thread.join(2)
+    assert not thread.is_alive()
+    assert snapshot["cursor"] == old["cursor"]
+    assert snapshot["observations"][0]["value"] == old["observations"][0]["value"]
+    following = connectors.events("weather", snapshot["cursor"])
+    assert len(following["events"]) == 1
+    assert following["events"][0]["value"] == 31.0
+
+
+def test_late_valid_events_retained_without_advancing_accepted_cursor(system):
+    _, connectors, _, moment = system
+    connectors.set_simulation_mode("weather", "paused")
+    moment[0] += timedelta(seconds=2)
+    newest = event(connectors, "weather", 30.0, "temperature_c", "WEATHER_STATION")
+    accepted = connectors.ingest_demo("weather", [newest])
+    late = event(connectors, "weather", 20.0, "temperature_c", "WEATHER_STATION", "late-valid",
+                 (moment[0] - timedelta(seconds=1)).isoformat())
+    result = connectors.ingest_demo("weather", [late])
+    assert result["rejected"] == 1 and result["errors"][0]["code"] == "out_of_order"
+    assert result["latest_cursor"] == accepted["latest_cursor"]
+    assert result["latest_decision_cursor"] != accepted["latest_decision_cursor"]
+    assert connectors.events("weather", accepted["latest_cursor"])["events"] == []
+    decisions = connectors.decisions("weather", accepted["latest_decision_cursor"])["decisions"]
+    assert len(decisions) == 1
+    assert decisions[0]["applied"] is False and decisions[0]["reason"] == "out_of_order"
+    assert decisions[0]["observation"]["value"] == 20.0
+    assert decisions[0]["observation"]["sequence"] is None
+    assert connectors.source_snapshot("weather")["observations"][0]["value"] == 30.0
+    with pytest.raises(EventError) as exc:
+        connectors.decisions("weather", accepted["latest_cursor"])
+    assert exc.value.code == "invalid_cursor"
+
+
+def test_decision_retention_is_bounded_and_independent_of_accepted_events(system):
+    park, _, _, moment = system
+    connectors = ConnectorRuntime(park.base, clock=lambda: moment[0], capacity=3)
+    connectors.refresh(park.snapshot())
+    connectors.set_simulation_mode("weather", "paused")
+    moment[0] += timedelta(seconds=1)
+    reading = event(connectors, "weather", 30.0, "temperature_c", "WEATHER_STATION")
+    accepted = connectors.ingest_demo("weather", [reading])
+    for _ in range(4):
+        connectors.ingest_demo("weather", [reading])
+    assert len(connectors.stores["weather"].decisions) == 3
+    assert len(connectors.stores["weather"].events) == 2
+    assert connectors.events("weather", accepted["latest_cursor"])["events"] == []
+    with pytest.raises(EventError) as exc:
+        connectors.decisions("weather", accepted["latest_decision_cursor"])
+    assert exc.value.code == "cursor_expired"

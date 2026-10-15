@@ -82,3 +82,21 @@ def test_event_poll_cursor_and_errors(client):
     assert expired.json()["detail"]["code"] == "cursor_expired"
     assert client.get("/api/connectors/weather/events?limit=1001").status_code == 422
     assert client.get("/api/connectors/unknown/events").status_code == 404
+
+
+def test_decision_journal_http_distinguishes_late_events_from_applied_state(client):
+    client.post("/api/connectors/weather/simulation", json={"mode": "paused"})
+    now = datetime.now(timezone.utc)
+    reading = {"event_id": "newest-http", "source_asset_id": "weather/WEATHER_STATION", "metric": "temperature_c",
+               "value": 30.0, "unit": "Cel", "source_timestamp": now.isoformat()}
+    accepted = client.post("/api/connectors/weather/ingest", json={"synthetic": True, "events": [reading]}).json()
+    late = {**reading, "event_id": "late-http", "value": 20.0, "source_timestamp": (now - timedelta(seconds=1)).isoformat()}
+    result = client.post("/api/connectors/weather/ingest", json={"synthetic": True, "events": [late]}).json()
+    assert result["rejected"] == 1
+    decisions = client.get("/api/connectors/weather/decisions", params={"after": accepted["latest_decision_cursor"]}).json()
+    assert decisions["decisions"][0]["applied"] is False
+    assert decisions["decisions"][0]["reason"] == "out_of_order"
+    snapshot = client.get("/api/connectors/weather/snapshot").json()
+    assert snapshot["cursor"] == accepted["latest_cursor"]
+    assert snapshot["observations"][0]["value"] == 30.0
+    assert client.get("/api/connectors/weather/decisions", params={"after": accepted["latest_cursor"]}).status_code == 422
