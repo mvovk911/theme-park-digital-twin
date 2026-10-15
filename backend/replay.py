@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+from datetime import datetime, timezone
 from contextlib import asynccontextmanager
 import hashlib
 import math
@@ -79,13 +80,19 @@ def install_replay(
                     response.raise_for_status()
                     render = response.json()
                 candidate = render.get("ride_motion", {})
+                rendered_at = datetime.fromisoformat(
+                    str(render.get("rendered_at", "")).replace("Z", "+00:00")
+                )
+                frame_age = (datetime.now(timezone.utc) - rendered_at).total_seconds()
                 if (
-                    render.get("ready")
+                    0 <= frame_age <= 5
+                    and render.get("ready")
                     and render.get("view_mode", "live") == "live"
                     and render.get("scene_revision") == app.state.replay.scene_revision
                     and render.get("source_tick") == snapshot["tick"]
                     and bool(snapshot.get("accepted_state_revision"))
-                    and render.get("accepted_state_revision") == snapshot["accepted_state_revision"]
+                    and render.get("accepted_state_revision")
+                    == snapshot["accepted_state_revision"]
                     and all(
                         isinstance(candidate.get(k), (int, float))
                         and math.isfinite(candidate[k])
@@ -95,6 +102,13 @@ def install_replay(
                     motion = {
                         key: float(candidate[key])
                         for key in ("coaster_phase", "wheel_angle")
+                    }
+                    motion["provenance"] = {
+                        "frame": render.get("frame"),
+                        "rendered_at": render["rendered_at"],
+                        "accepted_state_revision": render["accepted_state_revision"],
+                        "scene_revision": render["scene_revision"],
+                        "scope": "last matching rendered pose; not an interpolated capture-time pose",
                     }
             except (httpx.HTTPError, ValueError, TypeError):
                 pass  # Data recording works even with no GPU; no pose is invented.

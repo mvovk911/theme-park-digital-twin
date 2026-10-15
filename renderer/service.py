@@ -96,7 +96,7 @@ class Pick(BaseModel):
 def status():
     with lock:
         result = copy.deepcopy(state)
-    _, metadata = frames_cache.read()
+        _, metadata = frames_cache.read()
     return {**result, **metadata}
 
 
@@ -519,6 +519,15 @@ def render_loop():
                             "frame": step_count,
                             "source_timestamp": source_timestamp,
                             "source_tick": source_tick,
+                            "ride_motion": {
+                                "coaster_phase": train_phase,
+                                "wheel_angle": wheel_angle,
+                            },
+                            "ride_status": {
+                                k: assets.get(k, {}).get("status")
+                                for k in ("RIDE_COASTER", "RIDE_WHEEL")
+                            },
+                            "motion_policy": motion_policy,
                             "accepted_state_revision": accepted_state_revision,
                             "camera": current_camera,
                             "camera_token": current_context["camera_token"],

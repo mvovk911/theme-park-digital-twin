@@ -91,3 +91,11 @@ view identity. The render owner checks these before issuing the native pick and
 returns conflict if they changed. This selects an asset in the current geometry;
 it does not reconstruct the historical pixel coverage of an animated ride. Direct
 legacy pick requests without a token remain unversioned for compatibility.
+
+Matching pose samples must also have a timezone-qualified render time no more than
+five seconds old and not in the future. Missing, malformed, naive or older frame
+times leave the record without motion. Captured motion retains its original frame
+number, render time, accepted-state revision and scene hash under `provenance`.
+It is the last matching rendered pose, not an interpolated pose at the snapshot's
+wall-clock capture time. Status copies state and cached frame under one publication
+lock; pose/status/quality are also part of immutable frame metadata.

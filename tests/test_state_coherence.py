@@ -35,9 +35,11 @@ def test_revision_ignores_age_but_tracks_quality_transition(tmp_path):
     park.close()
 
 
-@pytest.mark.parametrize("matching", [False, True])
+@pytest.mark.parametrize(
+    "matching,frame_age", [(False, 0), (True, 0), (True, 60), (True, -10), (True, None)]
+)
 def test_replay_pose_requires_accepted_revision_not_only_tick(
-    tmp_path, monkeypatch, matching
+    tmp_path, monkeypatch, matching, frame_age
 ):
     app = create_app(str(tmp_path / "park.db"), run_background=False)
     install_replay(
@@ -78,6 +80,12 @@ def test_replay_pose_requires_accepted_revision_not_only_tick(
             source_tick=old["tick"],
             accepted_state_revision=old["accepted_state_revision"],
             ride_motion={"coaster_phase": 0.123, "wheel_angle": 0.456},
+            frame=1,
+            rendered_at=(
+                (datetime.now(timezone.utc) - timedelta(seconds=frame_age)).isoformat()
+                if frame_age is not None
+                else None
+            ),
         )
         if matching:
             # Preview the exact accepted state after this injection without advancing time.
@@ -108,7 +116,14 @@ def test_replay_pose_requires_accepted_revision_not_only_tick(
         latest = app.state.replay.get(
             client.get("/api/timeline").json()["snapshots"][-1]["id"]
         )
-        assert latest["has_recorded_motion"] is matching
+        expected = matching and frame_age == 0
+        assert latest["has_recorded_motion"] is expected
+        if expected:
+            assert latest["recorded_motion"]["provenance"]["frame"] == 1
+            assert (
+                latest["recorded_motion"]["provenance"]["rendered_at"]
+                == status["rendered_at"]
+            )
 
 
 def test_frame_context_is_immutable_and_travels_with_bytes():

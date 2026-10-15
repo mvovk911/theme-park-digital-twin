@@ -6,7 +6,7 @@ An interactive theme park combining procedural OpenUSD geometry, **NVIDIA OVStag
 
 [Illustrated project deck (PDF)](docs/project-concept.pdf) · [Five-minute walkthrough](docs/demo-walkthrough.md) · [Integration roadmap](docs/integration-roadmap.md) · [Editable Blender scene](assets/park.blend)
 
-![Live OVRTX park viewport](docs/images/ovrtx-viewport.png)
+![Revision 1 OVRTX park viewport](docs/images/ovrtx-viewport.png)
 
 [Validation and application screenshots](docs/validation.md)
 
@@ -31,16 +31,22 @@ from a staged, activated or actually running application.
 
 ```mermaid
 flowchart LR
-  UI[Browser operations console] --> API[FastAPI gateway]
-  API --> DB[SQLite asset registry and history]
-  SIM[Ten synthetic domain feeds] --> DB
-  API --> RTX[OVRTX render process]
-  USD[OpenUSD park geometry] --> STAGE[OVStage runtime]
+  MODEL[Pure synthetic model] --> FEEDS[Internal adapters or standalone HTTP producers]
+  FEEDS --> ACCEPT[Validated source ingestion]
+  ACCEPT --> STATE[Canonical state and source quality]
+  STATE --> API[Live or recorded view API]
+  STORE[Durable recorded snapshots] --> API
+  STATE --> STORE
+  API --> UI[Browser operations console]
+  API --> RTX[OVRTX render owner]
+  USD[OpenUSD park] --> STAGE[OVStage runtime]
   STAGE --> RTX
-  RTX -->|GPU-rendered JPEG frames| UI
-  API -->|Asset status| RTX
-  RTX -->|Native pick: prim path to asset ID| API
+  RTX -->|JPEG and matching frame provenance| UI
+  UI -->|Camera controls and versioned picks| RTX
 ```
+
+[Detailed implemented data flow and ownership](docs/implemented-architecture.md)
+· [Run independent synthetic source producers](docs/synthetic-producers.md)
 
 The browser receives GPU-rendered images and draws data annotations over them. Camera controls and native picking execute on the GPU server. Protocol names such as OPC UA, MQTT and ERP REST identify **future integration boundaries**: the implemented domain feeds are synthetic HTTP APIs. ERP and CMMS remain systems of record in the proposed real deployment; the twin provides shared spatial context and operational coordination.
 

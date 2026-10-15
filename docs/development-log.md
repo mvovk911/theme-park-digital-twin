@@ -199,3 +199,17 @@ remain enforced by the gateway. HTTP observations have distinct transport proven
 all ten source batches across all seven scenario profiles through real ASGI routes;
 they do not claim a network listener, GPU execution, vendor connector or physical
 control. [Usage and limits](synthetic-producers.md).
+
+## Independent coherence closure audit
+
+The follow-up reviewer preserved a second report for exact `cb11424`, confirmed
+39 focused checks and reproduced an additional status/pose publication race.
+The fix now reads status and frame metadata under the same publication lock and
+publishes ride motion/status/quality with each immutable frame. Its deterministic
+thread regression fails the reviewed baseline and passes the fix without claiming
+native GPU execution. Motion capture additionally rejects stale/missing/future
+render times and preserves the original frame/time/revision provenance.
+
+The new [implemented architecture](implemented-architecture.md) documents actual
+module ownership and the difference between model history, accepted observations,
+recorded state and GPU frame evidence.
