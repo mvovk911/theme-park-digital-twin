@@ -1,0 +1,49 @@
+1
+00:00:07,000 --> 00:00:21,001
+One park, one shared picture
+Actual OVRTX rendering; all source data, scenarios and operational actions are synthetic.
+
+2
+00:00:21,001 --> 00:00:27,234
+Explore the connected park
+Orbit, zoom and click scene geometry to resolve its asset identity and connected data.
+
+3
+00:00:27,234 --> 00:00:45,006
+Selection follows the rendered scene
+A changing view causes retries here; selection succeeds against the current scene.
+
+4
+00:00:45,006 --> 00:01:17,001
+Compare, respond and trace
+Compare a modeled ride closure, apply it, dispatch maintenance and inspect the audit trail.
+
+5
+00:01:17,001 --> 00:01:47,001
+Understand utility dependencies
+Trace logical power dependencies, shed flexible load and simulate a water-leak repair.
+
+6
+00:01:47,001 --> 00:02:11,611
+Coordinate guests and wellbeing
+Respond to show-departure demand and heatwave scenarios with rerouting and qualified staff.
+
+7
+00:02:11,611 --> 00:02:27,001
+Connect inventory to operations
+A food-rush scenario connects queues, staffing and ERP inventory to a replenishment action.
+
+8
+00:02:27,001 --> 00:03:02,541
+Inspect sources and their quality
+Explore the API architecture, then pause a source and watch accepted observations become stale.
+
+9
+00:03:02,541 --> 00:03:16,181
+Replay a recorded moment
+Review recorded state in a shared read-only view; camera navigation remains interactive.
+
+10
+00:03:16,181 --> 00:03:27,004
+Return to live operations
+One asset backbone connects operations, source provenance, recorded history and the real rendered scene.

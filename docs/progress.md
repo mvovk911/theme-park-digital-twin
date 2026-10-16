@@ -2,6 +2,12 @@
 
 **15 October 2026 — revision 2 runs on the L40 GPU, with actual browser acceptance.**
 
+**16 October 2026 — [captioned application video](video/README.md).** A 3½-minute
+walkthrough records the running L40 deployment at `19cee1e`: all seven scenarios,
+six operator-action families, API/source inspection, native selection and replay.
+The video uses actual browser/GPU footage and synthetic operational data. Recording
+and editing scripts, chapter captions and a capture manifest are included.
+
 [Project prompt](project-prompt.md) · [10-page concept PDF](project-concept.pdf) ·
 [Editable deck](deck-source/) · [OpenUSD / Blender assets](../assets/README.md) ·
 [Validation evidence](validation.md) · [Independent reviews](reviews/)
