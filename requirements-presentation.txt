@@ -1,0 +1,4 @@
+# Optional workstation tools; keep separate from the GPU renderer environment.
+playwright==1.64.0
+Pillow==12.3.0
+imageio-ffmpeg==0.6.0
