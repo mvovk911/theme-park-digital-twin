@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from fastapi import HTTPException, Path as PathParam, Query
 from backend.planning.evidence import EvidenceError
-from .contracts import CreateProposal, ExecuteProposal, WorkflowError
+from .contracts import CreateIncident, CreateProposal, ExecuteProposal, WorkflowError
 from .service import WorkflowService, capabilities
 from .store import WorkflowStore
 
@@ -67,6 +67,10 @@ def install_workflow_routes(app):
     @app.post("/api/workflows/proposals")
     async def proposal_create(request: CreateProposal):
         return await mutate(lambda: app.state.workflows.create(request))
+
+    @app.post("/api/workflows/incidents")
+    async def incident_create(request: CreateIncident):
+        return await mutate(lambda: app.state.workflows.create_incident(request))
 
     @app.post("/api/workflows/proposals/{proposal_id}/execute")
     async def proposal_execute(request: ExecuteProposal, proposal_id: str = PathParam(pattern=r"^[0-9a-f]{32}$")):

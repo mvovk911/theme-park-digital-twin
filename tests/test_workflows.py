@@ -342,3 +342,170 @@ def test_receipt_recovery_does_not_refresh_stale_asset_status_provenance(client)
     assert evidence["source_timestamp"] != recovered["readback"]["observed_at"]
     assert recovered["readback"]["work_order"]["id"] == first["readback"]["work_order"]["id"]
     assert counts(client) == (1, 1, 1)
+
+
+def incident(client, request_id="incident1", **overrides):
+    return client.post("/api/workflows/incidents", json={"asset_id": "RIDE_COASTER", "request_id": request_id, **overrides})
+
+
+def inject_observation(client, source="ride_scada", metric="status", value="fault", asset_id="RIDE_COASTER", unit="state"):
+    assert client.post(f"/api/connectors/{source}/simulation", json={"mode": "paused"}).status_code == 200
+    event = {"event_id": "incident-" + client.app.state.connectors.clock().isoformat(),
+             "source_asset_id": source + "/" + asset_id, "metric": metric, "value": value,
+             "unit": unit, "source_timestamp": client.app.state.connectors.clock().isoformat()}
+    reply = client.post(f"/api/connectors/{source}/ingest", json={"synthetic": True, "events": [event]})
+    assert reply.status_code == 200, reply.text
+    assert reply.json()["accepted"] == 1
+
+
+def test_current_incident_needs_no_forecast_and_freezes_normal_scenario_fault(client):
+    inject_observation(client)
+    p = incident(client).json()["proposal"]
+    assert p["origin"] == "current_incident"
+    assert p["precondition_scope"] == "target"
+    assert "scenario" not in p["preconditions"]
+    frozen = copy.deepcopy(p["creation_observation"])
+    assert frozen["scenario_context"] == "normal"
+    assert frozen["accepted_state_revision"] == p["creation_state_revision"]
+    assert set(frozen["fields"]) == {"status", "maintenance.inspection_status", "maintenance.open_work_orders"}
+    assert frozen["fields"]["status"]["value"] == "fault"
+    for observation in frozen["fields"].values():
+        assert observation["quality"]["status"] == "good"
+        assert observation["quality"]["source_timestamp"]
+        assert observation["quality"]["ingested_at"]
+        assert observation["quality"]["synthetic"] is True
+    assert client.get("/api/planning/evidence").json()["total"] == 0
+    first = execute(client, p)
+    assert first.status_code == 200, first.text
+    assert first.json()["proposal"]["creation_observation"] == frozen
+    assert execute(client, p).json()["proposal"]["creation_observation"] == frozen
+    assert counts(client) == (1, 1, 1)
+
+
+def test_incident_unrelated_scenario_label_change_does_not_invalidate_target(client):
+    inject_observation(client)
+    p = incident(client).json()["proposal"]
+    assert client.post("/api/scenarios", json={"scenario": "food_rush"}).status_code == 200
+    assert client.get("/api/state").json()["scenario"] == "food_rush"
+    accepted = execute(client, p)
+    assert accepted.status_code == 200, accepted.text
+    assert accepted.json()["proposal"]["creation_observation"]["scenario_context"] == "normal"
+    assert counts(client) == (1, 1, 1)
+
+
+def test_incident_unrelated_stale_erp_does_not_block_fresh_target(client):
+    client.post("/api/scenarios", json={"scenario": "ride_closure"})
+    client.post("/api/connectors/erp/simulation", json={"mode": "paused"})
+    clock = client.app.state.connectors.clock
+    client.app.state.connectors.clock = lambda: clock() + timedelta(seconds=10)
+    # Renew just the required target observations at this clock, while the
+    # unrelated ERP source remains paused with its older accepted observations.
+    inject_observation(client, value="closed")
+    inject_observation(client, source="cmms", metric="maintenance.inspection_status", value="review_required")
+    inject_observation(client, source="cmms", metric="maintenance.open_work_orders", value=0, unit="work_orders")
+    state = client.get("/api/state").json()
+    food = next(a for a in state["assets"] if a["id"] == "FOOD_COURT")
+    assert food["data_quality"]["fields"]["erp.stock_units"]["status"] == "stale"
+    created = incident(client)
+    assert created.status_code == 200, created.text
+    assert execute(client, created.json()["proposal"]).status_code == 200
+
+
+@pytest.mark.parametrize("change", ["target", "stale", "order"])
+def test_incident_fresh_target_preconditions_still_gate_execution(client, change):
+    inject_observation(client)
+    p = incident(client).json()["proposal"]
+    if change == "target":
+        inject_observation(client, value="operational")
+    elif change == "stale":
+        clock = client.app.state.connectors.clock
+        client.app.state.connectors.clock = lambda: clock() + timedelta(seconds=10)
+    else:
+        client.post("/api/actions", json={"action": "dispatch_maintenance", "asset_id": "RIDE_COASTER", "request_id": "other-dispatch"})
+    response = execute(client, p)
+    assert response.status_code == 409
+    expected = "workflow_input_not_fresh" if change == "stale" else "proposal_preconditions_changed"
+    assert response.json()["detail"]["code"] == expected
+    assert counts(client) == ((1, 1, 1) if change == "order" else (0, 0, 0))
+
+
+def test_incident_idempotency_and_shared_creation_namespace(client):
+    bundle = save_plan(client)
+    p = incident(client, request_id="shared").json()["proposal"]
+    again = incident(client, request_id="shared").json()
+    assert again["proposal"] == p
+    assert again["idempotency"]["replayed"] is True
+    assert incident(client, request_id="shared", ttl_seconds=121).status_code == 409
+    assert create(client, bundle, request_id="shared").json()["detail"]["code"] == "proposal_request_conflict"
+    create(client, bundle, request_id="plan-first")
+    assert incident(client, request_id="plan-first").json()["detail"]["code"] == "proposal_request_conflict"
+
+
+def test_optional_old_model_rationale_is_integrity_checked_context_only(client):
+    from backend.planning.evidence import canonical_bytes, digest
+    bundle = save_plan(client, scenario="food_rush", activate=False)
+    # Simulate retained evidence saved by an earlier deployment/model. It cannot
+    # be imported under today's model, but existing storage remains inspectable.
+    old = copy.deepcopy(bundle)
+    old["payload"]["model_source_sha256"] = "0" * 64
+    old["bundle_id"] = digest(old["payload"])
+    encoded = canonical_bytes(old).decode()
+    db = client.app.state.planning_evidence.db
+    db.execute("INSERT INTO planning_evidence VALUES (?,?,?,?)", (old["bundle_id"], encoded, len(encoded), "2026-10-19T00:00:00+00:00"))
+    db.commit()
+    inject_observation(client)
+    response = incident(client, rationale_bundle_id=old["bundle_id"])
+    assert response.status_code == 200, response.text
+    refs = response.json()["proposal"]["evidence_refs"]
+    assert refs["integrity_verified"] is True
+    assert refs["model_source_sha256"] == "0" * 64
+    assert refs["current_model_reproduction_checked"] is False
+    assert refs["historical_evidence_is_authority"] is False
+    # Database corruption must not turn optional context into trusted evidence.
+    old["payload"]["result"]["plan_id"] = "tampered"
+    db.execute("UPDATE planning_evidence SET payload=? WHERE bundle_id=?", (canonical_bytes(old).decode(), old["bundle_id"]))
+    db.commit()
+    assert incident(client, request_id="corrupt", rationale_bundle_id=old["bundle_id"]).json()["detail"]["code"] == "rationale_hash_mismatch"
+    assert incident(client, request_id="missing", rationale_bundle_id="f" * 64).status_code == 404
+    assert counts(client) == (0, 0, 0)
+
+
+def test_direct_incident_rejects_healthy_target_and_invalid_inputs(client):
+    assert incident(client).json()["detail"]["code"] == "no_current_maintenance_need"
+    for overrides in ({"ttl_seconds": 29}, {"ttl_seconds": 301}, {"asset_id": "FOOD_COURT"}, {"rationale_bundle_id": "bad"}, {"action": "repair_leak"}):
+        assert incident(client, **overrides).status_code == 422
+    assert counts(client) == (0, 0, 0)
+
+
+def test_direct_incident_replay_and_restart_share_existing_executor(environment):
+    with TestClient(application(environment, replay=True)) as client:
+        client.post("/api/scenarios", json={"scenario": "ride_closure"})
+        p = incident(client).json()["proposal"]
+        sid = client.get("/api/timeline").json()["snapshots"][0]["id"]
+        client.post("/api/view", json={"mode": "replay", "snapshot_id": sid})
+        assert incident(client, request_id="in-replay").json()["detail"]["code"] == "recorded_view"
+        assert execute(client, p).json()["detail"]["code"] == "recorded_view"
+        client.post("/api/view", json={"mode": "live"})
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            replies = list(pool.map(lambda _: execute(client, p), range(4)))
+        assert all(r.status_code == 200 for r in replies)
+        receipt = replies[0].json()["proposal"]["receipt"]
+        assert counts(client) == (1, 1, 1)
+    with TestClient(application(environment)) as restarted:
+        result = execute(restarted, p)
+        assert result.status_code == 200, result.text
+        assert result.json()["proposal"]["receipt"] == receipt
+        assert result.json()["idempotency"]["replayed"] is True
+        assert counts(restarted) == (1, 1, 1)
+
+
+def test_legacy_proposals_without_scope_keep_scenario_preconditions(client):
+    p = create(client, save_plan(client)).json()["proposal"]
+    p.pop("precondition_scope")
+    p.pop("origin")
+    client.app.state.workflow_store.update(p)
+    client.post("/api/scenarios", json={"scenario": "food_rush"})
+    response = execute(client, p)
+    assert response.status_code == 409
+    assert "scenario" in response.json()["detail"]["context"]["changed_fields"]
+    assert counts(client) == (0, 0, 0)

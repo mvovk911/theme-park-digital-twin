@@ -1,5 +1,34 @@
 # Project progress and review gallery
 
+**19 October, third checkpoint — direct incidents and queryable design alternatives.**
+Operators can now prepare maintenance directly from an asset or maintenance alert,
+review three frozen source observations, and explicitly create and execute a
+synthetic work order. A saved forecast is optional context. The local browser
+walkthrough used four scripted steps versus seven through a saved comparison;
+this is a UI path comparison, not a measured human productivity improvement.
+
+[Direct incident browser evidence](images/fox-cycle-20261019/current-incident/report.json) ·
+[Read-only spatial API](spatial-api.md) ·
+[Independent HTTP review: eleven groups passed](experiments/incident-spatial-api-review.md) ·
+[Current run status](experiments/2026-10-19-run-status.md)
+
+![Direct incident proposal with frozen observations](images/fox-cycle-20261019/current-incident/direct-proposal-frozen-observations.png)
+
+The current repository suite passes **354 tests** with two browser modules skipped
+in that Python environment. The separate browser environment passes 28 workflow
+checks; an actual isolated API/browser walkthrough passes six more. These local
+changes are distinct from the twelve **actual GPU/browser checks of committed
+release `64c8bfa`**, which cover response loss, reload recovery, source staleness,
+replay and intervening work orders. Its [report](images/fox-cycle-20261019/gpu-workflow-64c8bfa/report.json)
+records verified source identity and exact native frame provenance.
+
+![Actual GPU application at release64c8bfa](images/fox-cycle-20261019/gpu-workflow-64c8bfa/operations-rtx.png)
+
+The eight-hour runs remain in progress. Spatial queries use immutable authored
+graphs and return explicit unreachable results. They do not change live park
+state, validate physical guidance, or feed the queue forecast.
+
+
 **19 October, second checkpoint — bounded dispatch and spatial design review.**
 The new [maintenance workflow](bounded-maintenance-workflow.md) passed an
 [independent HTTP review](experiments/workflow-api-review.md): ten check groups,

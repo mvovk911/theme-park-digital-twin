@@ -1,8 +1,9 @@
 """One bounded action: synthetic maintenance dispatch with fresh preconditions."""
 from datetime import datetime, timedelta
+from copy import deepcopy
 import json
 from uuid import uuid4
-from backend.planning.evidence import verify_bundle
+from backend.planning.evidence import digest, verify_bundle
 from .contracts import WorkflowError
 
 TARGETS = ["RIDE_COASTER", "RIDE_WHEEL", "POWER_HUB", "WATER_PLANT"]
@@ -16,6 +17,8 @@ def capabilities():
             "unsupported_actions": {action: "No bounded execution contract is implemented for this action" for action in ["reroute_guests", "add_staff", "shed_load", "repair_leak", "replenish_stock", "reset"]},
             "proposal_ttl_seconds": {"min": 30, "max": 300, "default": 120},
             "required_fresh_fields": REQUIRED_FIELDS,
+            "proposal_origins": {"current_incident": {"endpoint": "/api/workflows/incidents", "planning_required": False, "precondition_scope": "target"},
+                                 "saved_plan": {"endpoint": "/api/workflows/proposals", "planning_required": True, "precondition_scope": "scenario_and_target"}},
             "evidence_is_authority": False,
             "authorization": "Explicit synthetic-only API invocation plus independently checked current preconditions; no real-system authorization."}
 
@@ -31,7 +34,7 @@ class WorkflowService:
         self.park, self.read_model, self.connectors = park, read_model, connectors
         self.evidence, self.store = evidence, store
 
-    def _current(self, target):
+    def _current(self, target, scope="scenario_and_target"):
         state = self.read_model.snapshot()
         if state.get("synthetic") is not True or target not in TARGETS:
             raise WorkflowError("unsupported_workflow_target", "Only supported synthetic CMMS assets may receive this workflow", 422)
@@ -59,6 +62,8 @@ class WorkflowService:
                      "asset_type": asset["type"], "field_sources": {metric: fields[metric]["source_id"] for metric in REQUIRED_FIELDS},
                      "inspection_status": asset["maintenance"]["inspection_status"],
                      "observed_open_work_orders": observed_count, "open_work_order_ids": [o["id"] for o in orders]}
+        if scope == "target":
+            condition.pop("scenario")
         return state, asset, condition
 
     def create(self, request):
@@ -79,24 +84,58 @@ class WorkflowService:
             state, asset, condition = self._current(action["asset_id"])
             if plan["request"]["scenario"] != state["scenario"]:
                 raise WorkflowError("hypothetical_scenario_not_active", "A hypothetical saved scenario cannot authorize action on the current park")
-            if condition["open_work_order_ids"]:
-                raise WorkflowError("work_order_already_open", "A current work order already covers this asset; inspect that order instead of creating another proposal",
-                                    context=self._conflict_context(condition))
-            if asset["status"] != "fault" and asset["maintenance"]["inspection_status"] == "passed":
-                raise WorkflowError("no_current_maintenance_need", "Current asset has neither a fault nor an inspection issue; closure alone is not a maintenance diagnosis")
-            now = self.connectors.clock()
-            ident = uuid4().hex
-            proposal = {"id": ident, "status": "proposed", "synthetic": True, "physical_effect": False,
-                        "created_at": now.isoformat(), "expires_at": (now + timedelta(seconds=request.ttl_seconds)).isoformat(),
-                        "action": {"action": "dispatch_maintenance", "asset_id": action["asset_id"]},
-                        "evidence_refs": {"bundle_id": request.bundle_id, "branch_id": request.branch_id, "action_index": request.action_index,
-                                          "plan_id": plan["result"]["plan_id"], "historical_evidence_is_authority": False},
-                        "preconditions": condition, "creation_state_revision": state["accepted_state_revision"],
-                        "create_request_id": request.request_id, "execution_request_id": None,
-                        "command_request_id": "proposal:" + ident,
-                        "execution_scope": "synthetic_dispatch_only", "receipt": None, "readback": None}
-            self.store.create(proposal, request.request_id, payload)
-            return {"proposal": proposal, "idempotency": {"replayed": False}}
+            refs = {"bundle_id": request.bundle_id, "branch_id": request.branch_id, "action_index": request.action_index,
+                    "plan_id": plan["result"]["plan_id"], "historical_evidence_is_authority": False}
+            return self._build_proposal(request, payload, state, asset, condition, refs, "saved_plan", "scenario_and_target")
+
+    def create_incident(self, request):
+        with self.store.lock:
+            payload = {"origin": "current_incident", **request.model_dump()}
+            existing = self.store.by_request(request.request_id, payload)
+            if existing:
+                return {"proposal": existing, "idempotency": {"replayed": True}}
+            refs = {"rationale_bundle_id": request.rationale_bundle_id, "historical_evidence_is_authority": False}
+            if request.rationale_bundle_id:
+                bundle = self.evidence.get(request.rationale_bundle_id)
+                plan = bundle["payload"]
+                # Old model evidence remains usable as context, not current-model
+                # reproduction or a substitute for current target observations.
+                if bundle["bundle_id"] != request.rationale_bundle_id or digest(plan) != request.rationale_bundle_id:
+                    raise WorkflowError("rationale_hash_mismatch", "Saved rationale contents do not match their SHA256 identifier", 422)
+                refs.update(plan_id=plan["result"]["plan_id"], model_source_sha256=plan["model_source_sha256"],
+                            integrity_verified=True, current_model_reproduction_checked=False)
+            state, asset, condition = self._current(request.asset_id, "target")
+            return self._build_proposal(request, payload, state, asset, condition, refs, "current_incident", "target")
+
+    def _build_proposal(self, request, payload, state, asset, condition, refs, origin, scope):
+        if condition["open_work_order_ids"]:
+            raise WorkflowError("work_order_already_open", "A current work order already covers this asset; inspect that order instead of creating another proposal",
+                                context=self._conflict_context(condition))
+        if asset["status"] != "fault" and asset["maintenance"]["inspection_status"] == "passed":
+            raise WorkflowError("no_current_maintenance_need", "Current asset has neither a fault nor an inspection issue; closure alone is not a maintenance diagnosis")
+        now = self.connectors.clock()
+        ident = uuid4().hex
+        observations = {}
+        for metric in REQUIRED_FIELDS:
+            value = asset
+            for part in metric.split("."):
+                value = value[part]
+            observations[metric] = {"value": deepcopy(value), "quality": deepcopy(asset["data_quality"]["fields"][metric])}
+        creation_observation = {"captured_at": now.isoformat(), "accepted_state_revision": state["accepted_state_revision"],
+                                "asset_id": asset["id"], "asset_type": asset["type"], "scenario_context": state["scenario"],
+                                "fields": observations, "open_work_order_ids": list(condition["open_work_order_ids"]),
+                                "work_order_source": "synthetic_work_order_database", "synthetic": True}
+        proposal = {"id": ident, "status": "proposed", "synthetic": True, "physical_effect": False,
+                    "origin": origin, "precondition_scope": scope,
+                    "created_at": now.isoformat(), "expires_at": (now + timedelta(seconds=request.ttl_seconds)).isoformat(),
+                    "action": {"action": "dispatch_maintenance", "asset_id": asset["id"]},
+                    "evidence_refs": refs, "creation_observation": creation_observation,
+                    "preconditions": condition, "creation_state_revision": state["accepted_state_revision"],
+                    "create_request_id": request.request_id, "execution_request_id": None,
+                    "command_request_id": "proposal:" + ident,
+                    "execution_scope": "synthetic_dispatch_only", "receipt": None, "readback": None}
+        self.store.create(proposal, request.request_id, payload)
+        return {"proposal": proposal, "idempotency": {"replayed": False}}
 
     @staticmethod
     def _conflict_context(condition, previous=None):
@@ -153,7 +192,7 @@ class WorkflowService:
                 return self._complete(proposal, receipt, recovered=True)
             if self.connectors.clock() >= datetime.fromisoformat(proposal["expires_at"]):
                 raise WorkflowError("proposal_expired", "Proposal expired before a command was accepted; create a fresh proposal")
-            state, asset, condition = self._current(proposal["action"]["asset_id"])
+            state, asset, condition = self._current(proposal["action"]["asset_id"], proposal.get("precondition_scope", "scenario_and_target"))
             if condition != proposal["preconditions"]:
                 instruction = "inspect the existing work order" if condition["open_work_order_ids"] else "review current conditions before creating a new proposal"
                 raise WorkflowError("proposal_preconditions_changed", "Proposal conditions changed; " + instruction,

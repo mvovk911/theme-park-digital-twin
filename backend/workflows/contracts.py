@@ -20,3 +20,11 @@ class CreateProposal(BaseModel):
 class ExecuteProposal(BaseModel):
     model_config = ConfigDict(extra="forbid")
     request_id: str = Field(min_length=1, max_length=128, pattern=r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
+
+
+class CreateIncident(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    asset_id: str = Field(min_length=1, max_length=64, pattern=r"^[A-Z][A-Z0-9_]*$")
+    request_id: str = Field(min_length=1, max_length=128, pattern=r"^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$")
+    ttl_seconds: int = Field(default=120, ge=30, le=300, strict=True)
+    rationale_bundle_id: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")

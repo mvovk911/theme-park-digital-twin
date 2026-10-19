@@ -14,22 +14,38 @@ An interactive theme park combining procedural OpenUSD geometry, **NVIDIA OVStag
 
 ## Ongoing development
 
-See the [development log](docs/development-log.md) and [independent reviews](docs/reviews/).
-The [connector ingestion layer](docs/connectors.md), [recorded-view APIs](docs/replay.md)
-and revision 2 assets are implemented. Real GPU/browser acceptance on `2e2b16b`
-verifies native picks, ride motion, source health, replay and image-matched annotations.
-Later API checkpoints add uninterrupted producer ingestion during replay and
-[durable action acknowledgements](docs/action-contract.md). At `19cee1e`, 184 CPU/API
-checks pass; the final deployed release also passes browser, actual HTTP/restart
-and native lifecycle acceptance. [Validation](docs/validation.md) identifies each evidence scope and
-[deployment artifacts](docs/deployment.md) record exact committed source identity.
+The [FOX-inspired research and decision map](docs/research/fox-theme-park.md)
+now has a working Decision Lab: frozen observations, 15–120 minute comparisons,
+do-nothing and simple-rule alternatives, resource constraints, and
+[durable evidence](docs/planning-evidence.md). A separate
+[maintenance workflow](docs/bounded-maintenance-workflow.md) turns a current incident
+or saved comparison into an explicit, retry-safe synthetic work order. Dispatch
+leaves a closed ride closed; it is not evidence of repair.
+
+[Spatial design queries](docs/spatial-api.md) compare an audited partial path graph
+with a separate [dining connection proposal](docs/dining-design-variant.md).
+A [read-only external weather preview](docs/external-weather-preview.md) keeps
+external forecasts distinct from synthetic park observations. These services do
+not replace ERP, CMMS, ride controls or calibrated engineering models.
+
+The eight-hour evaluation started **19 October 2026 at 19:47 UTC** and remains
+in progress. [Run status](docs/experiments/2026-10-19-run-status.md) records its
+scope and interruptions. [Independent reviews](docs/reviews/) and an
+[independent policy stress experiment](docs/experiments/food-service-policy-stress.md)
+include unfavorable results. Actual L40/OVRTX/browser acceptance at `64c8bfa`
+passed twelve maintenance/recovery checks; its
+[report and screenshots](docs/images/fox-cycle-20261019/gpu-workflow-64c8bfa/report.json)
+identify exact deployed source. Later local changes have separate evidence in the
+[progress gallery](docs/progress.md).
 
 ## What you can explore
 
 - A fenced park with an animated roller coaster and Ferris wheel, trees, lake, paths, food court, show venue, utilities, hotel and parking.
 - An actual OVRTX image viewport with orbit/zoom/focus and native geometry picking. Asset clicks resolve USD prim paths to database records.
 - Twelve identified assets and ten synthetic domain feeds covering rides, ticketing, queues, counts, maintenance, ERP stock, workforce, buildings, utilities and weather.
-- Seven scenarios: normal operation, ride closure, show surge, heatwave, power fault, water leak and food demand. Compare a scenario before applying it.
+- Seven scenarios: normal operation, ride closure, show surge, heatwave, power fault, water leak and food demand. Compare frozen what-if branches with explicit assumptions, then save or reopen the evidence.
+- Current-incident maintenance proposals with expiry, relevant-state rechecks, durable retry identity and work-order readback.
+- Read-only baseline/design path queries with explicit unreachable results and source hashes.
 - Audited synthetic actions, telemetry history, dependencies, staffing, inventory and work orders. A closed or faulted ride stops its animation.
 
 ## Architecture
@@ -106,7 +122,7 @@ Keep USD modeling tools (`usd-core`) in a separate environment from the live ren
 
 ## Scope
 
-This is a working demonstration with illustrative data and heuristic scenario responses. It contains no calibrated crowd, safety, ride-engineering or financial simulator, no LLM agent, and no physical controls. Scenario metrics explain workflows; they do not substantiate savings forecasts. The queue average excludes closed attractions, and summed monitored water flow includes circulation.
+This is a working demonstration with illustrative data and heuristic scenario responses. It contains no calibrated crowd, safety, ride-engineering or financial simulator, no embedded LLM agent, and no physical controls. Independent development agents review the project; its recurring HTTP operators and numerical planners are deterministic programs. Scenario metrics explain workflows; they do not substantiate savings forecasts. The queue average excludes closed attractions, and summed monitored water flow includes circulation.
 
 Native SDKs are installed separately under NVIDIA's licenses; their binaries and reference source are not redistributed here. Park geometry, illustrations and application code were created for this project. Publication does not imply NVIDIA endorsement.
 

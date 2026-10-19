@@ -1,0 +1,2308 @@
+{
+  "started_at": "2026-10-19T20:42:25.049057+00:00",
+  "finished_at": "2026-10-19T20:42:44.737501+00:00",
+  "url": "http://127.0.0.1:18150",
+  "checks": [
+    {
+      "check": "direct_success",
+      "started_at": "2026-10-19T20:42:25.720700+00:00",
+      "status": "pass",
+      "evidence": {
+        "proposal": {
+          "id": "496ab411ae7d469180c43ce9aadc9652",
+          "status": "proposed",
+          "synthetic": true,
+          "physical_effect": false,
+          "origin": "current_incident",
+          "precondition_scope": "target",
+          "created_at": "2026-10-19T20:42:25.939843+00:00",
+          "expires_at": "2026-10-19T20:44:25.939843+00:00",
+          "action": {
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_COASTER"
+          },
+          "evidence_refs": {
+            "rationale_bundle_id": null,
+            "historical_evidence_is_authority": false
+          },
+          "creation_observation": {
+            "captured_at": "2026-10-19T20:42:25.939843+00:00",
+            "accepted_state_revision": "b3dfb1cef1bbde96c551945cc4870d67fbeae8a4d545eb4ebe543e6088af7a53",
+            "asset_id": "RIDE_COASTER",
+            "asset_type": "ride",
+            "scenario_context": "normal",
+            "fields": {
+              "status": {
+                "value": "fault",
+                "quality": {
+                  "status": "good",
+                  "age_seconds": 0.032,
+                  "stale_after_seconds": 5.0,
+                  "reasons": [],
+                  "source_id": "ride_scada",
+                  "source_timestamp": "2026-10-19T20:42:25.904630+00:00",
+                  "ingested_at": "2026-10-19T20:42:25.909+00:00",
+                  "unit": "state",
+                  "synthetic": true
+                }
+              },
+              "maintenance.inspection_status": {
+                "value": "passed",
+                "quality": {
+                  "status": "good",
+                  "age_seconds": 0.096,
+                  "stale_after_seconds": 5.0,
+                  "reasons": [],
+                  "source_id": "cmms",
+                  "source_timestamp": "2026-10-19T20:42:25.841000+00:00",
+                  "ingested_at": "2026-10-19T20:42:25.847+00:00",
+                  "unit": "state",
+                  "synthetic": true
+                }
+              },
+              "maintenance.open_work_orders": {
+                "value": 0,
+                "quality": {
+                  "status": "good",
+                  "age_seconds": 0.096,
+                  "stale_after_seconds": 5.0,
+                  "reasons": [],
+                  "source_id": "cmms",
+                  "source_timestamp": "2026-10-19T20:42:25.841000+00:00",
+                  "ingested_at": "2026-10-19T20:42:25.847+00:00",
+                  "unit": "work_orders",
+                  "synthetic": true
+                }
+              }
+            },
+            "open_work_order_ids": [],
+            "work_order_source": "synthetic_work_order_database",
+            "synthetic": true
+          },
+          "preconditions": {
+            "asset_id": "RIDE_COASTER",
+            "status": "fault",
+            "asset_type": "ride",
+            "field_sources": {
+              "status": "ride_scada",
+              "maintenance.inspection_status": "cmms",
+              "maintenance.open_work_orders": "cmms"
+            },
+            "inspection_status": "passed",
+            "observed_open_work_orders": 0,
+            "open_work_order_ids": []
+          },
+          "creation_state_revision": "b3dfb1cef1bbde96c551945cc4870d67fbeae8a4d545eb4ebe543e6088af7a53",
+          "create_request_id": "workflow-review-630b04d6371e:direct:no-plan",
+          "execution_request_id": null,
+          "command_request_id": "proposal:496ab411ae7d469180c43ce9aadc9652",
+          "execution_scope": "synthetic_dispatch_only",
+          "receipt": null,
+          "readback": null
+        },
+        "accepted": {
+          "proposal": {
+            "action": {
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER"
+            },
+            "command_request_id": "proposal:496ab411ae7d469180c43ce9aadc9652",
+            "create_request_id": "workflow-review-630b04d6371e:direct:no-plan",
+            "created_at": "2026-10-19T20:42:25.939843+00:00",
+            "creation_observation": {
+              "accepted_state_revision": "b3dfb1cef1bbde96c551945cc4870d67fbeae8a4d545eb4ebe543e6088af7a53",
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "captured_at": "2026-10-19T20:42:25.939843+00:00",
+              "fields": {
+                "maintenance.inspection_status": {
+                  "quality": {
+                    "age_seconds": 0.096,
+                    "ingested_at": "2026-10-19T20:42:25.847+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:25.841000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "passed"
+                },
+                "maintenance.open_work_orders": {
+                  "quality": {
+                    "age_seconds": 0.096,
+                    "ingested_at": "2026-10-19T20:42:25.847+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:25.841000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "work_orders"
+                  },
+                  "value": 0
+                },
+                "status": {
+                  "quality": {
+                    "age_seconds": 0.032,
+                    "ingested_at": "2026-10-19T20:42:25.909+00:00",
+                    "reasons": [],
+                    "source_id": "ride_scada",
+                    "source_timestamp": "2026-10-19T20:42:25.904630+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "fault"
+                }
+              },
+              "open_work_order_ids": [],
+              "scenario_context": "normal",
+              "synthetic": true,
+              "work_order_source": "synthetic_work_order_database"
+            },
+            "creation_state_revision": "b3dfb1cef1bbde96c551945cc4870d67fbeae8a4d545eb4ebe543e6088af7a53",
+            "evidence_refs": {
+              "historical_evidence_is_authority": false,
+              "rationale_bundle_id": null
+            },
+            "execution_request_id": "workflow-review-630b04d6371e:execute:direct-no-plan",
+            "execution_scope": "synthetic_dispatch_only",
+            "expires_at": "2026-10-19T20:44:25.939843+00:00",
+            "id": "496ab411ae7d469180c43ce9aadc9652",
+            "origin": "current_incident",
+            "physical_effect": false,
+            "precondition_scope": "target",
+            "preconditions": {
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "field_sources": {
+                "maintenance.inspection_status": "cmms",
+                "maintenance.open_work_orders": "cmms",
+                "status": "ride_scada"
+              },
+              "inspection_status": "passed",
+              "observed_open_work_orders": 0,
+              "open_work_order_ids": [],
+              "status": "fault"
+            },
+            "readback": {
+              "work_order": {
+                "id": 1,
+                "asset_id": "RIDE_COASTER",
+                "status": "open",
+                "created_at": "2026-10-19T20:42:25.962+00:00",
+                "title": "Inspect synthetic operational fault"
+              },
+              "observed_at": "2026-10-19T20:42:25.975124+00:00",
+              "asset_status": "fault",
+              "source": "synthetic_work_order_database",
+              "asset_status_evidence": {
+                "value": "fault",
+                "quality": "good",
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T20:42:25.904630+00:00",
+                "synthetic": true,
+                "stale_after_seconds": 5.0
+              },
+              "source_scope": "work_order_only; asset status retains its independent observation provenance",
+              "physical_completion": false
+            },
+            "receipt": {
+              "id": 2,
+              "timestamp": "2026-10-19T20:42:25.962+00:00",
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER",
+              "message": "Synthetic work order #1 created and qualified maintenance assigned.",
+              "synthetic": true,
+              "acknowledgement": "accepted",
+              "target": {
+                "scope": "asset",
+                "asset_id": "RIDE_COASTER"
+              },
+              "lifecycle": "work_order_open",
+              "physical_effect": false,
+              "work_order_id": 1,
+              "request_id": "proposal:496ab411ae7d469180c43ce9aadc9652"
+            },
+            "status": "accepted_workflow_not_repair",
+            "synthetic": true
+          },
+          "outcome": "accepted_workflow_not_repair",
+          "physical_effect": false,
+          "idempotency": {
+            "replayed": false,
+            "command_request_id": "proposal:496ab411ae7d469180c43ce9aadc9652"
+          }
+        },
+        "concurrent_retries": 3,
+        "restart_preserved_evidence": true,
+        "planner_calls_required": 0
+      },
+      "elapsed_seconds": 1.1114018759690225
+    },
+    {
+      "check": "unrelated_scenario",
+      "started_at": "2026-10-19T20:42:26.832565+00:00",
+      "status": "pass",
+      "evidence": {
+        "created_scenario": "normal",
+        "execution_scenario": "food_rush",
+        "accepted": {
+          "proposal": {
+            "action": {
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER"
+            },
+            "command_request_id": "proposal:7d4461a5202346c6bcf2dadce61cf2f5",
+            "create_request_id": "workflow-review-630b04d6371e:direct:scenario-change",
+            "created_at": "2026-10-19T20:42:27.047046+00:00",
+            "creation_observation": {
+              "accepted_state_revision": "bf7808c815669a29a9334391a35c2ee726c87b855658b124179d6230f3534287",
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "captured_at": "2026-10-19T20:42:27.047046+00:00",
+              "fields": {
+                "maintenance.inspection_status": {
+                  "quality": {
+                    "age_seconds": 0.094,
+                    "ingested_at": "2026-10-19T20:42:26.955+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:26.949000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "passed"
+                },
+                "maintenance.open_work_orders": {
+                  "quality": {
+                    "age_seconds": 0.094,
+                    "ingested_at": "2026-10-19T20:42:26.955+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:26.949000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "work_orders"
+                  },
+                  "value": 0
+                },
+                "status": {
+                  "quality": {
+                    "age_seconds": 0.029,
+                    "ingested_at": "2026-10-19T20:42:27.019+00:00",
+                    "reasons": [],
+                    "source_id": "ride_scada",
+                    "source_timestamp": "2026-10-19T20:42:27.014068+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "fault"
+                }
+              },
+              "open_work_order_ids": [],
+              "scenario_context": "normal",
+              "synthetic": true,
+              "work_order_source": "synthetic_work_order_database"
+            },
+            "creation_state_revision": "bf7808c815669a29a9334391a35c2ee726c87b855658b124179d6230f3534287",
+            "evidence_refs": {
+              "historical_evidence_is_authority": false,
+              "rationale_bundle_id": null
+            },
+            "execution_request_id": "workflow-review-630b04d6371e:execute:scenario-change",
+            "execution_scope": "synthetic_dispatch_only",
+            "expires_at": "2026-10-19T20:44:27.047046+00:00",
+            "id": "7d4461a5202346c6bcf2dadce61cf2f5",
+            "origin": "current_incident",
+            "physical_effect": false,
+            "precondition_scope": "target",
+            "preconditions": {
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "field_sources": {
+                "maintenance.inspection_status": "cmms",
+                "maintenance.open_work_orders": "cmms",
+                "status": "ride_scada"
+              },
+              "inspection_status": "passed",
+              "observed_open_work_orders": 0,
+              "open_work_order_ids": [],
+              "status": "fault"
+            },
+            "readback": {
+              "work_order": {
+                "id": 2,
+                "asset_id": "RIDE_COASTER",
+                "status": "open",
+                "created_at": "2026-10-19T20:42:27.106+00:00",
+                "title": "Inspect synthetic operational fault"
+              },
+              "observed_at": "2026-10-19T20:42:27.116683+00:00",
+              "asset_status": "fault",
+              "source": "synthetic_work_order_database",
+              "asset_status_evidence": {
+                "value": "fault",
+                "quality": "good",
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T20:42:27.014068+00:00",
+                "synthetic": true,
+                "stale_after_seconds": 5.0
+              },
+              "source_scope": "work_order_only; asset status retains its independent observation provenance",
+              "physical_completion": false
+            },
+            "receipt": {
+              "id": 5,
+              "timestamp": "2026-10-19T20:42:27.106+00:00",
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER",
+              "message": "Synthetic work order #2 created and qualified maintenance assigned.",
+              "synthetic": true,
+              "acknowledgement": "accepted",
+              "target": {
+                "scope": "asset",
+                "asset_id": "RIDE_COASTER"
+              },
+              "lifecycle": "work_order_open",
+              "physical_effect": false,
+              "work_order_id": 2,
+              "request_id": "proposal:7d4461a5202346c6bcf2dadce61cf2f5"
+            },
+            "status": "accepted_workflow_not_repair",
+            "synthetic": true
+          },
+          "outcome": "accepted_workflow_not_repair",
+          "physical_effect": false,
+          "idempotency": {
+            "replayed": false,
+            "command_request_id": "proposal:7d4461a5202346c6bcf2dadce61cf2f5"
+          }
+        }
+      },
+      "elapsed_seconds": 0.2879281690111384
+    },
+    {
+      "check": "optional_rationale",
+      "started_at": "2026-10-19T20:42:27.120898+00:00",
+      "status": "pass",
+      "evidence": {
+        "rationale_bundle_id": "5b3e1a9ebb6428e37fa395d67ccc231c87d28a7d5dc7d45ba1f36e28687e357c",
+        "proposal": {
+          "id": "f64ae38b8f574985993b0d436f90ecf0",
+          "status": "proposed",
+          "synthetic": true,
+          "physical_effect": false,
+          "origin": "current_incident",
+          "precondition_scope": "target",
+          "created_at": "2026-10-19T20:42:27.396130+00:00",
+          "expires_at": "2026-10-19T20:44:27.396130+00:00",
+          "action": {
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_COASTER"
+          },
+          "evidence_refs": {
+            "rationale_bundle_id": "5b3e1a9ebb6428e37fa395d67ccc231c87d28a7d5dc7d45ba1f36e28687e357c",
+            "historical_evidence_is_authority": false,
+            "plan_id": "ea1ea94bd21a668b3104555eaabe431100207c25ac6007033f0a4bf9577aa80a",
+            "model_source_sha256": "cbce78b98fca5cb67af839ce595c9bf2150cf5792721ad0452a83993fc45da96",
+            "integrity_verified": true,
+            "current_model_reproduction_checked": false
+          },
+          "creation_observation": {
+            "captured_at": "2026-10-19T20:42:27.396130+00:00",
+            "accepted_state_revision": "f5beb715965c55915221266d58471d7314741f7ad2fc0929ac574d4b9ef3fa0c",
+            "asset_id": "RIDE_COASTER",
+            "asset_type": "ride",
+            "scenario_context": "normal",
+            "fields": {
+              "status": {
+                "value": "fault",
+                "quality": {
+                  "status": "good",
+                  "age_seconds": 0.031,
+                  "stale_after_seconds": 5.0,
+                  "reasons": [],
+                  "source_id": "ride_scada",
+                  "source_timestamp": "2026-10-19T20:42:27.362500+00:00",
+                  "ingested_at": "2026-10-19T20:42:27.367+00:00",
+                  "unit": "state",
+                  "synthetic": true
+                }
+              },
+              "maintenance.inspection_status": {
+                "value": "passed",
+                "quality": {
+                  "status": "good",
+                  "age_seconds": 0.133,
+                  "stale_after_seconds": 5.0,
+                  "reasons": [],
+                  "source_id": "cmms",
+                  "source_timestamp": "2026-10-19T20:42:27.261000+00:00",
+                  "ingested_at": "2026-10-19T20:42:27.267+00:00",
+                  "unit": "state",
+                  "synthetic": true
+                }
+              },
+              "maintenance.open_work_orders": {
+                "value": 0,
+                "quality": {
+                  "status": "good",
+                  "age_seconds": 0.133,
+                  "stale_after_seconds": 5.0,
+                  "reasons": [],
+                  "source_id": "cmms",
+                  "source_timestamp": "2026-10-19T20:42:27.261000+00:00",
+                  "ingested_at": "2026-10-19T20:42:27.267+00:00",
+                  "unit": "work_orders",
+                  "synthetic": true
+                }
+              }
+            },
+            "open_work_order_ids": [],
+            "work_order_source": "synthetic_work_order_database",
+            "synthetic": true
+          },
+          "preconditions": {
+            "asset_id": "RIDE_COASTER",
+            "status": "fault",
+            "asset_type": "ride",
+            "field_sources": {
+              "status": "ride_scada",
+              "maintenance.inspection_status": "cmms",
+              "maintenance.open_work_orders": "cmms"
+            },
+            "inspection_status": "passed",
+            "observed_open_work_orders": 0,
+            "open_work_order_ids": []
+          },
+          "creation_state_revision": "f5beb715965c55915221266d58471d7314741f7ad2fc0929ac574d4b9ef3fa0c",
+          "create_request_id": "workflow-review-630b04d6371e:direct:rationale",
+          "execution_request_id": null,
+          "command_request_id": "proposal:f64ae38b8f574985993b0d436f90ecf0",
+          "execution_scope": "synthetic_dispatch_only",
+          "receipt": null,
+          "readback": null
+        },
+        "changed_current_status_rejected": {
+          "detail": {
+            "code": "proposal_preconditions_changed",
+            "message": "Proposal conditions changed; review current conditions before creating a new proposal",
+            "context": {
+              "asset_id": "RIDE_COASTER",
+              "asset_detail_url": "/api/assets/RIDE_COASTER",
+              "current_work_order_ids": [],
+              "next_step": "review_current_conditions_then_create_proposal",
+              "changed_fields": {
+                "status": {
+                  "proposed": "fault",
+                  "current": "operational"
+                }
+              }
+            }
+          }
+        },
+        "missing_rationale": {
+          "detail": {
+            "code": "evidence_not_found",
+            "message": "No saved evidence with that identifier"
+          }
+        },
+        "limit": "Historical scenario mismatch tested; old-model persisted bundle not constructed through storage or backend access."
+      },
+      "elapsed_seconds": 0.5433776510180905
+    },
+    {
+      "check": "stale_required",
+      "started_at": "2026-10-19T20:42:27.665049+00:00",
+      "status": "pass",
+      "evidence": {
+        "wait_seconds": 6.121570580988191,
+        "canonical_status_quality": {
+          "status": "stale",
+          "age_seconds": 6.145,
+          "stale_after_seconds": 5.0,
+          "reasons": [
+            "source_timestamp_stale"
+          ],
+          "source_id": "ride_scada",
+          "source_timestamp": "2026-10-19T20:42:27.859814+00:00",
+          "ingested_at": "2026-10-19T20:42:27.863+00:00",
+          "unit": "state",
+          "synthetic": true
+        },
+        "execute": {
+          "detail": {
+            "code": "workflow_input_not_fresh",
+            "message": "Fresh authoritative synthetic observation required: status"
+          }
+        },
+        "create": {
+          "detail": {
+            "code": "workflow_input_not_fresh",
+            "message": "Fresh authoritative synthetic observation required: status"
+          }
+        }
+      },
+      "elapsed_seconds": 6.358478509995621
+    },
+    {
+      "check": "unrelated_stale",
+      "started_at": "2026-10-19T20:42:34.024084+00:00",
+      "status": "pass",
+      "evidence": {
+        "accepted": {
+          "proposal": {
+            "action": {
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER"
+            },
+            "command_request_id": "proposal:0f53e750d30247e892e8177e77d14dcd",
+            "create_request_id": "workflow-review-630b04d6371e:direct:stale-erp",
+            "created_at": "2026-10-19T20:42:40.820492+00:00",
+            "creation_observation": {
+              "accepted_state_revision": "e96ddd4422488b6dbef56a8349e884a852362a3d6a2d3e4af4918956ceb63cb9",
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "captured_at": "2026-10-19T20:42:40.820492+00:00",
+              "fields": {
+                "maintenance.inspection_status": {
+                  "quality": {
+                    "age_seconds": 0.779,
+                    "ingested_at": "2026-10-19T20:42:40.047+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "review_required"
+                },
+                "maintenance.open_work_orders": {
+                  "quality": {
+                    "age_seconds": 0.779,
+                    "ingested_at": "2026-10-19T20:42:40.047+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "work_orders"
+                  },
+                  "value": 0
+                },
+                "status": {
+                  "quality": {
+                    "age_seconds": 0.779,
+                    "ingested_at": "2026-10-19T20:42:40.045+00:00",
+                    "reasons": [],
+                    "source_id": "ride_scada",
+                    "source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "closed"
+                }
+              },
+              "open_work_order_ids": [],
+              "scenario_context": "ride_closure",
+              "synthetic": true,
+              "work_order_source": "synthetic_work_order_database"
+            },
+            "creation_state_revision": "e96ddd4422488b6dbef56a8349e884a852362a3d6a2d3e4af4918956ceb63cb9",
+            "evidence_refs": {
+              "historical_evidence_is_authority": false,
+              "rationale_bundle_id": null
+            },
+            "execution_request_id": "workflow-review-630b04d6371e:execute:stale-erp",
+            "execution_scope": "synthetic_dispatch_only",
+            "expires_at": "2026-10-19T20:44:40.820492+00:00",
+            "id": "0f53e750d30247e892e8177e77d14dcd",
+            "origin": "current_incident",
+            "physical_effect": false,
+            "precondition_scope": "target",
+            "preconditions": {
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "field_sources": {
+                "maintenance.inspection_status": "cmms",
+                "maintenance.open_work_orders": "cmms",
+                "status": "ride_scada"
+              },
+              "inspection_status": "review_required",
+              "observed_open_work_orders": 0,
+              "open_work_order_ids": [],
+              "status": "closed"
+            },
+            "readback": {
+              "work_order": {
+                "id": 3,
+                "asset_id": "RIDE_COASTER",
+                "status": "open",
+                "created_at": "2026-10-19T20:42:40.832+00:00",
+                "title": "Inspect synthetic operational fault"
+              },
+              "observed_at": "2026-10-19T20:42:40.844747+00:00",
+              "asset_status": "closed",
+              "source": "synthetic_work_order_database",
+              "asset_status_evidence": {
+                "value": "closed",
+                "quality": "good",
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T20:42:40.833000+00:00",
+                "synthetic": true,
+                "stale_after_seconds": 5.0
+              },
+              "source_scope": "work_order_only; asset status retains its independent observation provenance",
+              "physical_completion": false
+            },
+            "receipt": {
+              "id": 11,
+              "timestamp": "2026-10-19T20:42:40.833+00:00",
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER",
+              "message": "Synthetic work order #3 created and qualified maintenance assigned.",
+              "synthetic": true,
+              "acknowledgement": "accepted",
+              "target": {
+                "scope": "asset",
+                "asset_id": "RIDE_COASTER"
+              },
+              "lifecycle": "work_order_open",
+              "physical_effect": false,
+              "work_order_id": 3,
+              "request_id": "proposal:0f53e750d30247e892e8177e77d14dcd"
+            },
+            "status": "accepted_workflow_not_repair",
+            "synthetic": true
+          },
+          "outcome": "accepted_workflow_not_repair",
+          "physical_effect": false,
+          "idempotency": {
+            "replayed": false,
+            "command_request_id": "proposal:0f53e750d30247e892e8177e77d14dcd"
+          }
+        },
+        "connector_health": [
+          {
+            "source_id": "ride_scada",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.045+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.771,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 197,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "9aff9192ef34:197"
+          },
+          {
+            "source_id": "ticketing",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.046+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.771,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 440,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "3b89780a462a:440"
+          },
+          {
+            "source_id": "vision",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.046+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.772,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 264,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "a26372c729a8:264"
+          },
+          {
+            "source_id": "cmms",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.047+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.772,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 352,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "e144a9c7e0af:352"
+          },
+          {
+            "source_id": "erp",
+            "status": "stale",
+            "mode": "paused",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:34.524000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:34.536+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:34.579+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 6.287,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 10,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 160,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "741725993b81:160"
+          },
+          {
+            "source_id": "workforce",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.047+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.772,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 264,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "6c4b2691f3d8:264"
+          },
+          {
+            "source_id": "bms",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.048+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.772,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 286,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "a81e63609b29:286"
+          },
+          {
+            "source_id": "water",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.048+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.772,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 132,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "f6502c069fda:132"
+          },
+          {
+            "source_id": "weather",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.048+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.772,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 22,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "0415889f2ce7:22"
+          },
+          {
+            "source_id": "gis",
+            "status": "healthy",
+            "mode": "live",
+            "synthetic": true,
+            "last_source_timestamp": "2026-10-19T20:42:40.039000+00:00",
+            "last_ingested_at": "2026-10-19T20:42:40.048+00:00",
+            "last_poll_attempt_at": "2026-10-19T20:42:40.808+00:00",
+            "last_error": null,
+            "freshness": {
+              "max_age_seconds": 0.772,
+              "stale_after_seconds": 5.0,
+              "stale_metrics": 0,
+              "missing_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "counters": {
+              "accepted": 792,
+              "rejected": 0,
+              "duplicates": 0,
+              "poll_failures": 0
+            },
+            "latest_cursor": "0d9281c82096:792"
+          }
+        ]
+      },
+      "elapsed_seconds": 6.8605030329781584
+    },
+    {
+      "check": "relevant_changes",
+      "started_at": "2026-10-19T20:42:40.885383+00:00",
+      "status": "pass",
+      "evidence": {
+        "status_change": {
+          "detail": {
+            "code": "proposal_preconditions_changed",
+            "message": "Proposal conditions changed; review current conditions before creating a new proposal",
+            "context": {
+              "asset_id": "RIDE_COASTER",
+              "asset_detail_url": "/api/assets/RIDE_COASTER",
+              "current_work_order_ids": [],
+              "next_step": "review_current_conditions_then_create_proposal",
+              "changed_fields": {
+                "status": {
+                  "proposed": "fault",
+                  "current": "operational"
+                }
+              }
+            }
+          }
+        },
+        "existing_order_execution": {
+          "detail": {
+            "code": "proposal_preconditions_changed",
+            "message": "Proposal conditions changed; inspect the existing work order",
+            "context": {
+              "asset_id": "RIDE_COASTER",
+              "asset_detail_url": "/api/assets/RIDE_COASTER",
+              "current_work_order_ids": [
+                4
+              ],
+              "next_step": "inspect_existing_work_order",
+              "changed_fields": {
+                "observed_open_work_orders": {
+                  "proposed": 0,
+                  "current": 1
+                },
+                "open_work_order_ids": {
+                  "proposed": [],
+                  "current": [
+                    4
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "existing_order_creation": {
+          "detail": {
+            "code": "work_order_already_open",
+            "message": "A current work order already covers this asset; inspect that order instead of creating another proposal",
+            "context": {
+              "asset_id": "RIDE_COASTER",
+              "asset_detail_url": "/api/assets/RIDE_COASTER",
+              "current_work_order_ids": [
+                4
+              ],
+              "next_step": "inspect_existing_work_order",
+              "changed_fields": {}
+            }
+          }
+        },
+        "exact_order_id": 4
+      },
+      "elapsed_seconds": 1.7083379530231468
+    },
+    {
+      "check": "cross_origin_saved_replay",
+      "started_at": "2026-10-19T20:42:42.594829+00:00",
+      "status": "pass",
+      "evidence": {
+        "direct_to_saved_collision": {
+          "detail": {
+            "code": "proposal_request_conflict",
+            "message": "Create request ID was already used for different proposal inputs"
+          }
+        },
+        "saved_to_direct_collision": {
+          "detail": {
+            "code": "proposal_request_conflict",
+            "message": "Create request ID was already used for different proposal inputs"
+          }
+        },
+        "direct_replay_guard": {
+          "detail": {
+            "code": "recorded_view",
+            "message": "Return to live before creating or executing workflow proposals"
+          }
+        },
+        "saved_flow_acceptance": {
+          "proposal": {
+            "action": {
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER"
+            },
+            "command_request_id": "proposal:b052e678a49b4515b3042fe7f5725491",
+            "create_request_id": "workflow-review-630b04d6371e:direct:cross-origin-saved",
+            "created_at": "2026-10-19T20:42:42.924996+00:00",
+            "creation_observation": {
+              "accepted_state_revision": "1ef91b44f674490b7a326464054671be828fc606098d562abe3d6eaa0e3a2fa9",
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "captured_at": "2026-10-19T20:42:42.924996+00:00",
+              "fields": {
+                "maintenance.inspection_status": {
+                  "quality": {
+                    "age_seconds": 0.093,
+                    "ingested_at": "2026-10-19T20:42:42.836+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:42.830000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "review_required"
+                },
+                "maintenance.open_work_orders": {
+                  "quality": {
+                    "age_seconds": 0.093,
+                    "ingested_at": "2026-10-19T20:42:42.836+00:00",
+                    "reasons": [],
+                    "source_id": "cmms",
+                    "source_timestamp": "2026-10-19T20:42:42.830000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "work_orders"
+                  },
+                  "value": 0
+                },
+                "status": {
+                  "quality": {
+                    "age_seconds": 0.093,
+                    "ingested_at": "2026-10-19T20:42:42.834+00:00",
+                    "reasons": [],
+                    "source_id": "ride_scada",
+                    "source_timestamp": "2026-10-19T20:42:42.830000+00:00",
+                    "stale_after_seconds": 5.0,
+                    "status": "good",
+                    "synthetic": true,
+                    "unit": "state"
+                  },
+                  "value": "closed"
+                }
+              },
+              "open_work_order_ids": [],
+              "scenario_context": "ride_closure",
+              "synthetic": true,
+              "work_order_source": "synthetic_work_order_database"
+            },
+            "creation_state_revision": "1ef91b44f674490b7a326464054671be828fc606098d562abe3d6eaa0e3a2fa9",
+            "evidence_refs": {
+              "action_index": 0,
+              "branch_id": "simple_rule",
+              "bundle_id": "d59157db1c43544f9d1968bdd27a6af994eca530665941ce6d5e314ddd269c53",
+              "historical_evidence_is_authority": false,
+              "plan_id": "519c67056957220bc7d981c3a2439d7239e7c98b0d21a83ae7723ec8cf3143ef"
+            },
+            "execution_request_id": "workflow-review-630b04d6371e:execute:saved-regression",
+            "execution_scope": "synthetic_dispatch_only",
+            "expires_at": "2026-10-19T20:43:12.924996+00:00",
+            "id": "b052e678a49b4515b3042fe7f5725491",
+            "origin": "saved_plan",
+            "physical_effect": false,
+            "precondition_scope": "scenario_and_target",
+            "preconditions": {
+              "asset_id": "RIDE_COASTER",
+              "asset_type": "ride",
+              "field_sources": {
+                "maintenance.inspection_status": "cmms",
+                "maintenance.open_work_orders": "cmms",
+                "status": "ride_scada"
+              },
+              "inspection_status": "review_required",
+              "observed_open_work_orders": 0,
+              "open_work_order_ids": [],
+              "scenario": "ride_closure",
+              "status": "closed"
+            },
+            "readback": {
+              "work_order": {
+                "id": 5,
+                "asset_id": "RIDE_COASTER",
+                "status": "open",
+                "created_at": "2026-10-19T20:42:42.962+00:00",
+                "title": "Inspect synthetic operational fault"
+              },
+              "observed_at": "2026-10-19T20:42:42.975728+00:00",
+              "asset_status": "closed",
+              "source": "synthetic_work_order_database",
+              "asset_status_evidence": {
+                "value": "closed",
+                "quality": "good",
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T20:42:42.962000+00:00",
+                "synthetic": true,
+                "stale_after_seconds": 5.0
+              },
+              "source_scope": "work_order_only; asset status retains its independent observation provenance",
+              "physical_completion": false
+            },
+            "receipt": {
+              "id": 17,
+              "timestamp": "2026-10-19T20:42:42.962+00:00",
+              "action": "dispatch_maintenance",
+              "asset_id": "RIDE_COASTER",
+              "message": "Synthetic work order #5 created and qualified maintenance assigned.",
+              "synthetic": true,
+              "acknowledgement": "accepted",
+              "target": {
+                "scope": "asset",
+                "asset_id": "RIDE_COASTER"
+              },
+              "lifecycle": "work_order_open",
+              "physical_effect": false,
+              "work_order_id": 5,
+              "request_id": "proposal:b052e678a49b4515b3042fe7f5725491"
+            },
+            "status": "accepted_workflow_not_repair",
+            "synthetic": true
+          },
+          "outcome": "accepted_workflow_not_repair",
+          "physical_effect": false,
+          "idempotency": {
+            "replayed": false,
+            "command_request_id": "proposal:b052e678a49b4515b3042fe7f5725491"
+          }
+        }
+      },
+      "elapsed_seconds": 0.3925615759799257
+    },
+    {
+      "check": "strict_incidents",
+      "started_at": "2026-10-19T20:42:42.988700+00:00",
+      "status": "pass",
+      "evidence": [
+        {
+          "detail": [
+            {
+              "type": "extra_forbidden",
+              "loc": [
+                "body",
+                "action"
+              ],
+              "msg": "Extra inputs are not permitted",
+              "input": "reopen_ride"
+            }
+          ]
+        },
+        {
+          "detail": {
+            "code": "unsupported_workflow_target",
+            "message": "Only supported synthetic CMMS assets may receive this workflow"
+          }
+        },
+        {
+          "detail": [
+            {
+              "type": "greater_than_equal",
+              "loc": [
+                "body",
+                "ttl_seconds"
+              ],
+              "msg": "Input should be greater than or equal to 30",
+              "input": 29,
+              "ctx": {
+                "ge": 30
+              }
+            }
+          ]
+        },
+        {
+          "detail": [
+            {
+              "type": "less_than_equal",
+              "loc": [
+                "body",
+                "ttl_seconds"
+              ],
+              "msg": "Input should be less than or equal to 300",
+              "input": 301,
+              "ctx": {
+                "le": 300
+              }
+            }
+          ]
+        },
+        {
+          "detail": [
+            {
+              "type": "string_too_short",
+              "loc": [
+                "body",
+                "request_id"
+              ],
+              "msg": "String should have at least 1 character",
+              "input": "",
+              "ctx": {
+                "min_length": 1
+              }
+            }
+          ]
+        },
+        {
+          "detail": [
+            {
+              "type": "extra_forbidden",
+              "loc": [
+                "body",
+                "unknown"
+              ],
+              "msg": "Extra inputs are not permitted",
+              "input": true
+            }
+          ]
+        }
+      ],
+      "elapsed_seconds": 0.8074028960545547
+    },
+    {
+      "check": "spatial_routes",
+      "started_at": "2026-10-19T20:42:43.797045+00:00",
+      "status": "pass",
+      "evidence": {
+        "routes": {
+          "baseline": {
+            "synthetic": true,
+            "calibrated": false,
+            "graph_version": "aster-circulation-v1",
+            "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "origin": "ENTRY_GATE",
+            "destination": "FOOD_COURT",
+            "origin_node": "entry",
+            "destination_node": "food_entrance",
+            "destination_note": "East edge inside dining plaza; missing link over grass and main promenade curb.",
+            "entrance_scope_note": "Plaza entrance is unreachable from main network until a real connecting path is modeled.",
+            "blocked_edges": [],
+            "accessible_only": false,
+            "accessibility_basis": "authored step-free labels; not certified",
+            "walking_speed_mps": 1.2,
+            "limitations": [
+              "Partial authored graph, not an obstacle-complete navmesh",
+              "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+              "No capacity, evacuation, boarding, or accessibility certification",
+              "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+              "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+              "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+              "A reachable public approach does not imply a boarding route or spare service capacity",
+              "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+            ],
+            "reachable": false,
+            "distance_m": null,
+            "assumed_walking_seconds": null,
+            "node_ids": [],
+            "edge_ids": [],
+            "positions_m": [],
+            "reason": "No route in the authored graph under these closures and accessibility labels",
+            "execution_authority": "none",
+            "physical_guidance": false,
+            "live_state_bound": false,
+            "forecast_coupled": false,
+            "mutates_live_state": false,
+            "variant": "baseline",
+            "identity": {
+              "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "graph_version": "aster-circulation-v1",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+              "variant_layer_sha256": null,
+              "variant_evidence_sha256": null,
+              "verification": "verified_at_installation",
+              "snapshot_policy": "immutable_until_restart"
+            },
+            "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+            "query": {
+              "variant": "baseline",
+              "origin": "ENTRY_GATE",
+              "destination": "FOOD_COURT",
+              "blocked_edges": [],
+              "accessible_only": false,
+              "walking_speed_mps": 1.2
+            },
+            "entrance_scope": {
+              "destination_node": "food_entrance",
+              "destination_note": "East edge inside dining plaza; missing link over grass and main promenade curb.",
+              "asset_mapping_note": "Plaza entrance is unreachable from main network until a real connecting path is modeled."
+            },
+            "variant_design": null
+          },
+          "variant": {
+            "synthetic": true,
+            "calibrated": false,
+            "graph_version": "aster-circulation-v1+dining-connection-v1",
+            "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "origin": "ENTRY_GATE",
+            "destination": "FOOD_COURT",
+            "origin_node": "entry",
+            "destination_node": "food_connector_entrance",
+            "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+            "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+            "blocked_edges": [],
+            "accessible_only": false,
+            "accessibility_basis": "authored step-free labels; not certified",
+            "walking_speed_mps": 1.2,
+            "limitations": [
+              "Partial authored graph, not an obstacle-complete navmesh",
+              "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+              "No capacity, evacuation, boarding, or accessibility certification",
+              "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+              "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+              "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+              "A reachable public approach does not imply a boarding route or spare service capacity",
+              "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+            ],
+            "reachable": true,
+            "distance_m": 40.852,
+            "assumed_walking_seconds": 34.04,
+            "node_ids": [
+              "entry",
+              "main_south",
+              "main_food_junction",
+              "dining_main_landing",
+              "food_connector_entrance"
+            ],
+            "edge_ids": [
+              "entry_main",
+              "main_south_link",
+              "dining_main_link",
+              "dining_connector_link"
+            ],
+            "positions_m": [
+              [
+                0,
+                -53,
+                0.3
+              ],
+              [
+                2,
+                -47,
+                0.3
+              ],
+              [
+                2,
+                -27,
+                0.3
+              ],
+              [
+                -4.5,
+                -26.4,
+                0.3
+              ],
+              [
+                -12.5,
+                -26.4,
+                0.3
+              ]
+            ],
+            "minimum_authored_corridor_width_m": 2,
+            "execution_authority": "none",
+            "physical_guidance": false,
+            "live_state_bound": false,
+            "forecast_coupled": false,
+            "mutates_live_state": false,
+            "variant": "dining_connection",
+            "identity": {
+              "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+              "graph_version": "aster-circulation-v1+dining-connection-v1",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+              "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+              "verification": "verified_at_installation",
+              "snapshot_policy": "immutable_until_restart"
+            },
+            "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+            "query": {
+              "variant": "dining_connection",
+              "origin": "ENTRY_GATE",
+              "destination": "FOOD_COURT",
+              "blocked_edges": [],
+              "accessible_only": false,
+              "walking_speed_mps": 1.2
+            },
+            "entrance_scope": {
+              "destination_node": "food_connector_entrance",
+              "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+              "asset_mapping_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred."
+            },
+            "variant_design": {
+              "id": "dining-connection-v1",
+              "baseline_graph": "assets/circulation_graph.json",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "layer": "assets/variants/dining_connection.usda",
+              "layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "distance_basis": "2D plan distance on nominal graph Z=0.30 m; graded surface is separately modeled in USD",
+              "superseded_excluded_edge_ids": [
+                "food_missing_link"
+              ],
+              "entrance_change": "FOOD_COURT maps to a new landing point at (-12.5,-26.4), 0.6 m north of the baseline point to keep the 2 m connector clear of bin bounds.",
+              "accessibility": "Local grade is modeled; unresolved baseline entrance/plaza thresholds remain. No accessible route from ENTRY_GATE is asserted."
+            }
+          },
+          "closure": {
+            "synthetic": true,
+            "calibrated": false,
+            "graph_version": "aster-circulation-v1+dining-connection-v1",
+            "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "origin": "ENTRY_GATE",
+            "destination": "FOOD_COURT",
+            "origin_node": "entry",
+            "destination_node": "food_connector_entrance",
+            "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+            "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+            "blocked_edges": [
+              "dining_connector_link"
+            ],
+            "accessible_only": false,
+            "accessibility_basis": "authored step-free labels; not certified",
+            "walking_speed_mps": 1.2,
+            "limitations": [
+              "Partial authored graph, not an obstacle-complete navmesh",
+              "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+              "No capacity, evacuation, boarding, or accessibility certification",
+              "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+              "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+              "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+              "A reachable public approach does not imply a boarding route or spare service capacity",
+              "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+            ],
+            "reachable": false,
+            "distance_m": null,
+            "assumed_walking_seconds": null,
+            "node_ids": [],
+            "edge_ids": [],
+            "positions_m": [],
+            "reason": "No route in the authored graph under these closures and accessibility labels",
+            "execution_authority": "none",
+            "physical_guidance": false,
+            "live_state_bound": false,
+            "forecast_coupled": false,
+            "mutates_live_state": false,
+            "variant": "dining_connection",
+            "identity": {
+              "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+              "graph_version": "aster-circulation-v1+dining-connection-v1",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+              "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+              "verification": "verified_at_installation",
+              "snapshot_policy": "immutable_until_restart"
+            },
+            "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+            "query": {
+              "variant": "dining_connection",
+              "origin": "ENTRY_GATE",
+              "destination": "FOOD_COURT",
+              "blocked_edges": [
+                "dining_connector_link"
+              ],
+              "accessible_only": false,
+              "walking_speed_mps": 1.2
+            },
+            "entrance_scope": {
+              "destination_node": "food_connector_entrance",
+              "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+              "asset_mapping_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred."
+            },
+            "variant_design": {
+              "id": "dining-connection-v1",
+              "baseline_graph": "assets/circulation_graph.json",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "layer": "assets/variants/dining_connection.usda",
+              "layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "distance_basis": "2D plan distance on nominal graph Z=0.30 m; graded surface is separately modeled in USD",
+              "superseded_excluded_edge_ids": [
+                "food_missing_link"
+              ],
+              "entrance_change": "FOOD_COURT maps to a new landing point at (-12.5,-26.4), 0.6 m north of the baseline point to keep the 2 m connector clear of bin bounds.",
+              "accessibility": "Local grade is modeled; unresolved baseline entrance/plaza thresholds remain. No accessible route from ENTRY_GATE is asserted."
+            }
+          },
+          "accessible": {
+            "synthetic": true,
+            "calibrated": false,
+            "graph_version": "aster-circulation-v1+dining-connection-v1",
+            "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "origin": "ENTRY_GATE",
+            "destination": "FOOD_COURT",
+            "origin_node": "entry",
+            "destination_node": "food_connector_entrance",
+            "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+            "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+            "blocked_edges": [],
+            "accessible_only": true,
+            "accessibility_basis": "authored step-free labels; not certified",
+            "walking_speed_mps": 1.2,
+            "limitations": [
+              "Partial authored graph, not an obstacle-complete navmesh",
+              "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+              "No capacity, evacuation, boarding, or accessibility certification",
+              "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+              "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+              "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+              "A reachable public approach does not imply a boarding route or spare service capacity",
+              "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+            ],
+            "reachable": false,
+            "distance_m": null,
+            "assumed_walking_seconds": null,
+            "node_ids": [],
+            "edge_ids": [],
+            "positions_m": [],
+            "reason": "No route in the authored graph under these closures and accessibility labels",
+            "execution_authority": "none",
+            "physical_guidance": false,
+            "live_state_bound": false,
+            "forecast_coupled": false,
+            "mutates_live_state": false,
+            "variant": "dining_connection",
+            "identity": {
+              "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+              "graph_version": "aster-circulation-v1+dining-connection-v1",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+              "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+              "verification": "verified_at_installation",
+              "snapshot_policy": "immutable_until_restart"
+            },
+            "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+            "query": {
+              "variant": "dining_connection",
+              "origin": "ENTRY_GATE",
+              "destination": "FOOD_COURT",
+              "blocked_edges": [],
+              "accessible_only": true,
+              "walking_speed_mps": 1.2
+            },
+            "entrance_scope": {
+              "destination_node": "food_connector_entrance",
+              "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+              "asset_mapping_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred."
+            },
+            "variant_design": {
+              "id": "dining-connection-v1",
+              "baseline_graph": "assets/circulation_graph.json",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "layer": "assets/variants/dining_connection.usda",
+              "layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "distance_basis": "2D plan distance on nominal graph Z=0.30 m; graded surface is separately modeled in USD",
+              "superseded_excluded_edge_ids": [
+                "food_missing_link"
+              ],
+              "entrance_change": "FOOD_COURT maps to a new landing point at (-12.5,-26.4), 0.6 m north of the baseline point to keep the 2 m connector clear of bin bounds.",
+              "accessibility": "Local grade is modeled; unresolved baseline entrance/plaza thresholds remain. No accessible route from ENTRY_GATE is asserted."
+            }
+          },
+          "wheel_approach": {
+            "synthetic": true,
+            "calibrated": false,
+            "graph_version": "aster-circulation-v1",
+            "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "origin": "ENTRY_GATE",
+            "destination": "RIDE_WHEEL",
+            "origin_node": "entry",
+            "destination_node": "wheel_approach",
+            "destination_note": "Public approach before queue rails at y=10 and y=12. Does not establish a boarding route.",
+            "entrance_scope_note": "Mapped to public queue approach. wheel_boarding is a separate unreachable node.",
+            "blocked_edges": [],
+            "accessible_only": false,
+            "accessibility_basis": "authored step-free labels; not certified",
+            "walking_speed_mps": 1.2,
+            "limitations": [
+              "Partial authored graph, not an obstacle-complete navmesh",
+              "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+              "No capacity, evacuation, boarding, or accessibility certification",
+              "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+              "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+              "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+              "A reachable public approach does not imply a boarding route or spare service capacity",
+              "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+            ],
+            "reachable": true,
+            "distance_m": 94.124,
+            "assumed_walking_seconds": 78.44,
+            "node_ids": [
+              "entry",
+              "main_south",
+              "main_food_junction",
+              "plaza_south",
+              "plaza_southeast",
+              "plaza_east",
+              "wheel_junction",
+              "wheel_approach"
+            ],
+            "edge_ids": [
+              "entry_main",
+              "main_south_link",
+              "main_plaza",
+              "plaza_south_e",
+              "plaza_e_lower",
+              "cross_wheel",
+              "wheel_public_approach"
+            ],
+            "positions_m": [
+              [
+                0,
+                -53,
+                0.3
+              ],
+              [
+                2,
+                -47,
+                0.3
+              ],
+              [
+                2,
+                -27,
+                0.3
+              ],
+              [
+                0,
+                -13,
+                0.3
+              ],
+              [
+                6,
+                -13,
+                0.3
+              ],
+              [
+                10,
+                -9,
+                0.3
+              ],
+              [
+                35,
+                -9,
+                0.3
+              ],
+              [
+                35,
+                8,
+                0.3
+              ]
+            ],
+            "minimum_authored_corridor_width_m": 2,
+            "execution_authority": "none",
+            "physical_guidance": false,
+            "live_state_bound": false,
+            "forecast_coupled": false,
+            "mutates_live_state": false,
+            "variant": "baseline",
+            "identity": {
+              "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "graph_version": "aster-circulation-v1",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+              "variant_layer_sha256": null,
+              "variant_evidence_sha256": null,
+              "verification": "verified_at_installation",
+              "snapshot_policy": "immutable_until_restart"
+            },
+            "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+            "query": {
+              "variant": "baseline",
+              "origin": "ENTRY_GATE",
+              "destination": "RIDE_WHEEL",
+              "blocked_edges": [],
+              "accessible_only": false,
+              "walking_speed_mps": 1.2
+            },
+            "entrance_scope": {
+              "destination_node": "wheel_approach",
+              "destination_note": "Public approach before queue rails at y=10 and y=12. Does not establish a boarding route.",
+              "asset_mapping_note": "Mapped to public queue approach. wheel_boarding is a separate unreachable node."
+            },
+            "variant_design": null
+          },
+          "wheel_boarding": {
+            "synthetic": true,
+            "calibrated": false,
+            "graph_version": "aster-circulation-v1",
+            "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "origin": "ENTRY_GATE",
+            "destination": "wheel_boarding",
+            "origin_node": "entry",
+            "destination_node": "wheel_boarding",
+            "destination_note": "Ramp/loading vicinity is separated by queue rails; no validated gate path authored.",
+            "entrance_scope_note": "",
+            "blocked_edges": [],
+            "accessible_only": false,
+            "accessibility_basis": "authored step-free labels; not certified",
+            "walking_speed_mps": 1.2,
+            "limitations": [
+              "Partial authored graph, not an obstacle-complete navmesh",
+              "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+              "No capacity, evacuation, boarding, or accessibility certification",
+              "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+              "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+              "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+              "A reachable public approach does not imply a boarding route or spare service capacity",
+              "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+            ],
+            "reachable": false,
+            "distance_m": null,
+            "assumed_walking_seconds": null,
+            "node_ids": [],
+            "edge_ids": [],
+            "positions_m": [],
+            "reason": "No route in the authored graph under these closures and accessibility labels",
+            "execution_authority": "none",
+            "physical_guidance": false,
+            "live_state_bound": false,
+            "forecast_coupled": false,
+            "mutates_live_state": false,
+            "variant": "baseline",
+            "identity": {
+              "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "graph_version": "aster-circulation-v1",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+              "variant_layer_sha256": null,
+              "variant_evidence_sha256": null,
+              "verification": "verified_at_installation",
+              "snapshot_policy": "immutable_until_restart"
+            },
+            "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+            "query": {
+              "variant": "baseline",
+              "origin": "ENTRY_GATE",
+              "destination": "wheel_boarding",
+              "blocked_edges": [],
+              "accessible_only": false,
+              "walking_speed_mps": 1.2
+            },
+            "entrance_scope": {
+              "destination_node": "wheel_boarding",
+              "destination_note": "Ramp/loading vicinity is separated by queue rails; no validated gate path authored.",
+              "asset_mapping_note": ""
+            },
+            "variant_design": null
+          },
+          "slow": {
+            "synthetic": true,
+            "calibrated": false,
+            "graph_version": "aster-circulation-v1+dining-connection-v1",
+            "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "origin": "ENTRY_GATE",
+            "destination": "FOOD_COURT",
+            "origin_node": "entry",
+            "destination_node": "food_connector_entrance",
+            "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+            "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+            "blocked_edges": [],
+            "accessible_only": false,
+            "accessibility_basis": "authored step-free labels; not certified",
+            "walking_speed_mps": 0.6,
+            "limitations": [
+              "Partial authored graph, not an obstacle-complete navmesh",
+              "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+              "No capacity, evacuation, boarding, or accessibility certification",
+              "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+              "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+              "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+              "A reachable public approach does not imply a boarding route or spare service capacity",
+              "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+            ],
+            "reachable": true,
+            "distance_m": 40.852,
+            "assumed_walking_seconds": 68.09,
+            "node_ids": [
+              "entry",
+              "main_south",
+              "main_food_junction",
+              "dining_main_landing",
+              "food_connector_entrance"
+            ],
+            "edge_ids": [
+              "entry_main",
+              "main_south_link",
+              "dining_main_link",
+              "dining_connector_link"
+            ],
+            "positions_m": [
+              [
+                0,
+                -53,
+                0.3
+              ],
+              [
+                2,
+                -47,
+                0.3
+              ],
+              [
+                2,
+                -27,
+                0.3
+              ],
+              [
+                -4.5,
+                -26.4,
+                0.3
+              ],
+              [
+                -12.5,
+                -26.4,
+                0.3
+              ]
+            ],
+            "minimum_authored_corridor_width_m": 2,
+            "execution_authority": "none",
+            "physical_guidance": false,
+            "live_state_bound": false,
+            "forecast_coupled": false,
+            "mutates_live_state": false,
+            "variant": "dining_connection",
+            "identity": {
+              "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+              "graph_version": "aster-circulation-v1+dining-connection-v1",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+              "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+              "verification": "verified_at_installation",
+              "snapshot_policy": "immutable_until_restart"
+            },
+            "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+            "query": {
+              "variant": "dining_connection",
+              "origin": "ENTRY_GATE",
+              "destination": "FOOD_COURT",
+              "blocked_edges": [],
+              "accessible_only": false,
+              "walking_speed_mps": 0.6
+            },
+            "entrance_scope": {
+              "destination_node": "food_connector_entrance",
+              "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+              "asset_mapping_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred."
+            },
+            "variant_design": {
+              "id": "dining-connection-v1",
+              "baseline_graph": "assets/circulation_graph.json",
+              "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+              "layer": "assets/variants/dining_connection.usda",
+              "layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+              "distance_basis": "2D plan distance on nominal graph Z=0.30 m; graded surface is separately modeled in USD",
+              "superseded_excluded_edge_ids": [
+                "food_missing_link"
+              ],
+              "entrance_change": "FOOD_COURT maps to a new landing point at (-12.5,-26.4), 0.6 m north of the baseline point to keep the 2 m connector clear of bin bounds.",
+              "accessibility": "Local grade is modeled; unresolved baseline entrance/plaza thresholds remain. No accessible route from ENTRY_GATE is asserted."
+            }
+          }
+        },
+        "replay_view": {
+          "mode": "replay",
+          "snapshot_id": 91,
+          "captured_at": "2026-10-19T20:42:43.945+00:00",
+          "source_timestamp": "2026-10-19T20:42:43.911+00:00",
+          "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "config_revision": "4b78a277348ad297488aeb6130a62cb0e47bb3c8d71f2fa00de79dc75fba724f",
+          "scene_matches_current": true,
+          "recorded_motion": null,
+          "live_tick": 37,
+          "shared_session": true,
+          "read_only": true,
+          "work_orders_recorded": true
+        },
+        "no_live_scenario_audit_or_replay_mutation": true
+      },
+      "elapsed_seconds": 0.3784666929859668
+    },
+    {
+      "check": "spatial_identities",
+      "started_at": "2026-10-19T20:42:44.177672+00:00",
+      "status": "pass",
+      "evidence": {
+        "identities": {
+          "baseline": {
+            "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+            "graph_version": "aster-circulation-v1",
+            "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+            "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+            "variant_layer_sha256": null,
+            "variant_evidence_sha256": null,
+            "verification": "verified_at_installation",
+            "snapshot_policy": "immutable_until_restart"
+          },
+          "dining_connection": {
+            "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+            "graph_version": "aster-circulation-v1+dining-connection-v1",
+            "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+            "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+            "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+            "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+            "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+            "verification": "verified_at_installation",
+            "snapshot_policy": "immutable_until_restart"
+          }
+        },
+        "file_sha256": {
+          "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+          "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+          "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+          "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111"
+        }
+      },
+      "elapsed_seconds": 0.01336196402553469
+    },
+    {
+      "check": "spatial_strict",
+      "started_at": "2026-10-19T20:42:44.193133+00:00",
+      "status": "pass",
+      "evidence": {
+        "strict_json_cases": 12,
+        "responses": [
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "literal_error",
+                  "loc": [
+                    "variant"
+                  ],
+                  "msg": "Input should be 'baseline' or 'dining_connection'"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "string_pattern_mismatch",
+                  "loc": [
+                    "origin"
+                  ],
+                  "msg": "String should match pattern '^[A-Za-z][A-Za-z0-9_-]*$'"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_query",
+              "message": "Unknown origin or destination"
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "bool_type",
+                  "loc": [
+                    "accessible_only"
+                  ],
+                  "msg": "Input should be a valid boolean"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "float_type",
+                  "loc": [
+                    "walking_speed_mps"
+                  ],
+                  "msg": "Input should be a valid number"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "float_type",
+                  "loc": [
+                    "walking_speed_mps"
+                  ],
+                  "msg": "Input should be a valid number"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "greater_than_equal",
+                  "loc": [
+                    "walking_speed_mps"
+                  ],
+                  "msg": "Input should be greater than or equal to 0.3"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "less_than_equal",
+                  "loc": [
+                    "walking_speed_mps"
+                  ],
+                  "msg": "Input should be less than or equal to 2.5"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "extra_forbidden",
+                  "loc": [
+                    "activate"
+                  ],
+                  "msg": "Extra inputs are not permitted"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_query",
+              "message": "Unknown blocked edge: UNKNOWN"
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "value_error",
+                  "loc": [],
+                  "msg": "Value error, Duplicate blocked edge IDs are not accepted"
+                }
+              ]
+            }
+          },
+          {
+            "detail": {
+              "code": "invalid_spatial_request",
+              "errors": [
+                {
+                  "type": "too_long",
+                  "loc": [
+                    "blocked_edges"
+                  ],
+                  "msg": "List should have at most 32 items after validation, not 33"
+                }
+              ]
+            }
+          }
+        ],
+        "raw_cases": [
+          {
+            "utc": "2026-10-19T20:42:44.253542+00:00",
+            "method": "POST",
+            "path": "/api/spatial/route",
+            "status": 422,
+            "request_bytes": 67,
+            "request_sha256": "8536e1fc066fa2da4e6348b2510789b51af71b8267bbe40eda46b0804f01b6c9",
+            "response": {
+              "detail": {
+                "code": "invalid_spatial_json",
+                "message": "Expected finite JSON with unique keys"
+              }
+            }
+          },
+          {
+            "utc": "2026-10-19T20:42:44.255028+00:00",
+            "method": "POST",
+            "path": "/api/spatial/route",
+            "status": 422,
+            "request_bytes": 74,
+            "request_sha256": "96495de706fe8e135a905bf43b08de8a52c11f7a76506db3f0ec8fa9e0f5e531",
+            "response": {
+              "detail": {
+                "code": "invalid_spatial_json",
+                "message": "Expected finite JSON with unique keys"
+              }
+            }
+          },
+          {
+            "utc": "2026-10-19T20:42:44.258986+00:00",
+            "method": "POST",
+            "path": "/api/spatial/route",
+            "status": 422,
+            "request_bytes": 1,
+            "request_sha256": "021fb596db81e6d02bf3d2586ee3981fe519f275c0ac9ca76bbcf2ebb4097d96",
+            "response": {
+              "detail": {
+                "code": "invalid_spatial_json",
+                "message": "Expected finite JSON with unique keys"
+              }
+            }
+          },
+          {
+            "utc": "2026-10-19T20:42:44.261184+00:00",
+            "method": "POST",
+            "path": "/api/spatial/route",
+            "status": 415,
+            "request_bytes": 53,
+            "request_sha256": "1f135f001eda82e8e0707d3e34016c92eae3220255a79801c2d96db52fb62a33",
+            "response": {
+              "detail": {
+                "code": "spatial_json_required",
+                "message": "Use application/json"
+              }
+            }
+          },
+          {
+            "utc": "2026-10-19T20:42:44.262679+00:00",
+            "method": "POST",
+            "path": "/api/spatial/route",
+            "status": 413,
+            "request_bytes": 16385,
+            "request_sha256": "0a6f21fda2a49df0c6671aacfe31136e24b4880f334ee89182752f35c2f0cb3d",
+            "response": {
+              "detail": {
+                "code": "spatial_request_too_large",
+                "message": "Spatial request exceeds 16 KiB"
+              }
+            }
+          }
+        ]
+      },
+      "elapsed_seconds": 0.06969531800132245
+    },
+    {
+      "check": "cleanup",
+      "started_at": "2026-10-19T20:42:44.265720+00:00",
+      "status": "pass",
+      "evidence": null,
+      "elapsed_seconds": 0.2536587350186892
+    }
+  ],
+  "failures": 0,
+  "gateway_starts": [
+    {
+      "pid": 2323729,
+      "started_at": "2026-10-19T20:42:25.052223+00:00",
+      "source_files": {
+        "backend/app.py": "141f3891dcbce8b370922f5f1511892005181d5b165d98ea483305a863a591b1",
+        "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+        "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+        "backend/workflows/api.py": "0c2231be6fa8828485e9fdbbcd6fdcc30c8af124f2d8d2a48945e70d05b4d7c8",
+        "backend/workflows/contracts.py": "fefefb8618b4b0dcdb465cebd6484963af9cd43a63d106c0a9bc9f4e4f2b6ab6",
+        "backend/workflows/service.py": "e0c3af8380398e3e7c130074adcba288ec8b1206897e915a57554afc82f497cf",
+        "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+        "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+        "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+        "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+        "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+        "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+      },
+      "health": {
+        "status": "ok",
+        "synthetic": true,
+        "database": "connected",
+        "source_identity": {
+          "source": "git",
+          "commit": "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+          "tree": "026e6d5fd5f715acdae5abd716ebd78382422c03",
+          "disposition": "dirty_git",
+          "verified": false,
+          "dirty": true,
+          "scene_path": "assets/park.usdc",
+          "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "mismatches": [],
+          "checked_at": "2026-10-19T20:42:25.393431+00:00",
+          "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+        },
+        "tick": 1
+      }
+    },
+    {
+      "pid": 2323741,
+      "started_at": "2026-10-19T20:42:26.220071+00:00",
+      "source_files": {
+        "backend/app.py": "141f3891dcbce8b370922f5f1511892005181d5b165d98ea483305a863a591b1",
+        "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+        "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+        "backend/workflows/api.py": "0c2231be6fa8828485e9fdbbcd6fdcc30c8af124f2d8d2a48945e70d05b4d7c8",
+        "backend/workflows/contracts.py": "fefefb8618b4b0dcdb465cebd6484963af9cd43a63d106c0a9bc9f4e4f2b6ab6",
+        "backend/workflows/service.py": "e0c3af8380398e3e7c130074adcba288ec8b1206897e915a57554afc82f497cf",
+        "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+        "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+        "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+        "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+        "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+        "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+      },
+      "health": {
+        "status": "ok",
+        "synthetic": true,
+        "database": "connected",
+        "source_identity": {
+          "source": "git",
+          "commit": "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+          "tree": "026e6d5fd5f715acdae5abd716ebd78382422c03",
+          "disposition": "dirty_git",
+          "verified": false,
+          "dirty": true,
+          "scene_path": "assets/park.usdc",
+          "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "mismatches": [],
+          "checked_at": "2026-10-19T20:42:26.521544+00:00",
+          "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+        },
+        "tick": 4
+      }
+    }
+  ],
+  "process_cleanup": {
+    "pid": 2323741,
+    "exit_code": -15,
+    "stopped_at": "2026-10-19T20:42:44.737490+00:00"
+  },
+  "additional_source_sha256": {
+    "backend/spatial/api.py": "8106e9ccab013c08af3064ffe0c58378f33cd014cd27fe972c48767e74e16f40",
+    "backend/spatial/__init__.py": "072ee96ab78443aa1bd871a28b5a99c3f747d1ba49cce9284f14cebf4b9bd02e",
+    "backend/spatial/contracts.py": "a570c0f5aedf69829d99f4d159ecfc534d8f4e76f3f917b9afc50dbdb634e381",
+    "backend/spatial/service.py": "5c6261edb865f593757f85a33d691b8c6041d9cf5af01f4a47bcecd522eaaca7",
+    "assets/variants/dining_connection.usda": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+    "assets/variants/dining_circulation_graph.json": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+    "assets/variants/dining_connection_evidence.json": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111"
+  },
+  "client_source_sha256": {
+    "incident_spatial_checks.py": "436c1bb4cbf8832a14816c6d4d8d50cd068a46ba429bb81d15be25108de15fb7",
+    "workflow_checks.py": "0f7e2b93015efe98000bb9433b346525794135c479c0d807d28f75b6dcf351f3",
+    "api_operator.py": "35da8d4373cb2994328460c646709d74c7454d36a4a9e4122c0ab207d9df4f7c"
+  },
+  "scope": "Independent actual HTTP and owned process lifecycle; isolated four databases; no backend imports or database manipulation. Old-model stored rationale remains a separate coverage limit."
+}

@@ -27,3 +27,23 @@ review their methods and results.
 The developer will stop temporary Horde compute after final collection while
 preserving the project workspace. Approximately 05:47 CEST is the target finish,
 with collection and shutdown following it.
+
+## Intermediate checkpoint — 19 October, approximately 20:40 UTC
+
+The fixed-source API run reported 11 completed cycles, zero failures and no paused
+intervals at 3,121.672 elapsed seconds. The GPU observer reported 105 samples, one
+failed sample, a maximum health-request latency of 42.57 ms and maximum observed
+frame age of 0.140393 seconds at 3,120.993 elapsed seconds. These are intermediate
+counts, not eight-hour results.
+
+The application was deliberately redeployed from `d3dca3d` to `64c8bfa` at
+20:34:38–20:34:40 UTC. The 30-second observer did not sample an additional failure;
+this does not establish uninterrupted availability between samples. The fixed
+API run continues on its original source. Separate GPU browser acceptance of
+`64c8bfa` passed twelve workflow checks, including actual lost responses, reload
+recovery, source staleness and duplicate-work-order prevention.
+
+A GPU resource sampler began later, at 20:10:39 UTC, recording once per minute.
+It therefore cannot support a full eight-hour resource-usage claim. Independent
+static native captures may temporarily add another rendering process; those are
+development activity, not load attributable to the application alone.

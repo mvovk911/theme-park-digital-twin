@@ -1,0 +1,13 @@
+{
+  "scope": "Actual isolated local browser/API acceptance of uncommitted direct-incident changes based on 64c8bfa; not GPU acceptance",
+  "sha256": {
+    "backend/workflows/api.py": "0c2231be6fa8828485e9fdbbcd6fdcc30c8af124f2d8d2a48945e70d05b4d7c8",
+    "backend/workflows/contracts.py": "fefefb8618b4b0dcdb465cebd6484963af9cd43a63d106c0a9bc9f4e4f2b6ab6",
+    "backend/workflows/service.py": "e0c3af8380398e3e7c130074adcba288ec8b1206897e915a57554afc82f497cf",
+    "frontend/app.js": "9c6aee28119d3fe6353c203db040b8c5c1e45001378c709b8b1dd6223d1629f6",
+    "frontend/index.html": "1a49e633e931d1b79dac30b8755d7aa964457cbb0176f5f01bc19cc9575ae2b4",
+    "frontend/workflow.js": "5488c69fa0c4ee666f7c89a63c2ad8034bec09abc9b0e5b2b3506bcc13a63673",
+    "frontend/workflow.css": "3eb62c54578b0fd7139450bbd762fe49312a3bc50c1b70b063e4f7faf3e68d17",
+    "tests/test_workflow_browser.py": "6630171a558dfdf87372d3f890d685cbfe583a95e78b0fa26f760569f49205fd"
+  }
+}

@@ -243,6 +243,10 @@
     $('asset-staff').title = (asset.staff?.qualifications || []).map(title).join(', ');
     const deps = (asset.dependencies || []).map(id => `<button class="dependency-chip" data-asset="${esc(id)}" title="Inspect dependency">${esc(assetById(id)?.name || id)}</button>`).join('');
     if ($('asset-dependencies').innerHTML !== deps) $('asset-dependencies').innerHTML = deps;
+    const maintenanceEntry = $('prepare-maintenance');
+    maintenanceEntry.hidden = !['RIDE_COASTER','RIDE_WHEEL','POWER_HUB','WATER_PLANT'].includes(asset.id);
+    maintenanceEntry.dataset.workflowPrepare = asset.id;
+    maintenanceEntry.disabled = actionPending || replaying() || viewPending;
     const actions = availableActions(asset);
     const signature = `${selectedId}:${actions.join(',')}`;
     if (renderedActions !== signature) {
@@ -337,7 +341,7 @@
       $('alert-actions').innerHTML = normal ? '' : '<button class="brief-action" data-action="reset">Reset simulation ↗</button>';
       return;
     }
-    $('operations-brief').innerHTML = alerts.slice(0, 3).map(alert => `<div class="brief-alert"><h3><span class="alert-severity ${esc(alert.severity)}"></span>${esc(alert.title)} ${assetById(alert.asset_id) ? `<button class="inspect-alert" data-asset="${esc(alert.asset_id)}">Inspect ↗</button>` : ''}</h3><p>${esc(alert.message)}</p><small class="alert-provenance">${esc(alertProvenance(alert))}</small></div>`).join('');
+    $('operations-brief').innerHTML = alerts.slice(0, 3).map(alert => `<div class="brief-alert"><h3><span class="alert-severity ${esc(alert.severity)}"></span>${esc(alert.title)} ${assetById(alert.asset_id) ? `<button class="inspect-alert" data-asset="${esc(alert.asset_id)}">Inspect ↗</button>` : ''}${alert.recommended_action === 'dispatch_maintenance' ? `<button class="inspect-alert" data-workflow-prepare="${esc(alert.asset_id)}" ${replaying() || viewPending ? 'disabled' : ''}>Prepare maintenance ↗</button>` : ''}</h3><p>${esc(alert.message)}</p><small class="alert-provenance">${esc(alertProvenance(alert))}</small></div>`).join('');
     const seen = new Set();
     $('alert-actions').innerHTML = alerts.filter(alert => {
       const signature = `${alert.recommended_action}:${alert.asset_id}`;

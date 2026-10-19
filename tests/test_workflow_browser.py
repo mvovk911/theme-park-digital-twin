@@ -13,7 +13,7 @@ from backend.connectors import ConnectorRuntime, ParkReadModel
 from backend.planning import PlanningRequest, simulate
 from backend.planning.evidence import EvidenceStore, make_bundle
 from backend.simulator import ParkSimulator
-from backend.workflows.contracts import CreateProposal, ExecuteProposal, WorkflowError
+from backend.workflows.contracts import CreateProposal, CreateIncident, ExecuteProposal, WorkflowError
 from backend.workflows.service import WorkflowService, capabilities
 from backend.workflows.store import WorkflowStore
 
@@ -44,7 +44,7 @@ def ui(browser,tmp_path):
         path=route.request.url.removeprefix('http://workflow.test')
         try:
             if path=='/api/workflows/capabilities':return route.fulfill(json=capabilities())
-            if path.startswith('/api/workflows/proposals'):
+            if path.startswith('/api/workflows/proposals') or path=='/api/workflows/incidents':
                 if route.request.method=='POST':
                     payload=route.request.post_data_json;config['calls'].append((path,payload))
                     if config['mode']=='replay':raise WorkflowError('recorded_view','Return to live before creating or executing workflow proposals')
@@ -52,7 +52,7 @@ def ui(browser,tmp_path):
                         value=service.execute(path.split('/')[-2],ExecuteProposal(**payload))
                         if config['drop_execute']:config['drop_execute']=False;return route.abort()
                     else:
-                        value=service.create(CreateProposal(**payload))
+                        value=service.create_incident(CreateIncident(**payload)) if path=='/api/workflows/incidents' else service.create(CreateProposal(**payload))
                         if config['drop_create']:config['drop_create']=False;return route.abort()
                 elif '?' in path:value=store.list()
                 else:value={'proposal':store.get(path.rsplit('/',1)[-1])}
@@ -69,7 +69,7 @@ def ui(browser,tmp_path):
     def emit():
         page.evaluate('(value)=>document.dispatchEvent(new CustomEvent("park:state",{detail:value}))',observation)
         page.evaluate('(value)=>document.dispatchEvent(new CustomEvent("park:planning-evidence",{detail:value}))',context)
-    page.goto('http://workflow.test');emit();page.wait_for_function('!document.getElementById("workflow-create").disabled')
+    page.goto('http://workflow.test');emit();page.select_option('#workflow-origin','saved_plan');page.wait_for_function('!document.getElementById("workflow-create").disabled')
     config.update(page=page,park=park,store=store,observation=observation,context=context,emit=emit,connectors=connectors,model=model)
     try:yield config
     finally:
@@ -105,6 +105,8 @@ def test_lost_create_response_retries_same_payload_after_reload(ui):
     ui['drop_create']=True;page=ui['page'];page.click('#workflow-create')
     page.wait_for_function('document.getElementById("workflow-message").textContent.includes("Acceptance unknown")')
     first=ui['calls'][0][1];assert ui['store'].list()['total']==1
+    # Old saved-plan browser records have no endpoint; recovery keeps that route.
+    page.evaluate("()=>{let r=JSON.parse(localStorage.getItem('aster.maintenance.retry.v1'));delete r.create_endpoint;localStorage.setItem('aster.maintenance.retry.v1',JSON.stringify(r));}")
     page.reload();ui['emit']();page.wait_for_function('!document.getElementById("workflow-create").disabled');create(ui)
     assert ui['calls'][1][1]==first
     assert ui['store'].list()['total']==1 and count_orders(ui)==0
@@ -138,7 +140,9 @@ def test_server_expiry_blocks_dispatch_even_if_browser_clock_has_not_advanced(ui
     assert page.locator('#workflow-new').is_enabled()
 
 
-def test_replay_disables_writes_but_proposal_get_stays_available(ui):
+@pytest.mark.parametrize('direct',[False,True])
+def test_replay_disables_writes_but_proposal_get_stays_available(ui,direct):
+    if direct:incident(ui)
     create(ui);ui['mode']='replay';ui['observation']['mode']='replay';ui['emit']();page=ui['page']
     assert page.locator('#workflow-execute').is_disabled()
     before=len(ui['calls']);page.click('#workflow-recover');page.wait_for_function('document.getElementById("workflow-message").textContent.includes("reopened")')
@@ -151,7 +155,9 @@ def test_unsupported_actions_have_no_create_executor(ui):
     assert 'No supported action' in ui['page'].locator('#workflow-action').inner_text()
 
 
-def test_stale_observations_block_dispatch_then_retry_retains_execution_identity(ui):
+@pytest.mark.parametrize('direct',[False,True])
+def test_stale_observations_block_dispatch_then_retry_retains_execution_identity(ui,direct):
+    if direct:incident(ui)
     create(ui)
     state=ui['model'].snapshot()
     source=next(a for a in state['assets'] if a['id']=='RIDE_COASTER')['data_quality']['fields']['status']['source_id']
@@ -192,3 +198,67 @@ def test_recovered_receipt_does_not_refresh_stale_asset_observation(ui):
     assert 'quality good' not in page.locator('.workflow-asset-evidence').inner_text()
     assert 'does not refresh' in page.locator('.workflow-asset-evidence').inner_text()
     assert count_orders(ui)==1
+
+
+def incident(ui):
+    page=ui['page']
+    page.evaluate('()=>document.dispatchEvent(new CustomEvent("park:planning-evidence",{detail:null}))')
+    page.select_option('#workflow-origin','current_incident')
+    page.select_option('#workflow-incident-asset','RIDE_COASTER')
+
+
+def test_current_incident_needs_no_forecast_and_freezes_source_evidence(ui):
+    incident(ui);create(ui);page=ui['page']
+    assert ui['calls'][0][0]=='/api/workflows/incidents'
+    assert 'bundle_id' not in ui['calls'][0][1] and 'rationale_bundle_id' not in ui['calls'][0][1]
+    proposal=ui['store'].list()['items'][0]
+    assert proposal['origin']=='current_incident' and proposal['precondition_scope']=='target'
+    assert count_orders(ui)==0
+    assert page.locator('.workflow-observations article').count()==3
+    assert 'global scenario is not an approval condition' in page.locator('.workflow-observations').inner_text()
+    assert 'ride_scada' in page.locator('.workflow-observations').inner_text()
+    page.click('#workflow-execute');page.wait_for_function('document.getElementById("workflow-proposal").textContent.includes("Work order accepted")')
+    assert count_orders(ui)==1
+    assert 'Observed Closed · quality good' in page.locator('.workflow-asset-evidence').inner_text()
+
+
+def test_incident_create_loss_reloads_same_endpoint_payload_and_expiry(ui):
+    incident(ui);ui['drop_create']=True;page=ui['page'];page.click('#workflow-create')
+    page.wait_for_function('document.getElementById("workflow-message").textContent.includes("Acceptance unknown")')
+    first=ui['calls'][0];original=ui['store'].list()['items'][0]
+    page.reload();ui['emit']();page.wait_for_function('!document.getElementById("workflow-create").disabled');create(ui)
+    assert ui['calls'][1]==first and first[0]=='/api/workflows/incidents'
+    latest=ui['store'].list()['items'][0]
+    assert latest['id']==original['id'] and latest['expires_at']==original['expires_at']
+    assert ui['store'].list()['total']==1 and count_orders(ui)==0
+
+
+def test_incident_optional_rationale_is_explicit(ui):
+    page=ui['page'];page.select_option('#workflow-origin','current_incident');page.select_option('#workflow-incident-asset','RIDE_COASTER')
+    assert not page.locator('#workflow-rationale').is_checked()
+    page.check('#workflow-rationale');create(ui)
+    assert ui['calls'][0][1]['rationale_bundle_id']==ui['context']['bundle_id']
+    assert ui['store'].list()['items'][0]['evidence_refs']['historical_evidence_is_authority'] is False
+
+
+def test_live_asset_entry_prepares_without_automatic_write(ui):
+    page=ui['page']
+    # app.js sets this entry from the selected inspector asset; the isolated UI
+    # harness supplies that context without a renderer or live app polling.
+    page.evaluate('()=>{const b=document.getElementById("prepare-maintenance");document.getElementById("asset-content").hidden=false;b.hidden=false;b.disabled=false;b.dataset.workflowPrepare="RIDE_COASTER";}')
+    page.click('#prepare-maintenance')
+    assert page.locator('#workflow-origin').input_value()=='current_incident'
+    assert page.locator('#workflow-incident-asset').input_value()=='RIDE_COASTER'
+    assert not ui['calls'] and count_orders(ui)==0
+    assert 'No proposal or work order has been created' in page.locator('#workflow-message').inner_text()
+
+
+def test_incident_execution_response_loss_uses_existing_recovery(ui):
+    incident(ui);create(ui);ui['drop_execute']=True;page=ui['page'];page.click('#workflow-execute')
+    page.wait_for_function('document.getElementById("workflow-message").textContent.includes("Acceptance unknown")')
+    previous=ui['calls'][-1];count=len(ui['calls']);page.reload();ui['emit']()
+    page.wait_for_function('document.getElementById("workflow-proposal").textContent.includes("Work order accepted")')
+    assert len(ui['calls'])==count
+    assert page.locator('#workflow-origin').input_value()=='current_incident'
+    page.click('#workflow-execute');page.wait_for_function('document.getElementById("workflow-message").textContent.includes("no duplicate")')
+    assert ui['calls'][-1]==previous and count_orders(ui)==1

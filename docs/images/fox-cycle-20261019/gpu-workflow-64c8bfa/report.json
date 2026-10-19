@@ -1,0 +1,381 @@
+{
+  "mode": "actual Horde API/browser and L40 OVRTX deployment; real network responses deliberately dropped for recovery tests",
+  "checks": [
+    "actual_create_response_loss_preserves_identity",
+    "create_retry_after_reload_same_proposal_same_expiry",
+    "proposal_does_not_execute",
+    "actual_execute_response_loss_blocks_new_identity",
+    "GET_recovery_after_reload_no_auto_execution",
+    "same_execution_key_one_work_order_still_closed",
+    "recovered_receipt_separates_stale_asset_observation_from_fresh_work_order_readback",
+    "replay_GET_recovery_without_write",
+    "intervening_work_order_rejects_execution",
+    "existing_order_id_and_inspection_path_visible",
+    "existing_order_blocks_duplicate_proposal_with_context",
+    "mobile_no_overflow"
+  ],
+  "health": {
+    "status": "ok",
+    "synthetic": true,
+    "database": "connected",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+      "tree": "026e6d5fd5f715acdae5abd716ebd78382422c03",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-19T20:34:39.995375+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "tick": 65959
+  },
+  "renderer": {
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+      "tree": "026e6d5fd5f715acdae5abd716ebd78382422c03",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-19T20:34:39.974531+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "ready": true,
+    "fps": 12.5,
+    "frame": 1017,
+    "width": 1280,
+    "height": 720,
+    "selected_asset": null,
+    "camera": {
+      "target": [
+        0.0,
+        0.0,
+        3.0
+      ],
+      "radius": 285.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "error": null,
+    "projected_assets": [
+      {
+        "id": "RIDE_COASTER",
+        "x": 0.4487180575868541,
+        "y": 0.356342868478316,
+        "visible": true
+      },
+      {
+        "id": "RIDE_WHEEL",
+        "x": 0.6399573795827305,
+        "y": 0.4215226676980445,
+        "visible": true
+      },
+      {
+        "id": "SHOW_ARENA",
+        "x": 0.5634555108098915,
+        "y": 0.3649501438407152,
+        "visible": true
+      },
+      {
+        "id": "FOOD_COURT",
+        "x": 0.3825456752660431,
+        "y": 0.5203956479846145,
+        "visible": true
+      },
+      {
+        "id": "POWER_HUB",
+        "x": 0.7282444678855249,
+        "y": 0.47558171902408863,
+        "visible": true
+      },
+      {
+        "id": "WATER_PLANT",
+        "x": 0.44489208174713185,
+        "y": 0.2703738480703259,
+        "visible": true
+      },
+      {
+        "id": "HOTEL",
+        "x": 0.30474504722258755,
+        "y": 0.4504515692328166,
+        "visible": true
+      },
+      {
+        "id": "PARKING",
+        "x": 0.5778831027685586,
+        "y": 0.7490013395095128,
+        "visible": true
+      },
+      {
+        "id": "FIRST_AID",
+        "x": 0.47896026101169253,
+        "y": 0.6460616671919789,
+        "visible": true
+      },
+      {
+        "id": "RESTROOMS",
+        "x": 0.6190476190849854,
+        "y": 0.6695282553083006,
+        "visible": true
+      },
+      {
+        "id": "WEATHER_STATION",
+        "x": 0.6122996720038251,
+        "y": 0.40276588084719833,
+        "visible": true
+      },
+      {
+        "id": "ENTRY_GATE",
+        "x": 0.3896184004396046,
+        "y": 0.6639615431994512,
+        "visible": true
+      }
+    ],
+    "engine": "NVIDIA OVRTX + OVStage",
+    "phase": "rendering",
+    "layer": "operations",
+    "api_connected": true,
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "ride_motion": {
+      "coaster_phase": 0.9431915394074862,
+      "wheel_angle": 13.058247144818305
+    },
+    "motion_policy": {
+      "RIDE_COASTER": {
+        "advance": true,
+        "reason": "current_operating_status",
+        "status_quality": "good"
+      },
+      "RIDE_WHEEL": {
+        "advance": true,
+        "reason": "current_operating_status",
+        "status_quality": "good"
+      }
+    },
+    "ride_status": {
+      "RIDE_COASTER": "operational",
+      "RIDE_WHEEL": "operational"
+    },
+    "source_timestamp": "2026-10-19T20:36:03.836+00:00",
+    "source_tick": 65958,
+    "accepted_state_revision": "ebda72f447be944de4cdfac94c049fa55086ad0a4d8fd06e677c5743facb3673",
+    "camera_token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+    "view_mode": "live",
+    "snapshot_id": null,
+    "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "pose_source": "live",
+    "rendered_at": "2026-10-19T20:36:05.051+00:00",
+    "frame_age_seconds": 0.018,
+    "source_age_seconds": 1.233502
+  },
+  "frame_headers": {
+    "x-frame-number": "1025",
+    "x-frame-camera-token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+    "x-frame-rendered-at": "2026-10-19T20:36:05.692+00:00",
+    "x-frame-age-seconds": "0.037",
+    "x-source-tick": "65961",
+    "x-source-revision": "ef263af3e72e7e31e30cd9c2a0a8162556af92849c04b15bef52abe986fe399a",
+    "x-frame-context": "{\"camera\":{\"target\":[0.0,0.0,3.0],\"radius\":285.0,\"yaw\":-0.9424777960769379,\"pitch\":0.6981317007977318},\"projected_assets\":[{\"id\":\"RIDE_COASTER\",\"x\":0.4487180575868541,\"y\":0.356342868478316,\"visible\":true},{\"id\":\"RIDE_WHEEL\",\"x\":0.6399573795827305,\"y\":0.4215226676980445,\"visible\":true},{\"id\":\"SHOW_ARENA\",\"x\":0.5634555108098915,\"y\":0.3649501438407152,\"visible\":true},{\"id\":\"FOOD_COURT\",\"x\":0.3825456752660431,\"y\":0.5203956479846145,\"visible\":true},{\"id\":\"POWER_HUB\",\"x\":0.7282444678855249,\"y\":0.47558171902408863,\"visible\":true},{\"id\":\"WATER_PLANT\",\"x\":0.44489208174713185,\"y\":0.2703738480703259,\"visible\":true},{\"id\":\"HOTEL\",\"x\":0.30474504722258755,\"y\":0.4504515692328166,\"visible\":true},{\"id\":\"PARKING\",\"x\":0.5778831027685586,\"y\":0.7490013395095128,\"visible\":true},{\"id\":\"FIRST_AID\",\"x\":0.47896026101169253,\"y\":0.6460616671919789,\"visible\":true},{\"id\":\"RESTROOMS\",\"x\":0.6190476190849854,\"y\":0.6695282553083006,\"visible\":true},{\"id\":\"WEATHER_STATION\",\"x\":0.6122996720038251,\"y\":0.40276588084719833,\"visible\":true},{\"id\":\"ENTRY_GATE\",\"x\":0.3896184004396046,\"y\":0.6639615431994512,\"visible\":true}],\"width\":1280,\"height\":720}",
+    "x-source-timestamp": "2026-10-19T20:36:05.192+00:00",
+    "x-source-age-seconds": "0.537169",
+    "x-view-mode": "live",
+    "x-scene-revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "x-pose-source": "live",
+    "x-renderer-ready": "true"
+  },
+  "frame_sha256": "a5c36ad062b473957bfef15355248d0715921a3e3a0d6d639e7813d02553eaed",
+  "bundle_id": "95371cdcfb34bfef9b1b64591d3c5e65eac8aed67589a11a0dc1499dd178b648",
+  "proposal_id": "e3037a2da5704101a874f9a834c01264",
+  "receipt_readback": {
+    "action": {
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER"
+    },
+    "command_request_id": "proposal:e3037a2da5704101a874f9a834c01264",
+    "create_request_id": "create:830aa469-41f8-466b-8cfb-2dab90afb07c",
+    "created_at": "2026-10-19T20:36:05.970138+00:00",
+    "creation_state_revision": "4449e8978f3756a530a5c0e63586f5e601d83b72a035d8d6cf21ac84160f9188",
+    "evidence_refs": {
+      "action_index": 0,
+      "branch_id": "simple_rule",
+      "bundle_id": "95371cdcfb34bfef9b1b64591d3c5e65eac8aed67589a11a0dc1499dd178b648",
+      "historical_evidence_is_authority": false,
+      "plan_id": "47bd682c1007a30722f1ad7825993da746ed68dc2ff85923d7b85b81995e9d40"
+    },
+    "execution_request_id": "execute:8dfb14ed-fd23-4d5c-94e2-911ba63484ce",
+    "execution_scope": "synthetic_dispatch_only",
+    "expires_at": "2026-10-19T20:38:05.970138+00:00",
+    "id": "e3037a2da5704101a874f9a834c01264",
+    "physical_effect": false,
+    "preconditions": {
+      "asset_id": "RIDE_COASTER",
+      "asset_type": "ride",
+      "field_sources": {
+        "maintenance.inspection_status": "cmms",
+        "maintenance.open_work_orders": "cmms",
+        "status": "ride_scada"
+      },
+      "inspection_status": "review_required",
+      "observed_open_work_orders": 0,
+      "open_work_order_ids": [],
+      "scenario": "ride_closure",
+      "status": "closed"
+    },
+    "readback": {
+      "work_order": {
+        "id": 8,
+        "asset_id": "RIDE_COASTER",
+        "status": "open",
+        "created_at": "2026-10-19T20:36:06.525+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      "observed_at": "2026-10-19T20:36:07.007112+00:00",
+      "asset_status": "closed",
+      "source": "synthetic_work_order_database",
+      "asset_status_evidence": {
+        "value": "closed",
+        "quality": "good",
+        "source_id": "ride_scada",
+        "source_timestamp": "2026-10-19T20:36:06.955000+00:00",
+        "synthetic": true,
+        "stale_after_seconds": 5.0
+      },
+      "source_scope": "work_order_only; asset status retains its independent observation provenance",
+      "physical_completion": false
+    },
+    "receipt": {
+      "acknowledgement": "accepted",
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER",
+      "id": 74,
+      "lifecycle": "work_order_open",
+      "message": "Synthetic work order #8 created and qualified maintenance assigned.",
+      "physical_effect": false,
+      "request_id": "proposal:e3037a2da5704101a874f9a834c01264",
+      "synthetic": true,
+      "target": {
+        "asset_id": "RIDE_COASTER",
+        "scope": "asset"
+      },
+      "timestamp": "2026-10-19T20:36:06.525+00:00",
+      "work_order_id": 8
+    },
+    "status": "accepted_workflow_not_repair",
+    "synthetic": true
+  },
+  "stale_receipt_readback": {
+    "action": {
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER"
+    },
+    "command_request_id": "proposal:e3037a2da5704101a874f9a834c01264",
+    "create_request_id": "create:830aa469-41f8-466b-8cfb-2dab90afb07c",
+    "created_at": "2026-10-19T20:36:05.970138+00:00",
+    "creation_state_revision": "4449e8978f3756a530a5c0e63586f5e601d83b72a035d8d6cf21ac84160f9188",
+    "evidence_refs": {
+      "action_index": 0,
+      "branch_id": "simple_rule",
+      "bundle_id": "95371cdcfb34bfef9b1b64591d3c5e65eac8aed67589a11a0dc1499dd178b648",
+      "historical_evidence_is_authority": false,
+      "plan_id": "47bd682c1007a30722f1ad7825993da746ed68dc2ff85923d7b85b81995e9d40"
+    },
+    "execution_request_id": "execute:8dfb14ed-fd23-4d5c-94e2-911ba63484ce",
+    "execution_scope": "synthetic_dispatch_only",
+    "expires_at": "2026-10-19T20:38:05.970138+00:00",
+    "id": "e3037a2da5704101a874f9a834c01264",
+    "physical_effect": false,
+    "preconditions": {
+      "asset_id": "RIDE_COASTER",
+      "asset_type": "ride",
+      "field_sources": {
+        "maintenance.inspection_status": "cmms",
+        "maintenance.open_work_orders": "cmms",
+        "status": "ride_scada"
+      },
+      "inspection_status": "review_required",
+      "observed_open_work_orders": 0,
+      "open_work_order_ids": [],
+      "scenario": "ride_closure",
+      "status": "closed"
+    },
+    "readback": {
+      "work_order": {
+        "id": 8,
+        "asset_id": "RIDE_COASTER",
+        "status": "open",
+        "created_at": "2026-10-19T20:36:06.525+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      "observed_at": "2026-10-19T20:36:13.409057+00:00",
+      "asset_status": "closed",
+      "source": "synthetic_work_order_database",
+      "asset_status_evidence": {
+        "value": "closed",
+        "quality": "stale",
+        "source_id": "ride_scada",
+        "source_timestamp": "2026-10-19T20:36:06.955000+00:00",
+        "synthetic": true,
+        "stale_after_seconds": 5.0
+      },
+      "source_scope": "work_order_only; asset status retains its independent observation provenance",
+      "physical_completion": false
+    },
+    "receipt": {
+      "acknowledgement": "accepted",
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER",
+      "id": 74,
+      "lifecycle": "work_order_open",
+      "message": "Synthetic work order #8 created and qualified maintenance assigned.",
+      "physical_effect": false,
+      "request_id": "proposal:e3037a2da5704101a874f9a834c01264",
+      "synthetic": true,
+      "target": {
+        "asset_id": "RIDE_COASTER",
+        "scope": "asset"
+      },
+      "timestamp": "2026-10-19T20:36:06.525+00:00",
+      "work_order_id": 8
+    },
+    "status": "accepted_workflow_not_repair",
+    "synthetic": true
+  },
+  "intervening_work_order": 9,
+  "changed_conditions_error": {
+    "detail": {
+      "code": "proposal_preconditions_changed",
+      "message": "Proposal conditions changed; inspect the existing work order",
+      "context": {
+        "asset_id": "RIDE_COASTER",
+        "asset_detail_url": "/api/assets/RIDE_COASTER",
+        "current_work_order_ids": [
+          9
+        ],
+        "next_step": "inspect_existing_work_order",
+        "changed_fields": {
+          "observed_open_work_orders": {
+            "proposed": 0,
+            "current": 1
+          },
+          "open_work_order_ids": {
+            "proposed": [],
+            "current": [
+              9
+            ]
+          }
+        }
+      }
+    }
+  },
+  "page_errors": [],
+  "status": "passed",
+  "cleanup": "Horde service live/normal; paused source restored; work orders closed by explicit test reset"
+}

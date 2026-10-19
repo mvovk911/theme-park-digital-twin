@@ -1,0 +1,96 @@
+{
+  "review_report_sha256": "9aa81fe10686852762dfd5c4051660f9187b1729fd4110a11dfd24173fa380c8",
+  "http_journal_sha256": "97bc0eaf552d43b27d8f89d9625ac41b93ecf0a7a55fb98c553f58d1e267b179",
+  "gateway_starts": [
+    {
+      "pid": 2323729,
+      "started_at": "2026-10-19T20:42:25.052223+00:00",
+      "source_files": {
+        "backend/app.py": "141f3891dcbce8b370922f5f1511892005181d5b165d98ea483305a863a591b1",
+        "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+        "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+        "backend/workflows/api.py": "0c2231be6fa8828485e9fdbbcd6fdcc30c8af124f2d8d2a48945e70d05b4d7c8",
+        "backend/workflows/contracts.py": "fefefb8618b4b0dcdb465cebd6484963af9cd43a63d106c0a9bc9f4e4f2b6ab6",
+        "backend/workflows/service.py": "e0c3af8380398e3e7c130074adcba288ec8b1206897e915a57554afc82f497cf",
+        "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+        "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+        "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+        "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+        "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+        "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+      },
+      "health": {
+        "status": "ok",
+        "synthetic": true,
+        "database": "connected",
+        "source_identity": {
+          "source": "git",
+          "commit": "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+          "tree": "026e6d5fd5f715acdae5abd716ebd78382422c03",
+          "disposition": "dirty_git",
+          "verified": false,
+          "dirty": true,
+          "scene_path": "assets/park.usdc",
+          "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "mismatches": [],
+          "checked_at": "2026-10-19T20:42:25.393431+00:00",
+          "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+        },
+        "tick": 1
+      }
+    },
+    {
+      "pid": 2323741,
+      "started_at": "2026-10-19T20:42:26.220071+00:00",
+      "source_files": {
+        "backend/app.py": "141f3891dcbce8b370922f5f1511892005181d5b165d98ea483305a863a591b1",
+        "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+        "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+        "backend/workflows/api.py": "0c2231be6fa8828485e9fdbbcd6fdcc30c8af124f2d8d2a48945e70d05b4d7c8",
+        "backend/workflows/contracts.py": "fefefb8618b4b0dcdb465cebd6484963af9cd43a63d106c0a9bc9f4e4f2b6ab6",
+        "backend/workflows/service.py": "e0c3af8380398e3e7c130074adcba288ec8b1206897e915a57554afc82f497cf",
+        "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+        "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+        "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+        "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+        "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+        "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+      },
+      "health": {
+        "status": "ok",
+        "synthetic": true,
+        "database": "connected",
+        "source_identity": {
+          "source": "git",
+          "commit": "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+          "tree": "026e6d5fd5f715acdae5abd716ebd78382422c03",
+          "disposition": "dirty_git",
+          "verified": false,
+          "dirty": true,
+          "scene_path": "assets/park.usdc",
+          "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "mismatches": [],
+          "checked_at": "2026-10-19T20:42:26.521544+00:00",
+          "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+        },
+        "tick": 4
+      }
+    }
+  ],
+  "additional_source_sha256": {
+    "backend/spatial/api.py": "8106e9ccab013c08af3064ffe0c58378f33cd014cd27fe972c48767e74e16f40",
+    "backend/spatial/__init__.py": "072ee96ab78443aa1bd871a28b5a99c3f747d1ba49cce9284f14cebf4b9bd02e",
+    "backend/spatial/contracts.py": "a570c0f5aedf69829d99f4d159ecfc534d8f4e76f3f917b9afc50dbdb634e381",
+    "backend/spatial/service.py": "5c6261edb865f593757f85a33d691b8c6041d9cf5af01f4a47bcecd522eaaca7",
+    "assets/variants/dining_connection.usda": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+    "assets/variants/dining_circulation_graph.json": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+    "assets/variants/dining_connection_evidence.json": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111"
+  },
+  "client_source_sha256": {
+    "incident_spatial_checks.py": "436c1bb4cbf8832a14816c6d4d8d50cd068a46ba429bb81d15be25108de15fb7",
+    "workflow_checks.py": "0f7e2b93015efe98000bb9433b346525794135c479c0d807d28f75b6dcf351f3",
+    "api_operator.py": "35da8d4373cb2994328460c646709d74c7454d36a4a9e4122c0ab207d9df4f7c"
+  },
+  "working_tree_evidence": true,
+  "note": "Source bytes identify the candidate actually tested. Root may commit these files later; this report makes no clean-commit claim."
+}
