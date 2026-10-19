@@ -1,5 +1,35 @@
 # Project progress and review gallery
 
+**19 October, second checkpoint — bounded dispatch and spatial design review.**
+The new [maintenance workflow](bounded-maintenance-workflow.md) passed an
+[independent HTTP review](experiments/workflow-api-review.md): ten check groups,
+including actual expiry, concurrent retries, lost responses and process restart.
+The closed ride stays closed after dispatch. A subsequent usability fix identifies
+an intervening work order instead of telling the operator to recreate a proposal;
+20 implementation-level workflow tests cover the updated contract.
+
+The [circulation audit](circulation.md) exposed disconnected paving, queue rails,
+a utility fence and unresolved entry thresholds. A separate
+[dining connection design](dining-design-variant.md) changes one unreachable plaza
+entrance into a 40.852 m authored route, while preserving the original assets.
+Thirty-two CPU checks cover the baseline graph and variant, with separate actual
+USD inspection evidence. The repository suite passes 301 tests; two browser modules
+are skipped in that environment, while the dedicated browser environment passes
+21 tests and twelve actual local API/browser checks.
+
+[Workflow browser report](images/fox-cycle-20261019/workflow-ui/report.json)
+
+![A fresh work-order readback keeps stale ride telemetry distinct](images/fox-cycle-20261019/workflow-ui/accepted-stale-source.png)
+
+The eight-hour observation is still running. A separate actual L40/OVRTX capture
+now shows the baseline route audit; it carries no live telemetry.
+
+![Native OVRTX circulation audit](images/fox-cycle-20261019/circulation-baseline/plan-view.png)
+
+[Native capture report](images/fox-cycle-20261019/circulation-baseline/report.json).
+The dining variant still needs its own GPU comparison evidence.
+
+
 **19 October 2026 — FOX-inspired decision planning and an eight-hour evaluation cycle.**
 The new Decision Lab compares frozen canonical observations over 15–120 minutes,
 with do-nothing/simple-rule alternatives, action delays, finite reserve staffing,

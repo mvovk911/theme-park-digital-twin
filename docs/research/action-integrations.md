@@ -95,10 +95,12 @@ canonical operations until a park location and source policy are configured.
 ## First execution slice and pilot value
 
 The first bounded execution workflow is a **synthetic maintenance-dispatch request**
-from a saved comparison. Its implementation is being developed separately from
-numerical forecasting. It must expire, recheck current relevant state, reject replay
-and stale inputs, retain a durable request ID, recover an accepted receipt after a
-lost acknowledgement, and verify the work-order record without reopening the ride.
+from a saved comparison. The [implemented workflow](../bounded-maintenance-workflow.md)
+is separate from numerical forecasting. Proposals expire and recheck current
+relevant state, reject replay and stale inputs, retain a durable request ID, recover
+an accepted receipt after a lost acknowledgement, and verify the work-order record
+without reopening the ride. Independent HTTP and browser acceptance are recorded
+separately from its in-process tests.
 Other actions remain outside this new executor until their resource/effect contracts
 are equally explicit. The older instant synthetic demo buttons are not validation
 of delayed physical forecasts.

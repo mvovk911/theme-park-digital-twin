@@ -1,0 +1,59 @@
+{
+  "kind": "static_ovstage_ovrtx_circulation_design_review",
+  "started_at": "2026-10-19T20:21:56.551284+00:00",
+  "live_telemetry": false,
+  "synthetic": true,
+  "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+  "overlay_sha256": "f12ea6020b14d4dc7f1e88a0d3a19e9644360cf7c45cfe7a89c51d1bda993e76",
+  "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+  "script_sha256": "32e6d64eee285691582567c91ef1cc4367079d6bb5e0fd0c038fabe626ae43dc",
+  "ovstage_version": "0.3.0.1791986420",
+  "ovrtx_version": "0.6.0.1791947691",
+  "legend": {
+    "cyan": "authored partial circulation",
+    "amber_dashes": "missing connection",
+    "red_dashes": "known obstruction",
+    "yellow_sphere": "authored entrance or approach"
+  },
+  "limitations": "Partial authored pedestrian circulation and explicitly excluded connections. Approaches do not imply ride boarding or operation.",
+  "captures": [
+    {
+      "file": "overview.png",
+      "sha256": "af9f2cd7050dfb78f95a912be295e61241452858f29714f6a0c376e1d3aeb6db",
+      "eye_m": [
+        170.0,
+        -220.0,
+        220.0
+      ],
+      "target_m": [
+        0,
+        0,
+        0
+      ],
+      "width": 1600,
+      "height": 1000,
+      "frames": 40
+    },
+    {
+      "file": "plan-view.png",
+      "sha256": "caf5920349a3076891f3c6f44b7e94364e893315a7f458108f62f8fa33b9aa3c",
+      "eye_m": [
+        0.0,
+        -35.0,
+        245.0
+      ],
+      "target_m": [
+        0,
+        0,
+        0
+      ],
+      "width": 1600,
+      "height": 1000,
+      "frames": 40
+    }
+  ],
+  "cleanup_errors": [],
+  "complete": true,
+  "elapsed_seconds": 5.833,
+  "finished_at": "2026-10-19T20:22:02.384704+00:00"
+}

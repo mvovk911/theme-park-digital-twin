@@ -1,0 +1,85 @@
+{
+  "proposal": {
+    "action": {
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER"
+    },
+    "command_request_id": "proposal:8232e16d9ff0439bb03159f72dee5939",
+    "create_request_id": "workflow-review-491e0be59a99:create:stale-readback",
+    "created_at": "2026-10-19T20:24:33.991210+00:00",
+    "creation_state_revision": "8e098e7c6247309e9d2d4d7cb658d1049c81d2c31d600ddfc77ffe7bceaa109c",
+    "evidence_refs": {
+      "action_index": 0,
+      "branch_id": "simple_rule",
+      "bundle_id": "32fd9173ddc7d96115150b4d6efc03c12e6186480c8740a55d9ee1e1e6e1f798",
+      "historical_evidence_is_authority": false,
+      "plan_id": "e4b2464f55e63152deb2fddc5c4ba90c0c98dc65a18b5753cb5cf8e0ba2fdaf8"
+    },
+    "execution_request_id": "workflow-review-491e0be59a99:execute:stale-readback",
+    "execution_scope": "synthetic_dispatch_only",
+    "expires_at": "2026-10-19T20:25:03.991210+00:00",
+    "id": "8232e16d9ff0439bb03159f72dee5939",
+    "physical_effect": false,
+    "preconditions": {
+      "asset_id": "RIDE_COASTER",
+      "asset_type": "ride",
+      "field_sources": {
+        "maintenance.inspection_status": "cmms",
+        "maintenance.open_work_orders": "cmms",
+        "status": "ride_scada"
+      },
+      "inspection_status": "review_required",
+      "observed_open_work_orders": 0,
+      "open_work_order_ids": [],
+      "scenario": "ride_closure",
+      "status": "closed"
+    },
+    "readback": {
+      "work_order": {
+        "id": 2,
+        "asset_id": "RIDE_COASTER",
+        "status": "open",
+        "created_at": "2026-10-19T20:24:34.008+00:00",
+        "title": "Inspect synthetic operational fault"
+      },
+      "observed_at": "2026-10-19T20:24:40.330003+00:00",
+      "asset_status": "closed",
+      "source": "synthetic_work_order_database",
+      "asset_status_evidence": {
+        "value": "closed",
+        "quality": "stale",
+        "source_id": "ride_scada",
+        "source_timestamp": "2026-10-19T20:24:34.008000+00:00",
+        "synthetic": true,
+        "stale_after_seconds": 5.0
+      },
+      "source_scope": "work_order_only; asset status retains its independent observation provenance",
+      "physical_completion": false
+    },
+    "receipt": {
+      "acknowledgement": "accepted",
+      "action": "dispatch_maintenance",
+      "asset_id": "RIDE_COASTER",
+      "id": 6,
+      "lifecycle": "work_order_open",
+      "message": "Synthetic work order #2 created and qualified maintenance assigned.",
+      "physical_effect": false,
+      "request_id": "proposal:8232e16d9ff0439bb03159f72dee5939",
+      "synthetic": true,
+      "target": {
+        "asset_id": "RIDE_COASTER",
+        "scope": "asset"
+      },
+      "timestamp": "2026-10-19T20:24:34.008+00:00",
+      "work_order_id": 2
+    },
+    "status": "accepted_workflow_not_repair",
+    "synthetic": true
+  },
+  "outcome": "accepted_workflow_not_repair",
+  "physical_effect": false,
+  "idempotency": {
+    "replayed": true,
+    "command_request_id": "proposal:8232e16d9ff0439bb03159f72dee5939"
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "started_at": "2026-10-19T20:14:15.063155+00:00",
+  "finished_at": "2026-10-19T20:15:04.881242+00:00",
+  "url": "http://127.0.0.1:18150",
+  "check_count": 10,
+  "failures": 0,
+  "checks": [
+    {
+      "check": "success_and_concurrent_retries",
+      "started_at": "2026-10-19T20:14:15.752884+00:00",
+      "status": "pass",
+      "evidence": {
+        "accepted": {
+          "action": {
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_COASTER"
+          },
+          "command_request_id": "proposal:c7d20c636c66463e9e70943a93d62f72",
+          "create_request_id": "workflow-review-12bce3302acc:create:concurrent",
+          "created_at": "2026-10-19T20:14:16.008059+00:00",
+          "creation_state_revision": "1ceb2fd84ed41111276c7dea080c32972fe607cb6df38e6843ddb067bc35e70e",
+          "evidence_refs": {
+            "action_index": 0,
+            "branch_id": "simple_rule",
+            "bundle_id": "f91f8ac53bc4ae7242c29901cb96a19879b9fd5aa2459b04884885d7a37da1c3",
+            "historical_evidence_is_authority": false,
+            "plan_id": "606b2d8ad49137c9eedf5d75649ef3b1c0e646ff70bdc3c19a6f8d288e0b7dbb"
+          },
+          "execution_request_id": "workflow-review-12bce3302acc:execute:concurrent",
+          "execution_scope": "synthetic_dispatch_only",
+          "expires_at": "2026-10-19T20:14:46.008059+00:00",
+          "id": "c7d20c636c66463e9e70943a93d62f72",
+          "physical_effect": false,
+          "preconditions": {
+            "asset_id": "RIDE_COASTER",
+            "asset_type": "ride",
+            "field_sources": {
+              "maintenance.inspection_status": "cmms",
+              "maintenance.open_work_orders": "cmms",
+              "status": "ride_scada"
+            },
+            "inspection_status": "review_required",
+            "observed_open_work_orders": 0,
+            "open_work_order_ids": [],
+            "scenario": "ride_closure",
+            "status": "closed"
+          },
+          "readback": {
+            "work_order": {
+              "id": 1,
+              "asset_id": "RIDE_COASTER",
+              "status": "open",
+              "created_at": "2026-10-19T20:14:17.259+00:00",
+              "title": "Inspect synthetic operational fault"
+            },
+            "observed_at": "2026-10-19T20:14:17.298253+00:00",
+            "asset_status": "closed",
+            "source": "synthetic_work_order_database",
+            "physical_completion": false
+          },
+          "receipt": {
+            "acknowledgement": "accepted",
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_COASTER",
+            "id": 3,
+            "lifecycle": "work_order_open",
+            "message": "Synthetic work order #1 created and qualified maintenance assigned.",
+            "physical_effect": false,
+            "request_id": "proposal:c7d20c636c66463e9e70943a93d62f72",
+            "synthetic": true,
+            "target": {
+              "asset_id": "RIDE_COASTER",
+              "scope": "asset"
+            },
+            "timestamp": "2026-10-19T20:14:17.259+00:00",
+            "work_order_id": 1
+          },
+          "status": "accepted_workflow_not_repair",
+          "synthetic": true
+        },
+        "concurrent_creates": 4,
+        "concurrent_executes": 4,
+        "audit_delta": 1,
+        "ordinary_tick_change_allowed": true
+      },
+      "elapsed_seconds": 1.6049869999988005
+    },
+    {
+      "check": "changed_and_existing_work_order",
+      "started_at": "2026-10-19T20:14:17.358134+00:00",
+      "status": "pass",
+      "evidence": {
+        "scenario_change": {
+          "detail": {
+            "code": "proposal_preconditions_changed",
+            "message": "Relevant scenario, status, inspection or work orders changed; create a new proposal"
+          }
+        },
+        "intervening_work_order": {
+          "detail": {
+            "code": "proposal_preconditions_changed",
+            "message": "Relevant scenario, status, inspection or work orders changed; create a new proposal"
+          }
+        },
+        "existing_work_order_new_proposal": {
+          "detail": {
+            "code": "work_order_already_open",
+            "message": "A current work order already covers this asset"
+          }
+        },
+        "existing_work_order_id": 2
+      },
+      "elapsed_seconds": 1.4278976409696043
+    },
+    {
+      "check": "input_quality_and_change",
+      "started_at": "2026-10-19T20:14:18.786400+00:00",
+      "status": "pass",
+      "evidence": {
+        "changed_status": {
+          "detail": {
+            "code": "proposal_preconditions_changed",
+            "message": "Relevant scenario, status, inspection or work orders changed; create a new proposal"
+          }
+        },
+        "stale_input": {
+          "detail": {
+            "code": "workflow_input_not_fresh",
+            "message": "Fresh authoritative synthetic observation required: maintenance.inspection_status"
+          }
+        },
+        "actual_stale_wait_seconds": 6.306556622963399,
+        "contradictory_cmms": {
+          "detail": {
+            "code": "workflow_source_disagreement",
+            "message": "CMMS observation and synthetic work-order store disagree"
+          }
+        },
+        "closed_without_inspection_issue": {
+          "detail": {
+            "code": "no_current_maintenance_need",
+            "message": "Current asset has neither a fault nor an inspection issue; closure alone is not a maintenance diagnosis"
+          }
+        }
+      },
+      "elapsed_seconds": 8.102707831945736
+    },
+    {
+      "check": "unsupported_and_hypothetical",
+      "started_at": "2026-10-19T20:14:26.889457+00:00",
+      "status": "pass",
+      "evidence": {
+        "hypothetical_evidence": {
+          "detail": {
+            "code": "hypothetical_scenario_not_active",
+            "message": "A hypothetical saved scenario cannot authorize action on the current park"
+          }
+        },
+        "unsupported_action": {
+          "detail": {
+            "code": "unsupported_workflow_action",
+            "message": "Only immediate synthetic maintenance dispatch is supported"
+          }
+        },
+        "future_action": {
+          "detail": {
+            "code": "unsupported_workflow_action",
+            "message": "Only immediate synthetic maintenance dispatch is supported"
+          }
+        }
+      },
+      "elapsed_seconds": 1.6720180370029993
+    },
+    {
+      "check": "replay_guards",
+      "started_at": "2026-10-19T20:14:28.561788+00:00",
+      "status": "pass",
+      "evidence": {
+        "readable_in_replay": true,
+        "create_retry_blocked": true,
+        "execution_blocked": true,
+        "live_execution": {
+          "id": 23,
+          "timestamp": "2026-10-19T20:14:29.120+00:00",
+          "action": "dispatch_maintenance",
+          "asset_id": "RIDE_COASTER",
+          "message": "Synthetic work order #3 created and qualified maintenance assigned.",
+          "synthetic": true,
+          "acknowledgement": "accepted",
+          "target": {
+            "scope": "asset",
+            "asset_id": "RIDE_COASTER"
+          },
+          "lifecycle": "work_order_open",
+          "physical_effect": false,
+          "work_order_id": 3,
+          "request_id": "proposal:fb23ba0ea74d4e74b238d45ef802af63"
+        }
+      },
+      "elapsed_seconds": 0.6278094950248487
+    },
+    {
+      "check": "lost_response_and_restart",
+      "started_at": "2026-10-19T20:14:29.190007+00:00",
+      "status": "pass",
+      "evidence": {
+        "created_without_response_read": "27760675f56a4b949c230682dfa657ff",
+        "receipt": {
+          "acknowledgement": "accepted",
+          "action": "dispatch_maintenance",
+          "asset_id": "RIDE_COASTER",
+          "id": 26,
+          "lifecycle": "work_order_open",
+          "message": "Synthetic work order #4 created and qualified maintenance assigned.",
+          "physical_effect": false,
+          "request_id": "proposal:27760675f56a4b949c230682dfa657ff",
+          "synthetic": true,
+          "target": {
+            "asset_id": "RIDE_COASTER",
+            "scope": "asset"
+          },
+          "timestamp": "2026-10-19T20:14:30.170+00:00",
+          "work_order_id": 4
+        },
+        "restart": {
+          "stopped": {
+            "pid": 2274055,
+            "exit_code": -15,
+            "stopped_at": "2026-10-19T20:14:30.476441+00:00"
+          },
+          "new_pid": 2274673,
+          "same_source_files": true
+        },
+        "receipt_survived_restart": true,
+        "scope": "Actual discarded client responses and graceful process restart; not injected crash between two database commits."
+      },
+      "elapsed_seconds": 2.1503941389964893
+    },
+    {
+      "check": "expiry_and_historical_recovery",
+      "started_at": "2026-10-19T20:14:31.340856+00:00",
+      "status": "pass",
+      "evidence": {
+        "actual_wall_wait_seconds": 30.01179970195517,
+        "unaccepted_expired_proposal": {
+          "detail": {
+            "code": "proposal_expired",
+            "message": "Proposal expired before a command was accepted; create a fresh proposal"
+          }
+        },
+        "accepted_receipt_after_expiry_and_reset": {
+          "action": {
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_COASTER"
+          },
+          "command_request_id": "proposal:27760675f56a4b949c230682dfa657ff",
+          "create_request_id": "workflow-review-12bce3302acc:create:lost-response",
+          "created_at": "2026-10-19T20:14:30.128092+00:00",
+          "creation_state_revision": "a017ad8aa2f5e9af850c5efa507e201afbbd7bafa1490e67ff8a3c2c2e627c88",
+          "evidence_refs": {
+            "action_index": 0,
+            "branch_id": "simple_rule",
+            "bundle_id": "7caa5c25948c626b626138746b34e652aabbe0542bae2616082db1e575bd166d",
+            "historical_evidence_is_authority": false,
+            "plan_id": "65f4d940d701eb8efb56f88f6a22a602800af71d839608b46dba9720af0d98ac"
+          },
+          "execution_request_id": "workflow-review-12bce3302acc:execute:lost-response",
+          "execution_scope": "synthetic_dispatch_only",
+          "expires_at": "2026-10-19T20:15:00.128092+00:00",
+          "id": "27760675f56a4b949c230682dfa657ff",
+          "physical_effect": false,
+          "preconditions": {
+            "asset_id": "RIDE_COASTER",
+            "asset_type": "ride",
+            "field_sources": {
+              "maintenance.inspection_status": "cmms",
+              "maintenance.open_work_orders": "cmms",
+              "status": "ride_scada"
+            },
+            "inspection_status": "review_required",
+            "observed_open_work_orders": 0,
+            "open_work_order_ids": [],
+            "scenario": "ride_closure",
+            "status": "closed"
+          },
+          "readback": {
+            "work_order": {
+              "id": 4,
+              "asset_id": "RIDE_COASTER",
+              "status": "closed_by_reset",
+              "created_at": "2026-10-19T20:14:30.170+00:00",
+              "title": "Inspect synthetic operational fault"
+            },
+            "observed_at": "2026-10-19T20:15:01.939783+00:00",
+            "asset_status": "closed",
+            "source": "synthetic_work_order_database",
+            "physical_completion": false
+          },
+          "receipt": {
+            "acknowledgement": "accepted",
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_COASTER",
+            "id": 26,
+            "lifecycle": "work_order_open",
+            "message": "Synthetic work order #4 created and qualified maintenance assigned.",
+            "physical_effect": false,
+            "request_id": "proposal:27760675f56a4b949c230682dfa657ff",
+            "synthetic": true,
+            "target": {
+              "asset_id": "RIDE_COASTER",
+              "scope": "asset"
+            },
+            "timestamp": "2026-10-19T20:14:30.170+00:00",
+            "work_order_id": 4
+          },
+          "status": "accepted_workflow_not_repair",
+          "synthetic": true
+        },
+        "no_new_audit": true,
+        "expired_create_retry_preserved_identity": true,
+        "replacement_proposal_after_expiry": "2316bb7fbd9340a5ab28436b29a8241e"
+      },
+      "elapsed_seconds": 30.646892499993555
+    },
+    {
+      "check": "cross_proposal_id_conflict",
+      "started_at": "2026-10-19T20:15:01.988256+00:00",
+      "status": "pass",
+      "evidence": {
+        "reused_execution_id": {
+          "detail": {
+            "code": "execution_request_conflict",
+            "message": "Execution request ID already belongs to another proposal"
+          }
+        }
+      },
+      "elapsed_seconds": 0.3971975479507819
+    },
+    {
+      "check": "all_supported_targets",
+      "started_at": "2026-10-19T20:15:02.385794+00:00",
+      "status": "pass",
+      "evidence": [
+        {
+          "asset_id": "RIDE_COASTER",
+          "receipt": {
+            "id": 32,
+            "timestamp": "2026-10-19T20:15:02.661+00:00",
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_COASTER",
+            "message": "Synthetic work order #5 created and qualified maintenance assigned.",
+            "synthetic": true,
+            "acknowledgement": "accepted",
+            "target": {
+              "scope": "asset",
+              "asset_id": "RIDE_COASTER"
+            },
+            "lifecycle": "work_order_open",
+            "physical_effect": false,
+            "work_order_id": 5,
+            "request_id": "proposal:b3e13b4afa3446fea5c733d8ef8f3e6e"
+          },
+          "readback": {
+            "work_order": {
+              "id": 5,
+              "asset_id": "RIDE_COASTER",
+              "status": "open",
+              "created_at": "2026-10-19T20:15:02.661+00:00",
+              "title": "Inspect synthetic operational fault"
+            },
+            "observed_at": "2026-10-19T20:15:02.673316+00:00",
+            "asset_status": "fault",
+            "source": "synthetic_work_order_database",
+            "physical_completion": false
+          }
+        },
+        {
+          "asset_id": "RIDE_WHEEL",
+          "receipt": {
+            "id": 34,
+            "timestamp": "2026-10-19T20:15:03.323+00:00",
+            "action": "dispatch_maintenance",
+            "asset_id": "RIDE_WHEEL",
+            "message": "Synthetic work order #6 created and qualified maintenance assigned.",
+            "synthetic": true,
+            "acknowledgement": "accepted",
+            "target": {
+              "scope": "asset",
+              "asset_id": "RIDE_WHEEL"
+            },
+            "lifecycle": "work_order_open",
+            "physical_effect": false,
+            "work_order_id": 6,
+            "request_id": "proposal:4382f3a990e044a9aa4d6a2f3702bdf0"
+          },
+          "readback": {
+            "work_order": {
+              "id": 6,
+              "asset_id": "RIDE_WHEEL",
+              "status": "open",
+              "created_at": "2026-10-19T20:15:03.323+00:00",
+              "title": "Inspect synthetic operational fault"
+            },
+            "observed_at": "2026-10-19T20:15:03.382861+00:00",
+            "asset_status": "fault",
+            "source": "synthetic_work_order_database",
+            "physical_completion": false
+          }
+        },
+        {
+          "asset_id": "POWER_HUB",
+          "receipt": {
+            "id": 36,
+            "timestamp": "2026-10-19T20:15:03.916+00:00",
+            "action": "dispatch_maintenance",
+            "asset_id": "POWER_HUB",
+            "message": "Synthetic work order #7 created and qualified maintenance assigned.",
+            "synthetic": true,
+            "acknowledgement": "accepted",
+            "target": {
+              "scope": "asset",
+              "asset_id": "POWER_HUB"
+            },
+            "lifecycle": "work_order_open",
+            "physical_effect": false,
+            "work_order_id": 7,
+            "request_id": "proposal:04d855ae8b874685bb3197cdadaa70f6"
+          },
+          "readback": {
+            "work_order": {
+              "id": 7,
+              "asset_id": "POWER_HUB",
+              "status": "open",
+              "created_at": "2026-10-19T20:15:03.916+00:00",
+              "title": "Inspect synthetic operational fault"
+            },
+            "observed_at": "2026-10-19T20:15:03.929030+00:00",
+            "asset_status": "fault",
+            "source": "synthetic_work_order_database",
+            "physical_completion": false
+          }
+        },
+        {
+          "asset_id": "WATER_PLANT",
+          "receipt": {
+            "id": 38,
+            "timestamp": "2026-10-19T20:15:04.525+00:00",
+            "action": "dispatch_maintenance",
+            "asset_id": "WATER_PLANT",
+            "message": "Synthetic work order #8 created and qualified maintenance assigned.",
+            "synthetic": true,
+            "acknowledgement": "accepted",
+            "target": {
+              "scope": "asset",
+              "asset_id": "WATER_PLANT"
+            },
+            "lifecycle": "work_order_open",
+            "physical_effect": false,
+            "work_order_id": 8,
+            "request_id": "proposal:efee5565cc4e44f2abdd1dd0770704e3"
+          },
+          "readback": {
+            "work_order": {
+              "id": 8,
+              "asset_id": "WATER_PLANT",
+              "status": "open",
+              "created_at": "2026-10-19T20:15:04.525+00:00",
+              "title": "Inspect synthetic operational fault"
+            },
+            "observed_at": "2026-10-19T20:15:04.538615+00:00",
+            "asset_status": "fault",
+            "source": "synthetic_work_order_database",
+            "physical_completion": false
+          }
+        }
+      ],
+      "elapsed_seconds": 2.167587468982674
+    },
+    {
+      "check": "cleanup",
+      "started_at": "2026-10-19T20:15:04.554017+00:00",
+      "status": "pass",
+      "evidence": null,
+      "elapsed_seconds": 0.1629602240282111
+    }
+  ],
+  "gateway_starts": [
+    {
+      "pid": 2274055,
+      "started_at": "2026-10-19T20:14:15.071273+00:00",
+      "source_files": {
+        "backend/app.py": "f113550fac398eb11579058b2f2467052362dd1358ef882d6eafba911b213932",
+        "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+        "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+        "backend/workflows/api.py": "42be4ba3090c511812a90ce19bcf77ad7a56f69a90a6f57f1fe0460a11c1245a",
+        "backend/workflows/contracts.py": "7e8726b4b608ad6d56381588336267b4f3da47b2e04293665a5be33b822aa390",
+        "backend/workflows/service.py": "cdd883137550ba4b12bc388e56fe70f75ee6436c0152d60e7a76d4a107b5078a",
+        "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+        "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+        "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+        "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+        "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+        "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+      },
+      "health": {
+        "status": "ok",
+        "synthetic": true,
+        "database": "connected",
+        "source_identity": {
+          "source": "git",
+          "commit": "a13b656fadfa0e976397d1900c1b1859be6e5836",
+          "tree": "cafa59eb10c15791f1c048a9b9554396179cb7c9",
+          "disposition": "dirty_git",
+          "verified": false,
+          "dirty": true,
+          "scene_path": "assets/park.usdc",
+          "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "mismatches": [],
+          "checked_at": "2026-10-19T20:14:15.417799+00:00",
+          "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+        },
+        "tick": 1
+      }
+    },
+    {
+      "pid": 2274673,
+      "started_at": "2026-10-19T20:14:30.478197+00:00",
+      "source_files": {
+        "backend/app.py": "f113550fac398eb11579058b2f2467052362dd1358ef882d6eafba911b213932",
+        "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+        "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+        "backend/workflows/api.py": "42be4ba3090c511812a90ce19bcf77ad7a56f69a90a6f57f1fe0460a11c1245a",
+        "backend/workflows/contracts.py": "7e8726b4b608ad6d56381588336267b4f3da47b2e04293665a5be33b822aa390",
+        "backend/workflows/service.py": "cdd883137550ba4b12bc388e56fe70f75ee6436c0152d60e7a76d4a107b5078a",
+        "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+        "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+        "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+        "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+        "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+        "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+      },
+      "health": {
+        "status": "ok",
+        "synthetic": true,
+        "database": "connected",
+        "source_identity": {
+          "source": "git",
+          "commit": "a13b656fadfa0e976397d1900c1b1859be6e5836",
+          "tree": "cafa59eb10c15791f1c048a9b9554396179cb7c9",
+          "disposition": "dirty_git",
+          "verified": false,
+          "dirty": true,
+          "scene_path": "assets/park.usdc",
+          "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "mismatches": [],
+          "checked_at": "2026-10-19T20:14:30.926747+00:00",
+          "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+        },
+        "tick": 42
+      }
+    }
+  ],
+  "process_cleanup": {
+    "pid": 2274673,
+    "exit_code": -15,
+    "stopped_at": "2026-10-19T20:15:04.881227+00:00"
+  },
+  "evaluator_sha256": "0f7e2b93015efe98000bb9433b346525794135c479c0d807d28f75b6dcf351f3",
+  "scope": "Actual HTTP and process lifecycle, synthetic workflow acceptance only. No physical repair, authentication, external CMMS or crash-window injection."
+}

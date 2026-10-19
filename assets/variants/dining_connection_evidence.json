@@ -1,0 +1,2508 @@
+{
+  "generated_at_utc": "2026-10-19T20:17:36.569593+00:00",
+  "synthetic": true,
+  "calibrated": false,
+  "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+  "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+  "preserved_baseline_artifact_hashes": {
+    "assets/park.usdc": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "assets/park.usda": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+    "assets/park.blend": "030aac4f23b837972270d5ac290e38337fbed1b29a3860317810d4523e4e7565",
+    "assets/circulation_graph.json": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919"
+  },
+  "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+  "variant_graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+  "original_curb": {
+    "path": "/World/Park/LANDSCAPE/PathCurb",
+    "bounds_m": [
+      [
+        -5.21,
+        -46.5,
+        0.135
+      ],
+      [
+        -4.99,
+        -19.5,
+        0.385
+      ]
+    ],
+    "material": "/World/Materials/cream",
+    "active_in_variant": false
+  },
+  "replacement_curb_y_intervals_m": {
+    "SouthCurb": [
+      -46.5,
+      -27.4
+    ],
+    "NorthCurb": [
+      -25.4,
+      -19.5
+    ]
+  },
+  "paving_bounds_xy_m": [
+    -13.5,
+    -27.4,
+    -4.5,
+    -25.4
+  ],
+  "composed_variant_prims": {
+    "GradedPaving": {
+      "bounds_m": [
+        [
+          -13.5,
+          -27.4,
+          0.1
+        ],
+        [
+          -4.5,
+          -25.4,
+          0.325
+        ]
+      ],
+      "material": "/World/Materials/path"
+    },
+    "SouthCurb": {
+      "bounds_m": [
+        [
+          -5.21,
+          -46.5,
+          0.135
+        ],
+        [
+          -4.99,
+          -27.4,
+          0.385
+        ]
+      ],
+      "material": "/World/Materials/cream"
+    },
+    "NorthCurb": {
+      "bounds_m": [
+        [
+          -5.21,
+          -25.4,
+          0.135
+        ],
+        [
+          -4.99,
+          -19.5,
+          0.385
+        ]
+      ],
+      "material": "/World/Materials/cream"
+    }
+  },
+  "top_profile_xz_m": [
+    [
+      -13.5,
+      0.325
+    ],
+    [
+      -11.5,
+      0.325
+    ],
+    [
+      -5.0,
+      0.24
+    ],
+    [
+      -4.5,
+      0.24
+    ]
+  ],
+  "grade_percent": 1.3076923076923077,
+  "distance_basis": "2D plan distance on nominal graph Z=0.30 m; graded surface is separately modeled in USD",
+  "before_audit": {
+    "method": "USD world-space aligned bounds against entire 9x2m paving rectangle and z=.24..2.425m prism; conservative static geometry check, not crowd/clearance certification",
+    "corridor_bounds_xy_m": [
+      -13.5,
+      -27.4,
+      -4.5,
+      -25.4
+    ],
+    "vertical_prism_m": [
+      0.24,
+      2.425
+    ],
+    "fixed_collision_paths": [],
+    "guest_intersection_paths": [],
+    "minimum_fixed_xy_gap_m": 0.24,
+    "records": [
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0002",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.143038,
+            -22.509194,
+            0.750913
+          ],
+          [
+            -1.899307,
+            -22.218737,
+            1.194315
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.729883,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0003",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.615038,
+            -22.509194,
+            0.750913
+          ],
+          [
+            -1.371307,
+            -22.218737,
+            1.194315
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 4.084086,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0012",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.758611,
+            -28.389435,
+            0.916166
+          ],
+          [
+            -2.514557,
+            -28.097062,
+            1.432829
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.875721,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0013",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.230611,
+            -28.389435,
+            0.916166
+          ],
+          [
+            -1.986557,
+            -28.097062,
+            1.432829
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.374031,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0018",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.786159,
+            -25.320501,
+            0.85716
+          ],
+          [
+            -3.542201,
+            -25.028701,
+            1.347278
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.718254,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0019",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.258159,
+            -25.320501,
+            0.85716
+          ],
+          [
+            -3.014201,
+            -25.028701,
+            1.347278
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.244383,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0040",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.977155,
+            -28.93984,
+            0.755413
+          ],
+          [
+            -2.733413,
+            -28.649316,
+            1.200759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.969732,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0041",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.449155,
+            -28.93984,
+            0.755413
+          ],
+          [
+            -2.205413,
+            -28.649316,
+            1.200759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.401407,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0044",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -4.128429,
+            -25.984202,
+            0.92575
+          ],
+          [
+            -3.884361,
+            -25.691745,
+            1.446759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.371571,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0045",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.600429,
+            -25.984202,
+            0.92575
+          ],
+          [
+            -3.356361,
+            -25.691745,
+            1.446759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.899571,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0001",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.926711,
+            -22.583504,
+            0.624614
+          ],
+          [
+            -1.587634,
+            -22.244427,
+            1.249229
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.815032,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0006",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.577313,
+            -28.497977,
+            0.754265
+          ],
+          [
+            -2.167855,
+            -28.088519,
+            1.508529
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.04225,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0009",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.59231,
+            -25.416731,
+            0.707847
+          ],
+          [
+            -3.20805,
+            -25.032471,
+            1.415694
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.90769,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0020",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.761776,
+            -29.01507,
+            0.628129
+          ],
+          [
+            -2.420792,
+            -28.674086,
+            1.256257
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.155161,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0022",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.949173,
+            -26.094752,
+            0.761815
+          ],
+          [
+            -3.535617,
+            -25.681195,
+            1.523629
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.550827,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0001",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.917788,
+            -22.574581,
+            1.31169
+          ],
+          [
+            -1.596558,
+            -22.25335,
+            1.632921
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.827638,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0006",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.566538,
+            -28.487202,
+            1.583956
+          ],
+          [
+            -2.17863,
+            -28.099295,
+            1.971863
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.056037,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0009",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.582198,
+            -25.406619,
+            1.486479
+          ],
+          [
+            -3.218162,
+            -25.042583,
+            1.850514
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.917802,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0020",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.752803,
+            -29.006097,
+            1.31907
+          ],
+          [
+            -2.429765,
+            -28.683059,
+            1.642108
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.167703,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0022",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.93829,
+            -26.083869,
+            1.599811
+          ],
+          [
+            -3.5465,
+            -25.692078,
+            1.991601
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.56171,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0002",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.927173,
+            -22.483966,
+            0.25
+          ],
+          [
+            -1.787173,
+            -22.343966,
+            0.713845
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.888791,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0003",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.727173,
+            -22.483966,
+            0.25
+          ],
+          [
+            -1.587173,
+            -22.343966,
+            0.713845
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 4.023907,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0012",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.542584,
+            -28.363248,
+            0.25
+          ],
+          [
+            -2.402584,
+            -28.223248,
+            0.862017
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.123491,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0013",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.342584,
+            -28.363248,
+            0.25
+          ],
+          [
+            -2.202584,
+            -28.223248,
+            0.862017
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.309152,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0018",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.57018,
+            -25.294601,
+            0.25
+          ],
+          [
+            -3.43018,
+            -25.154601,
+            0.808968
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.935775,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0019",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.37018,
+            -25.294601,
+            0.25
+          ],
+          [
+            -3.23018,
+            -25.154601,
+            0.808968
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.134726,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0040",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.761284,
+            -28.914578,
+            0.25
+          ],
+          [
+            -2.621284,
+            -28.774578,
+            0.717861
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.216438,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0041",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.561284,
+            -28.914578,
+            0.25
+          ],
+          [
+            -2.421284,
+            -28.774578,
+            0.717861
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.37657,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0044",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.912395,
+            -25.957974,
+            0.25
+          ],
+          [
+            -3.772395,
+            -25.817974,
+            0.870645
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.587605,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0045",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.712395,
+            -25.957974,
+            0.25
+          ],
+          [
+            -3.572395,
+            -25.817974,
+            0.870645
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.787605,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinLid_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.78,
+            -28.36,
+            1.2
+          ],
+          [
+            -12.06,
+            -27.64,
+            1.32
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.24,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinLid_0003",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.94,
+            -28.36,
+            1.2
+          ],
+          [
+            -11.22,
+            -27.64,
+            1.32
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.24,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinOpening_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.605,
+            -28.3465,
+            0.895
+          ],
+          [
+            -12.235,
+            -28.3215,
+            1.065
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.9215,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinOpening_0003",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.765,
+            -28.3465,
+            0.895
+          ],
+          [
+            -11.395,
+            -28.3215,
+            1.065
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.9215,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Bin_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.745,
+            -28.325,
+            0.195
+          ],
+          [
+            -12.095,
+            -27.675,
+            1.245
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.275,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Bin_0003",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.905,
+            -28.325,
+            0.195
+          ],
+          [
+            -11.255,
+            -27.675,
+            1.245
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.275,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0008",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -13.51,
+            -24.06,
+            -0.0
+          ],
+          [
+            -13.39,
+            -23.94,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.34,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0009",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.06,
+            -22.51,
+            -0.0
+          ],
+          [
+            -14.94,
+            -22.39,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.228885,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0010",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -16.61,
+            -24.06,
+            -0.0
+          ],
+          [
+            -16.49,
+            -23.94,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.276538,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0011",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.06,
+            -25.61,
+            -0.0
+          ],
+          [
+            -14.94,
+            -25.49,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.44,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0008",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -13.75,
+            -24.3,
+            0.52
+          ],
+          [
+            -13.15,
+            -23.7,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.1,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0009",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.3,
+            -22.75,
+            0.52
+          ],
+          [
+            -14.7,
+            -22.15,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.909038,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0010",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -16.85,
+            -24.3,
+            0.52
+          ],
+          [
+            -16.25,
+            -23.7,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.961841,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0011",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.3,
+            -25.85,
+            0.52
+          ],
+          [
+            -14.7,
+            -25.25,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.2,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/DiningPlaza",
+        "classification": "support_surface",
+        "bounds_m": [
+          [
+            -40.5,
+            -38.5,
+            0.075
+          ],
+          [
+            -11.5,
+            -15.5,
+            0.325
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": true
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Foundation_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -19.3,
+            -37.8,
+            0.005
+          ],
+          [
+            -10.7,
+            -30.2,
+            0.355
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.8,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuBoard_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.5,
+            -29.875,
+            1.15
+          ],
+          [
+            -11.5,
+            -29.725,
+            2.85
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.325,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuLine_0009",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.35,
+            -29.9125,
+            2.1925
+          ],
+          [
+            -11.65,
+            -29.8875,
+            2.2475
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.4875,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuLine_0010",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.35,
+            -29.9125,
+            1.9125
+          ],
+          [
+            -11.65,
+            -29.8875,
+            1.9675
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.4875,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuLine_0011",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.35,
+            -29.9125,
+            1.6325
+          ],
+          [
+            -11.65,
+            -29.8875,
+            1.6875
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.4875,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ServiceWindow_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -17.5,
+            -30.5,
+            1.55
+          ],
+          [
+            -12.5,
+            -30.4,
+            3.05
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ServingCounter_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -17.7,
+            -30.35,
+            1.075
+          ],
+          [
+            -12.3,
+            -29.45,
+            1.225
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.05,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/TablePost_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.12,
+            -24.12,
+            0.0
+          ],
+          [
+            -14.88,
+            -23.88,
+            0.9
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.882233,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Table_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -16.2,
+            -25.2,
+            0.825
+          ],
+          [
+            -13.8,
+            -22.8,
+            0.975
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.360555,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/UmbrellaPost_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.055,
+            -24.055,
+            -0.0
+          ],
+          [
+            -14.945,
+            -23.945,
+            3.2
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.974095,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/Ground",
+        "classification": "support_surface",
+        "bounds_m": [
+          [
+            -80.0,
+            -60.0,
+            -0.17
+          ],
+          [
+            80.0,
+            60.0,
+            0.11
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/MainPromenade",
+        "classification": "support_surface",
+        "bounds_m": [
+          [
+            -5.0,
+            -55.5,
+            0.06
+          ],
+          [
+            5.0,
+            15.5,
+            0.24
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/PathCurb",
+        "classification": "curb_to_replace",
+        "bounds_m": [
+          [
+            -5.21,
+            -46.5,
+            0.135
+          ],
+          [
+            -4.99,
+            -19.5,
+            0.385
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": true
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/PavingJoints",
+        "classification": "paving_joint_decal",
+        "bounds_m": [
+          [
+            -5.0,
+            -47.0,
+            0.26
+          ],
+          [
+            5.0,
+            -19.0,
+            0.26
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/PlanterRim",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.7,
+            -33.7,
+            0.095
+          ],
+          [
+            -8.3,
+            -30.3,
+            0.445
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.9,
+        "intersects_full_paving_clearance_prism": false
+      }
+    ]
+  },
+  "after_audit": {
+    "method": "USD world-space aligned bounds against entire 9x2m paving rectangle and z=.24..2.425m prism; conservative static geometry check, not crowd/clearance certification",
+    "corridor_bounds_xy_m": [
+      -13.5,
+      -27.4,
+      -4.5,
+      -25.4
+    ],
+    "vertical_prism_m": [
+      0.24,
+      2.425
+    ],
+    "fixed_collision_paths": [],
+    "guest_intersection_paths": [],
+    "minimum_fixed_xy_gap_m": 0.0,
+    "records": [
+      {
+        "prim_path": "/World/Park/DINING_CONNECTION_DESIGN/GradedPaving",
+        "classification": "support_surface",
+        "bounds_m": [
+          [
+            -13.5,
+            -27.4,
+            0.1
+          ],
+          [
+            -4.5,
+            -25.4,
+            0.325
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": true
+      },
+      {
+        "prim_path": "/World/Park/DINING_CONNECTION_DESIGN/NorthCurb",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -5.21,
+            -25.4,
+            0.135
+          ],
+          [
+            -4.99,
+            -19.5,
+            0.385
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/DINING_CONNECTION_DESIGN/SouthCurb",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -5.21,
+            -46.5,
+            0.135
+          ],
+          [
+            -4.99,
+            -27.4,
+            0.385
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0002",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.143038,
+            -22.509194,
+            0.750913
+          ],
+          [
+            -1.899307,
+            -22.218737,
+            1.194315
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.729883,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0003",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.615038,
+            -22.509194,
+            0.750913
+          ],
+          [
+            -1.371307,
+            -22.218737,
+            1.194315
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 4.084086,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0012",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.758611,
+            -28.389435,
+            0.916166
+          ],
+          [
+            -2.514557,
+            -28.097062,
+            1.432829
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.875721,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0013",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.230611,
+            -28.389435,
+            0.916166
+          ],
+          [
+            -1.986557,
+            -28.097062,
+            1.432829
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.374031,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0018",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.786159,
+            -25.320501,
+            0.85716
+          ],
+          [
+            -3.542201,
+            -25.028701,
+            1.347278
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.718254,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0019",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.258159,
+            -25.320501,
+            0.85716
+          ],
+          [
+            -3.014201,
+            -25.028701,
+            1.347278
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.244383,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0040",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.977155,
+            -28.93984,
+            0.755413
+          ],
+          [
+            -2.733413,
+            -28.649316,
+            1.200759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.969732,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0041",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.449155,
+            -28.93984,
+            0.755413
+          ],
+          [
+            -2.205413,
+            -28.649316,
+            1.200759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.401407,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0044",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -4.128429,
+            -25.984202,
+            0.92575
+          ],
+          [
+            -3.884361,
+            -25.691745,
+            1.446759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.371571,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestArm_0045",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.600429,
+            -25.984202,
+            0.92575
+          ],
+          [
+            -3.356361,
+            -25.691745,
+            1.446759
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.899571,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0001",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.926711,
+            -22.583504,
+            0.624614
+          ],
+          [
+            -1.587634,
+            -22.244427,
+            1.249229
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.815032,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0006",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.577313,
+            -28.497977,
+            0.754265
+          ],
+          [
+            -2.167855,
+            -28.088519,
+            1.508529
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.04225,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0009",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.59231,
+            -25.416731,
+            0.707847
+          ],
+          [
+            -3.20805,
+            -25.032471,
+            1.415694
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.90769,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0020",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.761776,
+            -29.01507,
+            0.628129
+          ],
+          [
+            -2.420792,
+            -28.674086,
+            1.256257
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.155161,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestBody_0022",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.949173,
+            -26.094752,
+            0.761815
+          ],
+          [
+            -3.535617,
+            -25.681195,
+            1.523629
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.550827,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0001",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.917788,
+            -22.574581,
+            1.31169
+          ],
+          [
+            -1.596558,
+            -22.25335,
+            1.632921
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.827638,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0006",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.566538,
+            -28.487202,
+            1.583956
+          ],
+          [
+            -2.17863,
+            -28.099295,
+            1.971863
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.056037,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0009",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.582198,
+            -25.406619,
+            1.486479
+          ],
+          [
+            -3.218162,
+            -25.042583,
+            1.850514
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.917802,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0020",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.752803,
+            -29.006097,
+            1.31907
+          ],
+          [
+            -2.429765,
+            -28.683059,
+            1.642108
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.167703,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestHead_0022",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.93829,
+            -26.083869,
+            1.599811
+          ],
+          [
+            -3.5465,
+            -25.692078,
+            1.991601
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.56171,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0002",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.927173,
+            -22.483966,
+            0.25
+          ],
+          [
+            -1.787173,
+            -22.343966,
+            0.713845
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.888791,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0003",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -1.727173,
+            -22.483966,
+            0.25
+          ],
+          [
+            -1.587173,
+            -22.343966,
+            0.713845
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 4.023907,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0012",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.542584,
+            -28.363248,
+            0.25
+          ],
+          [
+            -2.402584,
+            -28.223248,
+            0.862017
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.123491,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0013",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.342584,
+            -28.363248,
+            0.25
+          ],
+          [
+            -2.202584,
+            -28.223248,
+            0.862017
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.309152,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0018",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.57018,
+            -25.294601,
+            0.25
+          ],
+          [
+            -3.43018,
+            -25.154601,
+            0.808968
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.935775,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0019",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.37018,
+            -25.294601,
+            0.25
+          ],
+          [
+            -3.23018,
+            -25.154601,
+            0.808968
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.134726,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0040",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.761284,
+            -28.914578,
+            0.25
+          ],
+          [
+            -2.621284,
+            -28.774578,
+            0.717861
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.216438,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0041",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -2.561284,
+            -28.914578,
+            0.25
+          ],
+          [
+            -2.421284,
+            -28.774578,
+            0.717861
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.37657,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0044",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.912395,
+            -25.957974,
+            0.25
+          ],
+          [
+            -3.772395,
+            -25.817974,
+            0.870645
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.587605,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/ENTRY_GATE/GuestLeg_0045",
+        "classification": "synthetic_guest_mesh",
+        "bounds_m": [
+          [
+            -3.712395,
+            -25.957974,
+            0.25
+          ],
+          [
+            -3.572395,
+            -25.817974,
+            0.870645
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.787605,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinLid_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.78,
+            -28.36,
+            1.2
+          ],
+          [
+            -12.06,
+            -27.64,
+            1.32
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.24,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinLid_0003",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.94,
+            -28.36,
+            1.2
+          ],
+          [
+            -11.22,
+            -27.64,
+            1.32
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.24,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinOpening_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.605,
+            -28.3465,
+            0.895
+          ],
+          [
+            -12.235,
+            -28.3215,
+            1.065
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.9215,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/BinOpening_0003",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.765,
+            -28.3465,
+            0.895
+          ],
+          [
+            -11.395,
+            -28.3215,
+            1.065
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.9215,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Bin_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.745,
+            -28.325,
+            0.195
+          ],
+          [
+            -12.095,
+            -27.675,
+            1.245
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.275,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Bin_0003",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.905,
+            -28.325,
+            0.195
+          ],
+          [
+            -11.255,
+            -27.675,
+            1.245
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.275,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0008",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -13.51,
+            -24.06,
+            -0.0
+          ],
+          [
+            -13.39,
+            -23.94,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.34,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0009",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.06,
+            -22.51,
+            -0.0
+          ],
+          [
+            -14.94,
+            -22.39,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.228885,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0010",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -16.61,
+            -24.06,
+            -0.0
+          ],
+          [
+            -16.49,
+            -23.94,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.276538,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ChairLeg_0011",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.06,
+            -25.61,
+            -0.0
+          ],
+          [
+            -14.94,
+            -25.49,
+            0.6
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.44,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0008",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -13.75,
+            -24.3,
+            0.52
+          ],
+          [
+            -13.15,
+            -23.7,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.1,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0009",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.3,
+            -22.75,
+            0.52
+          ],
+          [
+            -14.7,
+            -22.15,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.909038,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0010",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -16.85,
+            -24.3,
+            0.52
+          ],
+          [
+            -16.25,
+            -23.7,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.961841,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Chair_0011",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.3,
+            -25.85,
+            0.52
+          ],
+          [
+            -14.7,
+            -25.25,
+            0.68
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.2,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/DiningPlaza",
+        "classification": "support_surface",
+        "bounds_m": [
+          [
+            -40.5,
+            -38.5,
+            0.075
+          ],
+          [
+            -11.5,
+            -15.5,
+            0.325
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": true
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Foundation_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -19.3,
+            -37.8,
+            0.005
+          ],
+          [
+            -10.7,
+            -30.2,
+            0.355
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.8,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuBoard_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.5,
+            -29.875,
+            1.15
+          ],
+          [
+            -11.5,
+            -29.725,
+            2.85
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.325,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuLine_0009",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.35,
+            -29.9125,
+            2.1925
+          ],
+          [
+            -11.65,
+            -29.8875,
+            2.2475
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.4875,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuLine_0010",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.35,
+            -29.9125,
+            1.9125
+          ],
+          [
+            -11.65,
+            -29.8875,
+            1.9675
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.4875,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/MenuLine_0011",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -12.35,
+            -29.9125,
+            1.6325
+          ],
+          [
+            -11.65,
+            -29.8875,
+            1.6875
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.4875,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ServiceWindow_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -17.5,
+            -30.5,
+            1.55
+          ],
+          [
+            -12.5,
+            -30.4,
+            3.05
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 3.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/ServingCounter_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -17.7,
+            -30.35,
+            1.075
+          ],
+          [
+            -12.3,
+            -29.45,
+            1.225
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.05,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/TablePost_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.12,
+            -24.12,
+            0.0
+          ],
+          [
+            -14.88,
+            -23.88,
+            0.9
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.882233,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/Table_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -16.2,
+            -25.2,
+            0.825
+          ],
+          [
+            -13.8,
+            -22.8,
+            0.975
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.360555,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/FOOD_COURT/UmbrellaPost_0002",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -15.055,
+            -24.055,
+            -0.0
+          ],
+          [
+            -14.945,
+            -23.945,
+            3.2
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 1.974095,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/Ground",
+        "classification": "support_surface",
+        "bounds_m": [
+          [
+            -80.0,
+            -60.0,
+            -0.17
+          ],
+          [
+            80.0,
+            60.0,
+            0.11
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/MainPromenade",
+        "classification": "support_surface",
+        "bounds_m": [
+          [
+            -5.0,
+            -55.5,
+            0.06
+          ],
+          [
+            5.0,
+            15.5,
+            0.24
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/PavingJoints",
+        "classification": "paving_joint_decal",
+        "bounds_m": [
+          [
+            -5.0,
+            -47.0,
+            0.26
+          ],
+          [
+            5.0,
+            -19.0,
+            0.26
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 0.0,
+        "intersects_full_paving_clearance_prism": false
+      },
+      {
+        "prim_path": "/World/Park/LANDSCAPE/PlanterRim",
+        "classification": "fixed_obstacle",
+        "bounds_m": [
+          [
+            -11.7,
+            -33.7,
+            0.095
+          ],
+          [
+            -8.3,
+            -30.3,
+            0.445
+          ]
+        ],
+        "xy_gap_to_full_paving_m": 2.9,
+        "intersects_full_paving_clearance_prism": false
+      }
+    ]
+  },
+  "routes": {
+    "before": {
+      "synthetic": true,
+      "calibrated": false,
+      "graph_version": "aster-circulation-v1",
+      "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "origin": "ENTRY_GATE",
+      "destination": "FOOD_COURT",
+      "origin_node": "entry",
+      "destination_node": "food_entrance",
+      "destination_note": "East edge inside dining plaza; missing link over grass and main promenade curb.",
+      "entrance_scope_note": "Plaza entrance is unreachable from main network until a real connecting path is modeled.",
+      "blocked_edges": [],
+      "accessible_only": false,
+      "accessibility_basis": "authored step-free labels; not certified",
+      "walking_speed_mps": 1.2,
+      "limitations": [
+        "Partial authored graph, not an obstacle-complete navmesh",
+        "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+        "No capacity, evacuation, boarding, or accessibility certification"
+      ],
+      "reachable": false,
+      "distance_m": null,
+      "assumed_walking_seconds": null,
+      "node_ids": [],
+      "edge_ids": [],
+      "positions_m": [],
+      "reason": "No route in the authored graph under these closures and accessibility labels"
+    },
+    "after": {
+      "synthetic": true,
+      "calibrated": false,
+      "graph_version": "aster-circulation-v1+dining-connection-v1",
+      "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "origin": "ENTRY_GATE",
+      "destination": "FOOD_COURT",
+      "origin_node": "entry",
+      "destination_node": "food_connector_entrance",
+      "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+      "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+      "blocked_edges": [],
+      "accessible_only": false,
+      "accessibility_basis": "authored step-free labels; not certified",
+      "walking_speed_mps": 1.2,
+      "limitations": [
+        "Partial authored graph, not an obstacle-complete navmesh",
+        "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+        "No capacity, evacuation, boarding, or accessibility certification"
+      ],
+      "reachable": true,
+      "distance_m": 40.852,
+      "assumed_walking_seconds": 34.04,
+      "node_ids": [
+        "entry",
+        "main_south",
+        "main_food_junction",
+        "dining_main_landing",
+        "food_connector_entrance"
+      ],
+      "edge_ids": [
+        "entry_main",
+        "main_south_link",
+        "dining_main_link",
+        "dining_connector_link"
+      ],
+      "positions_m": [
+        [
+          0,
+          -53,
+          0.3
+        ],
+        [
+          2,
+          -47,
+          0.3
+        ],
+        [
+          2,
+          -27,
+          0.3
+        ],
+        [
+          -4.5,
+          -26.4,
+          0.3
+        ],
+        [
+          -12.5,
+          -26.4,
+          0.3
+        ]
+      ],
+      "minimum_authored_corridor_width_m": 2
+    },
+    "connector_closed": {
+      "synthetic": true,
+      "calibrated": false,
+      "graph_version": "aster-circulation-v1+dining-connection-v1",
+      "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "origin": "ENTRY_GATE",
+      "destination": "FOOD_COURT",
+      "origin_node": "entry",
+      "destination_node": "food_connector_entrance",
+      "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+      "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+      "blocked_edges": [
+        "dining_connector_link"
+      ],
+      "accessible_only": false,
+      "accessibility_basis": "authored step-free labels; not certified",
+      "walking_speed_mps": 1.2,
+      "limitations": [
+        "Partial authored graph, not an obstacle-complete navmesh",
+        "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+        "No capacity, evacuation, boarding, or accessibility certification"
+      ],
+      "reachable": false,
+      "distance_m": null,
+      "assumed_walking_seconds": null,
+      "node_ids": [],
+      "edge_ids": [],
+      "positions_m": [],
+      "reason": "No route in the authored graph under these closures and accessibility labels"
+    },
+    "accessible_entry": {
+      "synthetic": true,
+      "calibrated": false,
+      "graph_version": "aster-circulation-v1+dining-connection-v1",
+      "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "origin": "ENTRY_GATE",
+      "destination": "FOOD_COURT",
+      "origin_node": "entry",
+      "destination_node": "food_connector_entrance",
+      "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+      "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+      "blocked_edges": [],
+      "accessible_only": true,
+      "accessibility_basis": "authored step-free labels; not certified",
+      "walking_speed_mps": 1.2,
+      "limitations": [
+        "Partial authored graph, not an obstacle-complete navmesh",
+        "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+        "No capacity, evacuation, boarding, or accessibility certification"
+      ],
+      "reachable": false,
+      "distance_m": null,
+      "assumed_walking_seconds": null,
+      "node_ids": [],
+      "edge_ids": [],
+      "positions_m": [],
+      "reason": "No route in the authored graph under these closures and accessibility labels"
+    }
+  },
+  "native_gpu_rendered": false,
+  "limitations": [
+    "Geometry-only design experiment, not a real-world construction proposal",
+    "Adjacent furniture gaps do not establish safe passing clearance or crowd capacity",
+    "Source meshes are synthetic, not surveyed; aligned bounds are conservative",
+    "No restaurant interior, service queue, or evacuation route is introduced",
+    "Entry and central-plaza thresholds remain unresolved"
+  ]
+}

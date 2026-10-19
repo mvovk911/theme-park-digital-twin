@@ -1,0 +1,35 @@
+{
+  "report_sha256": "271f86db5d7002c758b368bde354e15bd9e79f84b05babebaf1f68ee77c509f9",
+  "client_source_sha256": {
+    "workflow_retest.py": "e6987e74993517c73a7c13efdfb5735a9186004cc341678e8d96c7943eb334ef",
+    "workflow_checks.py": "0f7e2b93015efe98000bb9433b346525794135c479c0d807d28f75b6dcf351f3",
+    "api_operator.py": "35da8d4373cb2994328460c646709d74c7454d36a4a9e4122c0ab207d9df4f7c"
+  },
+  "gateway_source_files": {
+    "backend/app.py": "f113550fac398eb11579058b2f2467052362dd1358ef882d6eafba911b213932",
+    "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+    "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+    "backend/workflows/api.py": "569075b3e8ef698b42e734ba59cf44a854a34bbb52ceede0ac6d6b23867ff756",
+    "backend/workflows/contracts.py": "c95370404e71914372bee74df0842740cf234149f88a21faec198c58d3f78d21",
+    "backend/workflows/service.py": "530c95ef5a2c5ce15ae4275069304131226d71d728439deb339ddffa2928f07d",
+    "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+    "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+    "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+    "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+    "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+    "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+  },
+  "source_identity": {
+    "source": "git",
+    "commit": "a13b656fadfa0e976397d1900c1b1859be6e5836",
+    "tree": "cafa59eb10c15791f1c048a9b9554396179cb7c9",
+    "disposition": "dirty_git",
+    "verified": false,
+    "dirty": true,
+    "scene_path": "assets/park.usdc",
+    "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "mismatches": [],
+    "checked_at": "2026-10-19T20:24:31.457771+00:00",
+    "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+  }
+}

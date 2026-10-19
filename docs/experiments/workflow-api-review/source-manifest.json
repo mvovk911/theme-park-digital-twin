@@ -1,0 +1,31 @@
+{
+  "evaluator_sha256": "0f7e2b93015efe98000bb9433b346525794135c479c0d807d28f75b6dcf351f3",
+  "report_sha256": "0cedcea22294b7214b033056c686e1e5906810024ba7b5702e9ef301433409dd",
+  "gateway_source_files": {
+    "backend/app.py": "f113550fac398eb11579058b2f2467052362dd1358ef882d6eafba911b213932",
+    "main.py": "35e4c8945a9741aaa98b6951ba16d1078de42fcd15322f0f25a7b26b773d9a29",
+    "backend/workflows/__init__.py": "7cfd6cdfdbf5ed3e04f8fdf589c1bfaa4cb36004c234029a3fb4717c96b34590",
+    "backend/workflows/api.py": "42be4ba3090c511812a90ce19bcf77ad7a56f69a90a6f57f1fe0460a11c1245a",
+    "backend/workflows/contracts.py": "7e8726b4b608ad6d56381588336267b4f3da47b2e04293665a5be33b822aa390",
+    "backend/workflows/service.py": "cdd883137550ba4b12bc388e56fe70f75ee6436c0152d60e7a76d4a107b5078a",
+    "backend/workflows/store.py": "6aee0d00b0555d7ca3dd4889e201db0c784d8f23187fa735e9dc53984c70a61c",
+    "backend/planning/__init__.py": "f1407dcc021b72779c54277d5bc6dc55f5bba6fdaf6d1958c623ecd3523b4c5d",
+    "backend/planning/api.py": "19f5d531d28287a350f36eae74e0b254cc2f567e0e5fb3e7666c45d8554ed7d1",
+    "backend/planning/contracts.py": "d6e26a71495420f70cbd5b98de8ef638749e3b5e72312ce1e2f14eb6d356606f",
+    "backend/planning/engine.py": "98a94b9f5cd38fa1b43e844b07d36092caa65166ad5b9437dc12a98fd6c06df1",
+    "backend/planning/evidence.py": "a05ccf7581957a6d2ef1740cb68df388a749471597ae9ab2763883ae12554004"
+  },
+  "source_identity": {
+    "source": "git",
+    "commit": "a13b656fadfa0e976397d1900c1b1859be6e5836",
+    "tree": "cafa59eb10c15791f1c048a9b9554396179cb7c9",
+    "disposition": "dirty_git",
+    "verified": false,
+    "dirty": true,
+    "scene_path": "assets/park.usdc",
+    "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "mismatches": [],
+    "checked_at": "2026-10-19T20:14:15.417799+00:00",
+    "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+  }
+}

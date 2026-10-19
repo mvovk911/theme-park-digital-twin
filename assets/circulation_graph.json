@@ -1,0 +1,890 @@
+{
+  "schema_version": 1,
+  "version": "aster-circulation-v1",
+  "synthetic": true,
+  "units": "meters",
+  "up_axis": "Z",
+  "source_scene": "assets/park.usdc",
+  "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+  "source_geometry": "assets/park.usda",
+  "source_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+  "scope": "Partial authored pedestrian circulation and explicitly excluded connections. Approaches do not imply ride boarding or operation.",
+  "default_walking_speed_mps": 1.2,
+  "width_basis": "All corridor widths are synthetic authoring assumptions, not measured clear widths or capacity limits.",
+  "accessibility_basis": "Modeled step-free labels only; no surveyed slopes, kerbs, boarding access, or certification.",
+  "surfaces": [
+    {
+      "id": "main",
+      "prim_path": "/World/Park/LANDSCAPE/MainPromenade",
+      "shape": "rectangle",
+      "center_m": [
+        0,
+        -20,
+        0.15
+      ],
+      "size_m": [
+        10,
+        71,
+        0.18
+      ],
+      "bounds_xy_m": [
+        -5.0,
+        -55.5,
+        5.0,
+        15.5
+      ]
+    },
+    {
+      "id": "cross",
+      "prim_path": "/World/Park/LANDSCAPE/CrossPromenade",
+      "shape": "rectangle",
+      "center_m": [
+        0,
+        -7,
+        0.15
+      ],
+      "size_m": [
+        126,
+        9,
+        0.18
+      ],
+      "bounds_xy_m": [
+        -63.0,
+        -11.5,
+        63.0,
+        -2.5
+      ]
+    },
+    {
+      "id": "north",
+      "prim_path": "/World/Park/LANDSCAPE/NorthernPromenade",
+      "shape": "rectangle",
+      "center_m": [
+        0,
+        43,
+        0.15
+      ],
+      "size_m": [
+        126,
+        7,
+        0.18
+      ],
+      "bounds_xy_m": [
+        -63.0,
+        39.5,
+        63.0,
+        46.5
+      ]
+    },
+    {
+      "id": "west",
+      "prim_path": "/World/Park/LANDSCAPE/WestPromenade",
+      "shape": "rectangle",
+      "center_m": [
+        -62,
+        17,
+        0.15
+      ],
+      "size_m": [
+        7,
+        55,
+        0.18
+      ],
+      "bounds_xy_m": [
+        -65.5,
+        -10.5,
+        -58.5,
+        44.5
+      ]
+    },
+    {
+      "id": "east",
+      "prim_path": "/World/Park/LANDSCAPE/EastPromenade",
+      "shape": "rectangle",
+      "center_m": [
+        62,
+        17,
+        0.15
+      ],
+      "size_m": [
+        7,
+        55,
+        0.18
+      ],
+      "bounds_xy_m": [
+        58.5,
+        -10.5,
+        65.5,
+        44.5
+      ]
+    },
+    {
+      "id": "wheel_approach",
+      "prim_path": "/World/Park/LANDSCAPE/WheelApproach",
+      "shape": "rectangle",
+      "center_m": [
+        35,
+        6,
+        0.16
+      ],
+      "size_m": [
+        7,
+        30,
+        0.2
+      ],
+      "bounds_xy_m": [
+        31.5,
+        -9.0,
+        38.5,
+        21.0
+      ]
+    },
+    {
+      "id": "entry",
+      "prim_path": "/World/Park/ENTRY_GATE/EntryPaving",
+      "shape": "rectangle",
+      "center_m": [
+        0,
+        -53,
+        0.2
+      ],
+      "size_m": [
+        25,
+        11,
+        0.3
+      ],
+      "bounds_xy_m": [
+        -12.5,
+        -58.5,
+        12.5,
+        -47.5
+      ]
+    },
+    {
+      "id": "food",
+      "prim_path": "/World/Park/FOOD_COURT/DiningPlaza",
+      "shape": "rectangle",
+      "center_m": [
+        -26,
+        -27,
+        0.2
+      ],
+      "size_m": [
+        29,
+        23,
+        0.25
+      ],
+      "bounds_xy_m": [
+        -40.5,
+        -38.5,
+        -11.5,
+        -15.5
+      ]
+    },
+    {
+      "id": "plaza",
+      "prim_path": "/World/Park/LANDSCAPE/CentralPlaza",
+      "shape": "circle",
+      "center_xy_m": [
+        0,
+        -7
+      ],
+      "radius_m": 11.5
+    }
+  ],
+  "excluded_ground_footprints": [
+    {
+      "id": "fountain",
+      "shape": "circle",
+      "center_xy_m": [
+        0,
+        -7
+      ],
+      "radius_m": 3.7,
+      "prim_path": "/World/Park/LANDSCAPE/FountainBasin"
+    },
+    {
+      "id": "power_fence",
+      "shape": "rectangle",
+      "bounds_xy_m": [
+        46,
+        39.9,
+        69,
+        40.1
+      ],
+      "prim_path": "/World/Park/POWER_HUB",
+      "note": "Fence across north end of EastPromenade; see generate_park.py fence endpoints."
+    },
+    {
+      "id": "lamp_00",
+      "shape": "circle",
+      "center_xy_m": [
+        -11,
+        -20
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost"
+    },
+    {
+      "id": "lamp_01",
+      "shape": "circle",
+      "center_xy_m": [
+        11,
+        -20
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0001"
+    },
+    {
+      "id": "lamp_02",
+      "shape": "circle",
+      "center_xy_m": [
+        -16,
+        -7
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0002"
+    },
+    {
+      "id": "lamp_03",
+      "shape": "circle",
+      "center_xy_m": [
+        16,
+        -7
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0003"
+    },
+    {
+      "id": "lamp_04",
+      "shape": "circle",
+      "center_xy_m": [
+        -54,
+        -7
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0004"
+    },
+    {
+      "id": "lamp_05",
+      "shape": "circle",
+      "center_xy_m": [
+        54,
+        -7
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0005"
+    },
+    {
+      "id": "lamp_06",
+      "shape": "circle",
+      "center_xy_m": [
+        -62,
+        32
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0006"
+    },
+    {
+      "id": "lamp_07",
+      "shape": "circle",
+      "center_xy_m": [
+        62,
+        32
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0007"
+    },
+    {
+      "id": "lamp_08",
+      "shape": "circle",
+      "center_xy_m": [
+        0,
+        -42
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0008"
+    },
+    {
+      "id": "lamp_09",
+      "shape": "circle",
+      "center_xy_m": [
+        0,
+        40
+      ],
+      "radius_m": 0.07,
+      "prim_path": "/World/Park/LANDSCAPE/LampPost_0009"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "entry",
+      "position_m": [
+        0,
+        -53,
+        0.3
+      ],
+      "kind": "entrance",
+      "note": "Center opening between modeled turnstiles; not a turnstile throughput model."
+    },
+    {
+      "id": "main_south",
+      "position_m": [
+        2,
+        -47,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "main_food_junction",
+      "position_m": [
+        2,
+        -27,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "plaza_south",
+      "position_m": [
+        0,
+        -13,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "plaza_southwest",
+      "position_m": [
+        -6,
+        -13,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "plaza_southeast",
+      "position_m": [
+        6,
+        -13,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "plaza_west",
+      "position_m": [
+        -10,
+        -9,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "plaza_east",
+      "position_m": [
+        10,
+        -9,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "plaza_northwest",
+      "position_m": [
+        -6,
+        -1,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "plaza_northeast",
+      "position_m": [
+        6,
+        -1,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "coaster_approach",
+      "position_m": [
+        -18,
+        -9,
+        0.3
+      ],
+      "kind": "approach",
+      "note": "Paved cross-promenade approach. Use this origin for closure alternatives; boarding gate lacks paved link."
+    },
+    {
+      "id": "coaster_gate",
+      "position_m": [
+        -18.5,
+        -2.15,
+        0.3
+      ],
+      "kind": "entrance",
+      "note": "Actual queue gate vicinity: missing pavement and curb crossing. Not reachable in this graph."
+    },
+    {
+      "id": "west_junction",
+      "position_m": [
+        -62,
+        -9,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "west_offset",
+      "position_m": [
+        -63.5,
+        -5,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "northwest_junction",
+      "position_m": [
+        -63.5,
+        40.7,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "show_west_approach",
+      "position_m": [
+        -18,
+        40.7,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "show_entrance",
+      "position_m": [
+        -16,
+        42,
+        0.3
+      ],
+      "kind": "entrance",
+      "note": "Side approach west of seating tiers, not a seating-access or evacuation model."
+    },
+    {
+      "id": "wheel_junction",
+      "position_m": [
+        35,
+        -9,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "wheel_approach",
+      "position_m": [
+        35,
+        8,
+        0.3
+      ],
+      "kind": "approach",
+      "note": "Public approach before queue rails at y=10 and y=12. Does not establish a boarding route."
+    },
+    {
+      "id": "wheel_boarding",
+      "position_m": [
+        35,
+        16,
+        0.3
+      ],
+      "kind": "entrance",
+      "note": "Ramp/loading vicinity is separated by queue rails; no validated gate path authored."
+    },
+    {
+      "id": "east_junction",
+      "position_m": [
+        62,
+        -9,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "east_offset",
+      "position_m": [
+        63.5,
+        -5,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "east_before_fence",
+      "position_m": [
+        63.5,
+        38,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "northeast_isolated",
+      "position_m": [
+        63.5,
+        42,
+        0.3
+      ],
+      "kind": "junction"
+    },
+    {
+      "id": "food_entrance",
+      "position_m": [
+        -12.5,
+        -27,
+        0.3
+      ],
+      "kind": "entrance",
+      "note": "East edge inside dining plaza; missing link over grass and main promenade curb."
+    },
+    {
+      "id": "food_service",
+      "position_m": [
+        -25,
+        -28.5,
+        0.3
+      ],
+      "kind": "approach",
+      "note": "Dining plaza interior near cafe service counter; local segment only."
+    }
+  ],
+  "edges": [
+    {
+      "id": "entry_main",
+      "from": "entry",
+      "to": "main_south",
+      "status": "walkable",
+      "surface_ids": [
+        "entry",
+        "main"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "Entry paving top is 0.35 m; main promenade top is 0.24 m. No surveyed/modelled ramp joins the 0.11 m threshold."
+    },
+    {
+      "id": "main_south_link",
+      "from": "main_south",
+      "to": "main_food_junction",
+      "status": "walkable",
+      "surface_ids": [
+        "main"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "main_plaza",
+      "from": "main_food_junction",
+      "to": "plaza_south",
+      "status": "walkable",
+      "surface_ids": [
+        "main",
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "Central plaza top is 0.335 m versus promenade top 0.24 m; transition is not modelled as a step-free ramp."
+    },
+    {
+      "id": "plaza_south_w",
+      "from": "plaza_south",
+      "to": "plaza_southwest",
+      "status": "walkable",
+      "surface_ids": [
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "plaza_south_e",
+      "from": "plaza_south",
+      "to": "plaza_southeast",
+      "status": "walkable",
+      "surface_ids": [
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "plaza_w_lower",
+      "from": "plaza_southwest",
+      "to": "plaza_west",
+      "status": "walkable",
+      "surface_ids": [
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "plaza_e_lower",
+      "from": "plaza_southeast",
+      "to": "plaza_east",
+      "status": "walkable",
+      "surface_ids": [
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "plaza_w_upper",
+      "from": "plaza_west",
+      "to": "plaza_northwest",
+      "status": "walkable",
+      "surface_ids": [
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "plaza_north",
+      "from": "plaza_northwest",
+      "to": "plaza_northeast",
+      "status": "walkable",
+      "surface_ids": [
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "plaza_e_upper",
+      "from": "plaza_northeast",
+      "to": "plaza_east",
+      "status": "walkable",
+      "surface_ids": [
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "cross_coaster",
+      "from": "plaza_west",
+      "to": "coaster_approach",
+      "status": "walkable",
+      "surface_ids": [
+        "cross",
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "Plaza-to-cross-promenade transition has a nominal 0.095 m height difference and no authored ramp."
+    },
+    {
+      "id": "cross_west",
+      "from": "coaster_approach",
+      "to": "west_junction",
+      "status": "walkable",
+      "surface_ids": [
+        "cross"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "west_offset_link",
+      "from": "west_junction",
+      "to": "west_offset",
+      "status": "walkable",
+      "surface_ids": [
+        "west",
+        "cross"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "west_north",
+      "from": "west_offset",
+      "to": "northwest_junction",
+      "status": "walkable",
+      "surface_ids": [
+        "west",
+        "north"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "north_show",
+      "from": "northwest_junction",
+      "to": "show_west_approach",
+      "status": "walkable",
+      "surface_ids": [
+        "north",
+        "west"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "show_side_entry",
+      "from": "show_west_approach",
+      "to": "show_entrance",
+      "status": "walkable",
+      "surface_ids": [
+        "north"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "cross_wheel",
+      "from": "plaza_east",
+      "to": "wheel_junction",
+      "status": "walkable",
+      "surface_ids": [
+        "cross",
+        "plaza"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "Plaza-to-cross-promenade transition has a nominal 0.095 m height difference and no authored ramp."
+    },
+    {
+      "id": "wheel_public_approach",
+      "from": "wheel_junction",
+      "to": "wheel_approach",
+      "status": "walkable",
+      "surface_ids": [
+        "wheel_approach"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "cross_east",
+      "from": "wheel_junction",
+      "to": "east_junction",
+      "status": "walkable",
+      "surface_ids": [
+        "cross"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "east_offset_link",
+      "from": "east_junction",
+      "to": "east_offset",
+      "status": "walkable",
+      "surface_ids": [
+        "east",
+        "cross"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "east_north",
+      "from": "east_offset",
+      "to": "east_before_fence",
+      "status": "walkable",
+      "surface_ids": [
+        "east"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "food_interior",
+      "from": "food_entrance",
+      "to": "food_service",
+      "status": "walkable",
+      "surface_ids": [
+        "food"
+      ],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": true
+    },
+    {
+      "id": "food_missing_link",
+      "from": "main_food_junction",
+      "to": "food_entrance",
+      "status": "missing_connection",
+      "surface_ids": [],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "6.5 m unpaved grass gap between main promenade and dining plaza, plus authored curb near x=-5.1."
+    },
+    {
+      "id": "coaster_missing_link",
+      "from": "coaster_approach",
+      "to": "coaster_gate",
+      "status": "missing_connection",
+      "surface_ids": [],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "Cross promenade ends at y=-2.5; queue gate at y\u2248-2 has no paved continuation and intersects curb near y=-2.4."
+    },
+    {
+      "id": "wheel_queue_obstruction",
+      "from": "wheel_approach",
+      "to": "wheel_boarding",
+      "status": "obstructed",
+      "surface_ids": [],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "Queue fences cross x=28..42 at y=10 and y=12. No gate/around-rail boarding path validated."
+    },
+    {
+      "id": "east_power_obstruction",
+      "from": "east_before_fence",
+      "to": "northeast_isolated",
+      "status": "obstructed",
+      "surface_ids": [],
+      "assumed_corridor_width_m": 2,
+      "modeled_step_free": false,
+      "reason": "Power hub perimeter fence spans x=46..69 at y=40 across EastPromenade."
+    }
+  ],
+  "asset_entrances": {
+    "ENTRY_GATE": "entry",
+    "FOOD_COURT": "food_entrance",
+    "RIDE_COASTER": "coaster_gate",
+    "RIDE_WHEEL": "wheel_approach",
+    "SHOW_ARENA": "show_entrance"
+  },
+  "entrance_scope_notes": {
+    "RIDE_WHEEL": "Mapped to public queue approach. wheel_boarding is a separate unreachable node.",
+    "RIDE_COASTER": "Gate is unreachable; coaster_approach is a separately named reachable observation point.",
+    "FOOD_COURT": "Plaza entrance is unreachable from main network until a real connecting path is modeled.",
+    "SHOW_ARENA": "West-side venue approach, not route to a particular seat."
+  },
+  "known_unmodeled_connections": [
+    {
+      "id": "food_cross_gap",
+      "description": "Dining plaza northern edge y=-15.5 and cross promenade southern edge y=-11.5 leave 4 m of grass."
+    },
+    {
+      "id": "lake_boardwalk",
+      "description": "Lake boardwalk and approach ramps are isolated from the public paving network; no cross-lake shortcut or connection to northern promenade is assumed."
+    },
+    {
+      "id": "north_east_connection",
+      "description": "Northern promenade beyond show approach is omitted because trees, show structures, weather mast and utility structures require detailed clearance review."
+    },
+    {
+      "id": "other_assets",
+      "description": "Hotel, first aid, restrooms, parking and utilities require separately surveyed/modelled pedestrian entrances."
+    }
+  ]
+}

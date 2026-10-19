@@ -1,0 +1,11 @@
+{
+  "scope": "Actual isolated local API/browser acceptance; not GPU rendering or a clean committed deployment",
+  "files": {
+    "accepted-stale-source.png": "44646e77013a6a076670c4f597c4257b003999db11b074888520a24b948e5c9d",
+    "existing-order-execute-conflict.png": "1f2a085ae60ecc74c3794a2a07748b46bcddeb3ba6a6bc1f9083bfd7417b4a75",
+    "proposal-current-checks.png": "4dcf1e8572501db7ea4db9dd62c1327c90f6c0da629f9c5c257684e3ba4987d3",
+    "report.json": "45cbc0e8edd76cdb906c5a109334f75fca5099f9db5ceb0bdc1b0daccc2a5587",
+    "workflow-mobile.png": "76c79e6eaad56ef3bbe15edf386d3e1c947bf8a4bf976524b0c4820a7bf51f54",
+    "accepted-still-closed.png": "cbe8e1727143c50a185643cd17b576fe4faae80aae8275f13e7f884207929ef9"
+  }
+}

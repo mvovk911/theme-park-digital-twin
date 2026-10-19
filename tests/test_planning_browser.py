@@ -115,7 +115,7 @@ def test_full_tradeoff_and_charts_preserve_request_provenance(ui):
     for metric in ['queue','served','power','stock','leak']:
         page.select_option('#planning-chart-metric',metric)
         assert page.locator('#planning-chart polyline').count()==(4 if metric=='power' else 3)
-    assert not page.locator('#planning-section button').filter(has_text='Execute').count()
+    assert not page.locator('#planning-results button').filter(has_text='Execute').count()
 
 
 def test_do_nothing_is_explicit_when_intervention_has_no_benefit(ui):

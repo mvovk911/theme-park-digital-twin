@@ -15,6 +15,7 @@
   let observation = null, observedAt = 0, viewPending = false, busy = false, capabilities = null, result = null, pendingViewVersion = 0, inputsChanged = false, notice = null;
   let evidenceBusy = false, historical = false, evidenceVerification = null, libraryOffset = 0, libraryTotal = 0;
   const savedBundles = new Set();
+  let workflowContextKey = null;
 
   async function request(path, options = {}) {
     const controller = new AbortController(), timeout = setTimeout(() => controller.abort(), 20000);
@@ -136,6 +137,9 @@
     $('planning-library-previous').disabled = busy || evidenceBusy || libraryOffset === 0;
     $('planning-library-next').disabled = busy || evidenceBusy || libraryOffset + 20 >= libraryTotal;
     $('planning-library-items').querySelectorAll('button').forEach(button => button.disabled = busy || evidenceBusy);
+    const context = bundle ? {bundle_id:bundle.bundle_id,saved:!!saved,scenario:result.input.requested_scenario,branches:result.branches.map(branch => ({id:branch.id,label:branch.label,action_schedule:branch.action_schedule}))} : null;
+    const contextKey=JSON.stringify(context);
+    if (contextKey!==workflowContextKey) { workflowContextKey=contextKey; document.dispatchEvent(new CustomEvent('park:planning-evidence',{detail:context})); }
   }
   function renderEvidenceContext() {
     const box = $('planning-evidence-context'), bundle = currentBundle();

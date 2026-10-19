@@ -7,8 +7,10 @@
   <title>Aster Park · Live Twin</title>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/planning.css">
+  <link rel="stylesheet" href="/workflow.css">
   <script defer src="/app.js"></script>
   <script defer src="/planning.js"></script>
+  <script defer src="/workflow.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -109,6 +111,7 @@
             <details class="planning-details" open><summary>Full resource comparison <span>Central estimates + low–high demand sensitivity</span></summary><div class="planning-table-wrap"><table id="planning-comparison"></table></div><p class="planning-footnote">Service visits can include the same person more than once. Unserved visits remain in the queue at the horizon. Ranges are assumed demand cases, not confidence intervals.</p></details>
             <div class="planning-review-grid"><div class="planning-quality"><div class="planning-step">03 <span>Review before deciding</span></div><h4 id="planning-quality-title"></h4><div id="planning-quality"></div></div><details class="planning-details planning-assumptions"><summary>Model assumptions & limits</summary><div id="planning-assumptions"></div></details></div>
           </div>
+          <details id="workflow-panel" class="workflow-panel" open><summary><span>04 / Bounded maintenance workflow</span><small>SYNTHETIC WORK ORDER ONLY</small></summary><div class="workflow-body"><p class="workflow-intro">Review a saved dispatch action against the current park, then explicitly create a synthetic work order. Historical evidence is not permission to act. Dispatch never repairs or reopens an attraction.</p><div class="workflow-selection"><label for="workflow-action">Action from saved comparison<select id="workflow-action"><option value="">Save a comparison to review its actions</option></select></label><button id="workflow-create" disabled>Create proposal</button></div><p id="workflow-support" class="workflow-support"></p><div id="workflow-message" role="status" class="workflow-message">Loading the bounded workflow service…</div><div id="workflow-conflict" class="workflow-conflict" hidden></div><div id="workflow-proposal" hidden></div><div class="workflow-buttons"><button id="workflow-execute" disabled>Execute synthetic work order</button><button id="workflow-recover" disabled>Reload proposal & receipt</button><button id="workflow-new" hidden>Review a fresh proposal</button><button id="workflow-history">Recent proposals</button></div><div id="workflow-history-list" class="workflow-history" hidden></div><p class="workflow-footnote">No physical control or completion. Receipt acceptance and the recorded work-order readback are separate evidence. Retry identities are retained in this browser.</p></div></details>
         </div>
       </div>
     </section>

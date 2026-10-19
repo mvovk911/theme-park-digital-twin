@@ -1,0 +1,42 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    upAxis = "Z"
+    metersPerUnit = 1
+)
+over "World" {
+    over "Park" {
+        over "LANDSCAPE" {
+            over "PathCurb" ( active = false ) {}
+        }
+        def Xform "DINING_CONNECTION_DESIGN" {
+            custom string park:designVariant = "dining-connection-v1"
+            custom string park:baselineSceneSha256 = "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c"
+            custom string park:scope = "Synthetic design experiment; not an as-built or accessibility certificate"
+            def Mesh "GradedPaving" ( prepend apiSchemas = ["MaterialBindingAPI"] ) {
+                point3f[] points = [(-13.5, -27.4, 0.325), (-13.5, -25.4, 0.325), (-11.5, -27.4, 0.325), (-11.5, -25.4, 0.325), (-5.0, -27.4, 0.24), (-5.0, -25.4, 0.24), (-4.5, -27.4, 0.24), (-4.5, -25.4, 0.24), (-13.5, -27.4, 0.1), (-13.5, -25.4, 0.1), (-11.5, -27.4, 0.1), (-11.5, -25.4, 0.1), (-5.0, -27.4, 0.1), (-5.0, -25.4, 0.1), (-4.5, -27.4, 0.1), (-4.5, -25.4, 0.1)]
+                int[] faceVertexCounts = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                int[] faceVertexIndices = [0, 2, 3, 1, 8, 9, 11, 10, 0, 8, 10, 2, 1, 3, 11, 9, 2, 4, 5, 3, 10, 11, 13, 12, 2, 10, 12, 4, 3, 5, 13, 11, 4, 6, 7, 5, 12, 13, 15, 14, 4, 12, 14, 6, 5, 7, 15, 13, 0, 1, 9, 8, 6, 14, 15, 7]
+                uniform token subdivisionScheme = "none"
+                bool doubleSided = true
+                rel material:binding = </World/Materials/path>
+                custom double park:gradeRiseM = 0.085
+                custom double park:gradeRunM = 6.5
+            }
+            def Cube "SouthCurb" ( prepend apiSchemas = ["MaterialBindingAPI"] ) {
+                double size = 1
+                double3 xformOp:translate = (-5.1, -36.95000000, 0.26)
+                float3 xformOp:scale = (0.22, 19.10000000, 0.25)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+                rel material:binding = </World/Materials/cream>
+            }
+            def Cube "NorthCurb" ( prepend apiSchemas = ["MaterialBindingAPI"] ) {
+                double size = 1
+                double3 xformOp:translate = (-5.1, -22.45000000, 0.26)
+                float3 xformOp:scale = (0.22, 5.90000000, 0.25)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+                rel material:binding = </World/Materials/cream>
+            }
+        }
+    }
+}
