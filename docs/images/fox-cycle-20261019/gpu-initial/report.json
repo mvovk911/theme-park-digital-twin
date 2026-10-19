@@ -1,0 +1,223 @@
+{
+  "url": "http://127.0.0.1:8100",
+  "mode": "actual Horde browser, planning API and L40 OVRTX renderer",
+  "scenarios": [
+    {
+      "scenario": "normal",
+      "plan_id": "19eda7068aa22f7c03b32628868bd4e8079bcadff1fa6657a9d5bf2e88cff9c8",
+      "revision": "770adaacd3f42083b59b7dc32d9a1ed3a11754278c717287b0ac36f7b1f786ec",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "ride_closure",
+      "plan_id": "202466b881a1c36e47263ec2b5679e3a9ac026b347150f3dc84f8c4181ca3ea1",
+      "revision": "770adaacd3f42083b59b7dc32d9a1ed3a11754278c717287b0ac36f7b1f786ec",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "show_surge",
+      "plan_id": "bf79ba01f6a911f68c70b6e51b69c88347ba6f43c6e4ef9222c9bef770e62748",
+      "revision": "770adaacd3f42083b59b7dc32d9a1ed3a11754278c717287b0ac36f7b1f786ec",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "heatwave",
+      "plan_id": "fa40264b3f3cb7d9b0bec41f575f6d71bfd029a70cda6daa928226a2e8a09e8a",
+      "revision": "770adaacd3f42083b59b7dc32d9a1ed3a11754278c717287b0ac36f7b1f786ec",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "power_fault",
+      "plan_id": "fda37ec2f7cc2668c8b3a5b903e70d1478e8a1715e444ffc07f8c52697c91e2b",
+      "revision": "770adaacd3f42083b59b7dc32d9a1ed3a11754278c717287b0ac36f7b1f786ec",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "water_leak",
+      "plan_id": "02f6d15193246b6aba08985fdefc601745e8627e63ced292592f284dc11f2b0c",
+      "revision": "301290eb9cbdd40f6c7bf23663d6d288bb6a2b1d75da3742f58f372cc142ffc9",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "food_rush",
+      "plan_id": "0118738c1bbbeb0f8a6418d041326d09e6bbe26449bdf73aef5ebba9fc338914",
+      "revision": "301290eb9cbdd40f6c7bf23663d6d288bb6a2b1d75da3742f58f372cc142ffc9",
+      "status": "review_required",
+      "branch_count": 3
+    }
+  ],
+  "renderer": {
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "d3dca3d20612d3d09ed1acb680683a990cbd51ba",
+      "tree": "cf80d191be1b9f8a1602f2c181e53ca21cc61262",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-19T19:49:33.432260+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "ready": true,
+    "fps": 12.5,
+    "frame": 1341,
+    "width": 1280,
+    "height": 720,
+    "selected_asset": null,
+    "camera": {
+      "target": [
+        0.0,
+        0.0,
+        3.0
+      ],
+      "radius": 285.0,
+      "yaw": -0.9424777960769379,
+      "pitch": 0.6981317007977318
+    },
+    "error": null,
+    "projected_assets": [
+      {
+        "id": "RIDE_COASTER",
+        "x": 0.4487180575868541,
+        "y": 0.356342868478316,
+        "visible": true
+      },
+      {
+        "id": "RIDE_WHEEL",
+        "x": 0.6399573795827305,
+        "y": 0.4215226676980445,
+        "visible": true
+      },
+      {
+        "id": "SHOW_ARENA",
+        "x": 0.5634555108098915,
+        "y": 0.3649501438407152,
+        "visible": true
+      },
+      {
+        "id": "FOOD_COURT",
+        "x": 0.3825456752660431,
+        "y": 0.5203956479846145,
+        "visible": true
+      },
+      {
+        "id": "POWER_HUB",
+        "x": 0.7282444678855249,
+        "y": 0.47558171902408863,
+        "visible": true
+      },
+      {
+        "id": "WATER_PLANT",
+        "x": 0.44489208174713185,
+        "y": 0.2703738480703259,
+        "visible": true
+      },
+      {
+        "id": "HOTEL",
+        "x": 0.30474504722258755,
+        "y": 0.4504515692328166,
+        "visible": true
+      },
+      {
+        "id": "PARKING",
+        "x": 0.5778831027685586,
+        "y": 0.7490013395095128,
+        "visible": true
+      },
+      {
+        "id": "FIRST_AID",
+        "x": 0.47896026101169253,
+        "y": 0.6460616671919789,
+        "visible": true
+      },
+      {
+        "id": "RESTROOMS",
+        "x": 0.6190476190849854,
+        "y": 0.6695282553083006,
+        "visible": true
+      },
+      {
+        "id": "WEATHER_STATION",
+        "x": 0.6122996720038251,
+        "y": 0.40276588084719833,
+        "visible": true
+      },
+      {
+        "id": "ENTRY_GATE",
+        "x": 0.3896184004396046,
+        "y": 0.6639615431994512,
+        "visible": true
+      }
+    ],
+    "engine": "NVIDIA OVRTX + OVStage",
+    "phase": "rendering",
+    "layer": "operations",
+    "api_connected": true,
+    "ovrtx_version": "0.6.0.1791947691",
+    "ovstage_version": "0.3.0.1791986420",
+    "ride_motion": {
+      "coaster_phase": 0.5609828800495175,
+      "wheel_angle": 17.209804953932753
+    },
+    "motion_policy": {
+      "RIDE_COASTER": {
+        "advance": true,
+        "reason": "current_operating_status",
+        "status_quality": "good"
+      },
+      "RIDE_WHEEL": {
+        "advance": true,
+        "reason": "current_operating_status",
+        "status_quality": "good"
+      }
+    },
+    "ride_status": {
+      "RIDE_COASTER": "operational",
+      "RIDE_WHEEL": "operational"
+    },
+    "source_timestamp": "2026-10-19T19:51:23.274+00:00",
+    "source_tick": 63384,
+    "accepted_state_revision": "9842b1f9339d74d387e695ac28499ff3184551d2662858c6c3c80255dc8a0ba9",
+    "camera_token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+    "view_mode": "live",
+    "snapshot_id": null,
+    "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "pose_source": "live",
+    "rendered_at": "2026-10-19T19:51:24.522+00:00",
+    "frame_age_seconds": 0.007,
+    "source_age_seconds": 1.256133
+  },
+  "frame_headers": {
+    "x-frame-number": "1342",
+    "x-frame-camera-token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+    "x-frame-rendered-at": "2026-10-19T19:51:24.601+00:00",
+    "x-frame-age-seconds": "0.004",
+    "x-source-tick": "63384",
+    "x-source-revision": "9842b1f9339d74d387e695ac28499ff3184551d2662858c6c3c80255dc8a0ba9",
+    "x-frame-context": "{\"camera\":{\"target\":[0.0,0.0,3.0],\"radius\":285.0,\"yaw\":-0.9424777960769379,\"pitch\":0.6981317007977318},\"projected_assets\":[{\"id\":\"RIDE_COASTER\",\"x\":0.4487180575868541,\"y\":0.356342868478316,\"visible\":true},{\"id\":\"RIDE_WHEEL\",\"x\":0.6399573795827305,\"y\":0.4215226676980445,\"visible\":true},{\"id\":\"SHOW_ARENA\",\"x\":0.5634555108098915,\"y\":0.3649501438407152,\"visible\":true},{\"id\":\"FOOD_COURT\",\"x\":0.3825456752660431,\"y\":0.5203956479846145,\"visible\":true},{\"id\":\"POWER_HUB\",\"x\":0.7282444678855249,\"y\":0.47558171902408863,\"visible\":true},{\"id\":\"WATER_PLANT\",\"x\":0.44489208174713185,\"y\":0.2703738480703259,\"visible\":true},{\"id\":\"HOTEL\",\"x\":0.30474504722258755,\"y\":0.4504515692328166,\"visible\":true},{\"id\":\"PARKING\",\"x\":0.5778831027685586,\"y\":0.7490013395095128,\"visible\":true},{\"id\":\"FIRST_AID\",\"x\":0.47896026101169253,\"y\":0.6460616671919789,\"visible\":true},{\"id\":\"RESTROOMS\",\"x\":0.6190476190849854,\"y\":0.6695282553083006,\"visible\":true},{\"id\":\"WEATHER_STATION\",\"x\":0.6122996720038251,\"y\":0.40276588084719833,\"visible\":true},{\"id\":\"ENTRY_GATE\",\"x\":0.3896184004396046,\"y\":0.6639615431994512,\"visible\":true}],\"width\":1280,\"height\":720}",
+    "x-source-timestamp": "2026-10-19T19:51:23.274+00:00",
+    "x-source-age-seconds": "1.33145",
+    "x-view-mode": "live",
+    "x-scene-revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "x-pose-source": "live",
+    "x-renderer-ready": "true"
+  },
+  "frame_sha256": "56652ec7d82ed9859aadae0ecbe8eb7aa312aa2e14da145e480ed31455526b49",
+  "infeasible_staffing_visible": true,
+  "mobile_section_no_overflow": true,
+  "mobile_page_width": {
+    "width": 390,
+    "scroll": 390
+  },
+  "live_scenario_preserved": "normal",
+  "page_errors": [],
+  "status": "passed"
+}

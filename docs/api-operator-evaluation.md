@@ -191,3 +191,25 @@ stress testing, not held-out empirical forecast validation. The post-horizon sta
 case explicitly tests that doing nothing can dominate a costly intervention with
 no benefit. Production validation still requires real observations, predetermined
 accuracy metrics, withheld operating days and operational review.
+
+## Experiment started 19 October 2026
+
+The isolated eight-hour API experiment started at **2026-10-19 19:47:34 UTC**,
+with a scheduled end of **2026-10-20 03:47:34 UTC**. It runs frozen commit
+`d3dca3d20612d3d09ed1acb680683a990cbd51ba`, packaged and verified by the release
+manifest tooling; startup health reported `verified_manifest` with no mismatches.
+The artifact SHA256 is
+`421ab8142a9aeb495464934d9586c7258e69acdd57ffe1c16bdcf6a731f44216`.
+
+The first cycle completed with **11 passing checks and zero failures**, including
+12 separately selected scenario/assumption cases. This is a startup checkpoint,
+not an eight-hour result. The supervisor samples process state, the evaluator
+runs a functional cycle every five minutes, and paused time is recorded separately.
+The GPU/rendering observation is a distinct experiment and is not covered by this
+CPU API result.
+
+Local runtime evidence is under `runtime/fox-cycle-20261019/api-soak/`:
+`evaluation/summary.json` and `evaluation/events.jsonl` contain functional evidence;
+`supervisor.json` and `supervisor-events.jsonl` contain process lifecycle evidence.
+Final elapsed time, functional cycle count, pause duration, failed checks and
+backend restarts must all be reported when the run finishes.

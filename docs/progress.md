@@ -15,6 +15,16 @@ and synthetic planner; they are **not new GPU-render evidence**.
 
 ![Decision Lab: actual local browser and API](images/fox-cycle-20261019/initial/decision-lab-desktop.png)
 
+The same initial release now passed **actual Horde browser/API/OVRTX checks** on
+an L40: all seven planning scenarios, infeasible staffing, desktop/mobile layout,
+and no browser page errors. Source and scene hashes are recorded in the
+[GPU browser report](images/fox-cycle-20261019/gpu-initial/report.json).
+
+![Actual L40-rendered park with live API observations](images/fox-cycle-20261019/gpu-initial/operations-rtx.png)
+
+[GPU Decision Lab screenshot](images/fox-cycle-20261019/gpu-initial/decision-lab-desktop.png) ·
+[Exact downloaded RTX frame](images/fox-cycle-20261019/gpu-initial/render-overview.jpg)
+
 The first implementation passed 214 CPU/API tests before subsequent review fixes.
 An independent review caught an HVAC constraint that depended on the requested
 scenario label rather than the observed temperature; that counterexample is now
