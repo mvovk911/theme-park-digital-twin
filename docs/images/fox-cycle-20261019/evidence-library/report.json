@@ -1,0 +1,33 @@
+{
+  "url": "http://127.0.0.1:18130",
+  "mode": "actual isolated local API/browser, no GPU evidence",
+  "checks": [
+    "explicit_do_nothing_preference",
+    "server_save_ack",
+    "download_verifies_after_browser_json_roundtrip",
+    "reopen_restores_frozen_result",
+    "reopen_after_page_reload",
+    "tampered_file_rejected",
+    "exported_file_imports",
+    "historical_open_preserves_replay",
+    "actual_offline_source_abstention",
+    "mobile_no_overflow"
+  ],
+  "bundle_id": "71db4de502da37c4dc429a598a5939f36e3fe8afae1068a813a5746b1e9e5a8a",
+  "model_source_sha256": "cbce78b98fca5cb67af839ce595c9bf2150cf5792721ad0452a83993fc45da96",
+  "save_ack": {
+    "verified": true,
+    "bundle_id": "71db4de502da37c4dc429a598a5939f36e3fe8afae1068a813a5746b1e9e5a8a",
+    "model_source_sha256": "cbce78b98fca5cb67af839ce595c9bf2150cf5792721ad0452a83993fc45da96",
+    "scope": "historical_reproduction",
+    "execution_authority": false,
+    "origin_authenticated": false,
+    "meaning": "Hashes and numerical reproduction match; this does not authenticate source observations or authorize execution.",
+    "saved": true,
+    "already_saved": false,
+    "stored_at": "2026-10-19T19:59:21.961596+00:00"
+  },
+  "page_errors": [],
+  "status": "passed",
+  "cleanup": "isolated service live/normal/all sources live"
+}

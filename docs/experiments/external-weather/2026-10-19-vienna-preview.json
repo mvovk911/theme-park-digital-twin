@@ -1,0 +1,563 @@
+{
+  "adapter": "open_meteo.preview.v1",
+  "external": true,
+  "synthetic": false,
+  "mutates_live_state": false,
+  "authoritative_for_park": false,
+  "requested_location": {
+    "latitude": 48.2082,
+    "longitude": 16.3738
+  },
+  "provider_grid": {
+    "latitude": 48.19585,
+    "longitude": 16.367817,
+    "elevation_m": 179.0
+  },
+  "retrieved_at": "2026-10-19T19:55:30.029754+00:00",
+  "forecast_issued_at": null,
+  "current": {
+    "valid_at": "2026-10-19T19:45:00+00:00",
+    "values": {
+      "temperature_c": {
+        "value": 10.1,
+        "unit": "Cel",
+        "quality": "available",
+        "reason": null,
+        "source_field": "temperature_2m"
+      },
+      "apparent_temperature_c": {
+        "value": 7.8,
+        "unit": "Cel",
+        "quality": "available",
+        "reason": null,
+        "source_field": "apparent_temperature"
+      },
+      "wind_speed_mps": {
+        "value": 2.04,
+        "unit": "m/s",
+        "quality": "available",
+        "reason": null,
+        "source_field": "wind_speed_10m"
+      },
+      "wind_gust_mps": {
+        "value": 5.5,
+        "unit": "m/s",
+        "quality": "available",
+        "reason": null,
+        "source_field": "wind_gusts_10m"
+      },
+      "precipitation_mm": {
+        "value": 0.0,
+        "unit": "mm",
+        "quality": "available",
+        "reason": null,
+        "source_field": "precipitation"
+      }
+    }
+  },
+  "hourly": [
+    {
+      "valid_at": "2026-10-19T19:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 10.7,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 8.1,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 2.51,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 5.8,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-19T20:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 9.9,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 7.7,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.94,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 5.3,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-19T21:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 9.4,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 7.3,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.73,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 4.1,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-19T22:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 9.0,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 7.1,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.43,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 3.7,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-19T23:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 8.7,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 7.1,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.04,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 3.0,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-20T00:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 8.2,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 6.6,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.08,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 2.4,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-20T01:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 7.6,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 5.9,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.12,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 2.5,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-20T02:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 6.8,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 5.0,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.3,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 3.2,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-20T03:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 6.4,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 4.4,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.46,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 3.5,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-20T04:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 6.6,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 4.5,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.61,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 3.7,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-20T05:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 7.2,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 5.0,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 1.75,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 3.8,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    },
+    {
+      "valid_at": "2026-10-20T06:00:00+00:00",
+      "values": {
+        "temperature_c": {
+          "value": 7.3,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "temperature_2m"
+        },
+        "apparent_temperature_c": {
+          "value": 4.8,
+          "unit": "Cel",
+          "quality": "available",
+          "reason": null,
+          "source_field": "apparent_temperature"
+        },
+        "wind_speed_mps": {
+          "value": 2.11,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_speed_10m"
+        },
+        "wind_gust_mps": {
+          "value": 4.7,
+          "unit": "m/s",
+          "quality": "available",
+          "reason": null,
+          "source_field": "wind_gusts_10m"
+        },
+        "precipitation_mm": {
+          "value": 0.0,
+          "unit": "mm",
+          "quality": "available",
+          "reason": null,
+          "source_field": "precipitation"
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "provider": "Open-Meteo",
+    "source_type": "numerical_weather_model",
+    "documentation": "https://open-meteo.com/en/docs",
+    "attribution": "Weather data by Open-Meteo.com, CC BY 4.0",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "payload_sha256": "6f46e3d835dcafe279792bac287056648aef47d39ca87676c16930249cab5dac"
+  },
+  "limits": [
+    "Preview coordinates are not a configured park location.",
+    "Current values are weather-model estimates, not a local wind mast or safety sensor.",
+    "Retrieval time is not forecast issue time; this response does not expose an issue timestamp.",
+    "No ride limits, lightning detection, calibration or command authority are supplied.",
+    "The public API is for noncommercial use; production must use an appropriate provider agreement."
+  ],
+  "quality": {
+    "status": "available",
+    "current_age_seconds": 630.03,
+    "reasons": [],
+    "freshness_policy": "preview-only: current valid time within -5 to +45 minutes of retrieval; not a provider accuracy guarantee"
+  },
+  "cached": false,
+  "checked_at": "2026-10-19T19:55:30.029754+00:00"
+}

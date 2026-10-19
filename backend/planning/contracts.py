@@ -7,7 +7,7 @@ Action = Literal["dispatch_maintenance", "reroute_guests", "add_staff", "shed_lo
 
 
 class StrictModel(BaseModel):
-    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False, validate_default=True)
 
 
 class ScheduledAction(StrictModel):

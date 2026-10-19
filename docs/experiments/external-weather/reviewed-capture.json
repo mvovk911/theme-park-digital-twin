@@ -1,0 +1,10 @@
+{
+  "reference_location": "Vienna city centre, illustrative only; not a configured park",
+  "adapter_source_sha256": "3b3333518585f4bac85f8c195c97d4a4a77fa5aa1add118e3ef35371e90a8fe9",
+  "retrieved_at": "2026-10-19T20:00:58.067315+00:00",
+  "normalized_response_sha256": "a89c9f437604ce27fe2fb261d81db58cd49e1ab53878cc0525f928179637409a",
+  "file": "2026-10-19-vienna-preview-reviewed.json",
+  "network_execution": "Horde worker",
+  "external": true,
+  "canonical_park_writes": false
+}

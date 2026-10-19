@@ -1,0 +1,3913 @@
+{
+  "bundle_id": "71db4de502da37c4dc429a598a5939f36e3fe8afae1068a813a5746b1e9e5a8a",
+  "payload": {
+    "evaluation_as_of": "2026-10-19T19:59:21.842209+00:00",
+    "model_source_sha256": "cbce78b98fca5cb67af839ce595c9bf2150cf5792721ad0452a83993fc45da96",
+    "request": {
+      "assumptions": {
+        "arrival_multiplier": 1,
+        "available_qualified_staff": 4,
+        "demand_uncertainty_pct": 20,
+        "routing_compliance_pct": 25
+      },
+      "candidates": null,
+      "expected_state_revision": "5d440f03a6ef2c7a424f8594e22f2052f028e60dfb5f61671c7e7a780396a980",
+      "horizon_minutes": 60,
+      "scenario": "food_rush"
+    },
+    "result": {
+      "assumptions": [
+        "Uncalibrated synthetic planning exercise; output is not a real-world forecast, savings claim or safety approval.",
+        "Frozen canonical observations initialize each branch; scenario shocks add to existing conditions and never reopen an already closed ride.",
+        "Four fluid queues represent service visits, not unique people: coaster, wheel, food and guest care. Initial backlog is posted wait times observed service rate; care uses observed occupancy.",
+        "Demand starts at 90% of observed service capacity (closed coaster uses an explicit 840/hour synthetic fallback); equal low/central/high demand factors are used for every branch.",
+        "Sensitivity ranges are three assumed demand cases, not probabilities, confidence intervals or calibrated uncertainty.",
+        "Each five-minute interval uses arrivals and available capacity; queue guest-minutes use trapezoidal integration, so short transients are approximate.",
+        "Guests remain in queue until served. Routing moves the assumed compliance fraction (default 25%) of arrivals from the most backlogged other open attraction/food queue to the explicit target, only when that target has a shorter current modeled wait. It never deletes demand. Guest preference and walking time are not modeled.",
+        "Two extra staff increase modeled service capacity by 15% after 10 minutes; qualification and availability are asserted synthetic reserve-pool assumptions, not verified employee records. No donor team is depleted. Real roster transfer and donor minimum coverage are unsupported. Cost starts on assignment at EUR28/person/hour.",
+        "Food consumes one stock unit per service visit. A replenishment delivers 300 units after 20 minutes, bounded by observed stock capacity; supply-chain purchasing cost is not modeled.",
+        "Load shedding reduces observed hotel load 25%, parking load 65% and food load 8% after 5 minutes, without thermal comfort or charging-service simulation.",
+        "Leak repair completes after an assumed 30 minutes; no physical work, repair reliability or water-network hydraulics are simulated. Maintenance dispatch opens only a hypothetical work order and never restores ride availability.",
+        "Existing observed mitigations are carried in input measurements. Repeating an action found active in canonical recent-action evidence receives no extra effect and makes that candidate infeasible. A full 12-event history without a reset/scenario boundary causes abstention because earlier active actions may be missing."
+      ],
+      "branches": [
+        {
+          "action_schedule": [],
+          "conservation": {
+            "arrivals": 1431,
+            "initial_queue_guests": 434.766667,
+            "residual_guests": 0
+          },
+          "constraints": {
+            "feasible": true,
+            "qualified_staff_available": 4,
+            "qualified_staff_requested": 0,
+            "violations": []
+          },
+          "deltas_vs_baseline": {
+            "energy_kwh": 0,
+            "excess_leak_liters": 0,
+            "feeder_exceedance_minutes": 0,
+            "food_stockout_minutes": 0,
+            "queue_guest_minutes": 0,
+            "served_guests": 0,
+            "staff_cost_eur": 0,
+            "unserved_guests": 0
+          },
+          "id": "baseline",
+          "label": "Do nothing",
+          "ranges": {
+            "energy_kwh": {
+              "max": 669.5,
+              "min": 669.5
+            },
+            "excess_leak_liters": {
+              "max": 0,
+              "min": 0
+            },
+            "feeder_exceedance_minutes": {
+              "max": 0,
+              "min": 0
+            },
+            "food_stockout_minutes": {
+              "max": 50,
+              "min": 50
+            },
+            "queue_guest_minutes": {
+              "max": 39574.2,
+              "min": 22444.067
+            },
+            "served_guests": {
+              "max": 1244,
+              "min": 1215.213
+            },
+            "staff_cost_eur": {
+              "max": 0,
+              "min": 0
+            },
+            "unserved_guests": {
+              "max": 907.967,
+              "min": 364.353
+            }
+          },
+          "robustness": {
+            "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases.",
+            "status": "no_adverse_case_in_tested_set",
+            "worse_than_baseline_cases": []
+          },
+          "sensitivity": {
+            "central": {
+              "conservation": {
+                "arrivals": 1431,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 0,
+                "queue_guest_minutes": 0,
+                "served_guests": 0,
+                "staff_cost_eur": 0,
+                "unserved_guests": 0
+              },
+              "demand_factor": 1,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 50,
+                "queue_guest_minutes": 30870.75,
+                "served_guests": 1244,
+                "staff_cost_eur": 0,
+                "unserved_guests": 621.767
+              }
+            },
+            "high": {
+              "conservation": {
+                "arrivals": 1717.2,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 0,
+                "queue_guest_minutes": 0,
+                "served_guests": 0,
+                "staff_cost_eur": 0,
+                "unserved_guests": 0
+              },
+              "demand_factor": 1.2,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 50,
+                "queue_guest_minutes": 39574.2,
+                "served_guests": 1244,
+                "staff_cost_eur": 0,
+                "unserved_guests": 907.967
+              }
+            },
+            "low": {
+              "conservation": {
+                "arrivals": 1144.8,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 0,
+                "queue_guest_minutes": 0,
+                "served_guests": 0,
+                "staff_cost_eur": 0,
+                "unserved_guests": 0
+              },
+              "demand_factor": 0.8,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 50,
+                "queue_guest_minutes": 22444.067,
+                "served_guests": 1215.213,
+                "staff_cost_eur": 0,
+                "unserved_guests": 364.353
+              }
+            }
+          },
+          "summary": {
+            "energy_kwh": 669.5,
+            "excess_leak_liters": 0,
+            "feeder_exceedance_minutes": 0,
+            "food_stockout_minutes": 50,
+            "queue_guest_minutes": 30870.75,
+            "served_guests": 1244,
+            "staff_cost_eur": 0,
+            "unserved_guests": 621.767
+          },
+          "tradeoffs": [],
+          "trajectory": [
+            {
+              "cumulative_served_guests": 0,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 60,
+              "minute": 0,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 3,
+                "FOOD_COURT": 39.633,
+                "RIDE_COASTER": 327.6,
+                "RIDE_WHEEL": 64.533
+              }
+            },
+            {
+              "cumulative_served_guests": 122.833,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 35.833,
+              "minute": 5,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.8,
+                "FOOD_COURT": 48.092,
+                "RIDE_COASTER": 320.6,
+                "RIDE_WHEEL": 61.867
+              }
+            },
+            {
+              "cumulative_served_guests": 245.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 11.667,
+              "minute": 10,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.6,
+                "FOOD_COURT": 56.55,
+                "RIDE_COASTER": 313.6,
+                "RIDE_WHEEL": 59.2
+              }
+            },
+            {
+              "cumulative_served_guests": 356,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 15,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.4,
+                "FOOD_COURT": 77.508,
+                "RIDE_COASTER": 306.6,
+                "RIDE_WHEEL": 56.533
+              }
+            },
+            {
+              "cumulative_served_guests": 454.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 20,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.2,
+                "FOOD_COURT": 110.133,
+                "RIDE_COASTER": 299.6,
+                "RIDE_WHEEL": 53.867
+              }
+            },
+            {
+              "cumulative_served_guests": 553.333,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 25,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2,
+                "FOOD_COURT": 142.758,
+                "RIDE_COASTER": 292.6,
+                "RIDE_WHEEL": 51.2
+              }
+            },
+            {
+              "cumulative_served_guests": 652,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 30,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.8,
+                "FOOD_COURT": 175.383,
+                "RIDE_COASTER": 285.6,
+                "RIDE_WHEEL": 48.533
+              }
+            },
+            {
+              "cumulative_served_guests": 750.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 35,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.6,
+                "FOOD_COURT": 208.008,
+                "RIDE_COASTER": 278.6,
+                "RIDE_WHEEL": 45.867
+              }
+            },
+            {
+              "cumulative_served_guests": 849.333,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 40,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.4,
+                "FOOD_COURT": 240.633,
+                "RIDE_COASTER": 271.6,
+                "RIDE_WHEEL": 43.2
+              }
+            },
+            {
+              "cumulative_served_guests": 948,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 45,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.2,
+                "FOOD_COURT": 273.258,
+                "RIDE_COASTER": 264.6,
+                "RIDE_WHEEL": 40.533
+              }
+            },
+            {
+              "cumulative_served_guests": 1046.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 50,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1,
+                "FOOD_COURT": 297.183,
+                "RIDE_COASTER": 257.6,
+                "RIDE_WHEEL": 37.867
+              }
+            },
+            {
+              "cumulative_served_guests": 1145.333,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 55,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 0.8,
+                "FOOD_COURT": 321.108,
+                "RIDE_COASTER": 250.6,
+                "RIDE_WHEEL": 35.2
+              }
+            },
+            {
+              "cumulative_served_guests": 1244,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 60,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 0.6,
+                "FOOD_COURT": 345.033,
+                "RIDE_COASTER": 243.6,
+                "RIDE_WHEEL": 32.533
+              }
+            }
+          ]
+        },
+        {
+          "action_schedule": [
+            {
+              "action": "replenish_stock",
+              "already_active": false,
+              "asset_id": "FOOD_COURT",
+              "at_minute": 0,
+              "effective_at_minute": 20
+            }
+          ],
+          "conservation": {
+            "arrivals": 1431,
+            "initial_queue_guests": 434.766667,
+            "residual_guests": 0
+          },
+          "constraints": {
+            "feasible": true,
+            "qualified_staff_available": 4,
+            "qualified_staff_requested": 0,
+            "violations": []
+          },
+          "deltas_vs_baseline": {
+            "energy_kwh": 0,
+            "excess_leak_liters": 0,
+            "feeder_exceedance_minutes": 0,
+            "food_stockout_minutes": -40,
+            "queue_guest_minutes": -3866.667,
+            "served_guests": 193.333,
+            "staff_cost_eur": 0,
+            "unserved_guests": -193.334
+          },
+          "id": "simple_rule",
+          "label": "Simple operating rule",
+          "ranges": {
+            "energy_kwh": {
+              "max": 669.5,
+              "min": 669.5
+            },
+            "excess_leak_liters": {
+              "max": 0,
+              "min": 0
+            },
+            "feeder_exceedance_minutes": {
+              "max": 0,
+              "min": 0
+            },
+            "food_stockout_minutes": {
+              "max": 10,
+              "min": 10
+            },
+            "queue_guest_minutes": {
+              "max": 35707.533,
+              "min": 18577.4
+            },
+            "served_guests": {
+              "max": 1437.333,
+              "min": 1408.547
+            },
+            "staff_cost_eur": {
+              "max": 0,
+              "min": 0
+            },
+            "unserved_guests": {
+              "max": 714.633,
+              "min": 171.02
+            }
+          },
+          "robustness": {
+            "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases.",
+            "status": "no_adverse_case_in_tested_set",
+            "worse_than_baseline_cases": []
+          },
+          "sensitivity": {
+            "central": {
+              "conservation": {
+                "arrivals": 1431,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": -40,
+                "queue_guest_minutes": -3866.667,
+                "served_guests": 193.333,
+                "staff_cost_eur": 0,
+                "unserved_guests": -193.334
+              },
+              "demand_factor": 1,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 10,
+                "queue_guest_minutes": 27004.083,
+                "served_guests": 1437.333,
+                "staff_cost_eur": 0,
+                "unserved_guests": 428.433
+              }
+            },
+            "high": {
+              "conservation": {
+                "arrivals": 1717.2,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": -40,
+                "queue_guest_minutes": -3866.667,
+                "served_guests": 193.333,
+                "staff_cost_eur": 0,
+                "unserved_guests": -193.334
+              },
+              "demand_factor": 1.2,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 10,
+                "queue_guest_minutes": 35707.533,
+                "served_guests": 1437.333,
+                "staff_cost_eur": 0,
+                "unserved_guests": 714.633
+              }
+            },
+            "low": {
+              "conservation": {
+                "arrivals": 1144.8,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": -40,
+                "queue_guest_minutes": -3866.667,
+                "served_guests": 193.334,
+                "staff_cost_eur": 0,
+                "unserved_guests": -193.333
+              },
+              "demand_factor": 0.8,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 10,
+                "queue_guest_minutes": 18577.4,
+                "served_guests": 1408.547,
+                "staff_cost_eur": 0,
+                "unserved_guests": 171.02
+              }
+            }
+          },
+          "summary": {
+            "energy_kwh": 669.5,
+            "excess_leak_liters": 0,
+            "feeder_exceedance_minutes": 0,
+            "food_stockout_minutes": 10,
+            "queue_guest_minutes": 27004.083,
+            "served_guests": 1437.333,
+            "staff_cost_eur": 0,
+            "unserved_guests": 428.433
+          },
+          "tradeoffs": [
+            "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+          ],
+          "trajectory": [
+            {
+              "cumulative_served_guests": 0,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 60,
+              "minute": 0,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 3,
+                "FOOD_COURT": 39.633,
+                "RIDE_COASTER": 327.6,
+                "RIDE_WHEEL": 64.533
+              }
+            },
+            {
+              "cumulative_served_guests": 122.833,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 35.833,
+              "minute": 5,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.8,
+                "FOOD_COURT": 48.092,
+                "RIDE_COASTER": 320.6,
+                "RIDE_WHEEL": 61.867
+              }
+            },
+            {
+              "cumulative_served_guests": 245.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 11.667,
+              "minute": 10,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.6,
+                "FOOD_COURT": 56.55,
+                "RIDE_COASTER": 313.6,
+                "RIDE_WHEEL": 59.2
+              }
+            },
+            {
+              "cumulative_served_guests": 356,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 15,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.4,
+                "FOOD_COURT": 77.508,
+                "RIDE_COASTER": 306.6,
+                "RIDE_WHEEL": 56.533
+              }
+            },
+            {
+              "cumulative_served_guests": 454.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 20,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.2,
+                "FOOD_COURT": 110.133,
+                "RIDE_COASTER": 299.6,
+                "RIDE_WHEEL": 53.867
+              }
+            },
+            {
+              "cumulative_served_guests": 577.5,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 275.833,
+              "minute": 25,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2,
+                "FOOD_COURT": 118.592,
+                "RIDE_COASTER": 292.6,
+                "RIDE_WHEEL": 51.2
+              }
+            },
+            {
+              "cumulative_served_guests": 700.333,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 251.667,
+              "minute": 30,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.8,
+                "FOOD_COURT": 127.05,
+                "RIDE_COASTER": 285.6,
+                "RIDE_WHEEL": 48.533
+              }
+            },
+            {
+              "cumulative_served_guests": 823.167,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 227.5,
+              "minute": 35,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.6,
+                "FOOD_COURT": 135.508,
+                "RIDE_COASTER": 278.6,
+                "RIDE_WHEEL": 45.867
+              }
+            },
+            {
+              "cumulative_served_guests": 946,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 203.333,
+              "minute": 40,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.4,
+                "FOOD_COURT": 143.967,
+                "RIDE_COASTER": 271.6,
+                "RIDE_WHEEL": 43.2
+              }
+            },
+            {
+              "cumulative_served_guests": 1068.833,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 179.167,
+              "minute": 45,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.2,
+                "FOOD_COURT": 152.425,
+                "RIDE_COASTER": 264.6,
+                "RIDE_WHEEL": 40.533
+              }
+            },
+            {
+              "cumulative_served_guests": 1191.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 155,
+              "minute": 50,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1,
+                "FOOD_COURT": 152.183,
+                "RIDE_COASTER": 257.6,
+                "RIDE_WHEEL": 37.867
+              }
+            },
+            {
+              "cumulative_served_guests": 1314.5,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 130.833,
+              "minute": 55,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 0.8,
+                "FOOD_COURT": 151.942,
+                "RIDE_COASTER": 250.6,
+                "RIDE_WHEEL": 35.2
+              }
+            },
+            {
+              "cumulative_served_guests": 1437.333,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 106.667,
+              "minute": 60,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 0.6,
+                "FOOD_COURT": 151.7,
+                "RIDE_COASTER": 243.6,
+                "RIDE_WHEEL": 32.533
+              }
+            }
+          ]
+        },
+        {
+          "action_schedule": [
+            {
+              "action": "replenish_stock",
+              "already_active": false,
+              "asset_id": "FOOD_COURT",
+              "at_minute": 0,
+              "effective_at_minute": 20
+            },
+            {
+              "action": "add_staff",
+              "already_active": false,
+              "asset_id": "FOOD_COURT",
+              "at_minute": 0,
+              "effective_at_minute": 10
+            }
+          ],
+          "conservation": {
+            "arrivals": 1431,
+            "initial_queue_guests": 434.766667,
+            "residual_guests": 0
+          },
+          "constraints": {
+            "feasible": true,
+            "qualified_staff_available": 4,
+            "qualified_staff_requested": 2,
+            "violations": []
+          },
+          "deltas_vs_baseline": {
+            "energy_kwh": 0,
+            "excess_leak_liters": 0,
+            "feeder_exceedance_minutes": 0,
+            "food_stockout_minutes": -40,
+            "queue_guest_minutes": -4446.667,
+            "served_guests": 222.333,
+            "staff_cost_eur": 56,
+            "unserved_guests": -222.334
+          },
+          "id": "coordinated",
+          "label": "Coordinated response",
+          "ranges": {
+            "energy_kwh": {
+              "max": 669.5,
+              "min": 669.5
+            },
+            "excess_leak_liters": {
+              "max": 0,
+              "min": 0
+            },
+            "feeder_exceedance_minutes": {
+              "max": 0,
+              "min": 0
+            },
+            "food_stockout_minutes": {
+              "max": 10,
+              "min": 10
+            },
+            "queue_guest_minutes": {
+              "max": 35127.533,
+              "min": 17997.4
+            },
+            "served_guests": {
+              "max": 1466.333,
+              "min": 1437.547
+            },
+            "staff_cost_eur": {
+              "max": 56,
+              "min": 56
+            },
+            "unserved_guests": {
+              "max": 685.633,
+              "min": 142.02
+            }
+          },
+          "robustness": {
+            "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases.",
+            "status": "no_adverse_case_in_tested_set",
+            "worse_than_baseline_cases": []
+          },
+          "sensitivity": {
+            "central": {
+              "conservation": {
+                "arrivals": 1431,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": -40,
+                "queue_guest_minutes": -4446.667,
+                "served_guests": 222.333,
+                "staff_cost_eur": 56,
+                "unserved_guests": -222.334
+              },
+              "demand_factor": 1,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 10,
+                "queue_guest_minutes": 26424.083,
+                "served_guests": 1466.333,
+                "staff_cost_eur": 56,
+                "unserved_guests": 399.433
+              }
+            },
+            "high": {
+              "conservation": {
+                "arrivals": 1717.2,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": -40,
+                "queue_guest_minutes": -4446.667,
+                "served_guests": 222.333,
+                "staff_cost_eur": 56,
+                "unserved_guests": -222.334
+              },
+              "demand_factor": 1.2,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 10,
+                "queue_guest_minutes": 35127.533,
+                "served_guests": 1466.333,
+                "staff_cost_eur": 56,
+                "unserved_guests": 685.633
+              }
+            },
+            "low": {
+              "conservation": {
+                "arrivals": 1144.8,
+                "initial_queue_guests": 434.766667,
+                "residual_guests": 0
+              },
+              "deltas_vs_baseline": {
+                "energy_kwh": 0,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": -40,
+                "queue_guest_minutes": -4446.667,
+                "served_guests": 222.334,
+                "staff_cost_eur": 56,
+                "unserved_guests": -222.333
+              },
+              "demand_factor": 0.8,
+              "summary": {
+                "energy_kwh": 669.5,
+                "excess_leak_liters": 0,
+                "feeder_exceedance_minutes": 0,
+                "food_stockout_minutes": 10,
+                "queue_guest_minutes": 17997.4,
+                "served_guests": 1437.547,
+                "staff_cost_eur": 56,
+                "unserved_guests": 142.02
+              }
+            }
+          },
+          "summary": {
+            "energy_kwh": 669.5,
+            "excess_leak_liters": 0,
+            "feeder_exceedance_minutes": 0,
+            "food_stockout_minutes": 10,
+            "queue_guest_minutes": 26424.083,
+            "served_guests": 1466.333,
+            "staff_cost_eur": 56,
+            "unserved_guests": 399.433
+          },
+          "tradeoffs": [
+            "Uses scarce qualified staff and incurs incremental labor cost.",
+            "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+          ],
+          "trajectory": [
+            {
+              "cumulative_served_guests": 0,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 60,
+              "minute": 0,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 3,
+                "FOOD_COURT": 39.633,
+                "RIDE_COASTER": 327.6,
+                "RIDE_WHEEL": 64.533
+              }
+            },
+            {
+              "cumulative_served_guests": 122.833,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 35.833,
+              "minute": 5,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.8,
+                "FOOD_COURT": 48.092,
+                "RIDE_COASTER": 320.6,
+                "RIDE_WHEEL": 61.867
+              }
+            },
+            {
+              "cumulative_served_guests": 245.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 11.667,
+              "minute": 10,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.6,
+                "FOOD_COURT": 56.55,
+                "RIDE_COASTER": 313.6,
+                "RIDE_WHEEL": 59.2
+              }
+            },
+            {
+              "cumulative_served_guests": 356,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 15,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.4,
+                "FOOD_COURT": 77.508,
+                "RIDE_COASTER": 306.6,
+                "RIDE_WHEEL": 56.533
+              }
+            },
+            {
+              "cumulative_served_guests": 454.667,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 0,
+              "minute": 20,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2.2,
+                "FOOD_COURT": 110.133,
+                "RIDE_COASTER": 299.6,
+                "RIDE_WHEEL": 53.867
+              }
+            },
+            {
+              "cumulative_served_guests": 581.125,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 272.208,
+              "minute": 25,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 2,
+                "FOOD_COURT": 114.967,
+                "RIDE_COASTER": 292.6,
+                "RIDE_WHEEL": 51.2
+              }
+            },
+            {
+              "cumulative_served_guests": 707.583,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 244.417,
+              "minute": 30,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.8,
+                "FOOD_COURT": 119.8,
+                "RIDE_COASTER": 285.6,
+                "RIDE_WHEEL": 48.533
+              }
+            },
+            {
+              "cumulative_served_guests": 834.042,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 216.625,
+              "minute": 35,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.6,
+                "FOOD_COURT": 124.633,
+                "RIDE_COASTER": 278.6,
+                "RIDE_WHEEL": 45.867
+              }
+            },
+            {
+              "cumulative_served_guests": 960.5,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 188.833,
+              "minute": 40,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.4,
+                "FOOD_COURT": 129.467,
+                "RIDE_COASTER": 271.6,
+                "RIDE_WHEEL": 43.2
+              }
+            },
+            {
+              "cumulative_served_guests": 1086.958,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 161.042,
+              "minute": 45,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1.2,
+                "FOOD_COURT": 134.3,
+                "RIDE_COASTER": 264.6,
+                "RIDE_WHEEL": 40.533
+              }
+            },
+            {
+              "cumulative_served_guests": 1213.417,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 133.25,
+              "minute": 50,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 1,
+                "FOOD_COURT": 130.433,
+                "RIDE_COASTER": 257.6,
+                "RIDE_WHEEL": 37.867
+              }
+            },
+            {
+              "cumulative_served_guests": 1339.875,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 105.458,
+              "minute": 55,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 0.8,
+                "FOOD_COURT": 126.567,
+                "RIDE_COASTER": 250.6,
+                "RIDE_WHEEL": 35.2
+              }
+            },
+            {
+              "cumulative_served_guests": 1466.333,
+              "excess_leak_lpm": 0,
+              "feeder_capacity_kw": 900,
+              "food_stock_units": 77.667,
+              "minute": 60,
+              "power_kw": 669.5,
+              "queue_guests": {
+                "FIRST_AID": 0.6,
+                "FOOD_COURT": 122.7,
+                "RIDE_COASTER": 243.6,
+                "RIDE_WHEEL": 32.533
+              }
+            }
+          ]
+        }
+      ],
+      "decision": {
+        "auto_execute": false,
+        "baseline_is_nondominated": false,
+        "outcome": "tradeoffs_require_review",
+        "preferred_policy": null,
+        "rationale": [
+          "Shortlist screens central-case feasible nondominated interventions; equal outcomes prefer fewer actions. Paired sensitivity flags can still show worse outcomes than do nothing.",
+          "Do nothing is the explicit preferred policy when no candidate demonstrates an undominated modeled benefit; this is not authority for real action or inaction.",
+          "Do-nothing and simple-rule baselines remain visible. Review uncertainty, omitted costs and operational constraints before any separate synthetic action."
+        ],
+        "shortlist": [
+          "simple_rule",
+          "coordinated"
+        ],
+        "status": "review_required"
+      },
+      "horizon_minutes": 60,
+      "input": {
+        "current_scenario": "normal",
+        "quality_check": "request_time",
+        "quality_issues": [],
+        "read_model": {
+          "quality_status": "good",
+          "schema_version": "1.0",
+          "source": "accepted_connector_observations",
+          "unmapped_fields_origin": "synthetic_model"
+        },
+        "requested_scenario": "food_rush",
+        "source": "frozen_canonical_observations",
+        "state_revision": "5d440f03a6ef2c7a424f8594e22f2052f028e60dfb5f61671c7e7a780396a980",
+        "tick": 362,
+        "timestamp": "2026-10-19T19:59:20.432+00:00"
+      },
+      "metric_definitions": {
+        "energy_kwh": {
+          "direction": "lower",
+          "meaning": "Integral of modeled aggregate power; no electrical network solution.",
+          "unit": "kWh"
+        },
+        "excess_leak_liters": {
+          "direction": "lower",
+          "meaning": "Incremental scenario leak only; does not add nested flow meters or circulation.",
+          "unit": "L"
+        },
+        "feeder_exceedance_minutes": {
+          "direction": "lower",
+          "meaning": "Time modeled aggregate demand exceeds observed/proposed feeder capacity.",
+          "unit": "min"
+        },
+        "food_stockout_minutes": {
+          "direction": "lower",
+          "meaning": "Five-minute periods in which food demand remains after stock is exhausted.",
+          "unit": "min"
+        },
+        "queue_guest_minutes": {
+          "direction": "lower",
+          "meaning": "Integral of backlog in four modeled service queues; service visits, not unique park guests.",
+          "unit": "guest-min"
+        },
+        "served_guests": {
+          "direction": "higher",
+          "meaning": "Completed service visits during the horizon.",
+          "unit": "service-visits"
+        },
+        "staff_cost_eur": {
+          "direction": "lower",
+          "meaning": "Incremental illustrative staffing cost at EUR28/person/hour from action request time.",
+          "unit": "EUR"
+        },
+        "unserved_guests": {
+          "direction": "lower",
+          "meaning": "Backlog remaining at horizon; no abandonment or disappearance is assumed.",
+          "unit": "service-visits"
+        }
+      },
+      "model": {
+        "calibrated": false,
+        "id": "aster-fluid-planner",
+        "method": "five_minute_fluid_queues_and_resource_balances",
+        "version": "1.1.0"
+      },
+      "mutates_live_state": false,
+      "parameters": {
+        "arrival_multiplier": 1,
+        "available_qualified_staff": 4,
+        "demand_uncertainty_pct": 20,
+        "routing_compliance_pct": 25
+      },
+      "physical_effect": false,
+      "plan_id": "0a05b1e2e984fa10879f1c6832d2095143616b88226f9f6cc738c9ec68607aeb",
+      "step_minutes": 5,
+      "synthetic": true,
+      "unsupported": [
+        "ride dynamics or restraint/PLC safety logic",
+        "crowd collision, evacuation certification or accessibility routing",
+        "electrical protection/load flow",
+        "water pressure/quality/hydraulics",
+        "thermal comfort/CFD",
+        "weather prediction",
+        "maintenance failure probability",
+        "revenue, satisfaction or causal ROI",
+        "real command execution"
+      ]
+    },
+    "schema_version": "aster.planning.evidence.v1",
+    "snapshot": {
+      "accepted_state_revision": "5d440f03a6ef2c7a424f8594e22f2052f028e60dfb5f61671c7e7a780396a980",
+      "actions": [
+        {
+          "id": "dispatch_maintenance",
+          "label": "Dispatch maintenance"
+        },
+        {
+          "id": "reroute_guests",
+          "label": "Reroute guests"
+        },
+        {
+          "id": "add_staff",
+          "label": "Add qualified staff"
+        },
+        {
+          "id": "shed_load",
+          "label": "Shed flexible load"
+        },
+        {
+          "id": "repair_leak",
+          "label": "Simulate leak repair"
+        },
+        {
+          "id": "replenish_stock",
+          "label": "Replenish food stock"
+        },
+        {
+          "id": "reset",
+          "label": "Reset simulation"
+        }
+      ],
+      "alerts": [],
+      "assets": [
+        {
+          "capacity": 48,
+          "data_quality": {
+            "fields": {
+              "capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "maintenance.health_pct": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "%"
+              },
+              "maintenance.inspection_status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "maintenance.open_work_orders": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "work_orders"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "occupancy": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "power_kw": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.437+00:00",
+                "reasons": [],
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "kW"
+              },
+              "queue_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "reservations.booked": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "reservations"
+              },
+              "reservations.next_window_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "staff.on_duty": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "staff.qualifications": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "qualification_id[]"
+              },
+              "staff.required": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.437+00:00",
+                "reasons": [],
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "throughput_per_hour": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.437+00:00",
+                "reasons": [],
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people/h"
+              }
+            },
+            "source_ids": [
+              "cmms",
+              "gis",
+              "ride_scada",
+              "ticketing",
+              "workforce"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB"
+          ],
+          "description": "Coaster telemetry, ride availability, queue demand and certified staffing.",
+          "erp": {
+            "operating_cost_eur_per_hour": 216.4,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "RIDE_COASTER",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 220,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Skyline Coaster",
+          "occupancy": 34,
+          "power_kw": 214.8,
+          "queue_minutes": 23.4,
+          "reservations": {
+            "booked": 16,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/RIDE_COASTER",
+          "staff": {
+            "on_duty": 6,
+            "qualifications": [
+              "ride_operator_coaster"
+            ],
+            "required": 6
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 840,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "ride",
+          "water_lpm": 2
+        },
+        {
+          "capacity": 96,
+          "data_quality": {
+            "fields": {
+              "capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "maintenance.health_pct": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "%"
+              },
+              "maintenance.inspection_status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "maintenance.open_work_orders": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "work_orders"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "occupancy": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "power_kw": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.437+00:00",
+                "reasons": [],
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "kW"
+              },
+              "queue_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "reservations.booked": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "reservations"
+              },
+              "reservations.next_window_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.437+00:00",
+                "reasons": [],
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "throughput_per_hour": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.437+00:00",
+                "reasons": [],
+                "source_id": "ride_scada",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people/h"
+              }
+            },
+            "source_ids": [
+              "cmms",
+              "gis",
+              "ride_scada",
+              "ticketing"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB"
+          ],
+          "description": "Wheel operations and reserve attraction capacity for diverted guests.",
+          "erp": {
+            "operating_cost_eur_per_hour": 93.24,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "RIDE_WHEEL",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 42,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Panorama Wheel",
+          "occupancy": 69,
+          "power_kw": 42.4,
+          "queue_minutes": 12.1,
+          "reservations": {
+            "booked": 33,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/RIDE_WHEEL",
+          "staff": {
+            "on_duty": 3,
+            "qualifications": [
+              "ride_operator_wheel"
+            ],
+            "required": 3
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 320,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "ride",
+          "water_lpm": 0
+        },
+        {
+          "capacity": 600,
+          "data_quality": {
+            "fields": {
+              "capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "occupancy": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "queue_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "reservations.booked": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "reservations"
+              },
+              "reservations.next_window_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              }
+            },
+            "source_ids": [
+              "gis",
+              "ticketing"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB"
+          ],
+          "description": "Show schedule, audience capacity and predicted departure surge.",
+          "erp": {
+            "operating_cost_eur_per_hour": 154.3,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "SHOW_ARENA",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 65,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Lakeside Arena",
+          "occupancy": 320,
+          "power_kw": 67.2,
+          "queue_minutes": 4.1,
+          "reservations": {
+            "booked": 210,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/SHOW_ARENA",
+          "staff": {
+            "on_duty": 5,
+            "qualifications": [
+              "crowd_steward"
+            ],
+            "required": 5
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 600,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "entertainment",
+          "water_lpm": 4.1
+        },
+        {
+          "capacity": 240,
+          "data_quality": {
+            "fields": {
+              "capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.449+00:00",
+                "reasons": [],
+                "source_id": "vision",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "erp.operating_cost_eur_per_hour": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "EUR/h"
+              },
+              "erp.reorder_point": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "items"
+              },
+              "erp.stock_capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "items"
+              },
+              "erp.stock_units": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "items"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "occupancy": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.449+00:00",
+                "reasons": [],
+                "source_id": "vision",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "power_kw": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "kW"
+              },
+              "queue_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.449+00:00",
+                "reasons": [],
+                "source_id": "vision",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "staff.on_duty": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "staff.qualifications": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "qualification_id[]"
+              },
+              "staff.required": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "temperature_c": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "Cel"
+              },
+              "throughput_per_hour": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people/h"
+              }
+            },
+            "source_ids": [
+              "bms",
+              "erp",
+              "gis",
+              "vision",
+              "workforce"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB",
+            "WATER_PLANT"
+          ],
+          "description": "Restaurant demand, kitchen staffing, ERP inventory and service cost.",
+          "erp": {
+            "operating_cost_eur_per_hour": 354.7,
+            "reorder_point": 120,
+            "stock_capacity": 600,
+            "stock_units": 420
+          },
+          "id": "FOOD_COURT",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 85,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Garden Food Court",
+          "occupancy": 149,
+          "power_kw": 87.3,
+          "queue_minutes": 8.2,
+          "reservations": {
+            "booked": 84,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/FOOD_COURT",
+          "staff": {
+            "on_duty": 12,
+            "qualifications": [
+              "food_hygiene"
+            ],
+            "required": 12
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 290,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "food",
+          "water_lpm": 39
+        },
+        {
+          "capacity": 900,
+          "data_quality": {
+            "fields": {
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "maintenance.health_pct": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "%"
+              },
+              "maintenance.inspection_status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "maintenance.open_work_orders": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "work_orders"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "power_kw": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "kW"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "temperature_c": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "Cel"
+              }
+            },
+            "source_ids": [
+              "bms",
+              "cmms",
+              "gis"
+            ],
+            "status": "good"
+          },
+          "dependencies": [],
+          "description": "Electrical feeder dependencies, flexible demand and consumption.",
+          "erp": {
+            "operating_cost_eur_per_hour": 59.3,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "POWER_HUB",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 15,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Energy Center",
+          "occupancy": 0,
+          "power_kw": 14.9,
+          "queue_minutes": 0,
+          "reservations": {
+            "booked": 315,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/POWER_HUB",
+          "staff": {
+            "on_duty": 2,
+            "qualifications": [
+              "electrical_authorized"
+            ],
+            "required": 2
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 0,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "utility",
+          "water_lpm": 0
+        },
+        {
+          "capacity": 650,
+          "data_quality": {
+            "fields": {
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "maintenance.health_pct": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "%"
+              },
+              "maintenance.inspection_status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "maintenance.open_work_orders": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.450+00:00",
+                "reasons": [],
+                "source_id": "cmms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "work_orders"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.454+00:00",
+                "reasons": [],
+                "source_id": "water",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "water_lpm": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.454+00:00",
+                "reasons": [],
+                "source_id": "water",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "L/min"
+              }
+            },
+            "source_ids": [
+              "cmms",
+              "gis",
+              "water"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB"
+          ],
+          "description": "Water supply, lake circulation, leak detection and treatment.",
+          "erp": {
+            "operating_cost_eur_per_hour": 62.16,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "WATER_PLANT",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 28,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Water & Lake Plant",
+          "occupancy": 0,
+          "power_kw": 27.1,
+          "queue_minutes": 0,
+          "reservations": {
+            "booked": 227,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/WATER_PLANT",
+          "staff": {
+            "on_duty": 2,
+            "qualifications": [
+              "water_treatment"
+            ],
+            "required": 2
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 0,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "utility",
+          "water_lpm": 174.4
+        },
+        {
+          "capacity": 350,
+          "data_quality": {
+            "fields": {
+              "capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "occupancy": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "queue_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "reservations.booked": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "reservations"
+              },
+              "reservations.next_window_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.440+00:00",
+                "reasons": [],
+                "source_id": "ticketing",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "staff.on_duty": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "staff.qualifications": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "qualification_id[]"
+              },
+              "staff.required": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              }
+            },
+            "source_ids": [
+              "gis",
+              "ticketing",
+              "workforce"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB"
+          ],
+          "description": "Ticket admission, reservations and occupancy estimation.",
+          "erp": {
+            "operating_cost_eur_per_hour": 226.64,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "ENTRY_GATE",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 12,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Welcome Plaza",
+          "occupancy": 82,
+          "power_kw": 11.6,
+          "queue_minutes": 2.9,
+          "reservations": {
+            "booked": 122,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/ENTRY_GATE",
+          "staff": {
+            "on_duty": 8,
+            "qualifications": [
+              "guest_services"
+            ],
+            "required": 8
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 1800,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "admission",
+          "water_lpm": 1.9
+        },
+        {
+          "capacity": 600,
+          "data_quality": {
+            "fields": {
+              "capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.449+00:00",
+                "reasons": [],
+                "source_id": "vision",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "vehicles"
+              },
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "occupancy": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.449+00:00",
+                "reasons": [],
+                "source_id": "vision",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "vehicles"
+              },
+              "power_kw": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "kW"
+              },
+              "queue_minutes": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.449+00:00",
+                "reasons": [],
+                "source_id": "vision",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "min"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "temperature_c": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "Cel"
+              }
+            },
+            "source_ids": [
+              "bms",
+              "gis",
+              "vision"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB"
+          ],
+          "description": "Arrival demand, car occupancy, EV charging and transport connections.",
+          "erp": {
+            "operating_cost_eur_per_hour": 124.1,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "PARKING",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 55,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Arrival & EV Parking",
+          "occupancy": 355,
+          "power_kw": 54.9,
+          "queue_minutes": 0,
+          "reservations": {
+            "booked": 210,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/PARKING",
+          "staff": {
+            "on_duty": 4,
+            "qualifications": [
+              "traffic_steward"
+            ],
+            "required": 4
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 300,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "transport",
+          "water_lpm": 0
+        },
+        {
+          "capacity": 180,
+          "data_quality": {
+            "fields": {
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "erp.operating_cost_eur_per_hour": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "EUR/h"
+              },
+              "erp.reorder_point": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "items"
+              },
+              "erp.stock_capacity": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "items"
+              },
+              "erp.stock_units": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "items"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "power_kw": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "kW"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "temperature_c": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.453+00:00",
+                "reasons": [],
+                "source_id": "bms",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "Cel"
+              },
+              "throughput_per_hour": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.451+00:00",
+                "reasons": [],
+                "source_id": "erp",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people/h"
+              }
+            },
+            "source_ids": [
+              "bms",
+              "erp",
+              "gis"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB",
+            "WATER_PLANT"
+          ],
+          "description": "Resort occupancy, cooling demand and hospitality services.",
+          "erp": {
+            "operating_cost_eur_per_hour": 532.6,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "HOTEL",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 130,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Parkside Lodge",
+          "occupancy": 129,
+          "power_kw": 133.7,
+          "queue_minutes": 0,
+          "reservations": {
+            "booked": 62,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/HOTEL",
+          "staff": {
+            "on_duty": 18,
+            "qualifications": [
+              "hospitality"
+            ],
+            "required": 18
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 25,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "hospitality",
+          "water_lpm": 63.8
+        },
+        {
+          "capacity": 18,
+          "data_quality": {
+            "fields": {
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "staff.on_duty": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              },
+              "staff.qualifications": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "qualification_id[]"
+              },
+              "staff.required": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.452+00:00",
+                "reasons": [],
+                "source_id": "workforce",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "people"
+              }
+            },
+            "source_ids": [
+              "gis",
+              "workforce"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB",
+            "WATER_PLANT"
+          ],
+          "description": "Guest care readiness, occupancy and certified responders.",
+          "erp": {
+            "operating_cost_eur_per_hour": 85.76,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "FIRST_AID",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 8,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Guest Care",
+          "occupancy": 3,
+          "power_kw": 8.3,
+          "queue_minutes": 0,
+          "reservations": {
+            "booked": 6,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/FIRST_AID",
+          "staff": {
+            "on_duty": 3,
+            "qualifications": [
+              "first_aid_certified"
+            ],
+            "required": 3
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 24,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "care",
+          "water_lpm": 5.2
+        },
+        {
+          "capacity": 36,
+          "data_quality": {
+            "fields": {
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "status": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.454+00:00",
+                "reasons": [],
+                "source_id": "water",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "state"
+              },
+              "water_lpm": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.454+00:00",
+                "reasons": [],
+                "source_id": "water",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "L/min"
+              }
+            },
+            "source_ids": [
+              "gis",
+              "water"
+            ],
+            "status": "good"
+          },
+          "dependencies": [
+            "POWER_HUB",
+            "WATER_PLANT"
+          ],
+          "description": "Water use, facility occupancy, cleaning and service readiness.",
+          "erp": {
+            "operating_cost_eur_per_hour": 85.54,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "RESTROOMS",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 7,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Central Restrooms",
+          "occupancy": 12,
+          "power_kw": 7,
+          "queue_minutes": 2,
+          "reservations": {
+            "booked": 12,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/RESTROOMS",
+          "staff": {
+            "on_duty": 3,
+            "qualifications": [
+              "facilities_service"
+            ],
+            "required": 3
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 200,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "facility",
+          "water_lpm": 28.2
+        },
+        {
+          "capacity": 1,
+          "data_quality": {
+            "fields": {
+              "dependencies": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "asset_id[]"
+              },
+              "metadata.accessibility": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "text"
+              },
+              "scene_path": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "gis",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "USD prim path"
+              },
+              "temperature_c": {
+                "age_seconds": 0.026,
+                "ingested_at": "2026-10-19T19:59:20.455+00:00",
+                "reasons": [],
+                "source_id": "weather",
+                "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+                "stale_after_seconds": 5,
+                "status": "good",
+                "synthetic": true,
+                "unit": "Cel"
+              }
+            },
+            "source_ids": [
+              "gis",
+              "weather"
+            ],
+            "status": "good"
+          },
+          "dependencies": [],
+          "description": "Synthetic local weather driving operational forecasts.",
+          "erp": {
+            "operating_cost_eur_per_hour": 0.07,
+            "reorder_point": 20,
+            "stock_capacity": 100,
+            "stock_units": 80
+          },
+          "id": "WEATHER_STATION",
+          "maintenance": {
+            "health_pct": 98,
+            "inspection_status": "passed",
+            "open_work_orders": 0
+          },
+          "metadata": {
+            "accessibility": "Accessible guest route; attraction-specific boarding requirements apply",
+            "baseline_power_kw": 0.3,
+            "source": "Synthetic park simulator"
+          },
+          "name": "Weather Mast",
+          "occupancy": 0,
+          "power_kw": 0.3,
+          "queue_minutes": 0,
+          "reservations": {
+            "booked": 0,
+            "next_window_minutes": 15
+          },
+          "scene_path": "/World/Park/WEATHER_STATION",
+          "staff": {
+            "on_duty": 0,
+            "qualifications": [
+              "instrumentation"
+            ],
+            "required": 0
+          },
+          "status": "operational",
+          "synthetic": true,
+          "temperature_c": 24.5,
+          "throughput_per_hour": 0,
+          "timestamp": "2026-10-19T19:59:20.432+00:00",
+          "type": "sensor",
+          "water_lpm": 0
+        }
+      ],
+      "connector_health": [
+        {
+          "counters": {
+            "accepted": 708,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.028,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.437+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.437+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "3f0623ac1dc2:708",
+          "mode": "live",
+          "source_id": "ride_scada",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 1180,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.028,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.440+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.440+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "aa51128ae025:1180",
+          "mode": "live",
+          "source_id": "ticketing",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 708,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.028,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.449+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.449+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "3b150d4734ec:708",
+          "mode": "live",
+          "source_id": "vision",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 944,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.028,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.450+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.450+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "6b7574650d19:944",
+          "mode": "live",
+          "source_id": "cmms",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 590,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.029,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.451+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.451+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "9fabda9dd297:590",
+          "mode": "live",
+          "source_id": "erp",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 708,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.029,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.452+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.452+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "010ef165e05c:708",
+          "mode": "live",
+          "source_id": "workforce",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 767,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.029,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.453+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.453+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "0482c85c3a78:767",
+          "mode": "live",
+          "source_id": "bms",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 354,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.029,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.454+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.454+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "78c812442325:354",
+          "mode": "live",
+          "source_id": "water",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 59,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.029,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.455+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.455+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "e92f525ff852:59",
+          "mode": "live",
+          "source_id": "weather",
+          "status": "healthy",
+          "synthetic": true
+        },
+        {
+          "counters": {
+            "accepted": 2124,
+            "duplicates": 0,
+            "poll_failures": 0,
+            "rejected": 0
+          },
+          "freshness": {
+            "max_age_seconds": 0.029,
+            "missing_metrics": 0,
+            "stale_after_seconds": 5,
+            "stale_metrics": 0,
+            "uncertain_metrics": 0
+          },
+          "last_error": null,
+          "last_ingested_at": "2026-10-19T19:59:20.455+00:00",
+          "last_poll_attempt_at": "2026-10-19T19:59:20.455+00:00",
+          "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "latest_cursor": "859f93be232e:2124",
+          "mode": "live",
+          "source_id": "gis",
+          "status": "healthy",
+          "synthetic": true
+        }
+      ],
+      "kpis": {
+        "active_alerts": 0,
+        "attendance": 3453,
+        "average_wait_minutes": 8.8,
+        "estimated_operating_cost_eur_per_hour": 1994.81,
+        "excluded_closed_count": 0,
+        "open_rides": 2,
+        "power_capacity_kw": 900,
+        "power_kw": 669.5,
+        "queue_asset_count": 6,
+        "total_capacity": 6200,
+        "water_lpm": 318.6
+      },
+      "model_alerts": [],
+      "read_model": {
+        "quality_status": "good",
+        "schema_version": "1.0",
+        "source": "accepted_connector_observations",
+        "unmapped_fields_origin": "synthetic_model"
+      },
+      "recent_actions": [
+        {
+          "action": "scenario",
+          "asset_id": null,
+          "id": 1,
+          "message": "Synthetic scenario set to normal",
+          "timestamp": "2026-10-19T19:59:06.349+00:00"
+        }
+      ],
+      "scenario": "normal",
+      "scenarios": [
+        {
+          "description": "A typical synthetic operating day.",
+          "id": "normal",
+          "label": "Normal operations"
+        },
+        {
+          "description": "Coaster fault displaces guests into nearby queues.",
+          "id": "ride_closure",
+          "label": "Ride closure"
+        },
+        {
+          "description": "An audience leaves the arena and increases food and ride demand.",
+          "id": "show_surge",
+          "label": "Show departure surge"
+        },
+        {
+          "description": "High temperature raises cooling, water and first-aid demand.",
+          "id": "heatwave",
+          "label": "Heatwave"
+        },
+        {
+          "description": "A feeder fault closes the coaster and reduces usable power capacity.",
+          "id": "power_fault",
+          "label": "Power feeder fault"
+        },
+        {
+          "description": "A leak increases plant flow and affects nearby facilities.",
+          "id": "water_leak",
+          "label": "Water leak"
+        },
+        {
+          "description": "Food queues grow while inventory and staffing become constrained.",
+          "id": "food_rush",
+          "label": "Lunch rush"
+        }
+      ],
+      "source_conflicts": [],
+      "synthetic": true,
+      "systems": [
+        {
+          "asset_ids": [
+            "RIDE_COASTER",
+            "RIDE_WHEEL"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 708,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.028,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.437+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.437+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "3f0623ac1dc2:708",
+            "mode": "live",
+            "source_id": "ride_scada",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "ride_scada",
+          "last_sync": "2026-10-19T19:59:20.437+00:00",
+          "name": "Simulated Ride SCADA",
+          "protocol": "Synthetic HTTP · planned OPC UA",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "ENTRY_GATE",
+            "RIDE_COASTER",
+            "RIDE_WHEEL",
+            "SHOW_ARENA"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 1180,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.028,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.440+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.440+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "aa51128ae025:1180",
+            "mode": "live",
+            "source_id": "ticketing",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "ticketing",
+          "last_sync": "2026-10-19T19:59:20.440+00:00",
+          "name": "Simulated Ticketing & Reservations",
+          "protocol": "Synthetic HTTP · planned vendor REST",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "ENTRY_GATE",
+            "SHOW_ARENA",
+            "FOOD_COURT",
+            "PARKING"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 708,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.028,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.449+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.449+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "3b150d4734ec:708",
+            "mode": "live",
+            "source_id": "vision",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "vision",
+          "last_sync": "2026-10-19T19:59:20.449+00:00",
+          "name": "Simulated People Counters",
+          "protocol": "Synthetic HTTP · planned MQTT / ONVIF metadata",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "RIDE_COASTER",
+            "RIDE_WHEEL",
+            "POWER_HUB",
+            "WATER_PLANT"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 944,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.028,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.450+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.450+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "6b7574650d19:944",
+            "mode": "live",
+            "source_id": "cmms",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "cmms",
+          "last_sync": "2026-10-19T19:59:20.450+00:00",
+          "name": "Simulated Maintenance CMMS",
+          "protocol": "Synthetic HTTP · planned CMMS REST",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "FOOD_COURT",
+            "HOTEL"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 590,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.029,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.451+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.451+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "9fabda9dd297:590",
+            "mode": "live",
+            "source_id": "erp",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "erp",
+          "last_sync": "2026-10-19T19:59:20.451+00:00",
+          "name": "Simulated ERP & POS",
+          "protocol": "Synthetic HTTP · planned ERP / POS REST",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "ENTRY_GATE",
+            "FOOD_COURT",
+            "RIDE_COASTER",
+            "FIRST_AID"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 708,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.029,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.452+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.452+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "010ef165e05c:708",
+            "mode": "live",
+            "source_id": "workforce",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "workforce",
+          "last_sync": "2026-10-19T19:59:20.452+00:00",
+          "name": "Simulated Workforce",
+          "protocol": "Synthetic HTTP · planned workforce REST",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "POWER_HUB",
+            "HOTEL",
+            "FOOD_COURT",
+            "PARKING"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 767,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.029,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.453+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.453+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "0482c85c3a78:767",
+            "mode": "live",
+            "source_id": "bms",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "bms",
+          "last_sync": "2026-10-19T19:59:20.453+00:00",
+          "name": "Simulated Building & Energy",
+          "protocol": "Synthetic HTTP · planned BACnet gateway",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "WATER_PLANT",
+            "RESTROOMS"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 354,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.029,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.454+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.454+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "78c812442325:354",
+            "mode": "live",
+            "source_id": "water",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "water",
+          "last_sync": "2026-10-19T19:59:20.454+00:00",
+          "name": "Simulated Water Management",
+          "protocol": "Synthetic HTTP · planned MQTT / utility gateway",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "WEATHER_STATION"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 59,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.029,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.455+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.455+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "e92f525ff852:59",
+            "mode": "live",
+            "source_id": "weather",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "weather",
+          "last_sync": "2026-10-19T19:59:20.455+00:00",
+          "name": "Simulated Local Weather",
+          "protocol": "Synthetic HTTP · planned weather REST",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        },
+        {
+          "asset_ids": [
+            "RIDE_COASTER",
+            "RIDE_WHEEL",
+            "SHOW_ARENA",
+            "FOOD_COURT",
+            "POWER_HUB",
+            "WATER_PLANT",
+            "ENTRY_GATE",
+            "PARKING",
+            "HOTEL",
+            "FIRST_AID",
+            "RESTROOMS",
+            "WEATHER_STATION"
+          ],
+          "health": {
+            "counters": {
+              "accepted": 2124,
+              "duplicates": 0,
+              "poll_failures": 0,
+              "rejected": 0
+            },
+            "freshness": {
+              "max_age_seconds": 0.029,
+              "missing_metrics": 0,
+              "stale_after_seconds": 5,
+              "stale_metrics": 0,
+              "uncertain_metrics": 0
+            },
+            "last_error": null,
+            "last_ingested_at": "2026-10-19T19:59:20.455+00:00",
+            "last_poll_attempt_at": "2026-10-19T19:59:20.455+00:00",
+            "last_source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+            "latest_cursor": "859f93be232e:2124",
+            "mode": "live",
+            "source_id": "gis",
+            "status": "healthy",
+            "synthetic": true
+          },
+          "id": "gis",
+          "last_sync": "2026-10-19T19:59:20.455+00:00",
+          "name": "Park Asset Registry / OpenUSD",
+          "protocol": "Synthetic HTTP · planned OpenUSD / GIS",
+          "source_timestamp": "2026-10-19T19:59:20.432000+00:00",
+          "status": "connected",
+          "synthetic": true
+        }
+      ],
+      "tick": 362,
+      "timestamp": "2026-10-19T19:59:20.432+00:00",
+      "weather": {
+        "condition": "partly cloudy",
+        "temperature_c": 24.5,
+        "wind_kph": 10.9
+      }
+    }
+  }
+}

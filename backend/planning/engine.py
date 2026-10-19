@@ -10,7 +10,7 @@ import json
 from datetime import datetime
 from .contracts import Candidate, PlanningRequest, ScheduledAction
 
-MODEL = {"id": "aster-fluid-planner", "version": "1.0.0", "calibrated": False,
+MODEL = {"id": "aster-fluid-planner", "version": "1.1.0", "calibrated": False,
          "method": "five_minute_fluid_queues_and_resource_balances"}
 QUEUE_IDS = ("RIDE_COASTER", "RIDE_WHEEL", "FOOD_COURT", "FIRST_AID")
 DELAYS = {"reroute_guests": 5, "add_staff": 10, "shed_load": 5,

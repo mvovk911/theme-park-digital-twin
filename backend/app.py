@@ -13,6 +13,7 @@ from .simulator import ActionRequestConflict, ParkSimulator
 from .connectors import ConnectorRuntime, ParkReadModel
 from .connectors.api import install_connector_routes
 from .planning.api import install_planning_routes
+from .integrations.api import install_integration_routes
 
 
 class ScenarioRequest(BaseModel):
@@ -144,6 +145,7 @@ def create_app(database_path: str | None = None, run_background: bool = True):
 
     install_connector_routes(app)
     install_planning_routes(app)
+    install_integration_routes(app)
     return app
 
 
