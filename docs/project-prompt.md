@@ -102,3 +102,14 @@ commercial ERP/MES replacements, or physical ride control. The
 > deploy another subagent that reviews the project. if it backame to much of a blob. uncontrollable. can stuff, code project, be completly refactored - is there value to do stuff one more time. interested in this review from time to time.
 >
 > don-t forget commiting things to the repo as well, interested in progress when some steps are finished
+
+### Eight-hour FOX decision-agent continuation — 19 October 2026, 21:30 CEST
+
+The owner requested renewed FOX research for theme-park decision-making, what-if
+simulation, actionable APIs and possible real-world integration. They requested
+parallel research/build, independent end-user-value review and an API-only operator
+agent, with regular evaluation over an eight-hour test. GPU Horde compute,
+repository updates, screenshots and documentation are authorized. Design and
+modeling should continue when they improve the operational experience. See the
+[run plan](experiments/2026-10-19-run-plan.md) for working assumptions and evidence
+requirements; user answers can refine those assumptions during the run.
