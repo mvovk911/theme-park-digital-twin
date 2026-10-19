@@ -18,12 +18,17 @@ that environment. The dedicated browser environment passes 40 checks; the actual
 local spatial walkthrough passes seven checks, including PNG byte hashes, route
 closure, the unresolved entrance threshold, JSON export and mobile layout. These
 are local application checks using separately captured L40 native images; new
-immutable GPU application deployment acceptance will be recorded separately.
+immutable GPU application deployment acceptance is now recorded separately: the
+`afa84a1` L40 release passed [six direct-incident checks](images/fox-cycle-20261019/gpu-incident-afa84a1/report.json)
+and [seven spatial checks](images/fox-cycle-20261019/gpu-spatial-afa84a1/report.json).
+The reports contain verified release identities; design previews retain their
+separate static capture provenance.
 
 The dining proposal provides a route in this partial authored graph. It does not
 prove increased throughput, physical guidance or accessibility. The original
 scene remains unchanged, and the queue forecast still has no spatial origins or
-travel model. Eight-hour observation continues.
+travel model. [Research on coupling the models](research/spatial-planning-coupling.md)
+explains the missing inputs and a staged pilot. Eight-hour observation continues.
 
 
 **19 October, third checkpoint — direct incidents and queryable design alternatives.**
@@ -235,3 +240,11 @@ The [original revision 1 overview](images/render-overview.jpg),
 are retained as historical checkpoints. Earlier network restrictions and pending
 GPU statements in dated development-log/review entries describe those earlier
 states; they are not the current deployment status.
+
+### Independent ledger checkpoint, 21:03 UTC
+
+The [offline report](experiments/run-analysis/interim-2105/analysis.md) reconciles
+16 API cycles / 161 checks / zero failures and a separately captured GPU prefix
+of 145 samples / one failure. Both runs remain incomplete. The report keeps source
+changes, sampling limits and resource coverage explicit; its final-summary gate
+cannot label a partial prefix as an eight-hour result.

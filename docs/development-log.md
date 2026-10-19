@@ -302,3 +302,32 @@ The main progress/validation pages now show current evidence; historical review
 and log entries remain dated snapshots. The application stays on its authenticated
 GPU deployment for review; source changes after `19cee1e` are acceptance tooling,
 documents and captured media, not a silently changed running release.
+
+
+## 19 October — FOX-inspired decisions, workflows and design comparison
+
+The ongoing eight-hour cycle adds a pure planning service with frozen inputs,
+do-nothing/simple-rule alternatives, explicit constraints and saved reproducible
+evidence. An independently authored 324-case policy stress grid includes adverse
+and no-benefit results; these are synthetic experimental results, not park ROI.
+A real external weather preview preserves provider and time semantics separately
+from canonical synthetic observations.
+
+`64c8bfa` introduced bounded maintenance proposals and a spatial audit. Independent
+review led to direct current-incident proposals in `ea556a7`, without requiring
+a forecast. The existing executor rechecks relevant fresh evidence, preserves
+retry identity and reads back the work order; dispatch leaves the ride closed.
+
+`afa84a1` adds the browser dining-access comparison, exact graph/image provenance,
+and matched native baseline/design captures. The unchanged baseline graph has
+no food-plaza route; the proposed connector supplies one, while closure and
+step-free negative controls retain their limitations. The aggregate forecast is
+not spatially coupled: incoming demand lacks observed origin/admission mappings.
+
+The repository suite passes 407 tests, with three browser modules skipped in its
+Python environment. A separate browser environment passes 40 checks. Actual
+L40 application acceptance at `afa84a1` passes six direct-incident and seven spatial
+checks; earlier committed recovery/staleness evidence remains distinct.
+[Current gallery and evidence](progress.md), [run status](experiments/2026-10-19-run-status.md),
+and [spatial model research](research/spatial-planning-coupling.md) record the limits.
+The eight-hour observation is still running; no final soak result is claimed here.

@@ -34,10 +34,10 @@ The eight-hour evaluation started **19 October 2026 at 19:47 UTC** and remains
 in progress. [Run status](docs/experiments/2026-10-19-run-status.md) records its
 scope and interruptions. [Independent reviews](docs/reviews/) and an
 [independent policy stress experiment](docs/experiments/food-service-policy-stress.md)
-include unfavorable results. Actual L40/OVRTX/browser acceptance at `64c8bfa`
-passed twelve maintenance/recovery checks; its
-[report and screenshots](docs/images/fox-cycle-20261019/gpu-workflow-64c8bfa/report.json)
-identify exact deployed source. Later local changes have separate evidence in the
+include unfavorable results. Actual L40/OVRTX/browser acceptance at `afa84a1`
+passed [six incident-workflow checks](docs/images/fox-cycle-20261019/gpu-incident-afa84a1/report.json)
+and [seven spatial comparison checks](docs/images/fox-cycle-20261019/gpu-spatial-afa84a1/report.json).
+Earlier recovery/staleness tests and all exact source scopes remain in the
 [progress gallery](docs/progress.md).
 
 ## What you can explore
@@ -60,6 +60,14 @@ flowchart LR
   STATE --> API[Live or recorded view API]
   STORE[Durable recorded snapshots] --> API
   STATE --> STORE
+  STATE -->|Frozen observations| PLAN[What-if comparisons]
+  PLAN --> EVIDENCE[Saved evidence]
+  EVIDENCE --> UI
+  UI -->|Explicit proposal / execute| WORKFLOW[Bounded maintenance workflow]
+  STATE -->|Fresh relevant preconditions| WORKFLOW
+  WORKFLOW --> CMMS[Synthetic work order and receipt]
+  DESIGN[Authored graph + separate USD design] --> SPATIAL[Read-only design comparison]
+  SPATIAL --> UI
   API --> UI[Browser operations console]
   API --> RTX[OVRTX render owner]
   USD[OpenUSD park] --> STAGE[OVStage runtime]

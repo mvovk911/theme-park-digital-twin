@@ -1,0 +1,626 @@
+{
+  "schema": "aster.run-analysis.v1",
+  "analyzed_at": "2026-10-19T21:02:35.909470+00:00",
+  "complete": false,
+  "tracks": {
+    "fixed_api": {
+      "track": "fixed_api",
+      "producer_complete": false,
+      "verified_eight_hour_complete": false,
+      "started_at": "2026-10-19T19:47:34.209802+00:00",
+      "finished_at": null,
+      "elapsed_seconds": 4501.278,
+      "utc_span_seconds": null,
+      "requested_duration_seconds": 28800.0,
+      "pause_seconds": 0.0,
+      "pause_events": [],
+      "phase": "mutating_cycle",
+      "journal_records": 2538,
+      "journal_event_types": {
+        "http": 2387,
+        "check": 151
+      },
+      "checks_or_samples": 151,
+      "failed_checks_or_samples": 0,
+      "passed_checks_or_samples": 151,
+      "observed_passing_sample_fraction": 1.0,
+      "availability_scope": "Fraction of recorded checks/samples; not continuous uptime, not guest outcomes.",
+      "check_types": {
+        "startup": {
+          "pass": 1
+        },
+        "compare_read_only": {
+          "pass": 15
+        },
+        "interventions": {
+          "pass": 15
+        },
+        "retries_and_errors": {
+          "pass": 15
+        },
+        "source_failures": {
+          "pass": 15
+        },
+        "source_model_conflict": {
+          "pass": 15
+        },
+        "replay_guards": {
+          "pass": 15
+        },
+        "planning_counterfactuals": {
+          "pass": 15
+        },
+        "planning_degraded_input": {
+          "pass": 15
+        },
+        "planning_assumption_stress": {
+          "pass": 15
+        },
+        "cleanup": {
+          "pass": 15
+        }
+      },
+      "cycles": {
+        "reported_completed_cycles": 15,
+        "journal_started_cycles": 15,
+        "journal_full_cycles": 15,
+        "expected_checks_per_cycle": 10,
+        "details": [
+          {
+            "cycle": 1,
+            "checks": 10,
+            "first_at": "2026-10-19T19:47:34.350262+00:00",
+            "last_at": "2026-10-19T19:47:48.625983+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 2,
+            "checks": 10,
+            "first_at": "2026-10-19T19:52:34.357071+00:00",
+            "last_at": "2026-10-19T19:52:50.049491+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 3,
+            "checks": 10,
+            "first_at": "2026-10-19T19:57:34.365957+00:00",
+            "last_at": "2026-10-19T19:57:48.953237+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 4,
+            "checks": 10,
+            "first_at": "2026-10-19T20:02:34.379137+00:00",
+            "last_at": "2026-10-19T20:02:48.461236+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 5,
+            "checks": 10,
+            "first_at": "2026-10-19T20:07:34.395875+00:00",
+            "last_at": "2026-10-19T20:07:48.170035+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 6,
+            "checks": 10,
+            "first_at": "2026-10-19T20:12:34.416745+00:00",
+            "last_at": "2026-10-19T20:12:48.293445+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 7,
+            "checks": 10,
+            "first_at": "2026-10-19T20:17:34.440182+00:00",
+            "last_at": "2026-10-19T20:17:49.769083+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 8,
+            "checks": 10,
+            "first_at": "2026-10-19T20:22:34.665309+00:00",
+            "last_at": "2026-10-19T20:22:52.014371+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 9,
+            "checks": 10,
+            "first_at": "2026-10-19T20:27:34.696045+00:00",
+            "last_at": "2026-10-19T20:27:48.683986+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 10,
+            "checks": 10,
+            "first_at": "2026-10-19T20:32:34.730091+00:00",
+            "last_at": "2026-10-19T20:32:51.208350+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 11,
+            "checks": 10,
+            "first_at": "2026-10-19T20:37:34.767105+00:00",
+            "last_at": "2026-10-19T20:37:48.775969+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 12,
+            "checks": 10,
+            "first_at": "2026-10-19T20:42:34.822800+00:00",
+            "last_at": "2026-10-19T20:42:50.476053+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 13,
+            "checks": 10,
+            "first_at": "2026-10-19T20:47:34.874053+00:00",
+            "last_at": "2026-10-19T20:47:52.583301+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 14,
+            "checks": 10,
+            "first_at": "2026-10-19T20:52:35.240732+00:00",
+            "last_at": "2026-10-19T20:52:51.555771+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          },
+          {
+            "cycle": 15,
+            "checks": 10,
+            "first_at": "2026-10-19T20:57:35.296546+00:00",
+            "last_at": "2026-10-19T20:57:50.524675+00:00",
+            "complete_check_set": true,
+            "missing_checks": [],
+            "duplicate_checks": {}
+          }
+        ]
+      },
+      "failures": [],
+      "transport_errors": [],
+      "health_http_latency_ms": {
+        "count": 1,
+        "min": 69.43,
+        "median": 69.43,
+        "p95": 69.43,
+        "p99": 69.43,
+        "max": 69.43,
+        "mean": 69.43,
+        "percentile_method": "linear interpolation between sorted observations"
+      },
+      "health_http_status_counts": {
+        "200": 1
+      },
+      "health_latency_scope": "Recorded completed HTTP health requests, including HTTP errors. Transport failures have no elapsed_ms and are listed separately.",
+      "frame_age_seconds": {
+        "count": 0,
+        "min": null,
+        "median": null,
+        "p95": null,
+        "p99": null,
+        "max": null,
+        "mean": null,
+        "percentile_method": "linear interpolation between sorted observations"
+      },
+      "availability_intervals": {
+        "inter_sample_gaps_over_1_5_intervals": [],
+        "failed_sample_sequences": [],
+        "leading_unobserved_seconds": 0.14,
+        "trailing_unobserved_seconds": 300.191,
+        "note": "Failure sequences and gaps bound sampled evidence only; they do not establish continuous outage duration or causes."
+      },
+      "source_identity": {
+        "commits": [
+          "d3dca3d20612d3d09ed1acb680683a990cbd51ba"
+        ],
+        "checked_at_values": [
+          "2026-10-19T19:47:33.851047+00:00"
+        ],
+        "transitions": [
+          {
+            "first_observed_at": "2026-10-19T19:47:34.209986+00:00",
+            "last_observed_at": "2026-10-19T19:47:34.209986+00:00",
+            "observations": 1,
+            "identity": {
+              "checked_at": "2026-10-19T19:47:33.851047+00:00",
+              "commit": "d3dca3d20612d3d09ed1acb680683a990cbd51ba",
+              "dirty": false,
+              "disposition": "verified_manifest",
+              "mismatches": [],
+              "scene_path": "assets/park.usdc",
+              "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "source": "release_manifest",
+              "tree": "cf80d191be1b9f8a1602f2c181e53ca21cc61262",
+              "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance",
+              "verified": true
+            }
+          }
+        ],
+        "identity_observations": 1,
+        "coverage_note": "Fixed API startup identity is not continuous process attestation; most cycle checks do not retain health bodies."
+      },
+      "journal_parse_issues": [],
+      "reconciliation_errors": [],
+      "warnings": [
+        "Journal UTC timestamps decrease; concurrent logging or clock movement needs review.",
+        "Incomplete or inconsistent evidence: no verified eight-hour completion claim is permitted."
+      ]
+    },
+    "gpu_observer": {
+      "track": "gpu_observer",
+      "producer_complete": false,
+      "verified_eight_hour_complete": false,
+      "started_at": "2026-10-19T19:47:33.091451+00:00",
+      "finished_at": null,
+      "elapsed_seconds": 4321.336,
+      "utc_span_seconds": null,
+      "requested_duration_seconds": 28800.0,
+      "pause_seconds": 0,
+      "pause_events": [],
+      "phase": null,
+      "journal_records": 434,
+      "journal_event_types": {
+        "http": 288,
+        "observation": 145,
+        "transport_error": 1
+      },
+      "checks_or_samples": 145,
+      "failed_checks_or_samples": 1,
+      "passed_checks_or_samples": 144,
+      "observed_passing_sample_fraction": 0.993103,
+      "availability_scope": "Fraction of recorded checks/samples; not continuous uptime, not guest outcomes.",
+      "check_types": {
+        "observation": {
+          "pass": 144,
+          "fail": 1
+        }
+      },
+      "cycles": null,
+      "failures": [
+        {
+          "utc": "2026-10-19T19:49:33.123754+00:00",
+          "check": null,
+          "cycle": null,
+          "index": 4,
+          "error": "URLError: <urlopen error [Errno 111] Connection refused>"
+        }
+      ],
+      "transport_errors": [
+        {
+          "utc": "2026-10-19T19:49:33.124003+00:00",
+          "path": "/api/health",
+          "method": "GET",
+          "error": "<urlopen error [Errno 111] Connection refused>"
+        }
+      ],
+      "health_http_latency_ms": {
+        "count": 144,
+        "min": 1.76,
+        "median": 2.06,
+        "p95": 21.14,
+        "p99": 40.1493,
+        "max": 42.43,
+        "mean": 3.994167,
+        "percentile_method": "linear interpolation between sorted observations"
+      },
+      "health_http_status_counts": {
+        "200": 144
+      },
+      "health_latency_scope": "Recorded completed HTTP health requests, including HTTP errors. Transport failures have no elapsed_ms and are listed separately.",
+      "frame_age_seconds": {
+        "count": 144,
+        "min": 0.003,
+        "median": 0.04,
+        "p95": 0.079,
+        "p99": 0.10698,
+        "max": 0.14,
+        "mean": 0.043049,
+        "percentile_method": "linear interpolation between sorted observations"
+      },
+      "availability_intervals": {
+        "inter_sample_gaps_over_1_5_intervals": [],
+        "failed_sample_sequences": [
+          {
+            "first_failed_at": "2026-10-19T19:49:33.123754+00:00",
+            "last_failed_at": "2026-10-19T19:49:33.123754+00:00",
+            "failed_records": 1,
+            "errors": [
+              "URLError: <urlopen error [Errno 111] Connection refused>"
+            ],
+            "next_passing_observation_at": "2026-10-19T19:50:03.134105+00:00"
+          }
+        ],
+        "leading_unobserved_seconds": 0.0,
+        "trailing_unobserved_seconds": 0.054,
+        "note": "Failure sequences and gaps bound sampled evidence only; they do not establish continuous outage duration or causes."
+      },
+      "source_identity": {
+        "commits": [
+          "20f0ca8519b1ef0424f30855691f65cab0dda154",
+          "d3dca3d20612d3d09ed1acb680683a990cbd51ba",
+          "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+          "afa84a17d6cc282ed2aa4003743d62770644ea48"
+        ],
+        "checked_at_values": [
+          "2026-10-19T19:45:42.419876+00:00",
+          "2026-10-19T19:49:33.442833+00:00",
+          "2026-10-19T20:34:39.995375+00:00",
+          "2026-10-19T20:52:12.231545+00:00"
+        ],
+        "transitions": [
+          {
+            "first_observed_at": "2026-10-19T19:47:33.091471+00:00",
+            "last_observed_at": "2026-10-19T19:49:03.122277+00:00",
+            "observations": 4,
+            "identity": {
+              "checked_at": "2026-10-19T19:45:42.419876+00:00",
+              "commit": "20f0ca8519b1ef0424f30855691f65cab0dda154",
+              "dirty": false,
+              "disposition": "verified_manifest",
+              "mismatches": [],
+              "scene_path": "assets/park.usdc",
+              "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "source": "release_manifest",
+              "tree": "216f63f48f92298ebc3baf571c926f5e417e5464",
+              "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance",
+              "verified": true
+            }
+          },
+          {
+            "first_observed_at": "2026-10-19T19:50:03.134105+00:00",
+            "last_observed_at": "2026-10-19T20:34:33.945146+00:00",
+            "observations": 90,
+            "identity": {
+              "checked_at": "2026-10-19T19:49:33.442833+00:00",
+              "commit": "d3dca3d20612d3d09ed1acb680683a990cbd51ba",
+              "dirty": false,
+              "disposition": "verified_manifest",
+              "mismatches": [],
+              "scene_path": "assets/park.usdc",
+              "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "source": "release_manifest",
+              "tree": "cf80d191be1b9f8a1602f2c181e53ca21cc61262",
+              "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance",
+              "verified": true
+            }
+          },
+          {
+            "first_observed_at": "2026-10-19T20:35:03.952071+00:00",
+            "last_observed_at": "2026-10-19T20:52:04.240146+00:00",
+            "observations": 35,
+            "identity": {
+              "checked_at": "2026-10-19T20:34:39.995375+00:00",
+              "commit": "64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4",
+              "dirty": false,
+              "disposition": "verified_manifest",
+              "mismatches": [],
+              "scene_path": "assets/park.usdc",
+              "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "source": "release_manifest",
+              "tree": "026e6d5fd5f715acdae5abd716ebd78382422c03",
+              "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance",
+              "verified": true
+            }
+          },
+          {
+            "first_observed_at": "2026-10-19T20:52:34.244128+00:00",
+            "last_observed_at": "2026-10-19T20:59:34.373613+00:00",
+            "observations": 15,
+            "identity": {
+              "checked_at": "2026-10-19T20:52:12.231545+00:00",
+              "commit": "afa84a17d6cc282ed2aa4003743d62770644ea48",
+              "dirty": false,
+              "disposition": "verified_manifest",
+              "mismatches": [],
+              "scene_path": "assets/park.usdc",
+              "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+              "source": "release_manifest",
+              "tree": "3ba4d7b8e02d6e6145a8c510c716df9ddc9c894a",
+              "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance",
+              "verified": true
+            }
+          }
+        ],
+        "identity_observations": 144,
+        "coverage_note": "Each retained health identity names the observed deployment; checked_at changes indicate startup-verification transitions, not proven crash causes."
+      },
+      "journal_parse_issues": [],
+      "reconciliation_errors": [],
+      "warnings": [
+        "Journal UTC timestamps decrease; concurrent logging or clock movement needs review.",
+        "GPU observer spans multiple deployments; this is not a single-release soak.",
+        "Incomplete or inconsistent evidence: no verified eight-hour completion claim is permitted."
+      ]
+    }
+  },
+  "resources": {
+    "rows": 49,
+    "columns": [
+      "timestamp",
+      " name",
+      " memory.used [MiB]",
+      " memory.total [MiB]",
+      " utilization.gpu [%]",
+      " utilization.memory [%]",
+      " power.draw [W]",
+      " temperature.gpu"
+    ],
+    "timestamp_column": "timestamp",
+    "first_observed_at": "2026/10/19 20:10:40.015",
+    "last_observed_at": "2026/10/19 20:58:40.229",
+    "observed_span_seconds": 2880.2139999866486,
+    "numeric_columns": {
+      " memory.used [MiB]": {
+        "count": 49,
+        "min": 1.0,
+        "median": 2935.0,
+        "p95": 3425.6,
+        "p99": 3821.12,
+        "max": 3848.0,
+        "mean": 2926.061224,
+        "percentile_method": "linear interpolation between sorted observations",
+        "first": 2935.0,
+        "last": 2919.0,
+        "last_minus_first": -16.0,
+        "endpoint_change_per_hour": -19.998514
+      },
+      " memory.total [MiB]": {
+        "count": 49,
+        "min": 49140.0,
+        "median": 49140.0,
+        "p95": 49140.0,
+        "p99": 49140.0,
+        "max": 49140.0,
+        "mean": 49140.0,
+        "percentile_method": "linear interpolation between sorted observations",
+        "first": 49140.0,
+        "last": 49140.0,
+        "last_minus_first": 0.0,
+        "endpoint_change_per_hour": 0.0
+      },
+      " utilization.gpu [%]": {
+        "count": 49,
+        "min": 0.0,
+        "median": 5.0,
+        "p95": 10.0,
+        "p99": 10.52,
+        "max": 11.0,
+        "mean": 6.326531,
+        "percentile_method": "linear interpolation between sorted observations",
+        "first": 5.0,
+        "last": 5.0,
+        "last_minus_first": 0.0,
+        "endpoint_change_per_hour": 0.0
+      },
+      " utilization.memory [%]": {
+        "count": 49,
+        "min": 0.0,
+        "median": 2.0,
+        "p95": 4.0,
+        "p99": 4.0,
+        "max": 4.0,
+        "mean": 2.530612,
+        "percentile_method": "linear interpolation between sorted observations",
+        "first": 2.0,
+        "last": 2.0,
+        "last_minus_first": 0.0,
+        "endpoint_change_per_hour": 0.0
+      },
+      " power.draw [W]": {
+        "count": 49,
+        "min": 90.44,
+        "median": 100.01,
+        "p95": 105.698,
+        "p99": 108.1396,
+        "max": 108.37,
+        "mean": 100.399592,
+        "percentile_method": "linear interpolation between sorted observations",
+        "first": 98.15,
+        "last": 105.53,
+        "last_minus_first": 7.3799999999999955,
+        "endpoint_change_per_hour": 9.224315
+      },
+      " temperature.gpu": {
+        "count": 49,
+        "min": 35.0,
+        "median": 36.0,
+        "p95": 36.0,
+        "p99": 36.0,
+        "max": 36.0,
+        "mean": 35.632653,
+        "percentile_method": "linear interpolation between sorted observations",
+        "first": 36.0,
+        "last": 36.0,
+        "last_minus_first": 0.0,
+        "endpoint_change_per_hour": 0.0
+      }
+    },
+    "naive_nvidia_timestamps_assumed_utc": 49,
+    "limits": [
+      "Resource sampling began later than the API/GPU experiment (reported start 20:10:39 UTC); this file does not establish full eight-hour resource coverage.",
+      "NVIDIA CSV timestamps without timezone are interpreted as UTC based on this experiment context; this is an explicit assumption, not timezone evidence in the CSV.",
+      "Measurements may include the static renderer and other processes. Endpoint trends are descriptive, not memory-leak certification or workload attribution.",
+      "Numeric columns retain CSV units/names; numeric IDs or counters must not be interpreted as utilization. No interpolation across missing samples."
+    ]
+  },
+  "inputs": [
+    {
+      "path": "/home/mvovk/.omnistation/threads/thr_6fc8e8ac35754f31a14d80d7651dc921/workspace/park-twin/runtime/fox-cycle-20261019/api-soak/evaluation/summary.json",
+      "captured_at": "2026-10-19T21:02:35.805813+00:00",
+      "bytes": 1337584,
+      "sha256": "3bc5b95feabdeea44cd3d6bc0adc6c6b0ec9683ba3b00c968e12830b613743aa",
+      "size_before": 1337584,
+      "size_after": 1337584,
+      "changed_during_read": false
+    },
+    {
+      "path": "/home/mvovk/.omnistation/threads/thr_6fc8e8ac35754f31a14d80d7651dc921/workspace/park-twin/runtime/fox-cycle-20261019/api-soak/evaluation/events.jsonl",
+      "captured_at": "2026-10-19T21:02:35.828091+00:00",
+      "bytes": 1572082,
+      "sha256": "64d8834254f4e761f9b10ba9461a6be2692b66c53d3c65d710d5a89908344730",
+      "size_before": 1572082,
+      "size_after": 1572082,
+      "changed_during_read": false
+    },
+    {
+      "path": "/home/mvovk/.omnistation/threads/thr_6fc8e8ac35754f31a14d80d7651dc921/workspace/park-twin/runtime/fox-cycle-20261019/gpu-checkpoint-2100/gpu-observation/summary.json",
+      "captured_at": "2026-10-19T21:02:35.864134+00:00",
+      "bytes": 583,
+      "sha256": "eb3c7e8975f7b26b56406dcdbd4fbc9073c57b83c42f596a87373085468e8d12",
+      "size_before": 583,
+      "size_after": 583,
+      "changed_during_read": false
+    },
+    {
+      "path": "/home/mvovk/.omnistation/threads/thr_6fc8e8ac35754f31a14d80d7651dc921/workspace/park-twin/runtime/fox-cycle-20261019/gpu-checkpoint-2100/gpu-observation/events.jsonl",
+      "captured_at": "2026-10-19T21:02:35.864284+00:00",
+      "bytes": 1341604,
+      "sha256": "b8a54eb9723eae325b4975bdc65ad8ee7c6598a9f863c1eeb5ed344dc645ac96",
+      "size_before": 1341604,
+      "size_after": 1341604,
+      "changed_during_read": false
+    },
+    {
+      "path": "/home/mvovk/.omnistation/threads/thr_6fc8e8ac35754f31a14d80d7651dc921/workspace/park-twin/runtime/fox-cycle-20261019/gpu-checkpoint-2100/gpu-resources.csv",
+      "captured_at": "2026-10-19T21:02:35.896583+00:00",
+      "bytes": 3400,
+      "sha256": "80f9351aa98a4e4ffad42d3bc75738e8089444fbb8da006a6ddcd337b10817f2",
+      "size_before": 3400,
+      "size_after": 3400,
+      "changed_during_read": false
+    }
+  ],
+  "analyzer_sha256": "fe9cdee7ecfaa36410cd3ff308412bbf2adb26c0189ffb31d7521e497936fa1a",
+  "limits": [
+    "Inputs captured separately; ongoing writes can make a partial snapshot inconsistent.",
+    "No provider inventory, live HTTP, database writes or source mutations are performed.",
+    "Check success does not establish business value, model calibration or safety."
+  ]
+}

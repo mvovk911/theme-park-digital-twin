@@ -1,0 +1,201 @@
+{
+  "mode": "Actual Horde API/browser acceptance on verified L40 application release; design previews are separate static native captures, not live geometry switching",
+  "checks": [
+    "baseline_unreachable_dining_design_40_852m_34_04s",
+    "both_native_previews_match_identity_headers_and_actual_image_bytes",
+    "downloaded_exact_query_and_response_evidence",
+    "closure_is_query_input_only_and_removes_route",
+    "authored_step_free_filter_retains_unresolved_entry_barrier",
+    "mobile_no_overflow",
+    "all_post_requests_are_read_only_spatial_queries"
+  ],
+  "posts": [
+    {
+      "url": "http://127.0.0.1:8100/api/spatial/route",
+      "payload": {
+        "variant": "baseline",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [],
+        "accessible_only": false,
+        "walking_speed_mps": 1.2
+      }
+    },
+    {
+      "url": "http://127.0.0.1:8100/api/spatial/route",
+      "payload": {
+        "variant": "dining_connection",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [],
+        "accessible_only": false,
+        "walking_speed_mps": 1.2
+      }
+    },
+    {
+      "url": "http://127.0.0.1:8100/api/spatial/route",
+      "payload": {
+        "variant": "baseline",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [],
+        "accessible_only": false,
+        "walking_speed_mps": 1.2
+      }
+    },
+    {
+      "url": "http://127.0.0.1:8100/api/spatial/route",
+      "payload": {
+        "variant": "dining_connection",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [
+          "dining_connector_link"
+        ],
+        "accessible_only": false,
+        "walking_speed_mps": 1.2
+      }
+    },
+    {
+      "url": "http://127.0.0.1:8100/api/spatial/route",
+      "payload": {
+        "variant": "baseline",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [],
+        "accessible_only": true,
+        "walking_speed_mps": 1.2
+      }
+    },
+    {
+      "url": "http://127.0.0.1:8100/api/spatial/route",
+      "payload": {
+        "variant": "dining_connection",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [],
+        "accessible_only": true,
+        "walking_speed_mps": 1.2
+      }
+    }
+  ],
+  "health": {
+    "status": "ok",
+    "synthetic": true,
+    "database": "connected",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "afa84a17d6cc282ed2aa4003743d62770644ea48",
+      "tree": "3ba4d7b8e02d6e6145a8c510c716df9ddc9c894a",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-19T20:52:12.231545+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "tick": 66957
+  },
+  "baseline_preview_metadata": {
+    "variant": "baseline",
+    "mode": "static_native",
+    "identity": {
+      "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+      "graph_version": "aster-circulation-v1",
+      "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+      "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+      "variant_layer_sha256": null,
+      "variant_evidence_sha256": null,
+      "verification": "verified_at_installation",
+      "snapshot_policy": "immutable_until_restart"
+    },
+    "camera": {
+      "eye_m": [
+        -1.0,
+        -43.0,
+        17.0
+      ],
+      "target_m": [
+        -9.0,
+        -26.4,
+        0.3
+      ],
+      "focal_length_mm": 42,
+      "width": 1600,
+      "height": 1000
+    },
+    "native_sdk_versions": {
+      "ovstage_version": "0.3.0.1791986420",
+      "ovrtx_version": "0.6.0.1791947691"
+    },
+    "image_sha256": "221dc1eab3dd18525a0a1b41aecee7225bfbc7f40e1fd3ab4e55ab7d13bfe5f9",
+    "report_sha256": "791f81c8fd0cbef0cc88d3b834c8ddc14bca6390e322aa9f41cf5981008be0f4",
+    "composition_sha256": "d34bbd0cee408f7345eab4cbcaa1ebd0db426d66d2c5fd846bc8a542c4e0cd18",
+    "capture_started_at": "2026-10-19T20:42:43.342386+00:00",
+    "capture_finished_at": "2026-10-19T20:42:48.865061+00:00",
+    "verified_at": "2026-10-19T20:52:12.216457+00:00",
+    "snapshot_policy": "immutable_until_restart",
+    "native_rendered": true,
+    "live_telemetry": false,
+    "synthetic": true,
+    "execution_authority": "none",
+    "integrity_scope": "Artifact consistency only; no cryptographic signature or independent rendering attestation",
+    "limitations": [
+      "Static authored geometry; not live telemetry, physical guidance, accessibility certification or operational benefit"
+    ]
+  },
+  "dining_connection_preview_metadata": {
+    "variant": "dining_connection",
+    "mode": "static_native",
+    "identity": {
+      "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+      "graph_version": "aster-circulation-v1+dining-connection-v1",
+      "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+      "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+      "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+      "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+      "verification": "verified_at_installation",
+      "snapshot_policy": "immutable_until_restart"
+    },
+    "camera": {
+      "eye_m": [
+        -1.0,
+        -43.0,
+        17.0
+      ],
+      "target_m": [
+        -9.0,
+        -26.4,
+        0.3
+      ],
+      "focal_length_mm": 42,
+      "width": 1600,
+      "height": 1000
+    },
+    "native_sdk_versions": {
+      "ovstage_version": "0.3.0.1791986420",
+      "ovrtx_version": "0.6.0.1791947691"
+    },
+    "image_sha256": "7fc718c7fc4842eee4f1d2281c8c234a17c4ef46143c78beedda5a658985653d",
+    "report_sha256": "84aeb940d64363460f661c8d39936e8cfb54c8069474ef2ffb0c5194a4573e3a",
+    "composition_sha256": "e2f8a979828f87462832dc0cbe94b2fd07b3a8fa65c9e8bfa0757916935d3762",
+    "capture_started_at": "2026-10-19T20:43:28.619214+00:00",
+    "capture_finished_at": "2026-10-19T20:43:34.220827+00:00",
+    "verified_at": "2026-10-19T20:52:12.220273+00:00",
+    "snapshot_policy": "immutable_until_restart",
+    "native_rendered": true,
+    "live_telemetry": false,
+    "synthetic": true,
+    "execution_authority": "none",
+    "integrity_scope": "Artifact consistency only; no cryptographic signature or independent rendering attestation",
+    "limitations": [
+      "Static authored geometry; not live telemetry, physical guidance, accessibility certification or operational benefit"
+    ]
+  },
+  "page_errors": [],
+  "status": "passed"
+}

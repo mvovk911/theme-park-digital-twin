@@ -135,3 +135,14 @@ Useful negative controls include zero spare staff, zero routing compliance, a re
 Screenshots should show actual app state, branch assumptions and unfavorable tradeoffs. Repository evidence should include source commit, model version, input revision, test case, response, decision rationale and test outcome. Separate elapsed test time from time spent building, authenticating or waiting for GPU capacity; do not describe an eight-hour test as complete before the recorded interval exists.
 
 The first real pilot should select one decision with a measurable service outcome—food replenishment/staffing or ride-closure response—and run advisory-only against the operator’s existing procedure. Calibrate on history, test on withheld days, review errors, then consider a narrowly authorized workflow action. Expansion to better 3D assets is justified when geometry changes the answer, such as an accessible alternate route or a genuine crowd bottleneck.
+
+## Why spatial forecasting remains a separate next step
+
+The [spatial/planning coupling study](spatial-planning-coupling.md) found a semantic
+gap: the aggregate queue model diverts incoming destination demand without
+observed physical origins, and its baseline closure rule moves demand without
+travel time. Public approach nodes also lack verified service-admission mappings.
+Adding graph distances directly would not fix those assumptions. The next
+numerical pilot needs conserved in-transit cohorts, observed release locations,
+service-admission boundaries and held-out validation; this cycle keeps the useful
+authored design comparison separate.

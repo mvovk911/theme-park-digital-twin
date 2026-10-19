@@ -2,6 +2,12 @@
 
 | Review | Baseline | Purpose |
 |---|---|---|
+| [Direct incident and spatial review](2026-10-19-direct-incident-spatial-review.md) | `64c8bfa` plus identified candidate | Fewer forecast prerequisites, frozen source observations, geometry versus service meaning, complete release boundaries |
+| [Workflow and spatial review](2026-10-19-workflow-and-spatial-review.md) | Identified workflow/circulation candidate | Dispatch acknowledgement versus repair, stale readback, practical design gaps |
+| [Evidence and policy review](2026-10-19-evidence-and-policy-review.md) | Identified evidence/policy candidate | Numerical reproduction, browser JSON normalization and adverse policy results |
+| [Weather preview review](2026-10-19-weather-preview-review.md) | Identified external weather candidate | Real provider provenance, forecast timing and separation from synthetic operations |
+| [Planner review](2026-10-19-planner-review.md) | Identified initial planning candidate | Conservation, feasibility, heat constraints and negative controls |
+| [FOX value baseline](2026-10-19-value-baseline.md) | Initial 19 October scope | Operational decisions, measurable value and implementation boundaries |
 | [Revision 2 maintainability review](2026-10-15-revision2-maintainability-review.md) | `2e2b16b`, `2c763d2`, `19cee1e` | Independent CPU rerun, actual GPU evidence review, source/replay and durable action boundaries |
 | [Digital-twin benchmark](2026-10-15-digital-twin-benchmark.md) | `930acd3` | Compare capability and evidence against recent public digital-twin implementations |
 | [Integrated checkpoint review](2026-10-15-integrated-checkpoint-review.md) | `29c4091` | Recheck complexity, prior fixes, frame/data consistency and immutable release behavior |

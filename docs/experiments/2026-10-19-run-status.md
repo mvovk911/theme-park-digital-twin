@@ -47,3 +47,23 @@ A GPU resource sampler began later, at 20:10:39 UTC, recording once per minute.
 It therefore cannot support a full eight-hour resource-usage claim. Independent
 static native captures may temporarily add another rendering process; those are
 development activity, not load attributable to the application alone.
+
+## Independent offline checkpoint — 19 October, 21:03 UTC
+
+The [reconciled ledger analysis](run-analysis/interim-2105/analysis.md) contains
+16 full fixed-source API cycles (161 checks including startup), zero failures and
+no pauses. The separately captured GPU prefix contains 145 observations and the
+same one failed sample. Its four observed application revisions are retained;
+the two snapshots were captured at different times. Neither track is complete.
+
+The [timeline](run-analysis/interim-2105/timeline.svg) marks source transitions
+and the failed sample. The [offline analyzer](run-analysis.md) fingerprints inputs,
+checks summary/journal agreement, reports gaps and refuses to produce a final
+eight-hour deck summary from incomplete evidence. Six analyzer boundary tests
+passed; these are separate from application acceptance.
+
+The GPU application was deployed to `afa84a17d6cc282ed2aa4003743d62770644ea48`
+at 20:52:09–20:52:12 UTC. Independent browser acceptance then passed six direct
+incident checks and seven spatial-design checks. A short actual-browser video
+capture began at 21:04:15 UTC; it is development activity on the observed GPU
+session and does not change the isolated fixed-source API test.
