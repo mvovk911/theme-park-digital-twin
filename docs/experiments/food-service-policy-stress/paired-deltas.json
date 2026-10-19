@@ -1,0 +1,2270 @@
+[
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:canceled_rush:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:sustained:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:early_burst:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_short_staff:late_burst:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": -116.90000000000327,
+    "planner_minus_rule_service": -3.694822225952521e-13,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": -49.058333333333394,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": -0.7250000000003638,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": -116.17500000000291,
+    "planner_minus_rule_service": -3.410605131648481e-13,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": -48.33333333333303,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": -54.55000000000018,
+    "planner_minus_rule_service": -3.410605131648481e-13,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": -48.33333333333303,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": -314.31666666666933,
+    "planner_minus_rule_service": -1.1368683772161603e-13,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": -147.175000000002,
+    "planner_minus_rule_service": 14.500000000000057,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": -2.1750000000010914,
+    "planner_minus_rule_service": -7.105427357601002e-15,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": -312.14166666666915,
+    "planner_minus_rule_service": -8.526512829121202e-14,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": -145.0000000000009,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": -146.97499999999945,
+    "planner_minus_rule_service": -8.526512829121202e-14,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": -145.0000000000009,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:canceled_rush:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": -194.05833333331066,
+    "planner_minus_rule_service": 9.66666666666626,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": -49.05833333333612,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": -0.7249999999985448,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": -193.33333333331393,
+    "planner_minus_rule_service": 9.66666666666626,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": -48.33333333333758,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": -108.74999999998909,
+    "planner_minus_rule_service": 7.249999999999517,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": -48.33333333333758,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": -582.1749999999902,
+    "planner_minus_rule_service": 28.999999999999915,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": -147.17500000000473,
+    "planner_minus_rule_service": 14.500000000000057,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": -2.1750000000010914,
+    "planner_minus_rule_service": -7.105427357601002e-15,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": -579.9999999999927,
+    "planner_minus_rule_service": 28.99999999999997,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": -145.00000000000546,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": -326.24999999999454,
+    "planner_minus_rule_service": 21.749999999999858,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": -145.00000000000546,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:sustained:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": -194.05833333331793,
+    "planner_minus_rule_service": 9.66666666666626,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": -49.05833333332703,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": -0.7249999999949068,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": -193.33333333332484,
+    "planner_minus_rule_service": 9.66666666666626,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": -48.3333333333303,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": -108.74999999998909,
+    "planner_minus_rule_service": 7.249999999999517,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": -48.3333333333303,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": -582.1749999999956,
+    "planner_minus_rule_service": 28.999999999999915,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": -147.17499999999745,
+    "planner_minus_rule_service": 14.500000000000057,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": -2.1749999999956344,
+    "planner_minus_rule_service": -7.105427357601002e-15,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": -579.9999999999982,
+    "planner_minus_rule_service": 28.99999999999997,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": -145.0,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": -326.2499999999927,
+    "planner_minus_rule_service": 21.749999999999858,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": -145.0,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:early_burst:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": -194.05833333332066,
+    "planner_minus_rule_service": 9.66666666666626,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": -49.05833333331975,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": -0.7249999999985448,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": -193.33333333332212,
+    "planner_minus_rule_service": 9.66666666666626,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": -48.33333333332121,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": -108.75000000000364,
+    "planner_minus_rule_service": 7.249999999999517,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": -48.33333333332121,
+    "planner_minus_rule_service": 4.833333333333314,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": -582.1749999999993,
+    "planner_minus_rule_service": 28.999999999999915,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": -147.17499999999563,
+    "planner_minus_rule_service": 14.500000000000057,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": -2.1750000000010914,
+    "planner_minus_rule_service": -7.105427357601002e-15,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": -580.0000000000009,
+    "planner_minus_rule_service": 28.99999999999997,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": -144.99999999999636,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": -326.25000000000273,
+    "planner_minus_rule_service": 21.749999999999858,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": -144.99999999999636,
+    "planner_minus_rule_service": 14.500000000000085,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "low_stock_covered:late_burst:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 56.0,
+    "same_schedule": false
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:canceled_rush:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:sustained:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:early_burst:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.05:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff10:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff10:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff10:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff20:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff20:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff20:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff30:stock20",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff30:stock40",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  },
+  {
+    "case_id": "full_stock_short_staff:late_burst:effect0.15:staff30:stockNone",
+    "planner_minus_rule_waiting": 0.0,
+    "planner_minus_rule_service": 0.0,
+    "planner_minus_rule_labor": 0.0,
+    "same_schedule": true
+  }
+]

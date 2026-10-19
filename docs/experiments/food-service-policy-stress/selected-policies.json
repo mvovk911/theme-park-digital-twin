@@ -1,0 +1,4837 @@
+{
+  "health": {
+    "status": "ok",
+    "synthetic": true,
+    "database": "connected",
+    "source_identity": {
+      "source": "release_manifest",
+      "commit": "d3dca3d20612d3d09ed1acb680683a990cbd51ba",
+      "tree": "cf80d191be1b9f8a1602f2c181e53ca21cc61262",
+      "disposition": "verified_manifest",
+      "verified": true,
+      "dirty": false,
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "mismatches": [],
+      "checked_at": "2026-10-19T19:49:10.359727+00:00",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+    },
+    "tick": 450
+  },
+  "inputs": [
+    {
+      "variant": "low_stock_short_staff",
+      "initial": {
+        "throughput_per_hour": 290,
+        "queue_minutes": 34,
+        "stock_units": 60,
+        "stock_capacity": 600,
+        "on_duty": 12,
+        "required": 14
+      },
+      "state_revision": "d025b96159d994d41896e66bb8991cd9ae491573ec608dec69d6b64c33be2123",
+      "planner_request": {
+        "scenario": "normal",
+        "horizon_minutes": 60,
+        "expected_state_revision": "d025b96159d994d41896e66bb8991cd9ae491573ec608dec69d6b64c33be2123",
+        "candidates": [
+          {
+            "id": "stock",
+            "label": "stock",
+            "actions": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          },
+          {
+            "id": "staff",
+            "label": "staff",
+            "actions": [
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          },
+          {
+            "id": "both",
+            "label": "both",
+            "actions": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              },
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          }
+        ]
+      },
+      "planner_response": {
+        "synthetic": true,
+        "mutates_live_state": false,
+        "physical_effect": false,
+        "model": {
+          "id": "aster-fluid-planner",
+          "version": "1.0.0",
+          "calibrated": false,
+          "method": "five_minute_fluid_queues_and_resource_balances"
+        },
+        "plan_id": "233583be7521fee3cbbc25cab45c15c881bd51a11c4320a06c34c3d68d5c8047",
+        "input": {
+          "state_revision": "d025b96159d994d41896e66bb8991cd9ae491573ec608dec69d6b64c33be2123",
+          "tick": 453,
+          "timestamp": "2026-10-19T19:56:46.619+00:00",
+          "source": "frozen_canonical_observations",
+          "current_scenario": "food_rush",
+          "requested_scenario": "normal",
+          "quality_check": "request_time",
+          "read_model": {
+            "quality_status": "degraded",
+            "schema_version": "1.0",
+            "source": "accepted_connector_observations",
+            "unmapped_fields_origin": "synthetic_model"
+          },
+          "quality_issues": []
+        },
+        "horizon_minutes": 60,
+        "step_minutes": 5,
+        "branches": [
+          {
+            "id": "baseline",
+            "label": "Do nothing",
+            "summary": {
+              "queue_guest_minutes": 34557.5,
+              "served_guests": 1244.0,
+              "unserved_guests": 640.8,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 657.6,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 50.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 329.0,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 322.0,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 315.0,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 308.0,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 301.0,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 294.0,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 213.083,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 553.333
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 287.0,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 234.833,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 652.0
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 280.0,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 256.583,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 750.667
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 273.0,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 278.333,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 849.333
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 266.0,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 300.083,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 948.0
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 259.0,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 321.833,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1046.667
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 252.0,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 343.583,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1145.333
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 245.0,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 365.333,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1244.0
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 558.2,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 0,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 26921.333,
+                  "served_guests": 1212.547,
+                  "unserved_guests": 406.933,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1061.28,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 34557.5,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 640.8,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 42517.1,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 906.12,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1591.92,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 26921.333,
+                "max": 42517.1
+              },
+              "served_guests": {
+                "min": 1212.547,
+                "max": 1244.0
+              },
+              "unserved_guests": {
+                "min": 406.933,
+                "max": 906.12
+              },
+              "staff_cost_eur": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "energy_kwh": {
+                "min": 657.6,
+                "max": 657.6
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 50.0,
+                "max": 50.0
+              }
+            },
+            "tradeoffs": [],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": 0.0,
+              "served_guests": 0.0,
+              "unserved_guests": 0.0,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "stock",
+            "label": "stock",
+            "summary": {
+              "queue_guest_minutes": 30690.833,
+              "served_guests": 1437.333,
+              "unserved_guests": 447.467,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 657.6,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 10.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 329.0,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 322.0,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 315.0,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 308.0,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 301.0,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 294.0,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 188.917,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 275.833,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 577.5
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 287.0,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 186.5,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 251.667,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 700.333
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 280.0,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 184.083,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 227.5,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 823.167
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 273.0,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 181.667,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 203.333,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 946.0
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 266.0,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 179.25,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 179.167,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1068.833
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 259.0,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 176.833,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 155.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1191.667
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 252.0,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 174.417,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 130.833,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1314.5
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 245.0,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 172.0,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 106.667,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1437.333
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 558.2,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 20,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 0,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 23054.667,
+                  "served_guests": 1405.88,
+                  "unserved_guests": 213.6,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -3866.666,
+                  "served_guests": 193.333,
+                  "unserved_guests": -193.333,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 30690.833,
+                  "served_guests": 1437.333,
+                  "unserved_guests": 447.467,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -3866.667,
+                  "served_guests": 193.333,
+                  "unserved_guests": -193.333,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 38650.433,
+                  "served_guests": 1437.333,
+                  "unserved_guests": 712.787,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -3866.667,
+                  "served_guests": 193.333,
+                  "unserved_guests": -193.333,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 23054.667,
+                "max": 38650.433
+              },
+              "served_guests": {
+                "min": 1405.88,
+                "max": 1437.333
+              },
+              "unserved_guests": {
+                "min": 213.6,
+                "max": 712.787
+              },
+              "staff_cost_eur": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "energy_kwh": {
+                "min": 657.6,
+                "max": 657.6
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 10.0,
+                "max": 10.0
+              }
+            },
+            "tradeoffs": [
+              "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": -3866.667,
+              "served_guests": 193.333,
+              "unserved_guests": -193.333,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": -40.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "staff",
+            "label": "staff",
+            "summary": {
+              "queue_guest_minutes": 34557.5,
+              "served_guests": 1244.0,
+              "unserved_guests": 640.8,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 657.6,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 50.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 329.0,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 322.0,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 315.0,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 308.0,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 301.0,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 294.0,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 213.083,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 553.333
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 287.0,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 234.833,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 652.0
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 280.0,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 256.583,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 750.667
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 273.0,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 278.333,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 849.333
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 266.0,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 300.083,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 948.0
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 259.0,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 321.833,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1046.667
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 252.0,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 343.583,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1145.333
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 245.0,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 365.333,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1244.0
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 558.2,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 10,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 2,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 26921.333,
+                  "served_guests": 1212.547,
+                  "unserved_guests": 406.933,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1061.28,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 34557.5,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 640.8,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 42517.1,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 906.12,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1591.92,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 26921.333,
+                "max": 42517.1
+              },
+              "served_guests": {
+                "min": 1212.547,
+                "max": 1244.0
+              },
+              "unserved_guests": {
+                "min": 406.933,
+                "max": 906.12
+              },
+              "staff_cost_eur": {
+                "min": 56.0,
+                "max": 56.0
+              },
+              "energy_kwh": {
+                "min": 657.6,
+                "max": 657.6
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 50.0,
+                "max": 50.0
+              }
+            },
+            "tradeoffs": [
+              "Uses scarce qualified staff and incurs incremental labor cost."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": 0.0,
+              "served_guests": 0.0,
+              "unserved_guests": 0.0,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "both",
+            "label": "both",
+            "summary": {
+              "queue_guest_minutes": 30110.833,
+              "served_guests": 1466.333,
+              "unserved_guests": 418.467,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 657.6,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 10.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 329.0,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 322.0,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 315.0,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 308.0,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 301.0,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 294.0,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 185.292,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 272.208,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 581.125
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 287.0,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 179.25,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 244.417,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 707.583
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 280.0,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 173.208,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 216.625,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 834.042
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 273.0,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 167.167,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 188.833,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 960.5
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 266.0,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 161.125,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 161.042,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1086.958
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 259.0,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 155.083,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 133.25,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1213.417
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 252.0,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 149.042,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 105.458,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1339.875
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 245.0,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 143.0,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 77.667,
+                "power_kw": 657.6,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1466.333
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 558.2,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 20,
+                "already_active": false
+              },
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 10,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 2,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 22474.667,
+                  "served_guests": 1434.88,
+                  "unserved_guests": 184.6,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -4446.666,
+                  "served_guests": 222.333,
+                  "unserved_guests": -222.333,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 30110.833,
+                  "served_guests": 1466.333,
+                  "unserved_guests": 418.467,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -4446.667,
+                  "served_guests": 222.333,
+                  "unserved_guests": -222.333,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 38070.433,
+                  "served_guests": 1466.333,
+                  "unserved_guests": 683.787,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.6,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 558.2,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -4446.667,
+                  "served_guests": 222.333,
+                  "unserved_guests": -222.333,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 22474.667,
+                "max": 38070.433
+              },
+              "served_guests": {
+                "min": 1434.88,
+                "max": 1466.333
+              },
+              "unserved_guests": {
+                "min": 184.6,
+                "max": 683.787
+              },
+              "staff_cost_eur": {
+                "min": 56.0,
+                "max": 56.0
+              },
+              "energy_kwh": {
+                "min": 657.6,
+                "max": 657.6
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 10.0,
+                "max": 10.0
+              }
+            },
+            "tradeoffs": [
+              "Uses scarce qualified staff and incurs incremental labor cost.",
+              "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": -4446.667,
+              "served_guests": 222.333,
+              "unserved_guests": -222.333,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": -40.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          }
+        ],
+        "decision": {
+          "status": "review_required",
+          "shortlist": [
+            "stock",
+            "both"
+          ],
+          "outcome": "tradeoffs_require_review",
+          "preferred_policy": null,
+          "baseline_is_nondominated": false,
+          "auto_execute": false,
+          "rationale": [
+            "Shortlist screens central-case feasible nondominated interventions; equal outcomes prefer fewer actions. Paired sensitivity flags can still show worse outcomes than do nothing.",
+            "Do nothing is the explicit preferred policy when no candidate demonstrates an undominated modeled benefit; this is not authority for real action or inaction.",
+            "Do-nothing and simple-rule baselines remain visible. Review uncertainty, omitted costs and operational constraints before any separate synthetic action."
+          ]
+        },
+        "parameters": {
+          "arrival_multiplier": 1.0,
+          "demand_uncertainty_pct": 20,
+          "available_qualified_staff": 4,
+          "routing_compliance_pct": 25
+        },
+        "metric_definitions": {
+          "queue_guest_minutes": {
+            "unit": "guest-min",
+            "direction": "lower",
+            "meaning": "Integral of backlog in four modeled service queues; service visits, not unique park guests."
+          },
+          "served_guests": {
+            "unit": "service-visits",
+            "direction": "higher",
+            "meaning": "Completed service visits during the horizon."
+          },
+          "unserved_guests": {
+            "unit": "service-visits",
+            "direction": "lower",
+            "meaning": "Backlog remaining at horizon; no abandonment or disappearance is assumed."
+          },
+          "staff_cost_eur": {
+            "unit": "EUR",
+            "direction": "lower",
+            "meaning": "Incremental illustrative staffing cost at EUR28/person/hour from action request time."
+          },
+          "energy_kwh": {
+            "unit": "kWh",
+            "direction": "lower",
+            "meaning": "Integral of modeled aggregate power; no electrical network solution."
+          },
+          "feeder_exceedance_minutes": {
+            "unit": "min",
+            "direction": "lower",
+            "meaning": "Time modeled aggregate demand exceeds observed/proposed feeder capacity."
+          },
+          "excess_leak_liters": {
+            "unit": "L",
+            "direction": "lower",
+            "meaning": "Incremental scenario leak only; does not add nested flow meters or circulation."
+          },
+          "food_stockout_minutes": {
+            "unit": "min",
+            "direction": "lower",
+            "meaning": "Five-minute periods in which food demand remains after stock is exhausted."
+          }
+        },
+        "assumptions": [
+          "Uncalibrated synthetic planning exercise; output is not a real-world forecast, savings claim or safety approval.",
+          "Frozen canonical observations initialize each branch; scenario shocks add to existing conditions and never reopen an already closed ride.",
+          "Four fluid queues represent service visits, not unique people: coaster, wheel, food and guest care. Initial backlog is posted wait times observed service rate; care uses observed occupancy.",
+          "Demand starts at 90% of observed service capacity (closed coaster uses an explicit 840/hour synthetic fallback); equal low/central/high demand factors are used for every branch.",
+          "Sensitivity ranges are three assumed demand cases, not probabilities, confidence intervals or calibrated uncertainty.",
+          "Each five-minute interval uses arrivals and available capacity; queue guest-minutes use trapezoidal integration, so short transients are approximate.",
+          "Guests remain in queue until served. Routing moves the assumed compliance fraction (default 25%) of arrivals from the most backlogged other open attraction/food queue to the explicit target, only when that target has a shorter current modeled wait. It never deletes demand. Guest preference and walking time are not modeled.",
+          "Two extra staff increase modeled service capacity by 15% after 10 minutes; qualification and availability are asserted synthetic reserve-pool assumptions, not verified employee records. No donor team is depleted. Real roster transfer and donor minimum coverage are unsupported. Cost starts on assignment at EUR28/person/hour.",
+          "Food consumes one stock unit per service visit. A replenishment delivers 300 units after 20 minutes, bounded by observed stock capacity; supply-chain purchasing cost is not modeled.",
+          "Load shedding reduces observed hotel load 25%, parking load 65% and food load 8% after 5 minutes, without thermal comfort or charging-service simulation.",
+          "Leak repair completes after an assumed 30 minutes; no physical work, repair reliability or water-network hydraulics are simulated. Maintenance dispatch opens only a hypothetical work order and never restores ride availability.",
+          "Existing observed mitigations are carried in input measurements. Repeating an action found active in canonical recent-action evidence receives no extra effect and makes that candidate infeasible. A full 12-event history without a reset/scenario boundary causes abstention because earlier active actions may be missing."
+        ],
+        "unsupported": [
+          "ride dynamics or restraint/PLC safety logic",
+          "crowd collision, evacuation certification or accessibility routing",
+          "electrical protection/load flow",
+          "water pressure/quality/hydraulics",
+          "thermal comfort/CFD",
+          "weather prediction",
+          "maintenance failure probability",
+          "revenue, satisfaction or causal ROI",
+          "real command execution"
+        ]
+      },
+      "policies": {
+        "do_nothing": "baseline",
+        "simple_rule": "both",
+        "planner_selected": "both"
+      }
+    },
+    {
+      "variant": "low_stock_covered",
+      "initial": {
+        "throughput_per_hour": 290,
+        "queue_minutes": 34,
+        "stock_units": 60,
+        "stock_capacity": 600,
+        "on_duty": 14,
+        "required": 14
+      },
+      "state_revision": "9d1e19c193e943a81701de9c92e72aae37f61e004d14b48ef128ff7ffd2efe3f",
+      "planner_request": {
+        "scenario": "normal",
+        "horizon_minutes": 60,
+        "expected_state_revision": "9d1e19c193e943a81701de9c92e72aae37f61e004d14b48ef128ff7ffd2efe3f",
+        "candidates": [
+          {
+            "id": "stock",
+            "label": "stock",
+            "actions": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          },
+          {
+            "id": "staff",
+            "label": "staff",
+            "actions": [
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          },
+          {
+            "id": "both",
+            "label": "both",
+            "actions": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              },
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          }
+        ]
+      },
+      "planner_response": {
+        "synthetic": true,
+        "mutates_live_state": false,
+        "physical_effect": false,
+        "model": {
+          "id": "aster-fluid-planner",
+          "version": "1.0.0",
+          "calibrated": false,
+          "method": "five_minute_fluid_queues_and_resource_balances"
+        },
+        "plan_id": "f095c25d9c295cc74266918fc8faff17e47fb85d5d661f80201799d46f7526d9",
+        "input": {
+          "state_revision": "9d1e19c193e943a81701de9c92e72aae37f61e004d14b48ef128ff7ffd2efe3f",
+          "tick": 455,
+          "timestamp": "2026-10-19T19:56:47.506+00:00",
+          "source": "frozen_canonical_observations",
+          "current_scenario": "food_rush",
+          "requested_scenario": "normal",
+          "quality_check": "request_time",
+          "read_model": {
+            "quality_status": "degraded",
+            "schema_version": "1.0",
+            "source": "accepted_connector_observations",
+            "unmapped_fields_origin": "synthetic_model"
+          },
+          "quality_issues": []
+        },
+        "horizon_minutes": 60,
+        "step_minutes": 5,
+        "branches": [
+          {
+            "id": "baseline",
+            "label": "Do nothing",
+            "summary": {
+              "queue_guest_minutes": 34473.5,
+              "served_guests": 1244.0,
+              "unserved_guests": 639.4,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 657.9,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 50.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 213.083,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 553.333
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 234.833,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 652.0
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 256.583,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 750.667
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 278.333,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 849.333
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 300.083,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 948.0
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 321.833,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1046.667
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 343.583,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1145.333
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 365.333,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1244.0
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 0,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 26837.333,
+                  "served_guests": 1212.547,
+                  "unserved_guests": 405.533,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 34473.5,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 639.4,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 42433.1,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 904.72,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 26837.333,
+                "max": 42433.1
+              },
+              "served_guests": {
+                "min": 1212.547,
+                "max": 1244.0
+              },
+              "unserved_guests": {
+                "min": 405.533,
+                "max": 904.72
+              },
+              "staff_cost_eur": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "energy_kwh": {
+                "min": 657.9,
+                "max": 657.9
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 50.0,
+                "max": 50.0
+              }
+            },
+            "tradeoffs": [],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": 0.0,
+              "served_guests": 0.0,
+              "unserved_guests": 0.0,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "stock",
+            "label": "stock",
+            "summary": {
+              "queue_guest_minutes": 30606.833,
+              "served_guests": 1437.333,
+              "unserved_guests": 446.067,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 657.9,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 10.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 188.917,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 275.833,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 577.5
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 186.5,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 251.667,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 700.333
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 184.083,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 227.5,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 823.167
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 181.667,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 203.333,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 946.0
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 179.25,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 179.167,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1068.833
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 176.833,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 155.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1191.667
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 174.417,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 130.833,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1314.5
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 172.0,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 106.667,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1437.333
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 20,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 0,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 22970.667,
+                  "served_guests": 1405.88,
+                  "unserved_guests": 212.2,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -3866.666,
+                  "served_guests": 193.333,
+                  "unserved_guests": -193.333,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 30606.833,
+                  "served_guests": 1437.333,
+                  "unserved_guests": 446.067,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -3866.667,
+                  "served_guests": 193.333,
+                  "unserved_guests": -193.333,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 38566.433,
+                  "served_guests": 1437.333,
+                  "unserved_guests": 711.387,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -3866.667,
+                  "served_guests": 193.333,
+                  "unserved_guests": -193.333,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 22970.667,
+                "max": 38566.433
+              },
+              "served_guests": {
+                "min": 1405.88,
+                "max": 1437.333
+              },
+              "unserved_guests": {
+                "min": 212.2,
+                "max": 711.387
+              },
+              "staff_cost_eur": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "energy_kwh": {
+                "min": 657.9,
+                "max": 657.9
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 10.0,
+                "max": 10.0
+              }
+            },
+            "tradeoffs": [
+              "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": -3866.667,
+              "served_guests": 193.333,
+              "unserved_guests": -193.333,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": -40.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "staff",
+            "label": "staff",
+            "summary": {
+              "queue_guest_minutes": 34473.5,
+              "served_guests": 1244.0,
+              "unserved_guests": 639.4,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 657.9,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 50.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 213.083,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 553.333
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 234.833,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 652.0
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 256.583,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 750.667
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 278.333,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 849.333
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 300.083,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 948.0
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 321.833,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1046.667
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 343.583,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1145.333
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 365.333,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1244.0
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 10,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 2,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 26837.333,
+                  "served_guests": 1212.547,
+                  "unserved_guests": 405.533,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 34473.5,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 639.4,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 42433.1,
+                  "served_guests": 1244.0,
+                  "unserved_guests": 904.72,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 50.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": 0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 26837.333,
+                "max": 42433.1
+              },
+              "served_guests": {
+                "min": 1212.547,
+                "max": 1244.0
+              },
+              "unserved_guests": {
+                "min": 405.533,
+                "max": 904.72
+              },
+              "staff_cost_eur": {
+                "min": 56.0,
+                "max": 56.0
+              },
+              "energy_kwh": {
+                "min": 657.9,
+                "max": 657.9
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 50.0,
+                "max": 50.0
+              }
+            },
+            "tradeoffs": [
+              "Uses scarce qualified staff and incurs incremental labor cost."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": 0.0,
+              "served_guests": 0.0,
+              "unserved_guests": 0.0,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "both",
+            "label": "both",
+            "summary": {
+              "queue_guest_minutes": 30026.833,
+              "served_guests": 1466.333,
+              "unserved_guests": 417.067,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 657.9,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 10.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 60.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 35.833,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 11.667,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 169.583,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 356.0
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 191.333,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 0.0,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 454.667
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 185.292,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 272.208,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 581.125
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 179.25,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 244.417,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 707.583
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 173.208,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 216.625,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 834.042
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 167.167,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 188.833,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 960.5
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 161.125,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 161.042,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1086.958
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 155.083,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 133.25,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1213.417
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 149.042,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 105.458,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1339.875
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 143.0,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 77.667,
+                "power_kw": 657.9,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1466.333
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 20,
+                "already_active": false
+              },
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 10,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 2,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 22390.667,
+                  "served_guests": 1434.88,
+                  "unserved_guests": 183.2,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -4446.666,
+                  "served_guests": 222.333,
+                  "unserved_guests": -222.333,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 30026.833,
+                  "served_guests": 1466.333,
+                  "unserved_guests": 417.067,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -4446.667,
+                  "served_guests": 222.333,
+                  "unserved_guests": -222.333,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 37986.433,
+                  "served_guests": 1466.333,
+                  "unserved_guests": 682.387,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 657.9,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 10.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -4446.667,
+                  "served_guests": 222.333,
+                  "unserved_guests": -222.333,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": -40.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 22390.667,
+                "max": 37986.433
+              },
+              "served_guests": {
+                "min": 1434.88,
+                "max": 1466.333
+              },
+              "unserved_guests": {
+                "min": 183.2,
+                "max": 682.387
+              },
+              "staff_cost_eur": {
+                "min": 56.0,
+                "max": 56.0
+              },
+              "energy_kwh": {
+                "min": 657.9,
+                "max": 657.9
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 10.0,
+                "max": 10.0
+              }
+            },
+            "tradeoffs": [
+              "Uses scarce qualified staff and incurs incremental labor cost.",
+              "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": -4446.667,
+              "served_guests": 222.333,
+              "unserved_guests": -222.333,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": -40.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          }
+        ],
+        "decision": {
+          "status": "review_required",
+          "shortlist": [
+            "stock",
+            "both"
+          ],
+          "outcome": "tradeoffs_require_review",
+          "preferred_policy": null,
+          "baseline_is_nondominated": false,
+          "auto_execute": false,
+          "rationale": [
+            "Shortlist screens central-case feasible nondominated interventions; equal outcomes prefer fewer actions. Paired sensitivity flags can still show worse outcomes than do nothing.",
+            "Do nothing is the explicit preferred policy when no candidate demonstrates an undominated modeled benefit; this is not authority for real action or inaction.",
+            "Do-nothing and simple-rule baselines remain visible. Review uncertainty, omitted costs and operational constraints before any separate synthetic action."
+          ]
+        },
+        "parameters": {
+          "arrival_multiplier": 1.0,
+          "demand_uncertainty_pct": 20,
+          "available_qualified_staff": 4,
+          "routing_compliance_pct": 25
+        },
+        "metric_definitions": {
+          "queue_guest_minutes": {
+            "unit": "guest-min",
+            "direction": "lower",
+            "meaning": "Integral of backlog in four modeled service queues; service visits, not unique park guests."
+          },
+          "served_guests": {
+            "unit": "service-visits",
+            "direction": "higher",
+            "meaning": "Completed service visits during the horizon."
+          },
+          "unserved_guests": {
+            "unit": "service-visits",
+            "direction": "lower",
+            "meaning": "Backlog remaining at horizon; no abandonment or disappearance is assumed."
+          },
+          "staff_cost_eur": {
+            "unit": "EUR",
+            "direction": "lower",
+            "meaning": "Incremental illustrative staffing cost at EUR28/person/hour from action request time."
+          },
+          "energy_kwh": {
+            "unit": "kWh",
+            "direction": "lower",
+            "meaning": "Integral of modeled aggregate power; no electrical network solution."
+          },
+          "feeder_exceedance_minutes": {
+            "unit": "min",
+            "direction": "lower",
+            "meaning": "Time modeled aggregate demand exceeds observed/proposed feeder capacity."
+          },
+          "excess_leak_liters": {
+            "unit": "L",
+            "direction": "lower",
+            "meaning": "Incremental scenario leak only; does not add nested flow meters or circulation."
+          },
+          "food_stockout_minutes": {
+            "unit": "min",
+            "direction": "lower",
+            "meaning": "Five-minute periods in which food demand remains after stock is exhausted."
+          }
+        },
+        "assumptions": [
+          "Uncalibrated synthetic planning exercise; output is not a real-world forecast, savings claim or safety approval.",
+          "Frozen canonical observations initialize each branch; scenario shocks add to existing conditions and never reopen an already closed ride.",
+          "Four fluid queues represent service visits, not unique people: coaster, wheel, food and guest care. Initial backlog is posted wait times observed service rate; care uses observed occupancy.",
+          "Demand starts at 90% of observed service capacity (closed coaster uses an explicit 840/hour synthetic fallback); equal low/central/high demand factors are used for every branch.",
+          "Sensitivity ranges are three assumed demand cases, not probabilities, confidence intervals or calibrated uncertainty.",
+          "Each five-minute interval uses arrivals and available capacity; queue guest-minutes use trapezoidal integration, so short transients are approximate.",
+          "Guests remain in queue until served. Routing moves the assumed compliance fraction (default 25%) of arrivals from the most backlogged other open attraction/food queue to the explicit target, only when that target has a shorter current modeled wait. It never deletes demand. Guest preference and walking time are not modeled.",
+          "Two extra staff increase modeled service capacity by 15% after 10 minutes; qualification and availability are asserted synthetic reserve-pool assumptions, not verified employee records. No donor team is depleted. Real roster transfer and donor minimum coverage are unsupported. Cost starts on assignment at EUR28/person/hour.",
+          "Food consumes one stock unit per service visit. A replenishment delivers 300 units after 20 minutes, bounded by observed stock capacity; supply-chain purchasing cost is not modeled.",
+          "Load shedding reduces observed hotel load 25%, parking load 65% and food load 8% after 5 minutes, without thermal comfort or charging-service simulation.",
+          "Leak repair completes after an assumed 30 minutes; no physical work, repair reliability or water-network hydraulics are simulated. Maintenance dispatch opens only a hypothetical work order and never restores ride availability.",
+          "Existing observed mitigations are carried in input measurements. Repeating an action found active in canonical recent-action evidence receives no extra effect and makes that candidate infeasible. A full 12-event history without a reset/scenario boundary causes abstention because earlier active actions may be missing."
+        ],
+        "unsupported": [
+          "ride dynamics or restraint/PLC safety logic",
+          "crowd collision, evacuation certification or accessibility routing",
+          "electrical protection/load flow",
+          "water pressure/quality/hydraulics",
+          "thermal comfort/CFD",
+          "weather prediction",
+          "maintenance failure probability",
+          "revenue, satisfaction or causal ROI",
+          "real command execution"
+        ]
+      },
+      "policies": {
+        "do_nothing": "baseline",
+        "simple_rule": "stock",
+        "planner_selected": "both"
+      }
+    },
+    {
+      "variant": "full_stock_short_staff",
+      "initial": {
+        "throughput_per_hour": 290,
+        "queue_minutes": 34,
+        "stock_units": 600,
+        "stock_capacity": 600,
+        "on_duty": 12,
+        "required": 14
+      },
+      "state_revision": "50e451a62431dac33d671b1260ffc4e10d51d42ef1ef2d447c70999bfdea6d87",
+      "planner_request": {
+        "scenario": "normal",
+        "horizon_minutes": 60,
+        "expected_state_revision": "50e451a62431dac33d671b1260ffc4e10d51d42ef1ef2d447c70999bfdea6d87",
+        "candidates": [
+          {
+            "id": "stock",
+            "label": "stock",
+            "actions": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          },
+          {
+            "id": "staff",
+            "label": "staff",
+            "actions": [
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          },
+          {
+            "id": "both",
+            "label": "both",
+            "actions": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              },
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0
+              }
+            ]
+          }
+        ]
+      },
+      "planner_response": {
+        "synthetic": true,
+        "mutates_live_state": false,
+        "physical_effect": false,
+        "model": {
+          "id": "aster-fluid-planner",
+          "version": "1.0.0",
+          "calibrated": false,
+          "method": "five_minute_fluid_queues_and_resource_balances"
+        },
+        "plan_id": "c6d24118447ec2496e5e22a95899aa9b8e0463f061a6e6ca0d3ee6008fde4718",
+        "input": {
+          "state_revision": "50e451a62431dac33d671b1260ffc4e10d51d42ef1ef2d447c70999bfdea6d87",
+          "tick": 457,
+          "timestamp": "2026-10-19T19:56:48.672+00:00",
+          "source": "frozen_canonical_observations",
+          "current_scenario": "food_rush",
+          "requested_scenario": "normal",
+          "quality_check": "request_time",
+          "read_model": {
+            "quality_status": "degraded",
+            "schema_version": "1.0",
+            "source": "accepted_connector_observations",
+            "unmapped_fields_origin": "synthetic_model"
+          },
+          "quality_issues": []
+        },
+        "horizon_minutes": 60,
+        "step_minutes": 5,
+        "branches": [
+          {
+            "id": "baseline",
+            "label": "Do nothing",
+            "summary": {
+              "queue_guest_minutes": 28986.0,
+              "served_guests": 1474.0,
+              "unserved_guests": 409.4,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 658.2,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 600.0,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 575.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 551.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 157.083,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 527.5,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 368.5
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 154.667,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 503.333,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 491.333
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 152.25,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 479.167,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 614.167
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 149.833,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 455.0,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 737.0
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 147.417,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 430.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 859.833
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 145.0,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 406.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 982.667
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 142.583,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 382.5,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1105.5
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 140.167,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 358.333,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1228.333
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 137.75,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 334.167,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1351.167
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 135.333,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 310.0,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1474.0
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 0,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 21349.833,
+                  "served_guests": 1442.547,
+                  "unserved_guests": 175.533,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 28986.0,
+                  "served_guests": 1474.0,
+                  "unserved_guests": 409.4,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 36945.6,
+                  "served_guests": 1474.0,
+                  "unserved_guests": 674.72,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 21349.833,
+                "max": 36945.6
+              },
+              "served_guests": {
+                "min": 1442.547,
+                "max": 1474.0
+              },
+              "unserved_guests": {
+                "min": 175.533,
+                "max": 674.72
+              },
+              "staff_cost_eur": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "energy_kwh": {
+                "min": 658.2,
+                "max": 658.2
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              }
+            },
+            "tradeoffs": [],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": 0.0,
+              "served_guests": 0.0,
+              "unserved_guests": 0.0,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "stock",
+            "label": "stock",
+            "summary": {
+              "queue_guest_minutes": 28986.0,
+              "served_guests": 1474.0,
+              "unserved_guests": 409.4,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 658.2,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 600.0,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 575.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 551.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 157.083,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 527.5,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 368.5
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 154.667,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 503.333,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 491.333
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 152.25,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 575.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 614.167
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 149.833,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 551.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 737.0
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 147.417,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 527.5,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 859.833
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 145.0,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 503.333,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 982.667
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 142.583,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 479.167,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1105.5
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 140.167,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 455.0,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1228.333
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 137.75,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 430.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1351.167
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 135.333,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 406.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1474.0
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 20,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 0,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 21349.833,
+                  "served_guests": 1442.547,
+                  "unserved_guests": 175.533,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 28986.0,
+                  "served_guests": 1474.0,
+                  "unserved_guests": 409.4,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 36945.6,
+                  "served_guests": 1474.0,
+                  "unserved_guests": 674.72,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": 0.0,
+                  "served_guests": 0.0,
+                  "unserved_guests": 0.0,
+                  "staff_cost_eur": 0.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 21349.833,
+                "max": 36945.6
+              },
+              "served_guests": {
+                "min": 1442.547,
+                "max": 1474.0
+              },
+              "unserved_guests": {
+                "min": 175.533,
+                "max": 674.72
+              },
+              "staff_cost_eur": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "energy_kwh": {
+                "min": 658.2,
+                "max": 658.2
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              }
+            },
+            "tradeoffs": [
+              "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": 0.0,
+              "served_guests": 0.0,
+              "unserved_guests": 0.0,
+              "staff_cost_eur": 0.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "staff",
+            "label": "staff",
+            "summary": {
+              "queue_guest_minutes": 28079.75,
+              "served_guests": 1510.25,
+              "unserved_guests": 373.15,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 658.2,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 600.0,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 575.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 551.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 153.458,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 523.875,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 372.125
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 147.417,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 496.083,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 498.583
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 141.375,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 468.292,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 625.042
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 135.333,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 440.5,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 751.5
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 129.292,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 412.708,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 877.958
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 123.25,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 384.917,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1004.417
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 117.208,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 357.125,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1130.875
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 111.167,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 329.333,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1257.333
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 105.125,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 301.542,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1383.792
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 99.083,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 273.75,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1510.25
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 10,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 2,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 20443.583,
+                  "served_guests": 1478.797,
+                  "unserved_guests": 139.283,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -906.25,
+                  "served_guests": 36.25,
+                  "unserved_guests": -36.25,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 28079.75,
+                  "served_guests": 1510.25,
+                  "unserved_guests": 373.15,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -906.25,
+                  "served_guests": 36.25,
+                  "unserved_guests": -36.25,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 36039.35,
+                  "served_guests": 1510.25,
+                  "unserved_guests": 638.47,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -906.25,
+                  "served_guests": 36.25,
+                  "unserved_guests": -36.25,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 20443.583,
+                "max": 36039.35
+              },
+              "served_guests": {
+                "min": 1478.797,
+                "max": 1510.25
+              },
+              "unserved_guests": {
+                "min": 139.283,
+                "max": 638.47
+              },
+              "staff_cost_eur": {
+                "min": 56.0,
+                "max": 56.0
+              },
+              "energy_kwh": {
+                "min": 658.2,
+                "max": 658.2
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              }
+            },
+            "tradeoffs": [
+              "Uses scarce qualified staff and incurs incremental labor cost."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": -906.25,
+              "served_guests": 36.25,
+              "unserved_guests": -36.25,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          },
+          {
+            "id": "both",
+            "label": "both",
+            "summary": {
+              "queue_guest_minutes": 28079.75,
+              "served_guests": 1510.25,
+              "unserved_guests": 373.15,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 658.2,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "trajectory": [
+              {
+                "minute": 0,
+                "queue_guests": {
+                  "RIDE_COASTER": 327.6,
+                  "RIDE_WHEEL": 61.867,
+                  "FOOD_COURT": 164.333,
+                  "FIRST_AID": 3.0
+                },
+                "food_stock_units": 600.0,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 0.0
+              },
+              {
+                "minute": 5,
+                "queue_guests": {
+                  "RIDE_COASTER": 320.6,
+                  "RIDE_WHEEL": 59.2,
+                  "FOOD_COURT": 161.917,
+                  "FIRST_AID": 2.8
+                },
+                "food_stock_units": 575.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 122.833
+              },
+              {
+                "minute": 10,
+                "queue_guests": {
+                  "RIDE_COASTER": 313.6,
+                  "RIDE_WHEEL": 56.533,
+                  "FOOD_COURT": 159.5,
+                  "FIRST_AID": 2.6
+                },
+                "food_stock_units": 551.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 245.667
+              },
+              {
+                "minute": 15,
+                "queue_guests": {
+                  "RIDE_COASTER": 306.6,
+                  "RIDE_WHEEL": 53.867,
+                  "FOOD_COURT": 153.458,
+                  "FIRST_AID": 2.4
+                },
+                "food_stock_units": 523.875,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 372.125
+              },
+              {
+                "minute": 20,
+                "queue_guests": {
+                  "RIDE_COASTER": 299.6,
+                  "RIDE_WHEEL": 51.2,
+                  "FOOD_COURT": 147.417,
+                  "FIRST_AID": 2.2
+                },
+                "food_stock_units": 496.083,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 498.583
+              },
+              {
+                "minute": 25,
+                "queue_guests": {
+                  "RIDE_COASTER": 292.6,
+                  "RIDE_WHEEL": 48.533,
+                  "FOOD_COURT": 141.375,
+                  "FIRST_AID": 2.0
+                },
+                "food_stock_units": 572.208,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 625.042
+              },
+              {
+                "minute": 30,
+                "queue_guests": {
+                  "RIDE_COASTER": 285.6,
+                  "RIDE_WHEEL": 45.867,
+                  "FOOD_COURT": 135.333,
+                  "FIRST_AID": 1.8
+                },
+                "food_stock_units": 544.417,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 751.5
+              },
+              {
+                "minute": 35,
+                "queue_guests": {
+                  "RIDE_COASTER": 278.6,
+                  "RIDE_WHEEL": 43.2,
+                  "FOOD_COURT": 129.292,
+                  "FIRST_AID": 1.6
+                },
+                "food_stock_units": 516.625,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 877.958
+              },
+              {
+                "minute": 40,
+                "queue_guests": {
+                  "RIDE_COASTER": 271.6,
+                  "RIDE_WHEEL": 40.533,
+                  "FOOD_COURT": 123.25,
+                  "FIRST_AID": 1.4
+                },
+                "food_stock_units": 488.833,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1004.417
+              },
+              {
+                "minute": 45,
+                "queue_guests": {
+                  "RIDE_COASTER": 264.6,
+                  "RIDE_WHEEL": 37.867,
+                  "FOOD_COURT": 117.208,
+                  "FIRST_AID": 1.2
+                },
+                "food_stock_units": 461.042,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1130.875
+              },
+              {
+                "minute": 50,
+                "queue_guests": {
+                  "RIDE_COASTER": 257.6,
+                  "RIDE_WHEEL": 35.2,
+                  "FOOD_COURT": 111.167,
+                  "FIRST_AID": 1.0
+                },
+                "food_stock_units": 433.25,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1257.333
+              },
+              {
+                "minute": 55,
+                "queue_guests": {
+                  "RIDE_COASTER": 250.6,
+                  "RIDE_WHEEL": 32.533,
+                  "FOOD_COURT": 105.125,
+                  "FIRST_AID": 0.8
+                },
+                "food_stock_units": 405.458,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1383.792
+              },
+              {
+                "minute": 60,
+                "queue_guests": {
+                  "RIDE_COASTER": 243.6,
+                  "RIDE_WHEEL": 29.867,
+                  "FOOD_COURT": 99.083,
+                  "FIRST_AID": 0.6
+                },
+                "food_stock_units": 377.667,
+                "power_kw": 658.2,
+                "feeder_capacity_kw": 900.0,
+                "excess_leak_lpm": 0.0,
+                "cumulative_served_guests": 1510.25
+              }
+            ],
+            "conservation": {
+              "initial_queue_guests": 556.8,
+              "arrivals": 1326.6,
+              "residual_guests": -0.0
+            },
+            "action_schedule": [
+              {
+                "action": "replenish_stock",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 20,
+                "already_active": false
+              },
+              {
+                "action": "add_staff",
+                "asset_id": "FOOD_COURT",
+                "at_minute": 0,
+                "effective_at_minute": 10,
+                "already_active": false
+              }
+            ],
+            "constraints": {
+              "feasible": true,
+              "violations": [],
+              "qualified_staff_requested": 2,
+              "qualified_staff_available": 4
+            },
+            "sensitivity": {
+              "low": {
+                "demand_factor": 0.8,
+                "summary": {
+                  "queue_guest_minutes": 20443.583,
+                  "served_guests": 1478.797,
+                  "unserved_guests": 139.283,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1061.28,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -906.25,
+                  "served_guests": 36.25,
+                  "unserved_guests": -36.25,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "central": {
+                "demand_factor": 1.0,
+                "summary": {
+                  "queue_guest_minutes": 28079.75,
+                  "served_guests": 1510.25,
+                  "unserved_guests": 373.15,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1326.6,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -906.25,
+                  "served_guests": 36.25,
+                  "unserved_guests": -36.25,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              },
+              "high": {
+                "demand_factor": 1.2,
+                "summary": {
+                  "queue_guest_minutes": 36039.35,
+                  "served_guests": 1510.25,
+                  "unserved_guests": 638.47,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 658.2,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                },
+                "conservation": {
+                  "initial_queue_guests": 556.8,
+                  "arrivals": 1591.92,
+                  "residual_guests": -0.0
+                },
+                "deltas_vs_baseline": {
+                  "queue_guest_minutes": -906.25,
+                  "served_guests": 36.25,
+                  "unserved_guests": -36.25,
+                  "staff_cost_eur": 56.0,
+                  "energy_kwh": 0.0,
+                  "feeder_exceedance_minutes": 0.0,
+                  "excess_leak_liters": 0.0,
+                  "food_stockout_minutes": 0.0
+                }
+              }
+            },
+            "ranges": {
+              "queue_guest_minutes": {
+                "min": 20443.583,
+                "max": 36039.35
+              },
+              "served_guests": {
+                "min": 1478.797,
+                "max": 1510.25
+              },
+              "unserved_guests": {
+                "min": 139.283,
+                "max": 638.47
+              },
+              "staff_cost_eur": {
+                "min": 56.0,
+                "max": 56.0
+              },
+              "energy_kwh": {
+                "min": 658.2,
+                "max": 658.2
+              },
+              "feeder_exceedance_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "excess_leak_liters": {
+                "min": 0.0,
+                "max": 0.0
+              },
+              "food_stockout_minutes": {
+                "min": 0.0,
+                "max": 0.0
+              }
+            },
+            "tradeoffs": [
+              "Uses scarce qualified staff and incurs incremental labor cost.",
+              "Consumes 300 stock units from an assumed available supply; procurement cost and waste are not modeled."
+            ],
+            "deltas_vs_baseline": {
+              "queue_guest_minutes": -906.25,
+              "served_guests": 36.25,
+              "unserved_guests": -36.25,
+              "staff_cost_eur": 56.0,
+              "energy_kwh": 0.0,
+              "feeder_exceedance_minutes": 0.0,
+              "excess_leak_liters": 0.0,
+              "food_stockout_minutes": 0.0
+            },
+            "robustness": {
+              "status": "no_adverse_case_in_tested_set",
+              "worse_than_baseline_cases": [],
+              "scope": "Paired low/central/high comparisons; excludes explicit labor-cost tradeoff, not a guarantee outside tested cases."
+            }
+          }
+        ],
+        "decision": {
+          "status": "review_required",
+          "shortlist": [
+            "staff"
+          ],
+          "outcome": "tradeoffs_require_review",
+          "preferred_policy": null,
+          "baseline_is_nondominated": true,
+          "auto_execute": false,
+          "rationale": [
+            "Shortlist screens central-case feasible nondominated interventions; equal outcomes prefer fewer actions. Paired sensitivity flags can still show worse outcomes than do nothing.",
+            "Do nothing is the explicit preferred policy when no candidate demonstrates an undominated modeled benefit; this is not authority for real action or inaction.",
+            "Do-nothing and simple-rule baselines remain visible. Review uncertainty, omitted costs and operational constraints before any separate synthetic action."
+          ]
+        },
+        "parameters": {
+          "arrival_multiplier": 1.0,
+          "demand_uncertainty_pct": 20,
+          "available_qualified_staff": 4,
+          "routing_compliance_pct": 25
+        },
+        "metric_definitions": {
+          "queue_guest_minutes": {
+            "unit": "guest-min",
+            "direction": "lower",
+            "meaning": "Integral of backlog in four modeled service queues; service visits, not unique park guests."
+          },
+          "served_guests": {
+            "unit": "service-visits",
+            "direction": "higher",
+            "meaning": "Completed service visits during the horizon."
+          },
+          "unserved_guests": {
+            "unit": "service-visits",
+            "direction": "lower",
+            "meaning": "Backlog remaining at horizon; no abandonment or disappearance is assumed."
+          },
+          "staff_cost_eur": {
+            "unit": "EUR",
+            "direction": "lower",
+            "meaning": "Incremental illustrative staffing cost at EUR28/person/hour from action request time."
+          },
+          "energy_kwh": {
+            "unit": "kWh",
+            "direction": "lower",
+            "meaning": "Integral of modeled aggregate power; no electrical network solution."
+          },
+          "feeder_exceedance_minutes": {
+            "unit": "min",
+            "direction": "lower",
+            "meaning": "Time modeled aggregate demand exceeds observed/proposed feeder capacity."
+          },
+          "excess_leak_liters": {
+            "unit": "L",
+            "direction": "lower",
+            "meaning": "Incremental scenario leak only; does not add nested flow meters or circulation."
+          },
+          "food_stockout_minutes": {
+            "unit": "min",
+            "direction": "lower",
+            "meaning": "Five-minute periods in which food demand remains after stock is exhausted."
+          }
+        },
+        "assumptions": [
+          "Uncalibrated synthetic planning exercise; output is not a real-world forecast, savings claim or safety approval.",
+          "Frozen canonical observations initialize each branch; scenario shocks add to existing conditions and never reopen an already closed ride.",
+          "Four fluid queues represent service visits, not unique people: coaster, wheel, food and guest care. Initial backlog is posted wait times observed service rate; care uses observed occupancy.",
+          "Demand starts at 90% of observed service capacity (closed coaster uses an explicit 840/hour synthetic fallback); equal low/central/high demand factors are used for every branch.",
+          "Sensitivity ranges are three assumed demand cases, not probabilities, confidence intervals or calibrated uncertainty.",
+          "Each five-minute interval uses arrivals and available capacity; queue guest-minutes use trapezoidal integration, so short transients are approximate.",
+          "Guests remain in queue until served. Routing moves the assumed compliance fraction (default 25%) of arrivals from the most backlogged other open attraction/food queue to the explicit target, only when that target has a shorter current modeled wait. It never deletes demand. Guest preference and walking time are not modeled.",
+          "Two extra staff increase modeled service capacity by 15% after 10 minutes; qualification and availability are asserted synthetic reserve-pool assumptions, not verified employee records. No donor team is depleted. Real roster transfer and donor minimum coverage are unsupported. Cost starts on assignment at EUR28/person/hour.",
+          "Food consumes one stock unit per service visit. A replenishment delivers 300 units after 20 minutes, bounded by observed stock capacity; supply-chain purchasing cost is not modeled.",
+          "Load shedding reduces observed hotel load 25%, parking load 65% and food load 8% after 5 minutes, without thermal comfort or charging-service simulation.",
+          "Leak repair completes after an assumed 30 minutes; no physical work, repair reliability or water-network hydraulics are simulated. Maintenance dispatch opens only a hypothetical work order and never restores ride availability.",
+          "Existing observed mitigations are carried in input measurements. Repeating an action found active in canonical recent-action evidence receives no extra effect and makes that candidate infeasible. A full 12-event history without a reset/scenario boundary causes abstention because earlier active actions may be missing."
+        ],
+        "unsupported": [
+          "ride dynamics or restraint/PLC safety logic",
+          "crowd collision, evacuation certification or accessibility routing",
+          "electrical protection/load flow",
+          "water pressure/quality/hydraulics",
+          "thermal comfort/CFD",
+          "weather prediction",
+          "maintenance failure probability",
+          "revenue, satisfaction or causal ROI",
+          "real command execution"
+        ]
+      },
+      "policies": {
+        "do_nothing": "baseline",
+        "simple_rule": "staff",
+        "planner_selected": "staff"
+      }
+    }
+  ]
+}

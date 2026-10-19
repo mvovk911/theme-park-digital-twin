@@ -9,6 +9,7 @@ and synthetic planner; they are **not new GPU-render evidence**.
 
 [Research and decision/API map](research/fox-theme-park.md) ·
 [Experiment charter](experiments/2026-10-19-run-plan.md) ·
+[Independent policy stress results](experiments/food-service-policy-stress.md) ·
 [Independent value review](reviews/2026-10-19-value-baseline.md) ·
 [HTTP operator evaluation](api-operator-evaluation.md) ·
 [Browser evidence](images/fox-cycle-20261019/initial/report.json)

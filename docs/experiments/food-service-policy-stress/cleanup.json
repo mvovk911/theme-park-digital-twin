@@ -1,0 +1,18 @@
+[
+  {
+    "path": "/api/connectors/erp/simulation",
+    "ok": true
+  },
+  {
+    "path": "/api/connectors/workforce/simulation",
+    "ok": true
+  },
+  {
+    "path": "/api/connectors/vision/simulation",
+    "ok": true
+  },
+  {
+    "path": "/api/actions",
+    "ok": true
+  }
+]

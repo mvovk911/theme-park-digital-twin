@@ -1,0 +1,100 @@
+{
+  "run_id": "policy-stress-9fd0e9e75dda",
+  "completed_at": "2026-10-19T19:56:48.982728+00:00",
+  "specification_sha256": "482a02cd9c50d69c6ddbc9358dc8f9b18597d8a8ebea3cfe3c780c0a8a1460a0",
+  "source_identity": {
+    "source": "release_manifest",
+    "commit": "d3dca3d20612d3d09ed1acb680683a990cbd51ba",
+    "tree": "cf80d191be1b9f8a1602f2c181e53ca21cc61262",
+    "disposition": "verified_manifest",
+    "verified": true,
+    "dirty": false,
+    "scene_path": "assets/park.usdc",
+    "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "mismatches": [],
+    "checked_at": "2026-10-19T19:49:10.359727+00:00",
+    "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+  },
+  "case_count": 324,
+  "policy_outcome_count": 972,
+  "policies_by_variant": {
+    "low_stock_short_staff": {
+      "do_nothing": "baseline",
+      "simple_rule": "both",
+      "planner_selected": "both"
+    },
+    "low_stock_covered": {
+      "do_nothing": "baseline",
+      "simple_rule": "stock",
+      "planner_selected": "both"
+    },
+    "full_stock_short_staff": {
+      "do_nothing": "baseline",
+      "simple_rule": "staff",
+      "planner_selected": "staff"
+    }
+  },
+  "summaries": {
+    "do_nothing": {
+      "case_count": 324,
+      "dominated_cases": 144,
+      "baseline_strictly_better_cases": 0,
+      "unnecessary_action_cases": 0,
+      "mean_queue_guest_minutes": 11165.547222222216,
+      "mean_served_visits": 131.0277777777778,
+      "mean_labor_eur": 0.0,
+      "max_waiting_regret": 4448.841666666678,
+      "max_service_regret": 222.33333333333348,
+      "max_labor_regret": 0.0
+    },
+    "simple_rule": {
+      "case_count": 324,
+      "dominated_cases": 88,
+      "baseline_strictly_better_cases": 64,
+      "unnecessary_action_cases": 72,
+      "mean_queue_guest_minutes": 9995.693801440324,
+      "mean_served_visits": 198.67283950617283,
+      "mean_labor_eur": 37.333333333333336,
+      "max_waiting_regret": 582.1749999999993,
+      "max_service_regret": 28.99999999999997,
+      "max_labor_regret": 56.0
+    },
+    "planner_selected": {
+      "case_count": 324,
+      "dominated_cases": 140,
+      "baseline_strictly_better_cases": 92,
+      "unnecessary_action_cases": 72,
+      "mean_queue_guest_minutes": 9966.811213991765,
+      "mean_served_visits": 200.37345679012344,
+      "mean_labor_eur": 56.0,
+      "max_waiting_regret": 0.0,
+      "max_service_regret": 3.694822225952521e-13,
+      "max_labor_regret": 56.0
+    }
+  },
+  "paired_planner_vs_rule": {
+    "identical_schedule_cases": 216,
+    "lower_waiting_cases": 56,
+    "higher_waiting_cases": 0,
+    "higher_labor_cases": 108,
+    "mean_waiting_delta": -28.882587448559136,
+    "mean_service_delta": 1.7006172839506009,
+    "mean_labor_delta": 18.666666666666668,
+    "differing_schedule_subset": {
+      "case_count": 108,
+      "mean_waiting_delta": -86.6477623456774,
+      "mean_service_delta": 5.101851851851802,
+      "mean_labor_delta": 56.0,
+      "no_waiting_gain_cases": 52,
+      "no_service_gain_cases": 66
+    }
+  },
+  "planner_baseline_dominated_cases_with_initial_staff_coverage": 28,
+  "model_limits": [
+    "Required staffing coverage and donor-team impact are not enforced; baseline dominance is not permission to operate understaffed.",
+    "The canceled-rush profile still retains the initial observed/inferred queue backlog.",
+    "Nonnegative staffing effects and no adverse capacity interactions favor maximal staffing on service-only metrics."
+  ],
+  "scope": "Independent synthetic assumption stress, not empirical validation or a business score.",
+  "grid_frequency_is_probability": false
+}
