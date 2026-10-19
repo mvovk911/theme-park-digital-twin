@@ -1,0 +1,71 @@
+{
+  "schema_version": "aster.video-visual-review.v1",
+  "reviewed_at": "2026-10-19T21:20:26.523001+00:00",
+  "video_sha256": "a0cae5bad1ef3b59da8ebd4b223460c38044cd27bc354d751c07c2279352f303",
+  "measured_duration_seconds": 87.77,
+  "status": "accepted_sampled_visual_review",
+  "method": "Inspected a decoded frame from each of ten chapters, a full-size maintenance receipt frame and a full-size native before/after frame, following automated full-stream decode. This is sampled visual inspection, not a claim of watching every frame.",
+  "samples": [
+    {
+      "seconds": 4,
+      "file": "01.png",
+      "sha256": "fd474c12fc82d6d60b95c845e5ee7abf0cc8d1c78df2e2435235b9240a9f84ae"
+    },
+    {
+      "seconds": 13,
+      "file": "02.png",
+      "sha256": "36c987d482f316129e938cfdd36258856cd46f514aa6857d52b3051c3308c33e"
+    },
+    {
+      "seconds": 23,
+      "file": "03.png",
+      "sha256": "695f10555b6487e1a40418ea73dc70cda132464bf7c41aae58921f430821f5a5"
+    },
+    {
+      "seconds": 35,
+      "file": "04.png",
+      "sha256": "5a191a2cac9587954b9ab77a7c204e23eeac1a12956f6e84d3a6cd558ea5ba17"
+    },
+    {
+      "seconds": 45,
+      "file": "05.png",
+      "sha256": "09976eac69ae950b53fc0b376e5747bb0bb7a933edc26a5412ef76436946ba4b"
+    },
+    {
+      "seconds": 53,
+      "file": "06.png",
+      "sha256": "545fb837017806734aff2e5941562164c8f8738b357a168b10841b5b553e9ac7"
+    },
+    {
+      "seconds": 60,
+      "file": "07.png",
+      "sha256": "2579f738280c8478a6c4ca2713f989ed7cabb9d1777063e8e897a46bcf224d75"
+    },
+    {
+      "seconds": 69,
+      "file": "08.png",
+      "sha256": "256d761675ec3f1a11f51dc4661e35ea24efd7d008a2b1146f1ecec134756836"
+    },
+    {
+      "seconds": 78,
+      "file": "09.png",
+      "sha256": "9cbd9a00ad7030dedf1e3721e7d3986fbc9a812864acce05e601879e4050c3e2"
+    },
+    {
+      "seconds": 85,
+      "file": "10.png",
+      "sha256": "fba863225e5bc2d4e182c2c630d61a56d52f5e195f103506342460309dc50ff4"
+    }
+  ],
+  "findings": [
+    "All ten chapters are present with matching caption bands.",
+    "Captions fit below the viewport and do not cover application pixels.",
+    "Actual native park and static before/after images are visible; synthetic action boundaries remain explicit.",
+    "The accepted maintenance work order is followed by an independently observed closed ride.",
+    "Design closure and unresolved step-free entrance both show unreachable results.",
+    "Export and final evidence/limits chapter remain visible after the measured tail clipping."
+  ],
+  "timing_limit": "Capture-to-first-encoded-frame alignment is approximate; 0.218 seconds beyond the measured raw container were explicitly excluded, with no padded tail or speed change.",
+  "storyboard_sha256": "b1eb3688a74eecffdd0e256685d16eb4ecafb6055884df30602e78024cdbe7f9",
+  "original_take_sha256": "e926a1ce9b9a0086903a63e838b93bac34db1fcbbd888e6ebaa9bfcc6b4f618e"
+}

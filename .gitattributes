@@ -1,0 +1,2 @@
+# Preserve generated PDFs as binary artifacts, even when their opening bytes are ASCII.
+*.pdf binary

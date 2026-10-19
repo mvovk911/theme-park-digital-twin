@@ -77,35 +77,34 @@ python3 -m venv /tmp/park-review-tools
 
 Default output: `runtime/fox-cycle-20261019/review-deck/fox-review-interim.pdf`, five PNG page previews, a text/layout validation report, and a manifest of input hashes. The PDF uses embedded DejaVu Sans fonts and deterministic ReportLab metadata (`invariant=1`). The manifest captures full source/report identities; footer links point to source files at the selected Git revision. Repeat with identical inputs and options to obtain the same PDF bytes. Optional `--source-revision <40hex>` pins those links; by default the current HEAD is used. `--output` selects a separate destination; the generator refuses the original concept PDF.
 
-The default is explicitly **INTERIM: eight-hour observation still in progress**. It cannot declare completion based on the current clock. Supply `--run-summary path.json` only after both ledgers have finished:
+The default is explicitly **INTERIM: eight-hour observation still in progress**. It cannot declare completion from a clock or a count alone. Final mode consumes the analyzer's `aster.review-run.v2` contract through the shared dependency-free `validate_review_contract` in `operators/analyze_fox_run.py`. The old minimal v1 contract is rejected. There is one declared two-second tolerance, not separate producer and deck thresholds.
 
-```json
-{
-  "schema_version": "aster.review-run.v1",
-  "tracks": {
-    "fixed_api": {
-      "complete": true,
-      "started_at": "2026-10-19T19:47:34+00:00",
-      "finished_at": "2026-10-20T03:47:34+00:00",
-      "elapsed_seconds": 28800,
-      "cycles": 1,
-      "failures": 0,
-      "source_identity": {"commit": "0000000000000000000000000000000000000000"}
-    },
-    "gpu_observer": {
-      "complete": true,
-      "started_at": "2026-10-19T19:47:33+00:00",
-      "finished_at": "2026-10-20T03:47:33+00:00",
-      "elapsed_seconds": 28800,
-      "cycles": 1,
-      "failures": 1,
-      "source_identity": {"commit": "0000000000000000000000000000000000000000", "deployment_commits": []}
-    }
-  }
-}
+Generate the final contract from stable completed producer files using the offline analyzer, then supply its `review-run.json` to the deck. If the analyzer cannot establish adequate schedule coverage and verified source identities, it does not emit that file; retain the interim deck and publish the detailed analysis/limitations instead. Do not construct a completion summary manually to bypass missing observations.
+
+```bash
+python3 operators/analyze_fox_run.py \
+  --api-dir <completed-api-directory> --gpu-dir <completed-observer-directory> \
+  --output <new-analysis-directory>
+/tmp/park-review-tools/bin/python scripts/build_fox_review_deck.py \
+  --run-summary <new-analysis-directory>/review-run.json \
+  --source-revision <published-evidence-commit> --output <new-final-pdf-path>
 ```
 
-The example is a schema illustration, **not run evidence**; replace all values from actual ledgers. The generator rejects placeholder commit hashes, incomplete tracks, missing timezone, less than 28,800 elapsed seconds, timestamp durations below eight hours, nonpositive cycle counts and negative failures. `cycles` means API cycles or observer samples as appropriate. `source_identity.commit` is the tool/source commit; GPU deployment revisions belong in `deployment_commits` because this observer spans development deployments. Both tracks appear with their actual start/end, elapsed duration, cycles/samples, failures and source commits. Nonzero failures remain visible and completion is never described as a pass. Full supplied identity objects remain in the manifest. This validator checks summary consistency, not independent truth of a ledger.
+The shared v2 contract requires:
+
+| Evidence | Required contract data and interpretation |
+|---|---|
+| Stable input capture | Top-level `input_capture_consistent: true`; analyzer refuses files changed during its reads. |
+| Elapsed completion | Both tracks have `complete` and `elapsed_reconciled_complete`; actual timezone-aware start/end and monotonic elapsed each span at least 28,800 seconds and agree within 2 seconds. |
+| Repeated observations | Positive repeated functional cycles/API checks or GPU samples; one t=0 sample plus eight elapsed hours cannot establish coverage. `cycle_unit` distinguishes functional cycles and observation samples. |
+| Schedule coverage | `coverage.adequate`, configured interval, fixed 2-second scheduling tolerance, observed count, complete `uncovered_intervals`, total/max unobserved seconds, functional-window duration, startup duration and health-only pause windows. The declared union-of-schedule-windows method is not continuous observation. |
+| Pauses | `pause_seconds` and full `pause_events` remain separate. Explicit paused health checks do not count as functional interventions. |
+| Verification | `source_identity.verification` retains verified/unverified/unknown transition counts, and `source_transitions` preserves full observed identities. Unknown or unverified source evidence cannot finalize. `source_identity.commit` is the last observed application source, not necessarily the observer tool or the whole run's only release. |
+| Outcomes | Cycles/samples, failed checks/samples and source revisions remain visible. A recorded failure is an observation and is never silently changed into a pass. |
+
+The final badge is **8H SAMPLED REVIEW**, not a generic uptime-completion claim. Page 5 shows each track's actual UTC window, elapsed duration, cycle/sample count, failures, configured cadence, total/max uncovered time, functional observation windows, recorded pauses, health-only pause windows, identity-verification counts and last observed source. It explicitly states that schedule windows plus the fixed allowance do not establish continuous uptime, and that GPU request duration is unavailable. Full leading/inter-sample/trailing interval details, warnings, pause events and source transitions remain in the supplied contract and PDF manifest; the shared validator source hash is also recorded.
+
+The input cap is 4 MiB so hundreds of retained interval timestamps are not discarded to fit the old 64 KiB envelope. This validator checks consistency of the supplied summary and its required evidence fields; it is not a cryptographic attestation of independent ledger truth. The published interim PDF is unchanged by these final-mode corrections.
 
 ## Source scope
 
@@ -115,3 +114,17 @@ The example is a schema illustration, **not run evidence**; replace all values f
 - `docs/reviews/2026-10-19-evidence-and-policy-review.md` independently recomputes 324-case accounting; it describes negative benefit and modeling omissions.
 - `docs/progress.md` records the 407-check local and 40-check browser checkpoint. Counts retain that scope rather than implying all GPU runs used that suite.
 - `docs/experiments/2026-10-19-run-status.md` describes the ongoing two-track experiment and known deployment interruption. Final counts require the explicit summary above.
+
+## Published interim artifact
+
+The review PDF is [docs/fox-review-interim.pdf](../fox-review-interim.pdf), with source/evidence links pinned to `c6d15163b4773bb23796ac6f6ce77131d4d69440`. It remains an **interim** review while the eight-hour ledgers run. The cover preview is [review-deck-cover.png](../images/fox-cycle-20261019/review-deck-cover.png); all five full-size page previews are kept under the ignored runtime review directory. Reproducibility and text-bound validation records are under [fox-review-interim/](fox-review-interim/).
+
+Rebuild the published PDF from this pinned source/evidence checkpoint:
+
+```bash
+/tmp/park-review-tools/bin/python scripts/build_fox_review_deck.py \
+  --source-revision c6d15163b4773bb23796ac6f6ce77131d4d69440 \
+  --output docs/fox-review-interim.pdf
+```
+
+The generator initially writes its `.manifest.json`, `.validation.json` and five PNG previews beside the PDF. Packaging moves the two JSON records to `docs/deck-source/fox-review-interim/`, copies page 1 to the cover path above, and retains full page previews in `runtime/fox-cycle-20261019/review-deck/public-pinned/`. Moving these records does not alter the PDF or its input hashes. PDF metadata and content remain deterministic; the full editorial Markdown hash also records non-slide reproduction instructions.

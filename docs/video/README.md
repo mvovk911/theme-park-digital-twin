@@ -1,5 +1,7 @@
 # Aster Park application presentation
 
+**New 19 October update:** [88-second maintenance and design walkthrough](fox-update/README.md), covering the direct incident workflow, native before/after designs and route constraints.
+
 [**Download / play the MP4**](https://raw.githubusercontent.com/mvovk911/theme-park-digital-twin/main/docs/video/aster-park-functionality-demo.mp4)
 · [Chapter captions (SRT)](aster-park-functionality-demo.srt)
 · [Capture and editing evidence](presentation-manifest.json)

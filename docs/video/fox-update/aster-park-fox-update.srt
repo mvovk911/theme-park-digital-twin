@@ -1,0 +1,49 @@
+1
+00:00:00,000 --> 00:00:09,001
+An actual incident in the live twin
+Actual RTX frames. The coaster closure, source data and operator actions are synthetic.
+
+2
+00:00:09,001 --> 00:00:18,001
+Start with the current incident
+Prepare the selected asset. No forecast or saved comparison is required.
+
+3
+00:00:18,001 --> 00:00:29,000
+Review the frozen observations
+Status, inspection and open orders retain their source quality and timestamps at proposal creation.
+
+4
+00:00:29,000 --> 00:00:42,000
+Execute a separate, explicit request
+A synthetic work order is acknowledged and read back. Dispatch does not repair or reopen the ride.
+
+5
+00:00:42,000 --> 00:00:49,001
+The ride remains closed
+The live asset still reports closed, with one open work order. Acceptance is not physical completion.
+
+6
+00:00:49,001 --> 00:00:57,001
+Compare an authored design
+Baseline access is unreachable. The separate dining design gives a 40.852 m route at assumed walking speed.
+
+7
+00:00:57,001 --> 00:01:05,000
+Inspect the native before and after
+Matched static native closeups show the added connection. These images are not the live camera.
+
+8
+00:01:05,000 --> 00:01:14,001
+Close the connection in the query
+Closing the authored connection removes the route. The query does not change the park or its scene.
+
+9
+00:01:14,001 --> 00:01:22,001
+Test the unresolved entrance barrier
+The step-free filter still finds no route from the entrance. Authored labels are not certification.
+
+10
+00:01:22,001 --> 00:01:27,783
+Keep the evidence and the limits
+Export the exact queries, responses and identities. This design query is independent of the forecast.

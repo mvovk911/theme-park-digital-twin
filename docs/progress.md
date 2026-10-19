@@ -1,5 +1,19 @@
 # Project progress and review gallery
 
+**19 October, evidence and presentation checkpoint.**
+[Watch the 88-second actual GPU application update](video/fox-update/README.md) ·
+[Five-page implementation review (PDF, interim)](fox-review-interim.pdf).
+The video passed full decoding and sampled inspection of all ten chapters. The
+deck keeps synthetic execution, static design evidence and unfavorable policy
+results explicit. Eight-hour testing continues; neither artifact claims completion.
+
+The [independent tooling review](reviews/2026-10-19-evidence-tooling-review.md)
+identified and verified fixes to the final reporting gate. Sixteen focused checks
+now cover sparse observations, timing contradictions, pauses and source identity.
+A [reconciled partial checkpoint](experiments/run-analysis/coverage-v2-idle-checkpoint/analysis.md)
+contains 19 API cycles / 191 checks / zero failures, alongside the explicitly
+historical 145-sample GPU prefix. No application changes were needed.
+
 **19 October, fourth checkpoint — a complete design comparison.**
 The Decision Lab now asks whether the dining connection fixes access. It compares
 matched baseline/design graphs and actual native RTX closeups, with a connector

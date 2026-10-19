@@ -1,0 +1,65 @@
+{
+  "schema_version": "aster.review-deck.v1",
+  "source_revision": "c6d15163b4773bb23796ac6f6ce77131d4d69440",
+  "mode": "interim",
+  "pdf_sha256": "86872c0df21364b48ad2e0508ed9ade59b554d752e12ec764901660af19061ec",
+  "run_summary": null,
+  "inputs": {
+    "docs/deck-source/fox-review.md": "cba998b89bc796bdf7786dcf4af684c25e93bd0e02b697f291b3c8fa6e722408",
+    "scripts/build_fox_review_deck.py": "10a90cbd141394c8daf03ef640617973b104253807435de989f1e5d9e4669155",
+    "docs/progress.md": "26d12668176e64a9308d8d5a7ce6986e5458b0d71857b396e335d07b674232fa",
+    "docs/research/fox-theme-park.md": "4d3fe0cd151b6d1ff145a28381fb2b934b430a2ac2a211bd2af0536925a58d26",
+    "docs/reviews/2026-10-19-evidence-and-policy-review.md": "53fc308e6790a51505c2ba3e11d66d3f4312adb8346680c59b52188562b6bb67",
+    "docs/experiments/2026-10-19-run-status.md": "cc999b999331e9c7a4c98eb3df67a6afe1e26fba969896e1f8ed38117d3a3b69",
+    "docs/images/fox-cycle-20261019/gpu-incident-afa84a1/report.json": "a6236e57ab3607f101a6078c280cf10484cfa270f0cff26e830032dede3c82cf",
+    "docs/images/fox-cycle-20261019/gpu-incident-afa84a1/direct-proposal-frozen-observations.png": "853c7c1bddecf9e59c7eae7b108463d25363fde2a8712c81142a17bab5c0da8f",
+    "docs/images/fox-cycle-20261019/dining-design/baseline/report.json": "791f81c8fd0cbef0cc88d3b834c8ddc14bca6390e322aa9f41cf5981008be0f4",
+    "docs/images/fox-cycle-20261019/dining-design/baseline/dining-closeup.png": "221dc1eab3dd18525a0a1b41aecee7225bfbc7f40e1fd3ab4e55ab7d13bfe5f9",
+    "docs/images/fox-cycle-20261019/dining-design/baseline/dining-closeup-composition.usda": "d34bbd0cee408f7345eab4cbcaa1ebd0db426d66d2c5fd846bc8a542c4e0cd18",
+    "docs/images/fox-cycle-20261019/dining-design/dining_connection/report.json": "84aeb940d64363460f661c8d39936e8cfb54c8069474ef2ffb0c5194a4573e3a",
+    "docs/images/fox-cycle-20261019/dining-design/dining_connection/dining-closeup.png": "7fc718c7fc4842eee4f1d2281c8c234a17c4ef46143c78beedda5a658985653d",
+    "docs/images/fox-cycle-20261019/dining-design/dining_connection/dining-closeup-composition.usda": "e2f8a979828f87462832dc0cbe94b2fd07b3a8fa65c9e8bfa0757916935d3762"
+  },
+  "fonts": {
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf": "5c1247acef7f2b8522a31742c76d6adcb5569bacc0be7ceaa4dc39dd252ce895"
+  },
+  "incident_application_identity": {
+    "source": "release_manifest",
+    "commit": "afa84a17d6cc282ed2aa4003743d62770644ea48",
+    "tree": "3ba4d7b8e02d6e6145a8c510c716df9ddc9c894a",
+    "disposition": "verified_manifest",
+    "verified": true,
+    "dirty": false,
+    "scene_path": "assets/park.usdc",
+    "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "mismatches": [],
+    "checked_at": "2026-10-19T20:52:12.231545+00:00",
+    "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance"
+  },
+  "native_capture_identities": {
+    "baseline": {
+      "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+      "graph_version": "aster-circulation-v1",
+      "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+      "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+      "variant_layer_sha256": null,
+      "variant_evidence_sha256": null,
+      "verification": "verified_at_installation",
+      "snapshot_policy": "immutable_until_restart"
+    },
+    "dining_connection": {
+      "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+      "graph_version": "aster-circulation-v1+dining-connection-v1",
+      "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+      "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+      "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+      "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+      "verification": "verified_at_installation",
+      "snapshot_policy": "immutable_until_restart"
+    }
+  },
+  "reproducibility": "Invariant PDF metadata; identical input bytes, source revision and options produce identical PDF bytes"
+}

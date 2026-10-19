@@ -2,9 +2,9 @@
 
 This recording adds an approximately **88-second content segment** to the existing
 3-minute-34-second presentation. It demonstrates the direct incident workflow and
-read-only spatial comparison in the actual browser application. It is a capture
-plan and reproducible recorder, not a claim that this new video has already been
-recorded or accepted.
+read-only spatial comparison in the actual browser application. The [accepted export](fox-update/README.md) is **87.77 seconds** after the
+measured-container trim described below. This document retains the storyboard,
+preparation checks and reproduction procedure.
 
 The browser records at 1920×960. An editor may add a 120-pixel caption band beneath
 the content for a 1920×1080 export. This does not upgrade the native renderer's
@@ -118,3 +118,81 @@ label any failed or overlong take as such rather than editing away missing check
 The script was syntax-compiled and its offline storyboard inspected. A real GPU
 capture is intentionally left to the root deployment operator in a reserved window.
 No GPU or shared service was changed while preparing these files.
+
+
+## Encode the accepted take
+
+`scripts/edit_fox_update.py` is a separate editor for this recorder's schema. It
+requires a successful capture, empty page/observation/finalization error lists,
+successful POST responses, all required cleanup attempts and live/normal readback.
+The gateway and renderer must both retain the same verified commit and scene at
+both boundaries. Only explicitly timed `ERR_ABORTED` frame fetches at browser
+shutdown may be classified as shutdown cleanup rather than a capture failure;
+those entries remain in the edit manifest.
+
+On the GPU host, use the separate CPU video-tools environment:
+
+```sh
+/home/horde/park-twin-video-tools/bin/python scripts/edit_fox_update.py \
+  /home/horde/park-twin-runs/fox-20261019/fox-update-take01/capture-manifest.json \
+  --output /home/horde/park-twin-runs/fox-20261019/fox-update-edit01
+```
+
+The editor verifies the raw file's SHA-256 against the capture manifest, measures
+its actual container duration with FFmpeg, and refuses a content end beyond that
+duration. It trims from `presentation_start_seconds` to
+`recording_content_end_seconds` as one continuous stream at normal speed. It does
+not cut and concatenate the application footage chapter by chapter. There is no
+intro/outro or viewport scaling. A 120-pixel Pillow-rendered band is added beneath
+the 1920×960 application, with up to two caption lines. The output is 1920×1080,
+H.264, 30 fps, no audio. Frame-rate conversion does not imply higher native RTX
+rendering performance.
+
+Outputs are `aster-park-fox-update.mp4`, its `.srt`, `poster.png`,
+`edit-manifest.json` and `verification.json`. The reports retain the raw/capture/
+recorder/editor/FFmpeg hashes, precise trim values, approximate capture-to-container
+timing basis, measured raw and output durations, caption boundaries, decode frame
+count and full decode-log hash. The MP4 must pass a complete FFmpeg decode with
+errors treated as failures. Automated decode does not establish visual quality;
+inspect the poster, captions and footage separately before publication. Existing
+output directories and the original long presentation are never overwritten.
+
+Preparation validation used the actual take01 manifest: its recorded content
+interval is 2.137–90.138 seconds, or 88.001 seconds after trimming. The metadata
+gates accepted it and rejected deliberately changed status, page error, cleanup,
+commit, timing and missing raw-hash cases. All ten actual chapter caption bands
+rendered within the 120-pixel area in temporary files. This validates the editor
+preparation only; it does not claim that encoding, full decode or visual acceptance
+has already completed.
+
+
+### Explicit bounded clipping of an unencoded tail
+
+The actual take01 container measured **89.92 seconds**, while its monotonic content
+end was **90.138 seconds**. Browser page creation and the first encoded frame do
+not share an exact known origin. The editor correctly rejects this mismatch by
+default. Do not alter the capture manifest or claim that the full requested
+88.001-second content interval exists in the file.
+
+An explicit `--clip-unencoded-tail` permits at most **0.5 seconds** of unavailable
+tail to be removed against the measured raw-container bound. For this take it
+clips **0.218 seconds**, producing a requested edit duration of **87.783 seconds**
+before frame-boundary quantization. The original capture and raw chapter times
+remain intact in the report. Only the final edited chapter/SRT end is clamped; no
+earlier chapter can be removed or shortened. No tail padding, frozen last frame,
+repeated tail, speed change or inferred first-frame-offset correction is applied.
+The actual MP4 duration must still be measured and pass full decode.
+
+```sh
+/home/horde/park-twin-video-tools/bin/python scripts/edit_fox_update.py \
+  /home/horde/park-twin-runs/fox-20261019/fox-update-take01/capture-manifest.json \
+  --output /home/horde/park-twin-runs/fox-20261019/fox-update-edit01 \
+  --clip-unencoded-tail
+```
+
+The edit manifest records both requested and effective boundaries and an explicit
+`unencoded_tail` policy/measurement. A mismatch above 0.5 seconds still fails, even
+with the flag. The last chapter remains visible for approximately 5.8 seconds;
+visual inspection must confirm that all demonstrated features and the export
+are present. This policy is a bounded measured-container trim, not a claim that
+monotonic and encoded-frame timestamps have been precisely aligned.

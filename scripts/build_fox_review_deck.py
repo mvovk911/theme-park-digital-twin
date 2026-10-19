@@ -2,13 +2,13 @@
 """Reproducible five-page evidence review; defaults to an interim run status."""
 from __future__ import annotations
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 import json
-import math
 from pathlib import Path
 import re
 import subprocess
+import sys
 from xml.sax.saxutils import escape
 
 import fitz
@@ -46,27 +46,17 @@ def stamp(value):
 def run_summary(path):
     if path is None:
         return None
-    if path.stat().st_size > 65536:
-        raise ValueError('Run summary exceeds64KiB')
+    # Retain the complete interval and source-transition evidence. A 30-second
+    # cadence can yield ~960 small gaps, exceeding the former64KiB contract.
+    if path.stat().st_size > 4 * 1024 * 1024:
+        raise ValueError('Run summary exceeds4MiB')
     data = json.loads(path.read_text())
-    if data.get('schema_version') != 'aster.review-run.v1' or set(data.get('tracks', {})) != {'fixed_api', 'gpu_observer'}:
-        raise ValueError('Expected both fixed_api and gpu_observer summary tracks')
-    for name, track in data['tracks'].items():
-        elapsed = track.get('elapsed_seconds')
-        if track.get('complete') is not True or type(elapsed) not in (int, float) or not math.isfinite(elapsed) or elapsed < 28800:
-            raise ValueError(name + ': completed eight-hour evidence is required')
-        duration = (stamp(track['finished_at']) - stamp(track['started_at'])).total_seconds()
-        if duration < 28800 or abs(duration - elapsed) > 5:
-            raise ValueError(name + ': timestamps and elapsed duration must agree within5seconds and cover eight hours')
-        if type(track.get('cycles')) is not int or track['cycles'] < 1 or type(track.get('failures')) is not int or track['failures'] < 0:
-            raise ValueError(name + ': cycles and failures must be nonnegative counts, with at least one cycle')
-        identity = track.get('source_identity', {})
-        commit = identity.get('commit', '')
-        if not re.fullmatch(r'[0-9a-f]{40}', commit) or len(set(commit)) == 1:
-            raise ValueError(name + ': actual full source commit required')
-        for revision in identity.get('deployment_commits', []):
-            if not isinstance(revision, str) or not re.fullmatch(r'[0-9a-f]{40}', revision) or len(set(revision)) == 1:
-                raise ValueError(name + ': invalid deployment commit')
+    # One dependency-free producer/consumer validator owns duration, coverage,
+    # pause and identity-verification rules. The deck does not redefine success.
+    if str(ROOT) not in sys.path:
+        sys.path.insert(0, str(ROOT))
+    from operators.analyze_fox_run import validate_review_contract
+    validate_review_contract(data)
     return data
 
 
@@ -108,7 +98,7 @@ class Deck:
         self.c.setFillColor(BG)
         self.c.rect(0, 0, W, H, stroke=0, fill=1)
         self.text('ASTER PARK  /  ' + label, 36, 22, 710, 10, TEAL, 18, True)
-        self.text('INTERIM' if self.summary is None else '8H RUN COMPLETE', 760, 22, 164, 10, AMBER, 18, True)
+        self.text('INTERIM' if self.summary is None else '8H SAMPLED REVIEW', 760, 22, 164, 10, AMBER, 18, True)
         self.text(section['title'], 36, 48, 888, 28, INK, 44, True)
         self.text(section['subtitle'], 36, 95, 888, 11, MUTED, 30)
 
@@ -164,6 +154,7 @@ def build(args):
         raise ValueError('Before/after cameras must match')
     if summary:
         inputs.append(args.run_summary.resolve())
+        inputs.append(ROOT / 'operators/analyze_fox_run.py')
     d = Deck(output, revision, summary)
 
     s = content['architecture']; d.start(s, 'IMPLEMENTED LOOP')
@@ -218,23 +209,38 @@ def build(args):
     d.footer([('Independent 324-case review', 'docs/reviews/2026-10-19-evidence-and-policy-review.md'), ('Test checkpoint scope', 'docs/progress.md')])
 
     s = content['pilot']; d.start(s, 'NEXT DECISION / RUN STATUS')
+    pilot_width = 528 if summary is None else 434
     for i, (title, body) in enumerate(s['steps']):
         top = 141 + i * 76
-        d.text(title, 36, top, 528, 13, TEAL, 23, True)
-        d.text(body, 36, top + 26, 528, 11, INK, 45)
-    d.panel(598, 141, 326, 307)
+        d.text(title, 36, top, pilot_width, 13, TEAL, 23, True)
+        d.text(body, 36, top + 26, pilot_width, 11 if summary is None else 10, INK, 45)
     if summary is None:
+        d.panel(598, 141, 326, 307)
         d.text('INTERIM\n8-hour observation\nstill in progress', 616, 159, 290, 20, AMBER, 89, True)
         d.text('Two independent tracks:\n• fixed-source API exercise\n• read-only GPU observation\n\nPlanned window: 19 Oct 19:47 to 20 Oct 03:47 UTC. These are planned times, not completion evidence.', 616, 262, 290, 11, MUTED, 133)
         d.text('A known deployment interruption remains in the record. Final counts require both completed ledgers.', 616, 402, 290, 10, AMBER, 41)
     else:
+        d.panel(490, 141, 434, 307)
         failures = sum(t['failures'] for t in summary['tracks'].values())
-        d.text('8-hour tracks completed' + ('\nFailures reported' if failures else '\nNo failures reported'), 616, 153, 290, 16, AMBER if failures else TEAL, 48, True)
+        d.text('Reconciled sampled run evidence', 506, 153, 402, 16, TEAL, 25, True)
+        d.text('Elapsed ≥8h + adequate schedule coverage; ' + str(failures) + ' failed checks/samples retained.',
+               506, 181, 402, 9, AMBER if failures else MUTED, 25)
         for i, (name, track) in enumerate(summary['tracks'].items()):
-            text = (f"{name.replace('_', ' ').upper()} / source {track['source_identity']['commit'][:7]}\n"
-                    f"Start {track['started_at']}\nEnd {track['finished_at']}\n"
-                    f"{track['elapsed_seconds'] / 3600:.3f} h · {track['cycles']} cycles/samples · {track['failures']} failures")
-            d.text(text, 616, 217 + i * 106, 290, 9, MUTED, 100)
+            coverage, identity = track['coverage'], track['source_identity']
+            verification = identity['verification']
+            start = stamp(track['started_at']).astimezone(timezone.utc).isoformat(timespec='seconds')
+            end = stamp(track['finished_at']).astimezone(timezone.utc).isoformat(timespec='seconds')
+            text = (f"{name.replace('_', ' ').upper()} / {len(track['observed_commits'])} observed deployment(s)\n"
+                    f"Start {start}   End {end}\n"
+                    f"{track['elapsed_seconds'] / 3600:.3f} h elapsed · {track['cycles']} cycles/samples · {track['failures']} failures\n"
+                    f"Cadence {coverage['configured_interval_seconds']:g} s; uncovered {coverage['unobserved_seconds']:.3f} s / max {coverage['max_unobserved_seconds']:.3f} s\n"
+                    f"Cycle/sample windows {coverage['functional_observation_window_seconds'] / 3600:.3f} h; recorded pauses {track['pause_seconds']:.3f} s\n"
+                    f"Health-only windows {coverage['health_only_pause_seconds']:.3f} s; identities verified/unverified/unknown: "
+                    f"{verification['verified_count']}/{verification['unverified_count']}/{verification['unknown_count']}\n"
+                    f"Last observed source {identity['commit'][:7]}; full gaps and transitions in manifest")
+            d.text(text, 506, 213 + i * 99, 402, 9, MUTED, 96)
+        d.text('Schedule windows + fixed 2 s allowance are not continuous uptime. Pauses are health-only; GPU request duration is unknown.',
+               506, 416, 402, 9, AMBER, 29)
     d.text(s['boundary'], 36, 474, 888, 12, AMBER, 35)
     d.footer([('Run status / scope', 'docs/experiments/2026-10-19-run-status.md'), ('Integration roadmap', 'docs/research/action-integrations.md'), ('Editable deck + final-run schema', 'docs/deck-source/fox-review.md')])
     d.c.save()
@@ -242,7 +248,7 @@ def build(args):
     document = fitz.open(output)
     if len(document) != 5:
         raise ValueError('Review deck must contain five pages')
-    validation = {'pages': len(document), 'text_bounds_valid': True, 'text_spans': 0, 'selectable_text': True, 'links': 0, 'mode': 'interim' if summary is None else 'completed_tracks'}
+    validation = {'pages': len(document), 'text_bounds_valid': True, 'text_spans': 0, 'selectable_text': True, 'links': 0, 'mode': 'interim' if summary is None else 'reconciled_sampled_tracks'}
     for number, page in enumerate(document, 1):
         if not page.get_text().strip():
             raise ValueError('Page lacks selectable text')

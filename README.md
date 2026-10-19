@@ -4,9 +4,9 @@ An interactive theme park combining procedural OpenUSD geometry, **NVIDIA OVStag
 
 **Review progress:** [Status and render gallery](docs/progress.md) · [Original project prompt](docs/project-prompt.md) · [Asset index](assets/README.md)
 
-[Illustrated project deck (PDF)](docs/project-concept.pdf) · [Five-minute walkthrough](docs/demo-walkthrough.md) · [Integration roadmap](docs/integration-roadmap.md) · [Editable Blender scene](assets/park.blend)
+[Original concept deck (PDF)](docs/project-concept.pdf) · [FOX implementation review (PDF, interim)](docs/fox-review-interim.pdf) · [Five-minute walkthrough](docs/demo-walkthrough.md) · [Integration roadmap](docs/integration-roadmap.md) · [Editable Blender scene](assets/park.blend)
 
-**Watch the presentation:** [3½-minute GPU application demo](docs/video/README.md) — navigation, incident response, utilities, source quality and replay, with English captions.
+**Watch the presentations:** [3½-minute GPU application demo](docs/video/README.md) · [88-second incident and design update](docs/video/fox-update/README.md). Both show the actual application with English captions.
 
 ![Revision 2 OVRTX park viewport](docs/images/revision2/release19/browser/ovrtx-viewport.png)
 

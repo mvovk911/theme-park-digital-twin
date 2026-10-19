@@ -2,6 +2,7 @@
 
 | Review | Baseline | Purpose |
 |---|---|---|
+| [Evidence and tooling review](2026-10-19-evidence-tooling-review.md) | GPU `afa84a17` evidence plus hashed tooling candidate | Media claims, eight-hour elapsed versus observed coverage, final-summary gaps and targeted contract refactor |
 | [Direct incident and spatial review](2026-10-19-direct-incident-spatial-review.md) | `64c8bfa` plus identified candidate | Fewer forecast prerequisites, frozen source observations, geometry versus service meaning, complete release boundaries |
 | [Workflow and spatial review](2026-10-19-workflow-and-spatial-review.md) | Identified workflow/circulation candidate | Dispatch acknowledgement versus repair, stale readback, practical design gaps |
 | [Evidence and policy review](2026-10-19-evidence-and-policy-review.md) | Identified evidence/policy candidate | Numerical reproduction, browser JSON normalization and adverse policy results |

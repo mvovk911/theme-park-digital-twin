@@ -1,0 +1,58 @@
+{
+  "pdf": "docs/fox-review-interim.pdf",
+  "source_revision": "c6d15163b4773bb23796ac6f6ce77131d4d69440",
+  "pdf_sha256": "86872c0df21364b48ad2e0508ed9ade59b554d752e12ec764901660af19061ec",
+  "pages_visually_inspected": 5,
+  "footer_links": [
+    {
+      "url": "https://blogs.nvidia.com/blog/factory-operations-fox-blueprint-ai-brain/",
+      "kind": "external_primary_source"
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/research/fox-theme-park.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/images/fox-cycle-20261019/gpu-incident-afa84a1/report.json",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/bounded-maintenance-workflow.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/spatial-api.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/circulation-native-rendering.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/images/fox-cycle-20261019/gpu-spatial-afa84a1/report.json",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/reviews/2026-10-19-evidence-and-policy-review.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/progress.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/experiments/2026-10-19-run-status.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/research/action-integrations.md",
+      "exists_at_pinned_commit": true
+    },
+    {
+      "url": "https://github.com/mvovk911/theme-park-digital-twin/blob/c6d15163b4773bb23796ac6f6ce77131d4d69440/docs/deck-source/fox-review.md",
+      "exists_at_pinned_commit": true
+    }
+  ],
+  "cover_preview": "docs/images/fox-cycle-20261019/review-deck-cover.png",
+  "full_previews": "runtime/fox-cycle-20261019/review-deck/public-pinned/"
+}
