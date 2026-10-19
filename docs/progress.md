@@ -1,5 +1,11 @@
 # Project progress and review gallery
 
+**Two-hour observation checkpoint, 19 October 21:48 UTC:** 25 complete API
+cycles / 251 checks / zero failures; 243 GPU samples / one retained failure.
+Both runs continue. [Reconciled current evidence](experiments/run-analysis/checkpoint-2h/analysis.md)
+and the [scheduled native frame](images/fox-cycle-20261019/observation-2h/frame.jpg)
+are available for review. No application changes were made during this checkpoint.
+
 **19 October, evidence and presentation checkpoint.**
 [Watch the 88-second actual GPU application update](video/fox-update/README.md) ·
 [Five-page implementation review (PDF, interim)](fox-review-interim.pdf).

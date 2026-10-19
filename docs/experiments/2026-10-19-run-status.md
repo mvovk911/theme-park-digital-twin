@@ -67,3 +67,29 @@ at 20:52:09–20:52:12 UTC. Independent browser acceptance then passed six direc
 incident checks and seven spatial-design checks. A short actual-browser video
 capture began at 21:04:15 UTC; it is development activity on the observed GPU
 session and does not change the isolated fixed-source API test.
+
+## Two-hour checkpoint — 19 October, 21:48 UTC
+
+[Reconciled analysis](run-analysis/checkpoint-2h/analysis.md) ·
+[Independent checkpoint review](run-analysis/checkpoint-2h/review.md) ·
+[Timeline](run-analysis/checkpoint-2h/timeline.svg).
+
+Fresh copies contain **25 full API cycles / 251 checks / zero failures** at
+7,273.226 elapsed seconds, and **243 GPU observations / one failure** at
+7,272.243 seconds. Both producers remain incomplete. Summary/journal counts agree,
+and neither copy changed during its individual read. The snapshots are separate
+live-prefix captures, not one atomic cross-system snapshot.
+
+The v2 schedule diagnostic is adequate for these observed prefixes. All scheduling
+gaps remain recorded: maximum 0.366679 s for API cycles and 0.010451 s for GPU
+observations, within the declared two-second bookkeeping/poll allowance. This
+describes the sampling schedule, not continuous uptime or continuous functional
+execution. No pauses were recorded. The four GPU source revisions and the original
+connection-refused sample remain visible.
+
+![Scheduled native frame at two hours](../images/fox-cycle-20261019/observation-2h/frame.jpg)
+
+The unchanged native JPEG was captured at 21:47:35 UTC by observer sample 240.
+Its [observation record](../images/fox-cycle-20261019/observation-2h/observation.json)
+retains the exact image hash, headers and verified source identity. A single frame
+does not establish continuous rendering rate or ride motion.
