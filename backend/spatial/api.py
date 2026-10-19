@@ -1,11 +1,13 @@
 """HTTP installation for independent, read-only spatial design queries."""
 from pathlib import Path
 
-from fastapi import HTTPException, Request
+from fastapi import HTTPException, Request, Response
+from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 
 from .contracts import MAX_REQUEST_BYTES, RouteRequest, Variant
 from .service import ROOT, SpatialQueryError, SpatialService, _json
+from .previews import PreviewUnavailable, SpatialPreviews
 
 
 def install_spatial_routes(app, *, project_root: Path = ROOT):
@@ -18,6 +20,23 @@ def install_spatial_routes(app, *, project_root: Path = ROOT):
     if getattr(app.state, 'spatial_installed', False):
         raise ValueError('Spatial routes have already been installed')
     service = SpatialService(project_root)
+    previews = SpatialPreviews(project_root, service)
+
+    def preview(variant):
+        try:
+            return previews.get(variant)
+        except PreviewUnavailable as exc:
+            raise HTTPException(503, {'code': 'spatial_preview_unavailable', 'message': str(exc)}) from None
+
+    @app.get('/api/spatial/previews/{variant}')
+    def spatial_preview(variant: Variant):
+        image, metadata, headers = preview(variant)
+        return Response(image, media_type='image/png', headers=headers)
+
+    @app.get('/api/spatial/previews/{variant}/metadata')
+    def spatial_preview_metadata(variant: Variant):
+        image, metadata, headers = preview(variant)
+        return JSONResponse(metadata, headers=headers)
 
     @app.get('/api/spatial/capabilities')
     def spatial_capabilities():

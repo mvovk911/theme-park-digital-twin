@@ -1,0 +1,208 @@
+{
+  "schema_version": "aster.spatial-comparison.v1",
+  "exported_at": "2026-10-19T20:49:17.521Z",
+  "scope": "authored_design_not_live_guidance",
+  "forecast_coupled": false,
+  "mutates_live_state": false,
+  "comparisons": [
+    {
+      "query": {
+        "variant": "baseline",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [],
+        "accessible_only": false,
+        "walking_speed_mps": 1.2
+      },
+      "response": {
+        "synthetic": true,
+        "calibrated": false,
+        "graph_version": "aster-circulation-v1",
+        "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "origin_node": "entry",
+        "destination_node": "food_entrance",
+        "destination_note": "East edge inside dining plaza; missing link over grass and main promenade curb.",
+        "entrance_scope_note": "Plaza entrance is unreachable from main network until a real connecting path is modeled.",
+        "blocked_edges": [],
+        "accessible_only": false,
+        "accessibility_basis": "authored step-free labels; not certified",
+        "walking_speed_mps": 1.2,
+        "limitations": [
+          "Partial authored graph, not an obstacle-complete navmesh",
+          "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+          "No capacity, evacuation, boarding, or accessibility certification",
+          "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+          "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+          "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+          "A reachable public approach does not imply a boarding route or spare service capacity",
+          "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+        ],
+        "reachable": false,
+        "distance_m": null,
+        "assumed_walking_seconds": null,
+        "node_ids": [],
+        "edge_ids": [],
+        "positions_m": [],
+        "reason": "No route in the authored graph under these closures and accessibility labels",
+        "execution_authority": "none",
+        "physical_guidance": false,
+        "live_state_bound": false,
+        "forecast_coupled": false,
+        "mutates_live_state": false,
+        "variant": "baseline",
+        "identity": {
+          "graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+          "graph_version": "aster-circulation-v1",
+          "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+          "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+          "variant_layer_sha256": null,
+          "variant_evidence_sha256": null,
+          "verification": "verified_at_installation",
+          "snapshot_policy": "immutable_until_restart"
+        },
+        "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+        "query": {
+          "variant": "baseline",
+          "origin": "ENTRY_GATE",
+          "destination": "FOOD_COURT",
+          "blocked_edges": [],
+          "accessible_only": false,
+          "walking_speed_mps": 1.2
+        },
+        "entrance_scope": {
+          "destination_node": "food_entrance",
+          "destination_note": "East edge inside dining plaza; missing link over grass and main promenade curb.",
+          "asset_mapping_note": "Plaza entrance is unreachable from main network until a real connecting path is modeled."
+        },
+        "variant_design": null
+      }
+    },
+    {
+      "query": {
+        "variant": "dining_connection",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "blocked_edges": [],
+        "accessible_only": false,
+        "walking_speed_mps": 1.2
+      },
+      "response": {
+        "synthetic": true,
+        "calibrated": false,
+        "graph_version": "aster-circulation-v1+dining-connection-v1",
+        "source_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+        "origin": "ENTRY_GATE",
+        "destination": "FOOD_COURT",
+        "origin_node": "entry",
+        "destination_node": "food_connector_entrance",
+        "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+        "entrance_scope_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred.",
+        "blocked_edges": [],
+        "accessible_only": false,
+        "accessibility_basis": "authored step-free labels; not certified",
+        "walking_speed_mps": 1.2,
+        "limitations": [
+          "Partial authored graph, not an obstacle-complete navmesh",
+          "Distance / assumed speed excludes queues, stops, density, and guest mobility variability",
+          "No capacity, evacuation, boarding, or accessibility certification",
+          "Read-only query of an authored design; not current park conditions or physical navigation guidance",
+          "Partial graph and synthetic accessibility labels; not obstacle-complete or certified",
+          "Plan distance divided by assumed speed excludes queues, stops, density and mobility variability",
+          "A reachable public approach does not imply a boarding route or spare service capacity",
+          "The scenario planner does not use this graph; this query does not validate a rerouting forecast"
+        ],
+        "reachable": true,
+        "distance_m": 40.852,
+        "assumed_walking_seconds": 34.04,
+        "node_ids": [
+          "entry",
+          "main_south",
+          "main_food_junction",
+          "dining_main_landing",
+          "food_connector_entrance"
+        ],
+        "edge_ids": [
+          "entry_main",
+          "main_south_link",
+          "dining_main_link",
+          "dining_connector_link"
+        ],
+        "positions_m": [
+          [
+            0,
+            -53,
+            0.3
+          ],
+          [
+            2,
+            -47,
+            0.3
+          ],
+          [
+            2,
+            -27,
+            0.3
+          ],
+          [
+            -4.5,
+            -26.4,
+            0.3
+          ],
+          [
+            -12.5,
+            -26.4,
+            0.3
+          ]
+        ],
+        "minimum_authored_corridor_width_m": 2,
+        "execution_authority": "none",
+        "physical_guidance": false,
+        "live_state_bound": false,
+        "forecast_coupled": false,
+        "mutates_live_state": false,
+        "variant": "dining_connection",
+        "identity": {
+          "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+          "graph_version": "aster-circulation-v1+dining-connection-v1",
+          "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+          "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+          "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+          "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+          "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+          "verification": "verified_at_installation",
+          "snapshot_policy": "immutable_until_restart"
+        },
+        "distance_basis": "2D plan distance on authored graph; terrain grade is not integrated",
+        "query": {
+          "variant": "dining_connection",
+          "origin": "ENTRY_GATE",
+          "destination": "FOOD_COURT",
+          "blocked_edges": [],
+          "accessible_only": false,
+          "walking_speed_mps": 1.2
+        },
+        "entrance_scope": {
+          "destination_node": "food_connector_entrance",
+          "destination_note": "New design-variant landing inside the dining plaza; route ends before restaurant interior, tables or service queues.",
+          "asset_mapping_note": "New variant landing only; original interior node is preserved but no new path through furniture is inferred."
+        },
+        "variant_design": {
+          "id": "dining-connection-v1",
+          "baseline_graph": "assets/circulation_graph.json",
+          "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+          "layer": "assets/variants/dining_connection.usda",
+          "layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+          "distance_basis": "2D plan distance on nominal graph Z=0.30 m; graded surface is separately modeled in USD",
+          "superseded_excluded_edge_ids": [
+            "food_missing_link"
+          ],
+          "entrance_change": "FOOD_COURT maps to a new landing point at (-12.5,-26.4), 0.6 m north of the baseline point to keep the 2 m connector clear of bin bounds.",
+          "accessibility": "Local grade is modeled; unresolved baseline entrance/plaza thresholds remain. No accessible route from ENTRY_GATE is asserted."
+        }
+      }
+    }
+  ]
+}

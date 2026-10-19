@@ -24,6 +24,8 @@ leaves a closed ride closed; it is not evidence of repair.
 
 [Spatial design queries](docs/spatial-api.md) compare an audited partial path graph
 with a separate [dining connection proposal](docs/dining-design-variant.md).
+The browser compares both designs, route constraints, and
+[matched native RTX closeups](docs/circulation-native-rendering.md#actual-native-comparison).
 A [read-only external weather preview](docs/external-weather-preview.md) keeps
 external forecasts distinct from synthetic park observations. These services do
 not replace ERP, CMMS, ride controls or calibrated engineering models.

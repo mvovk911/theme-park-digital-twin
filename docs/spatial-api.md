@@ -104,3 +104,15 @@ python -m pytest tests/test_spatial_api.py -q
 ```
 
 The related scene evidence remains in [circulation.md](circulation.md) and [dining-design-variant.md](dining-design-variant.md). The API itself neither renders nor claims new GPU evidence.
+
+## Static native design previews
+
+`GET /api/spatial/previews/{variant}` serves the matched dining close-up as `image/png`; `GET /api/spatial/previews/{variant}/metadata` returns its graph identity, camera, native OVStage/OVRTX versions, image/report/composition SHA256 values and capture/verification timestamps. Both responses carry `X-Spatial-Graph-Sha256`, `X-Spatial-Scene-Sha256`, `X-Spatial-Variant-Layer-Sha256` (empty for baseline), `X-Spatial-Preview-Image-Sha256`, `X-Spatial-Preview-Report-Sha256`, and `X-Spatial-Preview-Mode: static_native`. Clients can compare graph headers to their selected graph and hash the received image bytes before display.
+
+These are static native captures of authored geometry, with the same camera for baseline and dining design: eye `[-1,-43,17]`, target `[-9,-26.4,0.3]`, 42 mm focal length and 1600×1000 pixels. They contain no live telemetry and do not establish accessibility, capacity, physical guidance or operating benefit. The API itself does not start a renderer.
+
+At installation, optional files are read only from `docs/images/fox-cycle-20261019/dining-design/{baseline|dining_connection}/`: `report.json`, `dining-closeup.png`, and `dining-closeup-composition.usda`. Limits are 128 KiB, 16 MiB and 64 KiB respectively. Symlinks and nonregular files are rejected. Report file paths never select local files. Verification requires a complete native render without reported errors, no live data or diagnostic overlay, exact installed graph identity, expected layer order/roles/hashes, matching capture/composition digests, consistent camera metadata, PNG chunk checksums/dimensions and timestamp ordering. Report source paths may use a source-directory symlink while composition paths resolve to the release directory; both must retain the expected allowlisted asset suffixes. Neither remote path is opened locally or exposed in curated metadata.
+
+Validated image bytes and metadata remain immutable until restart, matching the graph snapshot policy. A later on-disk replacement cannot acquire the installed preview's verified identity. If optional artifacts are missing, malformed or inconsistent, both preview endpoints return **503** with `detail.code: spatial_preview_unavailable`, without a substitute image; the graph API remains available. Restoring artifacts requires restart to install a new snapshot. Invalid core graph/source identity still prevents spatial installation entirely. Unknown variants return 422.
+
+This is artifact consistency checking, not a signed rendering attestation. A self-consistent report is not independent proof of its origin. `tests/test_spatial_previews.py` exercises the actual captured artifacts, metadata and headers; missing/replaced/oversized/corrupted files; unsupported paths and symlinks; malformed/incomplete reports; graph/layer/camera mismatches; and separation of optional preview failure from mandatory graph identity.

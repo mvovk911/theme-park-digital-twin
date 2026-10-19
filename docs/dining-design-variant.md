@@ -68,3 +68,10 @@ CPU/USD checks open the composed stage, verify the overridden curb, confirm actu
 This is a small example of a useful spatial constraint: an agent should reject a rerouting recommendation when its proposed destination has no connected guest path. A separate physical design can then change that constraint, with auditable distance, grade, objects affected, and closure behavior. It is more informative than changing a queue number while ignoring whether guests can get there.
 
 No business benefit is proven here. The new connection may affect demand distribution, walking effort, queues, accessibility, and service access; those effects require further models and real measurements. This experiment establishes only a geometrically inspectable connection and honest before/after reachability.
+
+## Native visual evidence
+
+The [matched L40/OVRTX comparison](circulation-native-rendering.md#actual-native-comparison)
+shows the unchanged baseline and separate proposed connector with identical
+camera settings. These are actual native renders of the authored layers, not
+concept illustrations or proof of guest throughput.

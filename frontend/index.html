@@ -8,9 +8,11 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/planning.css">
   <link rel="stylesheet" href="/workflow.css">
+  <link rel="stylesheet" href="/spatial.css">
   <script defer src="/app.js"></script>
   <script defer src="/planning.js"></script>
   <script defer src="/workflow.js"></script>
+  <script defer src="/spatial.js"></script>
 </head>
 <body>
   <header class="topbar">
@@ -114,6 +116,7 @@
           <details id="workflow-panel" class="workflow-panel" open><summary><span>04 / Bounded maintenance workflow</span><small>SYNTHETIC WORK ORDER ONLY</small></summary><div class="workflow-body"><p class="workflow-intro">Start with a current asset issue, review a short-lived proposal, then explicitly request a synthetic work order. A saved comparison is optional context. Dispatch never repairs or reopens an attraction.</p><div class="workflow-origin"><label for="workflow-origin">Start from<select id="workflow-origin"><option value="current_incident">Current incident · no forecast needed</option><option value="saved_plan">Saved comparison · advanced</option></select></label></div><div class="workflow-selection"><label id="workflow-incident-label" for="workflow-incident-asset">Current asset<select id="workflow-incident-asset"><option value="">Choose an asset from Live operations or here</option><option value="RIDE_COASTER">Coaster</option><option value="RIDE_WHEEL">Observation wheel</option><option value="POWER_HUB">Power hub</option><option value="WATER_PLANT">Water plant</option></select></label><label id="workflow-saved-label" for="workflow-action" hidden>Action from saved comparison<select id="workflow-action"><option value="">Save a comparison to review its actions</option></select></label><button id="workflow-create" disabled>Create proposal</button></div><label id="workflow-rationale-label" class="workflow-rationale" hidden><input type="checkbox" id="workflow-rationale"> Attach the open saved comparison as optional context</label><p id="workflow-support" class="workflow-support"></p><div id="workflow-message" role="status" class="workflow-message">Loading the bounded workflow service…</div><div id="workflow-conflict" class="workflow-conflict" hidden></div><div id="workflow-proposal" hidden></div><div class="workflow-buttons"><button id="workflow-execute" disabled>Execute synthetic work order</button><button id="workflow-recover" disabled>Reload proposal & receipt</button><button id="workflow-new" hidden>Review a fresh proposal</button><button id="workflow-history">Recent proposals</button></div><div id="workflow-history-list" class="workflow-history" hidden></div><p class="workflow-footnote">No physical control or completion. Receipt acceptance and the recorded work-order readback are separate evidence. Retry identities are retained in this browser.</p></div></details>
         </div>
       </div>
+      <section id="spatial-panel" class="spatial-panel" aria-label="Authored dining access design comparison"></section>
     </section>
 
     <section class="systems-section" id="systems-section"><div class="section-header"><div><div class="eyebrow">THE CONNECTED BACKBONE</div><h2>Many systems. A common language.</h2></div><button class="text-button" id="show-system-map">Explore architecture <span>↗</span></button></div><div class="source-health-summary" id="source-health-summary"></div><div class="system-cards" id="system-cards"></div></section>

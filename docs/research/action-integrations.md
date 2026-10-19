@@ -95,7 +95,7 @@ canonical operations until a park location and source policy are configured.
 ## First execution slice and pilot value
 
 The first bounded execution workflow is a **synthetic maintenance-dispatch request**
-from a saved comparison. The [implemented workflow](../bounded-maintenance-workflow.md)
+from a current incident, with a saved comparison as optional context. The [implemented workflow](../bounded-maintenance-workflow.md)
 is separate from numerical forecasting. Proposals expire and recheck current
 relevant state, reject replay and stale inputs, retain a durable request ID, recover
 an accepted receipt after a lost acknowledgement, and verify the work-order record

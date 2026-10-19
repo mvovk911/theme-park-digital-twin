@@ -1,0 +1,27 @@
+#usda 1.0
+(
+ subLayers = [@/home/horde/park-twin-deploy/releases/64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4/assets/variants/dining_connection.usda@, @/home/horde/park-twin-deploy/releases/64c8bfa28b81030b61d3dd7b1589cf5e7902d4a4/assets/park.usdc@]
+ metersPerUnit = 1
+ upAxis = "Z"
+)
+over "World" {
+  over "Camera" {
+    float focalLength = 42
+    float horizontalAperture = 36
+    float verticalAperture = 22.5
+    matrix4d xformOp:transform = ((0.9008444880292464, 0.4341419219418055, -0.0, 0.0), (-0.29153848912510144, 0.6049423649345855, 0.7409791120308342, 0.0), (0.3216900958157988, -0.6675069488177826, 0.6715280750154801, 0.0), (-1.0, -43.0, 17.0, 1.0))
+    uniform token[] xformOpOrder = ["xformOp:transform"]
+  }
+}
+def Scope "Render" {
+ def RenderProduct "Camera" {
+  rel camera = </World/Camera>
+  uint[] deviceIds = [0]
+  int2 resolution = (1600, 1000)
+  token omni:rtx:rendermode = "RealTimePathTracing"
+  rel orderedVars = [<LdrColor>]
+  def RenderVar "LdrColor" {
+   string sourceName = "LdrColor"
+  }
+ }
+}

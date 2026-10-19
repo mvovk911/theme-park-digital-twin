@@ -1,0 +1,96 @@
+{
+  "kind": "static_ovstage_ovrtx_circulation_design_review",
+  "started_at": "2026-10-19T20:43:28.619214+00:00",
+  "live_telemetry": false,
+  "synthetic": true,
+  "execution_authority": "none",
+  "variant": "dining_connection",
+  "overlay_mode": "none",
+  "identity": {
+    "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+    "graph_version": "aster-circulation-v1+dining-connection-v1",
+    "baseline_graph_sha256": "ae518e995a906d4797579c53597e065d3824165884a6675a91bd4c0d9f82c919",
+    "baseline_scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "baseline_geometry_sha256": "d812c3cb11f0cba5ba03a16b9a0e34ae67a5e64e8f4a0ffa93d719d94ab1a37d",
+    "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+    "variant_evidence_sha256": "b43b038eb7b21d66e9935a04dc93b50ea6d18ea446aa49f72af3b4de3d88a111",
+    "verification": "verified_at_installation",
+    "snapshot_policy": "immutable_until_restart"
+  },
+  "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+  "overlay_sha256": null,
+  "variant_layer_sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688",
+  "graph_sha256": "fac8e4bb29986bc389197b0891a2a6ec4fc8af1526e5e8634d9894018cce0780",
+  "script_sha256": "6f833c89811b1fd2ac89e70a3138cc18522506320dc4daf0c83a469eb9105953",
+  "overlay_authoring_helper_sha256": null,
+  "composition_layers_strongest_first": [
+    {
+      "role": "physical_design_variant",
+      "file": "/home/horde/park-twin-runs/fox-20261019/dining-source/assets/variants/dining_connection.usda",
+      "sha256": "5f3ad832e464c98962ecc900a6a569edc439cb6d568a2c49cd8edf4f1a64c688"
+    },
+    {
+      "role": "baseline_scene",
+      "file": "/home/horde/park-twin-runs/fox-20261019/dining-source/assets/park.usdc",
+      "sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c"
+    }
+  ],
+  "prepared_views": [
+    {
+      "name": "dining-closeup",
+      "eye_m": [
+        -1.0,
+        -43.0,
+        17.0
+      ],
+      "target_m": [
+        -9.0,
+        -26.4,
+        0.3
+      ],
+      "focal_length_mm": 42,
+      "composition_file": "dining-closeup-composition.usda",
+      "composition_sha256": "e2f8a979828f87462832dc0cbe94b2fd07b3a8fa65c9e8bfa0757916935d3762"
+    }
+  ],
+  "legend": {},
+  "limitations": "Partial authored pedestrian circulation and explicitly excluded connections. Approaches do not imply ride boarding or operation.",
+  "design_limitations": [
+    "Static authored geometry only; no live measurements, guest movement or operating benefit",
+    "A render is not proof of practical passing clearance, accessibility, capacity or physical safety",
+    "The unchanged baseline and design variant use exactly the same requested camera"
+  ],
+  "captures": [
+    {
+      "name": "dining-closeup",
+      "eye_m": [
+        -1.0,
+        -43.0,
+        17.0
+      ],
+      "target_m": [
+        -9.0,
+        -26.4,
+        0.3
+      ],
+      "focal_length_mm": 42,
+      "composition_file": "dining-closeup-composition.usda",
+      "composition_sha256": "e2f8a979828f87462832dc0cbe94b2fd07b3a8fa65c9e8bfa0757916935d3762",
+      "file": "dining-closeup.png",
+      "sha256": "7fc718c7fc4842eee4f1d2281c8c234a17c4ef46143c78beedda5a658985653d",
+      "width": 1600,
+      "height": 1000,
+      "frames": 60,
+      "native_rendered": true
+    }
+  ],
+  "cleanup_errors": [],
+  "prepared": true,
+  "native_rendered": true,
+  "complete": true,
+  "ovstage_version": "0.3.0.1791986420",
+  "ovrtx_version": "0.6.0.1791947691",
+  "mode": "native_render",
+  "elapsed_seconds": 5.522,
+  "finished_at": "2026-10-19T20:43:34.220827+00:00"
+}

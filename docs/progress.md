@@ -1,5 +1,31 @@
 # Project progress and review gallery
 
+**19 October, fourth checkpoint — a complete design comparison.**
+The Decision Lab now asks whether the dining connection fixes access. It compares
+matched baseline/design graphs and actual native RTX closeups, with a connector
+closure and authored step-free filter as negative controls. Queries preserve
+live and recorded park state. The native previews are static: a query closure
+does not alter their geometry or the live camera.
+
+![Working design comparison with native before-and-after images](images/fox-cycle-20261019/spatial-ui/before-after-native.png)
+
+[Actual local browser/API report](images/fox-cycle-20261019/spatial-ui/report.json) ·
+[Native render provenance and reproduction](circulation-native-rendering.md) ·
+[Exported route comparison](images/fox-cycle-20261019/spatial-ui/before-after-query.json)
+
+The repository suite passes **407 tests**, with three browser modules skipped in
+that environment. The dedicated browser environment passes 40 checks; the actual
+local spatial walkthrough passes seven checks, including PNG byte hashes, route
+closure, the unresolved entrance threshold, JSON export and mobile layout. These
+are local application checks using separately captured L40 native images; new
+immutable GPU application deployment acceptance will be recorded separately.
+
+The dining proposal provides a route in this partial authored graph. It does not
+prove increased throughput, physical guidance or accessibility. The original
+scene remains unchanged, and the queue forecast still has no spatial origins or
+travel model. Eight-hour observation continues.
+
+
 **19 October, third checkpoint — direct incidents and queryable design alternatives.**
 Operators can now prepare maintenance directly from an asset or maintenance alert,
 review three frozen source observations, and explicitly create and execute a

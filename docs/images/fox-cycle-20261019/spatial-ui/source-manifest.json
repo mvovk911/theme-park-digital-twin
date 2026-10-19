@@ -1,0 +1,12 @@
+{
+  "scope": "Actual local browser/API preview acceptance on ea556a7 plus listed working tree; static images carry their separate actual L40 native capture reports, not live local GPU rendering",
+  "sha256": {
+    "frontend/spatial.js": "1a18fde1a4f028cf34d99377ee31cf66ce8dcd9f9d41724a720d47f384255b69",
+    "frontend/spatial.css": "a61f02723b78ae8eac7344d2d9eb1c01cecd50ced1b4e1ad7cde8ec19c4fa276",
+    "frontend/index.html": "b14b58a369056e6faba0727c5b8ff283beb9032d9e029ef2a0d3db377d5384fa",
+    "backend/spatial/previews.py": "7a828f49b97434ed37f12baa223b578f3ccc08c2234874d8fd61fe3dc89a50f1",
+    "backend/spatial/api.py": "fccc4fa09caac785365423ba03abf44464fd2746c82d8b77c2e045823d836b89",
+    "backend/spatial/service.py": "5c6261edb865f593757f85a33d691b8c6041d9cf5af01f4a47bcecd522eaaca7",
+    "tests/test_spatial_browser.py": "f8af687f7c62d8921859d0cc697adaa5565f44e7f0df2ea4657d9e8865c45af6"
+  }
+}
