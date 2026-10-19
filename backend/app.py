@@ -12,6 +12,7 @@ from project_revision import source_identity
 from .simulator import ActionRequestConflict, ParkSimulator
 from .connectors import ConnectorRuntime, ParkReadModel
 from .connectors.api import install_connector_routes
+from .planning.api import install_planning_routes
 
 
 class ScenarioRequest(BaseModel):
@@ -142,6 +143,7 @@ def create_app(database_path: str | None = None, run_background: bool = True):
             pass
 
     install_connector_routes(app)
+    install_planning_routes(app)
     return app
 
 

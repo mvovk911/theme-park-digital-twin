@@ -111,6 +111,7 @@
     $('asset-select').value = selectedId ?? '';
     renderAsset(); renderBrief(); renderSystems(); renderActivity(); renderLabels(); renderView(); renderTimeline(); renderSourceHealth();
     updateWriteControls(); updateFrameContext(); ensureAnnotationState();
+    document.dispatchEvent(new CustomEvent('park:state', {detail:{revision:data.accepted_state_revision,timestamp:data.timestamp,tick:data.tick,scenario:data.scenario,mode:data.view?.mode || 'live',quality:data.read_model?.quality_status}}));
     if (Date.now() - lastDetailFetch > 5000) refreshDetails();
   }
 
@@ -194,12 +195,13 @@
   async function switchView(mode, snapshotId) {
     if (viewPending) return;
     viewPending = true; viewRequestVersion++; updateWriteControls();
+    document.dispatchEvent(new CustomEvent('park:view-pending', {detail:true}));
     try {
       const data = await post('/api/view', mode === 'replay' ? {mode, snapshot_id:Number(snapshotId)} : {mode:'live'});
       applyState(data); await refreshTimeline();
       toast(mode === 'replay' ? `Viewing recorded snapshot #${snapshotId}. Operational controls are read only.` : 'Returned to the live park.');
     } catch (error) { toast(`View could not be changed: ${error.message}`, true); }
-    finally { viewPending = false; updateWriteControls(); renderTimeline(); }
+    finally { viewPending = false; updateWriteControls(); renderTimeline(); document.dispatchEvent(new CustomEvent('park:view-pending', {detail:false})); }
   }
 
   function availableActions(asset) {
@@ -873,7 +875,7 @@
     $$('[data-layer]').forEach(button => button.onclick = () => setLayer(button.dataset.layer));
     $$('[data-view]').forEach(button => button.onclick = () => {
       $$('[data-view]').forEach(item => item.classList.toggle('active', item === button));
-      const section = {operations:'operations-view',systems:'systems-section',activity:'activity-section'}[button.dataset.view];
+      const section = {operations:'operations-view',planning:'planning-section',systems:'systems-section',activity:'activity-section'}[button.dataset.view];
       $(section).scrollIntoView({behavior:'smooth', block:'start'});
     });
     $('show-system-map').onclick = () => $('architecture-dialog').showModal();

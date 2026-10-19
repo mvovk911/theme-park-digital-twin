@@ -6,13 +6,16 @@
   <meta name="theme-color" content="#142a30">
   <title>Aster Park · Live Twin</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/planning.css">
   <script defer src="/app.js"></script>
+  <script defer src="/planning.js"></script>
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="/" aria-label="Aster Park home"><span class="brand-mark">✳</span><span>aster<span class="brand-light">park</span><small>OPERATIONS TWIN</small></span></a>
     <nav class="main-nav" aria-label="Main navigation">
       <button class="nav-item active" data-view="operations">Live operations</button>
+      <button class="nav-item" data-view="planning">Decision Lab</button>
       <button class="nav-item" data-view="systems">Connected systems <span class="nav-count" id="system-count">—</span></button>
       <button class="nav-item" data-view="activity">Activity</button>
     </nav>
@@ -76,6 +79,33 @@
           <div class="asset-source-list" id="asset-sources"></div>
         </div>
       </aside>
+    </section>
+
+    <section class="planning-section" id="planning-section" aria-labelledby="planning-title">
+      <div class="planning-heading"><div><div class="eyebrow">OBSERVE / EXPLORE / REVIEW</div><h2 id="planning-title">Decide with the next hour in view.</h2><p>Compare operational responses from one frozen observation. Keep the tradeoffs in sight.</p></div><span class="planning-badge">DECISION LAB · MODELED ESTIMATES</span></div>
+      <div class="planning-shell">
+        <form id="planning-form" class="planning-form">
+          <div class="planning-step">01 <span>Set the question</span></div>
+          <label for="planning-scenario">Future disruption<select id="planning-scenario" name="scenario"><option value="normal">Normal operations</option><option value="ride_closure">Coaster closure</option><option value="show_surge">Show exit surge</option><option value="heatwave">Heatwave</option><option value="power_fault">Reduced power capacity</option><option value="water_leak">Water leak</option><option value="food_rush">Food court rush</option></select></label>
+          <label for="planning-horizon">Look ahead <output id="planning-horizon-value" for="planning-horizon">60 minutes</output><input id="planning-horizon" name="horizon" type="range" min="15" max="120" step="5" value="60"><span class="planning-range-labels"><span>15 min</span><span>120 min</span></span></label>
+          <div class="planning-input-pair"><label for="planning-demand">Arrival demand<input id="planning-demand" type="number" min="0.25" max="3" step="0.05" value="1"><small>× modeled baseline</small></label><label for="planning-uncertainty">Demand variation<input id="planning-uncertainty" type="number" min="0" max="50" step="1" value="20"><small>± percent · sensitivity</small></label></div>
+          <div class="planning-input-pair"><label for="planning-staff">Qualified reserve staff<input id="planning-staff" type="number" min="0" max="12" step="1" value="4"><small>Assumed available people</small></label><label for="planning-routing">Routing compliance<input id="planning-routing" type="number" min="0" max="100" step="1" value="25"><small>Percent following guidance</small></label></div>
+          <div class="planning-observation"><span class="planning-step">OBSERVATION TO FREEZE</span><strong id="planning-observation">Waiting for park data</strong><small id="planning-observation-detail">Every branch starts from the same accepted observations.</small></div>
+          <button type="submit" id="planning-run" disabled>Freeze & compare <span>↗</span></button><p class="planning-form-note">Read-only exploration. No live scenario changes or physical commands.</p>
+        </form>
+        <div class="planning-workspace">
+          <div class="planning-status" id="planning-status" role="status">Connect to the park, then compare three operating responses.</div>
+          <div id="planning-empty" class="planning-empty"><div class="planning-fork" aria-hidden="true"><span>OBSERVED NOW</span><i></i><div><b>Do nothing</b><b>Simple rule</b><b>Coordinated response</b></div></div><h3>One starting point. Several possible futures.</h3><p>Explore waiting, service capacity and resources over 15–120 minutes. Demand cases reveal how an option changes under different assumptions.</p><small>Synthetic, uncalibrated model · estimates require operator review</small></div>
+          <div id="planning-results" hidden>
+            <div class="planning-result-heading"><div><div class="planning-step">02 <span>Compare the options</span></div><h3 id="planning-result-title"></h3></div><span id="planning-review-badge" class="planning-badge"></span></div>
+            <p id="planning-frozen" class="planning-frozen"></p><p id="planning-result-inputs" class="planning-result-inputs"></p>
+            <div id="planning-branches" class="planning-branches"></div>
+            <div class="planning-chart-card"><div class="planning-chart-heading"><div><h4>How the horizon unfolds</h4><p id="planning-chart-note">Central demand case · five-minute intervals</p></div><label><span class="sr-only">Trajectory metric</span><select id="planning-chart-metric"><option value="queue">Queue backlog · service visits</option><option value="served">Completed service visits</option><option value="power">Power demand · kW</option><option value="stock">Food stock · units</option><option value="leak">Excess leak flow · L/min</option></select></label></div><div id="planning-chart"></div><div id="planning-chart-legend" class="planning-chart-legend"></div></div>
+            <details class="planning-details" open><summary>Full resource comparison <span>Central estimates + low–high demand sensitivity</span></summary><div class="planning-table-wrap"><table id="planning-comparison"></table></div><p class="planning-footnote">Service visits can include the same person more than once. Unserved visits remain in the queue at the horizon. Ranges are assumed demand cases, not confidence intervals.</p></details>
+            <div class="planning-review-grid"><div class="planning-quality"><div class="planning-step">03 <span>Review before deciding</span></div><h4 id="planning-quality-title"></h4><div id="planning-quality"></div></div><details class="planning-details planning-assumptions"><summary>Model assumptions & limits</summary><div id="planning-assumptions"></div></details></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="systems-section" id="systems-section"><div class="section-header"><div><div class="eyebrow">THE CONNECTED BACKBONE</div><h2>Many systems. A common language.</h2></div><button class="text-button" id="show-system-map">Explore architecture <span>↗</span></button></div><div class="source-health-summary" id="source-health-summary"></div><div class="system-cards" id="system-cards"></div></section>

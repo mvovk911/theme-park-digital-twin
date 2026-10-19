@@ -1,5 +1,29 @@
 # Project progress and review gallery
 
+**19 October 2026 — FOX-inspired decision planning and an eight-hour evaluation cycle.**
+The new Decision Lab compares frozen canonical observations over 15–120 minutes,
+with do-nothing/simple-rule alternatives, action delays, finite reserve staffing,
+conserved service demand, and explicit assumptions. All seven scenarios passed an
+actual local API/browser check. These first screenshots show the working browser
+and synthetic planner; they are **not new GPU-render evidence**.
+
+[Research and decision/API map](research/fox-theme-park.md) ·
+[Experiment charter](experiments/2026-10-19-run-plan.md) ·
+[Independent value review](reviews/2026-10-19-value-baseline.md) ·
+[HTTP operator evaluation](api-operator-evaluation.md) ·
+[Browser evidence](images/fox-cycle-20261019/initial/report.json)
+
+![Decision Lab: actual local browser and API](images/fox-cycle-20261019/initial/decision-lab-desktop.png)
+
+The first implementation passed 214 CPU/API tests before subsequent review fixes.
+An independent review caught an HVAC constraint that depended on the requested
+scenario label rather than the observed temperature; that counterexample is now
+covered. The numerical model is synthetic and uncalibrated. Forecast sensitivity
+is an assumption sweep, not a confidence interval or demonstrated operating value.
+The eight-hour runs will report actual start/end times and interruptions separately
+from accelerated simulated horizons; no eight-hour result is claimed yet.
+
+
 **15 October 2026 — revision 2 runs on the L40 GPU, with actual browser acceptance.**
 
 **16 October 2026 — [captioned application video](video/README.md).** A 3½-minute

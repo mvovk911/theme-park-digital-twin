@@ -1,0 +1,64 @@
+{
+  "url": "http://127.0.0.1:18120",
+  "mode": "actual local planning API and browser; no GPU rendering evidence",
+  "scenarios": [
+    {
+      "scenario": "normal",
+      "plan_id": "f7b35b8b99d8eb41cf2508f8c376885c43c5ed9173a8992efa40f21bc39976be",
+      "revision": "5934ab2d7b8229f90596ccb1e03404349a4e268f942c9b6de5e9d64ab8e5245b",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "ride_closure",
+      "plan_id": "75751f170eeaecc0f5ab233c104e6f195f41c35fc158b92c3e35e9042708538c",
+      "revision": "5934ab2d7b8229f90596ccb1e03404349a4e268f942c9b6de5e9d64ab8e5245b",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "show_surge",
+      "plan_id": "c15b613c4e19f77de5564e0d44db1f50e66100c653587c9fe04dc18ffa79d015",
+      "revision": "5934ab2d7b8229f90596ccb1e03404349a4e268f942c9b6de5e9d64ab8e5245b",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "heatwave",
+      "plan_id": "5c3e123019000529b3754a13e486d25fa04c48614e538110d4151b413077008c",
+      "revision": "5934ab2d7b8229f90596ccb1e03404349a4e268f942c9b6de5e9d64ab8e5245b",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "power_fault",
+      "plan_id": "230e80e2d844f05a3f8010c5d297d8ff09f9bf6a149f41285a1aa72477965b61",
+      "revision": "0d946c18308e412acf77feebaa81f9d281bd9ae0d4ae2b8bfd23d1797572003b",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "water_leak",
+      "plan_id": "16dfe227e1860e793e44965eec0f6b1e5cf83dc4b3ee7d38b24144692cabd178",
+      "revision": "0d946c18308e412acf77feebaa81f9d281bd9ae0d4ae2b8bfd23d1797572003b",
+      "status": "review_required",
+      "branch_count": 3
+    },
+    {
+      "scenario": "food_rush",
+      "plan_id": "c8d3f784ada562c82e1b1db9be87af7de5cdd986d9a075d9ace78a417de20f57",
+      "revision": "0d946c18308e412acf77feebaa81f9d281bd9ae0d4ae2b8bfd23d1797572003b",
+      "status": "review_required",
+      "branch_count": 3
+    }
+  ],
+  "infeasible_staffing_visible": true,
+  "mobile_section_no_overflow": true,
+  "mobile_page_width": {
+    "width": 390,
+    "scroll": 390
+  },
+  "live_scenario_preserved": "normal",
+  "page_errors": [],
+  "status": "passed"
+}
