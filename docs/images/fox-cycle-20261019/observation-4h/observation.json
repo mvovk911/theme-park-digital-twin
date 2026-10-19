@@ -1,0 +1,316 @@
+{
+  "accepted_state_revision": "2fb47f62a11d15ba312ca95d9c5737b3228174f9b7496319af1f41cc75d2c68a",
+  "connector_health": [
+    {
+      "counters": {
+        "accepted": 121500,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.965+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "5603a0633f52:121500",
+      "mode": "live",
+      "source_id": "ride_scada",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 202500,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.967+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "33af4d44b1db:202500",
+      "mode": "live",
+      "source_id": "ticketing",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 121500,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.969+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "2558989192a9:121500",
+      "mode": "live",
+      "source_id": "vision",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 162000,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.971+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "7c2777bb57e6:162000",
+      "mode": "live",
+      "source_id": "cmms",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 101250,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.973+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "121b202ff96a:101250",
+      "mode": "live",
+      "source_id": "erp",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 121500,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.975+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "dd03f2fed28d:121500",
+      "mode": "live",
+      "source_id": "workforce",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 131625,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.976+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "ba7a09be1d9f:131625",
+      "mode": "live",
+      "source_id": "bms",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 60750,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.978+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "55db643aa47b:60750",
+      "mode": "live",
+      "source_id": "water",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 10125,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.980+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "6a8f7a505158:10125",
+      "mode": "live",
+      "source_id": "weather",
+      "status": "healthy",
+      "synthetic": true
+    },
+    {
+      "counters": {
+        "accepted": 364500,
+        "duplicates": 0,
+        "poll_failures": 0,
+        "rejected": 0
+      },
+      "freshness": {
+        "max_age_seconds": 0.52,
+        "missing_metrics": 0,
+        "stale_after_seconds": 5.0,
+        "stale_metrics": 0,
+        "uncertain_metrics": 0
+      },
+      "last_error": null,
+      "last_ingested_at": "2026-10-19T23:47:36.981+00:00",
+      "last_poll_attempt_at": "2026-10-19T23:47:37.470+00:00",
+      "last_source_timestamp": "2026-10-19T23:47:36.955000+00:00",
+      "latest_cursor": "4dd05acb5f4c:364500",
+      "mode": "live",
+      "source_id": "gis",
+      "status": "healthy",
+      "synthetic": true
+    }
+  ],
+  "frame": {
+    "age_seconds": 0.012,
+    "bytes": 95627,
+    "headers": {
+      "x-frame-age-seconds": "0.009",
+      "x-frame-camera-token": "82c70ce3c6d0da3e7986d5d42db6e47fee14a07b0cd981b461876708ed61beea",
+      "x-frame-context": "{\"camera\":{\"target\":[0.0,0.0,3.0],\"radius\":285.0,\"yaw\":-0.9424777960769379,\"pitch\":0.6981317007977318},\"projected_assets\":[{\"id\":\"RIDE_COASTER\",\"x\":0.4487180575868541,\"y\":0.356342868478316,\"visible\":true},{\"id\":\"RIDE_WHEEL\",\"x\":0.6399573795827305,\"y\":0.4215226676980445,\"visible\":true},{\"id\":\"SHOW_ARENA\",\"x\":0.5634555108098915,\"y\":0.3649501438407152,\"visible\":true},{\"id\":\"FOOD_COURT\",\"x\":0.3825456752660431,\"y\":0.5203956479846145,\"visible\":true},{\"id\":\"POWER_HUB\",\"x\":0.7282444678855249,\"y\":0.47558171902408863,\"visible\":true},{\"id\":\"WATER_PLANT\",\"x\":0.44489208174713185,\"y\":0.2703738480703259,\"visible\":true},{\"id\":\"HOTEL\",\"x\":0.30474504722258755,\"y\":0.4504515692328166,\"visible\":true},{\"id\":\"PARKING\",\"x\":0.5778831027685586,\"y\":0.7490013395095128,\"visible\":true},{\"id\":\"FIRST_AID\",\"x\":0.47896026101169253,\"y\":0.6460616671919789,\"visible\":true},{\"id\":\"RESTROOMS\",\"x\":0.6190476190849854,\"y\":0.6695282553083006,\"visible\":true},{\"id\":\"WEATHER_STATION\",\"x\":0.6122996720038251,\"y\":0.40276588084719833,\"visible\":true},{\"id\":\"ENTRY_GATE\",\"x\":0.3896184004396046,\"y\":0.6639615431994512,\"visible\":true}],\"width\":1280,\"height\":720}",
+      "x-frame-number": "131375",
+      "x-frame-rendered-at": "2026-10-19T23:47:37.510+00:00",
+      "x-scene-revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "x-source-age-seconds": "1.602046",
+      "x-source-revision": "0977b812965f4a5aec488824ccf7de3eab4f8451fb24a4fa6ae2d4cdbc8fde0e",
+      "x-source-tick": "77020",
+      "x-source-timestamp": "2026-10-19T23:47:35.918+00:00",
+      "x-view-mode": "live"
+    },
+    "saved_file": "frame-00480.jpg",
+    "sha256": "589e153ea0a00d097240d6641293359edf7e6d6604f243edbefdbeee23873fbd"
+  },
+  "health": {
+    "database": "connected",
+    "source_identity": {
+      "checked_at": "2026-10-19T20:52:12.231545+00:00",
+      "commit": "afa84a17d6cc282ed2aa4003743d62770644ea48",
+      "dirty": false,
+      "disposition": "verified_manifest",
+      "mismatches": [],
+      "scene_path": "assets/park.usdc",
+      "scene_sha256": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+      "source": "release_manifest",
+      "tree": "3ba4d7b8e02d6e6145a8c510c716df9ddc9c894a",
+      "verification_scope": "Source files on disk at startup; not process attestation or GPU acceptance",
+      "verified": true
+    },
+    "status": "ok",
+    "synthetic": true,
+    "tick": 77021
+  },
+  "index": 480,
+  "kpis": {
+    "active_alerts": 0,
+    "attendance": 3451,
+    "average_wait_minutes": 8.8,
+    "estimated_operating_cost_eur_per_hour": 1994.81,
+    "excluded_closed_count": 0,
+    "open_rides": 2,
+    "power_capacity_kw": 900,
+    "power_kw": 671.4,
+    "queue_asset_count": 6,
+    "total_capacity": 6200,
+    "water_lpm": 317.8
+  },
+  "scenario": "normal",
+  "source_tick": 77021,
+  "status": "pass",
+  "type": "observation",
+  "utc": "2026-10-19T23:47:37.466976+00:00",
+  "view": {
+    "captured_at": null,
+    "config_revision": "31144ca257573a4444cfc43ffbefa6223997de3306ab3a9560353a15bfd5f79d",
+    "live_tick": 77021,
+    "mode": "live",
+    "read_only": false,
+    "recorded_motion": null,
+    "scene_matches_current": true,
+    "scene_revision": "7e9f430e5302a9469e68fa649f2a1cbb0784bdf519a7a41421a96124b87a0c1c",
+    "shared_session": true,
+    "snapshot_id": null,
+    "source_timestamp": "2026-10-19T23:47:36.955+00:00",
+    "work_orders_recorded": false
+  }
+}

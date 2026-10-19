@@ -93,3 +93,28 @@ The unchanged native JPEG was captured at 21:47:35 UTC by observer sample 240.
 Its [observation record](../images/fox-cycle-20261019/observation-2h/observation.json)
 retains the exact image hash, headers and verified source identity. A single frame
 does not establish continuous rendering rate or ride motion.
+
+## Four-hour checkpoint — 19 October, 23:48 UTC
+
+[Reconciled analysis](run-analysis/checkpoint-4h/analysis.md) ·
+[Independent checkpoint review](run-analysis/checkpoint-4h/review.md) ·
+[Timeline](run-analysis/checkpoint-4h/timeline.svg).
+
+The frozen API prefix contains **49 full cycles / 491 checks / zero failures**,
+with 14,452.767 reported elapsed seconds and no pauses. The separately captured
+GPU prefix contains **482 samples / one retained failure** and 14,444.450 elapsed
+seconds. Both remain incomplete; no final review contract was emitted. Summary
+and journal records reconcile, and all individual capture reads were stable.
+
+The declared schedule-coverage rule is adequate over these partial windows. All
+uncovered intervals remain reported: API total 6.358152 seconds, largest 0.591203;
+GPU total 4.385820 seconds, largest 0.010451. These are sampled observations, not
+continuous uptime. GPU source history still contains four verified deployments;
+the current application remains `afa84a1`, unchanged since 20:52 UTC.
+
+The [hour-four native image](../images/fox-cycle-20261019/observation-4h/frame.jpg)
+and its [exact observation](../images/fox-cycle-20261019/observation-4h/observation.json)
+retain image hash, source age, scene identity and camera provenance. The resource
+CSV now contains 218 measurements over approximately 217 minutes, beginning
+later than the experiment; its last device-memory value is 2,919 MiB. This does
+not establish workload attribution, absence of leaks or business benefit.
