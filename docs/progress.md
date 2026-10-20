@@ -1,12 +1,14 @@
 # Project progress and review gallery
 
-**Four-hour observation checkpoint, 19 October 23:48 UTC:** 49 complete API
-cycles / 491 checks / zero failures; 482 GPU samples / one retained failure.
-Both runs continue. [Reconciled current evidence](experiments/run-analysis/checkpoint-4h/analysis.md),
-[independent review](experiments/run-analysis/checkpoint-4h/review.md) and the
-[scheduled native frame](images/fox-cycle-20261019/observation-4h/frame.jpg)
+**Six-hour observation checkpoint, 20 October 01:48 UTC:** 73 complete API
+cycles / 731 checks / zero failures; 722 GPU samples / one retained failure.
+Both runs continue. [Reconciled current evidence](experiments/run-analysis/checkpoint-6h/analysis.md),
+[independent review](experiments/run-analysis/checkpoint-6h/review.md) and the
+[scheduled native frame](images/fox-cycle-20261019/observation-6h/frame.jpg)
 are available for review. The application has remained unchanged since 20:52 UTC.
-The [two-hour checkpoint](experiments/run-analysis/checkpoint-2h/review.md) remains available.
+A separate coordinator watcher exited and was restored at 23:57 UTC; neither
+experiment producer was restarted. Earlier [four-hour](experiments/run-analysis/checkpoint-4h/review.md)
+and [two-hour](experiments/run-analysis/checkpoint-2h/review.md) checkpoints remain available.
 
 **19 October, evidence and presentation checkpoint.**
 [Watch the 88-second actual GPU application update](video/fox-update/README.md) ·

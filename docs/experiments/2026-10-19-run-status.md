@@ -118,3 +118,35 @@ retain image hash, source age, scene identity and camera provenance. The resourc
 CSV now contains 218 measurements over approximately 217 minutes, beginning
 later than the experiment; its last device-memory value is 2,919 MiB. This does
 not establish workload attribution, absence of leaks or business benefit.
+
+## Six-hour checkpoint — 20 October, 01:48 UTC
+
+[Reconciled analysis](run-analysis/checkpoint-6h/analysis.md) ·
+[Independent checkpoint review](run-analysis/checkpoint-6h/review.md) ·
+[Timeline](run-analysis/checkpoint-6h/timeline.svg).
+
+The API prefix contains **73 full cycles / 731 checks / zero failures**, with
+21,653.594 reported elapsed seconds and no pauses. The separately captured GPU
+prefix contains **722 samples / one retained failure** and 21,656.593 elapsed
+seconds. Both remain incomplete; no final review contract was emitted. Summary
+and journal records reconcile, and all individual capture reads were stable.
+
+The declared schedule-coverage rule remains adequate over these partial windows.
+Uncovered intervals remain visible: API total 12.042657 seconds, largest 0.591203;
+GPU total 6.517861 seconds, largest 0.010451. These are sampled observations,
+not continuous uptime. GPU source history retains four verified deployments.
+
+The independent reviewer caught an overdue **coordinator progress watcher** at
+23:57 UTC: its last emitted checkpoint was 23:39:30, and the hosting command
+session had exited with code 143. The exact termination time and cause are unknown.
+The same read-only watcher was restarted detached at 23:57:33; a fresh checkpoint
+at 23:57:35 showed 500 GPU samples and the unchanged single failure. Neither
+experiment producer, application nor renderer was restarted. This monitoring
+interruption is retained separately from the producer ledgers used for coverage.
+
+The [hour-six native image](../images/fox-cycle-20261019/observation-6h/frame.jpg)
+and its [observation](../images/fox-cycle-20261019/observation-6h/observation.json)
+retain image/source provenance. The resource CSV contains 338 measurements over
+approximately 337 minutes, with a last device-memory value of 2,919 MiB. It began
+later than the experiments and does not certify full-run resource coverage,
+absence of leaks, workload attribution or operational benefit.
