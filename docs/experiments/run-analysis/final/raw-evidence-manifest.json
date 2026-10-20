@@ -1,0 +1,70 @@
+{
+  "scope": "Exact completed synthetic experiment ledgers, resource CSV, and saved native frames; no runtime databases or provider inventory.",
+  "files": [
+    {
+      "path": "api/events.jsonl",
+      "bytes": 10057170,
+      "sha256": "93ee445867a850731c67eb33e1ee96196efb3fa0ff0fd7aa4a245d07ef1f543c"
+    },
+    {
+      "path": "api/summary.json",
+      "bytes": 8550981,
+      "sha256": "1045fa063ff6e97726f54cbd3a6a72c2ce1dcd2e818b8dfb6ad1df4dea9b7c52"
+    },
+    {
+      "path": "gpu/gpu-observation/events.jsonl",
+      "bytes": 8953973,
+      "sha256": "15acd8ff6776bdb77cf0abbffe27e3a5276af74a55f6b3a4d1d9f0a7900b7d86"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00000.jpg",
+      "bytes": 95558,
+      "sha256": "0e5b917f4e53cdc124f7de1f5fa682f2452de72e591b1fd300ac75a0410a34f0"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00120.jpg",
+      "bytes": 95625,
+      "sha256": "c69bec9b46731daca0f7ea1f8a0e69b750e481de16570470a22f05fbca269610"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00240.jpg",
+      "bytes": 95616,
+      "sha256": "36c320ba2cbca21209ba65c527dcae3dda35ec7fa80e62e592a7389381a8dead"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00360.jpg",
+      "bytes": 95546,
+      "sha256": "2c13a48413b385c4458f78b75eff2bba9db91441e778551af2335c0c73aecdc4"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00480.jpg",
+      "bytes": 95627,
+      "sha256": "589e153ea0a00d097240d6641293359edf7e6d6604f243edbefdbeee23873fbd"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00600.jpg",
+      "bytes": 95585,
+      "sha256": "006da66dd16b712a6457e9cf19f627bf0fc3770ec09e3d8d70e3f90c463fb41c"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00720.jpg",
+      "bytes": 95453,
+      "sha256": "94e6627d5a6f0e2e6b6f49efe5aaab0fec63c25514b7522b8f62e5b573a001b4"
+    },
+    {
+      "path": "gpu/gpu-observation/frame-00840.jpg",
+      "bytes": 95559,
+      "sha256": "6d3f931367b8edbf128b411b6aed24239b2d22224157e0a067db99c1ed0f186a"
+    },
+    {
+      "path": "gpu/gpu-observation/summary.json",
+      "bytes": 636,
+      "sha256": "42aca3d1562efab8051bb940c54e21eff7933ef3f9c9fd05d9b21eda62eba220"
+    },
+    {
+      "path": "gpu/gpu-resources.csv",
+      "bytes": 30601,
+      "sha256": "cf1fbf56b75d6fc229e788cdba49091e03bd4d39a9f1481120b4fa6b156008a7"
+    }
+  ]
+}

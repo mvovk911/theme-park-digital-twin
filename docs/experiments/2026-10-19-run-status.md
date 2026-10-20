@@ -1,6 +1,11 @@
 # Eight-hour experiment status
 
-This is a running experiment, not a completed eight-hour result.
+**Completed on 20 October 2026 at 03:47 UTC.** Both actual eight-hour tracks
+reconcile: 96 API cycles / 961 checks / zero failures; 960 GPU samples / one
+retained failure. Temporary compute is confirmed stopped; workspace retained.
+[Final report](2026-10-20-final-report.md) and [independent review](run-analysis/final/review.md)
+contain the completed results. The dated sections below preserve the running
+experiment history; their incomplete counts are historical checkpoints.
 
 | Track | Actual start (UTC) | Planned finish (UTC) | Source |
 | --- | --- | --- | --- |
@@ -24,9 +29,9 @@ until a dated checkpoint or final report is published. Both tools are determinis
 clients, not an LLM agent embedded in the application. Independent coding agents
 review their methods and results.
 
-The developer will stop temporary Horde compute after final collection while
-preserving the project workspace. Approximately 05:47 CEST is the target finish,
-with collection and shutdown following it.
+The planned finish was approximately 05:47 CEST. Final collection completed,
+and Horde reported compute stopped at the 05:50 CEST verification; the project
+workspace remained present. See the [closure record](run-analysis/final/compute-release.json).
 
 ## Intermediate checkpoint — 19 October, approximately 20:40 UTC
 

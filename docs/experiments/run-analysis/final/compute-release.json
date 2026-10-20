@@ -1,0 +1,12 @@
+{
+  "compute_status": "stopped",
+  "compute_verified_at": "2026-10-20T03:50:03.757181+00:00",
+  "worker": "park-fox-rtx",
+  "workspace_present_after_stop": true,
+  "workspace_verified_at": "2026-10-20T03:50:25.262561+00:00",
+  "action": "Stopped temporary compute; retained persistent project workspace.",
+  "local_test_processes": "API supervisor, backend, evaluator and coordinator watcher exited.",
+  "api_supervisor_exit_code": 0,
+  "api_backend_restarts": 0,
+  "scope": "Sanitized observations; provider inventory and credentials excluded."
+}

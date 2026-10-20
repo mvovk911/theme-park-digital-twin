@@ -1,5 +1,16 @@
 # Project progress and review gallery
 
+**Eight-hour evaluation complete, 20 October 03:47 UTC.** 96 API cycles /
+961 checks / zero failures; 960 GPU samples / one retained failure. Independent
+review verified both complete ledgers and their sampled coverage. GPU compute is
+confirmed stopped and the persistent workspace is retained.
+
+[Final report and next pilot](experiments/2026-10-20-final-report.md) ·
+[Raw evidence](experiments/run-analysis/final/README.md) ·
+[Closing value/architecture review](reviews/2026-10-20-final-value-review.md).
+
+The checkpoints below preserve the development history.
+
 **Six-hour observation checkpoint, 20 October 01:48 UTC:** 73 complete API
 cycles / 731 checks / zero failures; 722 GPU samples / one retained failure.
 Both runs continue. [Reconciled current evidence](experiments/run-analysis/checkpoint-6h/analysis.md),

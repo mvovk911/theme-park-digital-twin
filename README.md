@@ -30,9 +30,11 @@ A [read-only external weather preview](docs/external-weather-preview.md) keeps
 external forecasts distinct from synthetic park observations. These services do
 not replace ERP, CMMS, ride controls or calibrated engineering models.
 
-The eight-hour evaluation started **19 October 2026 at 19:47 UTC** and remains
-in progress. [Run status](docs/experiments/2026-10-19-run-status.md) records its
-scope and interruptions. [Independent reviews](docs/reviews/) and an
+The **eight-hour evaluation completed on 20 October 2026 at 03:47 UTC**: 961 API
+checks passed; 960 GPU observations retained one failure. Temporary GPU compute
+is stopped and the persistent workspace remains. [Final report](docs/experiments/2026-10-20-final-report.md)
+links reconciled evidence, downloadable raw logs and the closing value review.
+[Run history](docs/experiments/2026-10-19-run-status.md) preserves scope and interruptions. [Independent reviews](docs/reviews/) and an
 [independent policy stress experiment](docs/experiments/food-service-policy-stress.md)
 include unfavorable results. Actual L40/OVRTX/browser acceptance at `afa84a1`
 passed [six incident-workflow checks](docs/images/fox-cycle-20261019/gpu-incident-afa84a1/report.json)
