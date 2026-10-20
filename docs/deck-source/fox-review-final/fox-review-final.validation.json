@@ -1,0 +1,890 @@
+{
+  "pages": 5,
+  "text_bounds_valid": true,
+  "text_spans": 154,
+  "selectable_text": true,
+  "links": 12,
+  "mode": "reconciled_sampled_tracks",
+  "paragraph_bounds": [
+    {
+      "page": 1,
+      "bounds": [
+        36,
+        22,
+        746,
+        35.2
+      ],
+      "text": "ASTER PARK  /  IMPLEMENTED LOOP"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        760,
+        22,
+        924,
+        35.2
+      ],
+      "text": "8H SAMPLED REVIEW"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        36,
+        48,
+        924,
+        84.96000000000001
+      ],
+      "text": "Observe. Compare. Request. Verify."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        36,
+        95,
+        924,
+        109.52
+      ],
+      "text": "An operations data backbone, with explicit decision and command boundaries."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        48,
+        154,
+        192,
+        167.2
+      ],
+      "text": "OBSERVED"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        48,
+        183,
+        192,
+        219.96
+      ],
+      "text": "10 synthetic source domains"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        48,
+        239,
+        192,
+        278.6
+      ],
+      "text": "Asset IDs, units, timestamps, ownership and quality."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        228,
+        154,
+        372,
+        167.2
+      ],
+      "text": "ALTERNATIVES"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        228,
+        183,
+        372,
+        219.96
+      ],
+      "text": "Frozen what-if branches"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        228,
+        239,
+        372,
+        278.6
+      ],
+      "text": "15\u2013120 min; queue/resource balances; common demand cases."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        408,
+        154,
+        552,
+        167.2
+      ],
+      "text": "REVIEW"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        408,
+        183,
+        552,
+        219.96
+      ],
+      "text": "Do nothing + simple rule"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        408,
+        239,
+        552,
+        278.6
+      ],
+      "text": "Waiting, served/backlog, cost, constraints and adverse cases."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        588,
+        154,
+        732,
+        167.2
+      ],
+      "text": "BOUNDED REQUEST"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        588,
+        183,
+        732,
+        219.96
+      ],
+      "text": "One synthetic executor"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        588,
+        239,
+        732,
+        291.8
+      ],
+      "text": "Maintenance proposal, expiry, current preconditions and explicit execute."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        768,
+        154,
+        912,
+        167.2
+      ],
+      "text": "VERIFY"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        768,
+        183,
+        912,
+        219.96
+      ],
+      "text": "Receipt + readback"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        768,
+        239,
+        912,
+        278.6
+      ],
+      "text": "Exact work-order identity; accepted workflow does not mean repaired."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        50,
+        344,
+        306,
+        357.2
+      ],
+      "text": "SYNTHETIC READ FEEDS"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        50,
+        371,
+        306,
+        397.4
+      ],
+      "text": "Ride SCADA \u2022 ticketing \u2022 vision \u2022 CMMS \u2022 ERP/POS \u2022 workforce \u2022 BMS \u2022 water \u2022 weather \u2022 GIS"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        352,
+        344,
+        608,
+        357.2
+      ],
+      "text": "CONTEXT / IMPLEMENTED"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        352,
+        371,
+        608,
+        410.6
+      ],
+      "text": "OpenUSD + native OVStage/OVRTX; quality-aware live view, replay, saved comparisons and static design queries."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        654,
+        344,
+        910,
+        357.2
+      ],
+      "text": "ENTERPRISE / PROPOSED"
+    },
+    {
+      "page": 1,
+      "bounds": [
+        654,
+        371,
+        910,
+        410.6
+      ],
+      "text": "Vendor read adapters, authenticated CMMS writes, qualified roster evidence and approved signage requests."
+    },
+    {
+      "page": 1,
+      "bounds": [
+        36,
+        466,
+        924,
+        479.2
+      ],
+      "text": "FOX-inspired architecture; NVIDIA FOX, NemoClaw and OpenShell are not installed. Spatial queries and weather previews remain separate from the uncalibrated forecast."
+    },
+    {
+      "page": 2,
+      "bounds": [
+        36,
+        22,
+        746,
+        35.2
+      ],
+      "text": "ASTER PARK  /  CURRENT INCIDENT / ACTUAL GPU APP"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        760,
+        22,
+        924,
+        35.2
+      ],
+      "text": "8H SAMPLED REVIEW"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        36,
+        48,
+        924,
+        84.96000000000001
+      ],
+      "text": "An incident can reach a work order directly"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        36,
+        95,
+        924,
+        109.52
+      ],
+      "text": "Actual Horde L40 app/browser acceptance \u2022 verified application release afa84a1"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        46,
+        444,
+        526,
+        455.88
+      ],
+      "text": "Actual app: frozen source observations"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        562,
+        140,
+        591,
+        159.8
+      ],
+      "text": "01"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        602,
+        140,
+        924,
+        169.04
+      ],
+      "text": "Live asset entry selects the target without a write or forecast"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        562,
+        187,
+        591,
+        206.8
+      ],
+      "text": "02"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        602,
+        187,
+        924,
+        216.04
+      ],
+      "text": "Explicit direct execution creates an order; ride remains closed"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        562,
+        234,
+        591,
+        253.8
+      ],
+      "text": "03"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        602,
+        234,
+        924,
+        248.52
+      ],
+      "text": "Reload retrieves the accepted receipt using GET only"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        562,
+        281,
+        591,
+        300.8
+      ],
+      "text": "04"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        602,
+        281,
+        924,
+        295.52
+      ],
+      "text": "Mobile layout fits the viewport"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        562,
+        328,
+        591,
+        347.8
+      ],
+      "text": "05"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        602,
+        328,
+        924,
+        342.52
+      ],
+      "text": "Saved-comparison workflow still functions"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        562,
+        375,
+        591,
+        394.8
+      ],
+      "text": "06"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        602,
+        375,
+        924,
+        404.04
+      ],
+      "text": "Lost response + reload retries the same request and expiry"
+    },
+    {
+      "page": 2,
+      "bounds": [
+        36,
+        467,
+        924,
+        480.2
+      ],
+      "text": "4 scripted steps instead of 7 via a saved comparison. This is a UI path comparison, not a measured human productivity gain."
+    },
+    {
+      "page": 2,
+      "bounds": [
+        36,
+        496,
+        924,
+        506.56
+      ],
+      "text": "Current status, inspection and open orders are frozen with source evidence. Dispatch accepts a synthetic workflow; it does not repair equipment or reopen a ride."
+    },
+    {
+      "page": 3,
+      "bounds": [
+        36,
+        22,
+        746,
+        35.2
+      ],
+      "text": "ASTER PARK  /  DESIGN ALTERNATIVE / NATIVE RTX"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        760,
+        22,
+        924,
+        35.2
+      ],
+      "text": "8H SAMPLED REVIEW"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        36,
+        48,
+        924,
+        84.96000000000001
+      ],
+      "text": "Does the dining connection fix access?"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        36,
+        95,
+        924,
+        109.52
+      ],
+      "text": "Matched native OVStage/OVRTX captures \u2022 same camera \u2022 separate authored design layer"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        36,
+        130,
+        470,
+        145.84
+      ],
+      "text": "BASELINE: unreachable in authored graph"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        490,
+        130,
+        924,
+        145.84
+      ],
+      "text": "DINING DESIGN: 40.852 m route in the graph"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        36,
+        444,
+        320,
+        457.2
+      ],
+      "text": "Close connector \u2192 unreachable"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        338,
+        444,
+        622,
+        470.4
+      ],
+      "text": "Step-free filter \u2192 unreachable; entry threshold unresolved"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        640,
+        444,
+        924,
+        457.2
+      ],
+      "text": "34.04 s assumes 1.2 m/s; no density or queue delay"
+    },
+    {
+      "page": 3,
+      "bounds": [
+        36,
+        487,
+        924,
+        498.88
+      ],
+      "text": "Static geometry and a partial authored graph. This is not certified accessibility, physical guest guidance, spare service capacity or forecast validation."
+    },
+    {
+      "page": 4,
+      "bounds": [
+        36,
+        22,
+        746,
+        35.2
+      ],
+      "text": "ASTER PARK  /  INDEPENDENT VALUE REVIEW"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        760,
+        22,
+        924,
+        35.2
+      ],
+      "text": "8H SAMPLED REVIEW"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        36,
+        48,
+        924,
+        84.96000000000001
+      ],
+      "text": "A useful test can reject the cleverer policy"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        36,
+        95,
+        924,
+        109.52
+      ],
+      "text": "Independent policy accounting \u2022 324 synthetic cases \u2022 972 outcomes \u2022 source d3dca3d"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        49,
+        157,
+        233,
+        188.68
+      ],
+      "text": "216 / 324"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        49,
+        199,
+        233,
+        225.4
+      ],
+      "text": "Planner and simple rule choose identical schedules"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        275,
+        157,
+        459,
+        188.68
+      ],
+      "text": "108"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        275,
+        199,
+        459,
+        225.4
+      ],
+      "text": "Different choices: extra staff costs EUR56 per case"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        501,
+        157,
+        685,
+        188.68
+      ],
+      "text": "52 / 108"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        501,
+        199,
+        685,
+        225.4
+      ],
+      "text": "Extra staff produces no waiting improvement"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        727,
+        157,
+        911,
+        188.68
+      ],
+      "text": "92 / 324"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        727,
+        199,
+        911,
+        225.4
+      ],
+      "text": "Doing nothing strictly dominates the planner choice"
+    },
+    {
+      "page": 4,
+      "bounds": [
+        36,
+        276,
+        924,
+        307.68
+      ],
+      "text": "Across all cases: +1.701 completed service visits, \u221228.883 guest-min waiting and +EUR18.667 labor versus the simple rule. Different-choice subgroup: +5.102 visits, \u221286.648 guest-min and +EUR56. These are grid averages, not expected real outcomes."
+    },
+    {
+      "page": 4,
+      "bounds": [
+        50,
+        368,
+        910,
+        397.04
+      ],
+      "text": "Local checkpoint: 407 CPU/application checks passed; three browser modules skipped there. Separate browser environment: 40 checks passed. Actual GPU incident walkthrough: six checks. Scopes and revisions differ; these are not one combined production qualification."
+    },
+    {
+      "page": 4,
+      "bounds": [
+        36,
+        459,
+        924,
+        490.68
+      ],
+      "text": "The evaluator omits minimum-coverage constraints, donor depletion/setup loss and replenishment cost. Doing nothing is not advice to understaff. No measured ROI or real park productivity claim."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        22,
+        746,
+        35.2
+      ],
+      "text": "ASTER PARK  /  NEXT DECISION / RUN STATUS"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        760,
+        22,
+        924,
+        35.2
+      ],
+      "text": "8H SAMPLED REVIEW"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        48,
+        924,
+        84.96000000000001
+      ],
+      "text": "A narrow pilot can answer the value question"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        95,
+        924,
+        109.52
+      ],
+      "text": "Start with one ride, its maintenance process and one duty-manager workflow."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        141,
+        470,
+        158.16
+      ],
+      "text": "1 / Establish evidence"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        167,
+        470,
+        193.4
+      ],
+      "text": "Map OEM/CMMS asset IDs, timestamps, inspection states and actual work-order history. Read-only integration first."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        217,
+        470,
+        234.16
+      ],
+      "text": "2 / Measure the task"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        243,
+        470,
+        269.4
+      ],
+      "text": "Compare alert-to-verified-order time, clicks, incorrect/duplicate orders and operator understanding against today's workflow."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        293,
+        470,
+        310.16
+      ],
+      "text": "3 / Test decisions"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        319,
+        470,
+        345.4
+      ],
+      "text": "Calibrate arrivals, service, staffing qualifications, delivery delays and cost. Keep do-nothing and simple-rule baselines."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        369,
+        470,
+        386.16
+      ],
+      "text": "4 / Expand deliberately"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        395,
+        470,
+        421.4
+      ],
+      "text": "Only then add a scoped authenticated CMMS request; validate path geometry before coupling guest movement to forecasts."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        506,
+        153,
+        908,
+        174.12
+      ],
+      "text": "Reconciled sampled run evidence"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        506,
+        181,
+        908,
+        192.88
+      ],
+      "text": "Elapsed \u22658h + adequate schedule coverage; 1 failed checks/samples retained."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        506,
+        213,
+        908,
+        296.16
+      ],
+      "text": "FIXED API / 1 observed deployment(s)\nStart 2026-10-19T19:47:34+00:00   End 2026-10-20T03:47:34+00:00\n8.000 h elapsed \u00b7 96 cycles/samples \u00b7 0 failures\nCadence 300 s; uncovered 19.438 s / max 0.591 s\nCycle/sample windows 7.995 h; recorded pauses 0.000 s\nHealth-only windows 0.000 s; identities verified/unverified/unknown: 1/0/0\nLast observed source d3dca3d; full gaps and transitions in manifest"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        506,
+        312,
+        908,
+        395.16
+      ],
+      "text": "GPU OBSERVER / 4 observed deployment(s)\nStart 2026-10-19T19:47:33+00:00   End 2026-10-20T03:47:33+00:00\n8.000 h elapsed \u00b7 960 cycles/samples \u00b7 1 failures\nCadence 30 s; uncovered 8.692 s / max 0.010 s\nCycle/sample windows 7.998 h; recorded pauses 0.000 s\nHealth-only windows 0.000 s; identities verified/unverified/unknown: 4/0/0\nLast observed source afa84a1; full gaps and transitions in manifest"
+    },
+    {
+      "page": 5,
+      "bounds": [
+        506,
+        416,
+        908,
+        439.76
+      ],
+      "text": "Schedule windows + fixed 2 s allowance are not continuous uptime. Pauses are health-only; GPU request duration is unknown."
+    },
+    {
+      "page": 5,
+      "bounds": [
+        36,
+        474,
+        924,
+        489.84
+      ],
+      "text": "Next success criterion: a verified operational outcome that an operator values, with measured effort, error rates and clear limits."
+    }
+  ]
+}

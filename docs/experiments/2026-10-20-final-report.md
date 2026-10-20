@@ -2,7 +2,7 @@
 
 **Both measured tracks completed eight hours. The temporary GPU is stopped; the project workspace is retained.** This cycle produced a working decision and maintenance demonstration, design comparisons, independent reviews and reproducible evidence. It did not establish real-world optimization or ROI.
 
-[Detailed analysis](run-analysis/final/analysis.md) · [Independent evidence review](run-analysis/final/review.md) · [Timeline](run-analysis/final/timeline.svg) · [Raw evidence and reproduction](run-analysis/final/README.md) · [Closing value/architecture review](../reviews/2026-10-20-final-value-review.md)
+[Final presentation (PDF)](../fox-review-final.pdf) · [Actual-browser update video](../video/fox-update/README.md) · [Detailed analysis](run-analysis/final/analysis.md) · [Independent evidence review](run-analysis/final/review.md) · [Timeline](run-analysis/final/timeline.svg) · [Raw evidence and reproduction](run-analysis/final/README.md) · [Closing value/architecture review](../reviews/2026-10-20-final-value-review.md)
 
 ## What now works
 
